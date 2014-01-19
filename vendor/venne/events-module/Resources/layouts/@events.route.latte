@@ -1,0 +1,5 @@
+{block #page-content}
+
+{control pagination, config => [ variant => '@events.route' ]}
+{control itemList $control->getItemsBuilder()->orderBy('r.released', 'DESC')->getQuery()->getResult(), config => [ variant => '@events.route' ]}
+{control pagination, config => [ variant => '@events.route' ]}

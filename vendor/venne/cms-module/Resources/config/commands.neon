@@ -1,0 +1,16 @@
+services:
+	cms.exampleCommand:
+		class: CmsModule\Commands\AccountCommand
+		tags: [command]
+
+	cms.databaseCommand:
+		class: CmsModule\Commands\DatabaseCommand
+		tags: [command]
+
+	cms.languageCommand:
+		class: CmsModule\Commands\LanguageCommand
+		tags: [command]
+
+	cms.websiteCommand:
+		class: CmsModule\Commands\WebsiteCommand
+		tags: [command]

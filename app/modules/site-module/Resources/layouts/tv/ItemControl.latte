@@ -1,0 +1,13 @@
+{if $route instanceof CmsModule\Content\Entities\ExtendedRouteEntity}{var $route = $route->route}{/if}
+
+{cache [$route->id, $presenter->lang], tags => [\CmsModule\Content\Entities\PageEntity::CACHE, \CmsModule\Content\Entities\RouteEntity::CACHE, \CmsModule\Pages\Tags\TagEntity::CACHE, \CmsModule\Content\Entities\LanguageEntity::CACHE]}
+
+{var $thumbnail = (isset($thumbnail) ? $thumbnail : '385x')}
+
+	<div class="video-container">
+		<iframe width="628" height="383" src="//www.youtube.com/embed/{$route->notation}" frameborder="0" allowfullscreen=""></iframe>
+	</div>
+
+{!$route->text|content}
+
+{/cache}

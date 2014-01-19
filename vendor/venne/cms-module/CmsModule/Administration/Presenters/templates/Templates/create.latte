@@ -1,0 +1,18 @@
+{block header}
+	{_'New template'}
+{/block}
+
+{block toolbar}
+{/block}
+
+{block breadcrumb}
+	{include #parent}
+	<li><a n:href="default">{_'Templates'}</a></li>
+	<li class="active">{include #header}</li>
+{/block}
+
+{block content}
+{js @CmsModule/admin/js/contentForm.js}
+
+
+{control form}

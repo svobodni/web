@@ -1,0 +1,47 @@
+{extends ../@layout.latte}
+
+{block #layout}
+<div class="col-md-8">
+
+	{control flashMessage TRUE}
+	{block #contentTop}{/block}
+	{block #content}{include #page-content}{/block}
+	{block #contentBottom}{/block}
+
+	<hr />
+
+	<small class="muted">
+		{control itemInfo $presenter->route}
+	</small>
+</div>
+
+<div class="col-md-4 col-head">
+	{block #panel}
+
+		<h2>Kraje</h2>
+
+		<div id="kraje-mapa">
+			<div id="kraje-mapa-in" style="background-position: 0px 0px;">
+				<img src="{path @siteModule/img/mapa-cr.gif}" alt="mapka" usemap="#mapka">
+				<map name="mapka"><area onmousemove="p24_krajeMapa('kraje-mapa-in','1'); " onmouseout="p24_krajeMapa('kraje-mapa-in','0'); " href="{$basePath}/lide/krajska-predsednictva/praha" alt="Hlavní město Praha" title="Hlavní město Praha" shape="circle" coords="76,68,8"><area onmousemove="p24_krajeMapa('kraje-mapa-in','2'); " onmouseout="p24_krajeMapa('kraje-mapa-in','0'); " href="{$basePath}/lide/krajska-predsednictva/jihocesky-kraj" alt="Jihočeský kraj" title="Jihočeský kraj" shape="poly" coords="48,111,63,127,73,127,86,120,88,111,103,113,103,107,87,100,85,89,56,91"><area onmousemove="p24_krajeMapa('kraje-mapa-in','3'); " onmouseout="p24_krajeMapa('kraje-mapa-in','0'); " href="{$basePath}/lide/krajska-predsednictva/jihomoravsky-kraj" alt="Jihomoravský kraj" title="Jihomoravský kraj" shape="poly" coords="108,117,122,122,132,119,141,123,151,116,161,116,148,106,148,99,140,90,138,85,127,86,124,107"><area onmousemove="p24_krajeMapa('kraje-mapa-in','4'); " onmouseout="p24_krajeMapa('kraje-mapa-in','0'); " href="{$basePath}/lide/krajska-predsednictva/karlovarsky-kraj" alt="Karlovarský kraj" title="Karlovarský kraj" shape="poly" coords="23,72,37,69,43,65,36,52,23,52,16,63"><area onmousemove="p24_krajeMapa('kraje-mapa-in','5'); " onmouseout="p24_krajeMapa('kraje-mapa-in','0'); " href="{$basePath}/lide/krajska-predsednictva/kralovehradecky-kraj" alt="Královéhradecký kraj" title="Královéhradecký kraj" shape="poly" coords="101,62,100,58,92,48,104,45,104,38,116,45,125,44,121,51,129,61,123,68,113,62,102,65"><area onmousemove="p24_krajeMapa('kraje-mapa-in','6'); " onmouseout="p24_krajeMapa('kraje-mapa-in','0'); " href="{$basePath}/lide/krajska-predsednictva/liberecky-kraj" alt="Liberecký kraj" title="Liberecký kraj" shape="poly" coords="77,33,71,43,75,48,88,44,91,47,103,45,103,38,97,37,94,29,87,35"><area onmousemove="p24_krajeMapa('kraje-mapa-in','7'); " onmouseout="p24_krajeMapa('kraje-mapa-in','0'); " href="{$basePath}/lide/krajska-predsednictva/moravskoslezsky-kraj" alt="Moravskoslezský kraj" title="Moravskoslezský kraj" shape="poly" coords="168,86,161,79,148,74,150,63,161,57,161,
+64,167,71,183,73,193,85,183,92,182,92"><area onmousemove="p24_krajeMapa('kraje-mapa-in','8'); " onmouseout="p24_krajeMapa('kraje-mapa-in','0'); " href="{$basePath}/lide/krajska-predsednictva/olomoucky-kraj" alt="Olomoucký kraj" title="Olomoucký kraj" shape="poly" coords="149,97,170,87,149,75,151,60,152,58,142,51,144,60,136,71,142,90"><area onmousemove="p24_krajeMapa('kraje-mapa-in','9'); " onmouseout="p24_krajeMapa('kraje-mapa-in','0'); " href="{$basePath}/lide/krajska-predsednictva/pardubicky-kraj" alt="Pardubický kraj" title="Pardubický kraj" shape="poly" coords="138,83,136,72,137,65,128,63,123,68,113,62,100,66,103,75,126,86"><area onmousemove="p24_krajeMapa('kraje-mapa-in','10'); " onmouseout="p24_krajeMapa('kraje-mapa-in','0'); " href="{$basePath}/lide/krajska-predsednictva/plzensky-kraj" alt="Plzeňský kraj" title="Plzeňský kraj" shape="poly" coords="48,111,53,100,55,90,54,81,56,73,42,66,23,73,19,80,30,95"><area onmousemove="p24_krajeMapa('kraje-mapa-in','11'); " onmouseout="p24_krajeMapa('kraje-mapa-in','0'); " href="{$basePath}/lide/krajska-predsednictva/stredocesky-kraj" alt="Středočeský kraj" title="Středočeský kraj" shape="poly" coords="44,65,64,55,75,48,88,44,98,58,102,75,87,89,56,90,56,73"><area onmousemove="p24_krajeMapa('kraje-mapa-in','12'); " onmouseout="p24_krajeMapa('kraje-mapa-in','0'); " href="{$basePath}/lide/krajska-predsednictva/ustecky-kraj" alt="Ústecký kraj" title="Ústecký kraj" shape="poly" coords="44,63,40,55,36,52,47,44,74,32,76,30,77,32,71,42,75,47"><area onmousemove="p24_krajeMapa('kraje-mapa-in','13'); " onmouseout="p24_krajeMapa('kraje-mapa-in','0'); " href="{$basePath}/lide/krajska-predsednictva/kraj-vysocina" alt="Kraj Vysočina" title="Kraj Vysočina" shape="poly" coords="123,108,127,86,102,76,86,90,88,100,104,107,105,114"><area onmousemove="p24_krajeMapa('kraje-mapa-in','14'); " onmouseout="p24_krajeMapa('kraje-mapa-in','0'); " href="{$basePath}/lide/krajska-predsednictva/zlinsky-kraj" alt="Zlínský kraj" title="Zlínský kraj" shape="poly" coords="149,98,160,94,170,88,183,93,176,99,174,109,162,116,162,116">
+				</map>
+			</div><!-- /kraje-mapa-in -->
+		</div>
+
+		<script>
+
+			$(function () {
+
+				$('.czechMap-area').hover(function () {
+					$('#czechMap-overlap').attr('src', $(this).attr('data-img'));
+				}, function () {
+					$('#czechMap-overlap').attr('src', '{path @siteModule/mapa/none.png}');
+				});
+			});
+
+		</script>
+
+		{*element blog kraje, config => [ variant => 'kraje' ]*}
+	{/block}
+</div>

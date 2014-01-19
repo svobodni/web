@@ -1,0 +1,25 @@
+{
+	"name":"venne/site-module",
+	"description":"",
+	"keywords":["cms", "nette", "venne", "module"],
+	"version":"2.0.0",
+	"require":{
+		"php":">=5.3.2"
+	},
+	"autoload":{
+		"psr-0":{
+			"SiteModule":""
+		}
+	},
+	"extra":{
+		"branch-alias":{
+			"dev-master":"2.0.x-dev"
+		},
+		"venne": {
+				"extensions": {
+					"site": "SiteModule\\DI\\SiteExtension"
+				}
+			}
+		}
+	}
+}

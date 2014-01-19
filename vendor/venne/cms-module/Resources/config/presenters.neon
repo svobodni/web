@@ -1,0 +1,183 @@
+factories:
+
+	cms.sitemapPresenter:
+		class: CmsModule\Presenters\SitemapPresenter
+		tags: [presenter]
+
+	cms.admin.installationPresenter:
+		class: CmsModule\Administration\Presenters\InstallationPresenter(%appDir%, %wwwDir%, %tempDir%, %dataDir%, %resourcesDir%, %configDir%, %wwwCacheDir%, %publicDir%)
+		tags: [presenter]
+
+	cms.admin.cachePresenter:
+		class: CmsModule\Administration\Presenters\CachePresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Cache:'
+			category: 'System'
+			name: 'Cache'
+			description: 'Clear cache'
+			priority: 0
+		]]
+
+	cms.admin.logsPresenter:
+		class: CmsModule\Administration\Presenters\LogsPresenter(%logDir%)
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Logs:'
+			category: 'System'
+			name: 'Log browser'
+			description: 'Show logs, errors, warnings,...'
+			priority: 5
+		]]
+
+	cms.admin.backupsPresenter:
+		class: CmsModule\Administration\Presenters\BackupsPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Backups:'
+			category: 'System'
+			name: 'Backups'
+			description: 'Back up your database structure and data'
+			priority: 15
+		]]
+
+	cms.admin.usersPresenter:
+		class: CmsModule\Administration\Presenters\UsersPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Users:'
+			category: 'Security'
+			name: 'User manager'
+			description: 'Add, edit users and their roles'
+			priority: 60
+		]]
+
+	cms.admin.rolesPresenter:
+		class: CmsModule\Administration\Presenters\RolesPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Roles:'
+			category: 'Security'
+			name: 'Role manager'
+			description: 'Manage roles and permissions'
+			priority: 55
+		]]
+
+	cms.admin.accountPresenter:
+		class: CmsModule\Administration\Presenters\AccountPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Account:'
+			category: 'Security'
+			name: 'User account'
+			description: 'Manage your user profile'
+			priority: 50
+		]]
+
+	cms.admin.languagePresenter:
+		class: CmsModule\Administration\Presenters\LanguagePresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Language:'
+			category: 'Website'
+			name: 'Language settings'
+			description: 'Manage website languages, aliases,...'
+			priority: 150
+		]]
+
+	cms.admin.informationPresenter:
+		class: CmsModule\Administration\Presenters\InformationPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Information:'
+			category: 'Website'
+			name: 'Basic meta information'
+			description: 'Edit basic meta information about this website'
+			priority: 155
+		]]
+
+	cms.admin.applicationPresenter:
+		class: CmsModule\Administration\Presenters\ApplicationPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Application:'
+			category: 'System'
+			name: 'System settings'
+			description: 'Set up database, environment,...'
+			priority: 15
+		]]
+
+	cms.admin.contentPresenter:
+		class: CmsModule\Administration\Presenters\ContentPresenter(..., ..., ..., ..., @cms.admin.routeControlFactory)
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Content:'
+			category: 'Content'
+			name: 'Manage pages'
+			description: 'Manage existing pages and content'
+			priority: 125
+		]]
+
+	cms.admin.layoutsPresenter:
+		class: CmsModule\Administration\Presenters\LayoutsPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Layouts:'
+			category: 'Content'
+			name: 'Manage layouts'
+			description: 'Manage layouts, edit blocks,...'
+			priority: 115
+		]]
+
+	cms.admin.templatesPresenter:
+		class: CmsModule\Administration\Presenters\TemplatesPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Templates:'
+			category: 'Content'
+			name: 'Manage templates'
+			description: 'Manage layouts, edit blocks,...'
+			priority: 105
+		]]
+
+	cms.admin.filesPresenter:
+		class: CmsModule\Administration\Presenters\FilesPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Files:'
+			category: 'Content'
+			name: 'Manage files'
+			description: 'Manage files and directories'
+			priority: 110
+		]]
+
+	cms.admin.tagPresenter:
+		class: CmsModule\Administration\Presenters\TagPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Tag:'
+			category: 'Content'
+			name: 'Manage tags'
+			description: 'Manage tags of CMS content...'
+			priority: 100
+		]]
+
+	cms.filePresenter:
+		class: CmsModule\Content\Presenters\FilePresenter
+		tags: [presenter]
+
+	cms.admin.modulePresenter:
+		class: CmsModule\Administration\Presenters\ModulePresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Module:'
+			category: 'System'
+			name: 'Module manager'
+			description: 'Manage CMS modules, donwload, install, setup,...'
+			priority: 10
+		]]
+
+	cms.admin.dashboardPresenter:
+		class: CmsModule\Administration\Presenters\DashboardPresenter
+		tags: [presenter]
+
+	cms.admin.databasePresenter:
+		class: CmsModule\Administration\Presenters\DatabasePresenter(@cms.databaseFormFactory)
+		tags: [presenter]
+
+	cms.admin.aboutPresenter:
+		class: CmsModule\Administration\Presenters\AboutPresenter
+		tags: [presenter]
+
+	cms.admin.panelPresenter:
+		class: CmsModule\Administration\Presenters\PanelPresenter
+		tags: [presenter]
+
+	cms.errorPresenter:
+		class: CmsModule\Presenters\ErrorPresenter
+		tags: [presenter]

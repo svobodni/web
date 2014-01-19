@@ -1,0 +1,16 @@
+{var $types = $presenter->contentManager->getContentTypes()}
+{var $type = explode('.', $types[$presenter->type])}
+{block header}{_'New page'} ({_end($type)}){/block}
+
+{block toolbar}
+{/block}
+
+{block breadcrumb}
+	{include #parent}
+	<li><a n:href="default type=>NULL">{_'Content'}</a></li>
+	<li class="active">{_'New page'}</li>
+{/block}
+
+{block content}
+
+{control form}

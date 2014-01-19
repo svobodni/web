@@ -1,0 +1,24 @@
+{define #page}
+<ul id="{$control->name}" class="accordion">
+	{include #page-items items=>$control->getItems(), thumbnail=>"{$width}x{$height}"}
+</ul>
+
+{/define}
+
+
+{define #page-items}
+{foreach $items as $item}
+	<li>{include #page-items-item item => $item, thumbnail => $thumbnail}</li>
+{/foreach}
+{/define}
+
+
+{define #page-items-item}
+	<img n:if="$item->route->photo" n:src="$item->route->photo->getFileUrl(true), size=>$thumbnail, format=>\Nette\Image::EXACT" alt="{$item->route->name}" />
+    <div>
+        <h4><a href="{plink Route route=>$item->route}">{$item->route->name}</a></h4>
+    </div>
+{/define}
+
+
+{include #page}

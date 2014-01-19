@@ -1,0 +1,3306 @@
+[
+    {
+        "name": "symfony/console",
+        "version": "v2.3.4",
+        "version_normalized": "2.3.4.0",
+        "target-dir": "Symfony/Component/Console",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/Console.git",
+            "reference": "db78f8ff7fc9e28d25ff9a0bf6ddf9f0e35fbbe3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/Console/zipball/db78f8ff7fc9e28d25ff9a0bf6ddf9f0e35fbbe3",
+            "reference": "db78f8ff7fc9e28d25ff9a0bf6ddf9f0e35fbbe3",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "symfony/event-dispatcher": "~2.1"
+        },
+        "suggest": {
+            "symfony/event-dispatcher": ""
+        },
+        "time": "2013-08-17 16:34:49",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.3-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\Console\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Console Component",
+        "homepage": "http://symfony.com"
+    },
+    {
+        "name": "venne/framework",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/framework.git",
+            "reference": "a6448dca976a3c64ba3c79ddacc2fa8b60f49def"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/framework/zipball/a6448dca976a3c64ba3c79ddacc2fa8b60f49def",
+            "reference": "a6448dca976a3c64ba3c79ddacc2fa8b60f49def",
+            "shasum": ""
+        },
+        "require": {
+            "nette/nette": "~2.0.0",
+            "php": ">=5.3.2",
+            "symfony/console": "v2.3.4"
+        },
+        "require-dev": {
+            "nette/tester": "@dev"
+        },
+        "time": "2013-12-20 14:31:45",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Venne": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Simple and easy for use system for managing your websites.",
+        "keywords": [
+            "cms",
+            "doctrine",
+            "nette"
+        ]
+    },
+    {
+        "name": "doctrine/lexer",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/lexer.git",
+            "reference": "f12a5f74e5f4a9e3f558f3288504e121edfad891"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/lexer/zipball/f12a5f74e5f4a9e3f558f3288504e121edfad891",
+            "reference": "f12a5f74e5f4a9e3f558f3288504e121edfad891",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "time": "2013-12-20 21:39:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Common\\Lexer\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com",
+                "homepage": "http://www.instaclick.com"
+            },
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com",
+                "homepage": "https://github.com/schmittjoh",
+                "role": "Developer of wrapped JMSSerializerBundle"
+            }
+        ],
+        "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "lexer",
+            "parser"
+        ]
+    },
+    {
+        "name": "doctrine/collections",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/collections.git",
+            "reference": "e6d8f1240e10f268c8e8c30e9e88a12853f84695"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/collections/zipball/e6d8f1240e10f268c8e8c30e9e88a12853f84695",
+            "reference": "e6d8f1240e10f268c8e8c30e9e88a12853f84695",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "time": "2014-01-01 23:58:38",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Common\\Collections\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com",
+                "homepage": "http://www.jwage.com/",
+                "role": "Creator"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com",
+                "homepage": "http://www.instaclick.com"
+            },
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com",
+                "homepage": "http://jmsyst.com",
+                "role": "Developer of wrapped JMSSerializerBundle"
+            }
+        ],
+        "description": "Collections Abstraction library",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "array",
+            "collections",
+            "iterator"
+        ]
+    },
+    {
+        "name": "doctrine/inflector",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/inflector.git",
+            "reference": "a81c334f2764b09e2f13a55cfd8fe3233946f728"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/inflector/zipball/a81c334f2764b09e2f13a55cfd8fe3233946f728",
+            "reference": "a81c334f2764b09e2f13a55cfd8fe3233946f728",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "time": "2013-12-21 19:19:50",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Common\\Inflector\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com",
+                "homepage": "http://www.jwage.com/",
+                "role": "Creator"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com",
+                "homepage": "http://www.instaclick.com"
+            },
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com",
+                "homepage": "http://jmsyst.com",
+                "role": "Developer of wrapped JMSSerializerBundle"
+            }
+        ],
+        "description": "Common String Manipulations with regard to casing and singular/plural rules.",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "inflection",
+            "pluralize",
+            "singularize",
+            "string"
+        ]
+    },
+    {
+        "name": "doctrine/common",
+        "version": "2.4.x-dev",
+        "version_normalized": "2.4.9999999.9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/common.git",
+            "reference": "c94d6ff79e25418b1225e187c782bf4742f23a8b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/common/zipball/c94d6ff79e25418b1225e187c782bf4742f23a8b",
+            "reference": "c94d6ff79e25418b1225e187c782bf4742f23a8b",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/annotations": "1.*",
+            "doctrine/cache": "1.*",
+            "doctrine/collections": "1.*",
+            "doctrine/inflector": "1.*",
+            "doctrine/lexer": "1.*",
+            "php": ">=5.3.2"
+        },
+        "time": "2013-09-07 10:20:35",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Common\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com",
+                "homepage": "http://www.jwage.com/",
+                "role": "Creator"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com",
+                "homepage": "http://www.instaclick.com"
+            },
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com",
+                "homepage": "http://jmsyst.com",
+                "role": "Developer of wrapped JMSSerializerBundle"
+            }
+        ],
+        "description": "Common Library for Doctrine projects",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "annotations",
+            "collections",
+            "eventmanager",
+            "persistence",
+            "spl"
+        ]
+    },
+    {
+        "name": "venne/jqueryfileupload-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/jqueryfileupload-module.git",
+            "reference": "a7e999c6c513bda76ce01aeb16c6175808cbed81"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/jqueryfileupload-module/zipball/a7e999c6c513bda76ce01aeb16c6175808cbed81",
+            "reference": "a7e999c6c513bda76ce01aeb16c6175808cbed81",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*"
+        },
+        "time": "2013-09-30 07:27:49",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "8.8-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/UploadHandler.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "jQuery file upload module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/nette-ajax",
+        "version": "dev-venne",
+        "version_normalized": "dev-venne",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pepakriz/nette.ajax.js.git",
+            "reference": "70838c354f67be3af3f6e14c8f874d3ae5960bf8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pepakriz/nette.ajax.js/zipball/70838c354f67be3af3f6e14c8f874d3ae5960bf8",
+            "reference": "70838c354f67be3af3f6e14c8f874d3ae5960bf8",
+            "shasum": ""
+        },
+        "suggest": {
+            "janmarek/webloader": "*"
+        },
+        "time": "2013-10-03 14:47:23",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "VojtechDobes": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Vojtěch Dobeš",
+                "email": "me@vojtechdobes.com"
+            }
+        ],
+        "description": "Flexible utility script for AJAX. Supports snippets, redirects etc.",
+        "homepage": "https://github.com/vojtech-dobes/nette.ajax.js",
+        "keywords": [
+            "ajax",
+            "extension",
+            "nette"
+        ]
+    },
+    {
+        "name": "o5/grido",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/o5/grido.git",
+            "reference": "984419dc791aea496bb6e3c4356aee02e37745cd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/o5/grido/zipball/984419dc791aea496bb6e3c4356aee02e37745cd",
+            "reference": "984419dc791aea496bb6e3c4356aee02e37745cd",
+            "shasum": ""
+        },
+        "require": {
+            "nette/nette": "2.0.*",
+            "php": ">=5.3.1"
+        },
+        "require-dev": {
+            "dibi/dibi": "2.1.*",
+            "mockery/mockery": "@dev",
+            "nella/doctrine": "dev-master",
+            "nette/tester": "@dev"
+        },
+        "time": "2013-10-31 14:41:33",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Grido": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Petr Bugyík",
+                "homepage": "http://petr.bugyik.cz/",
+                "role": "Developer"
+            }
+        ],
+        "description": "Grido - DataGrid for Nette Framework",
+        "homepage": "http://o5.github.io/grido-sandbox/",
+        "keywords": [
+            "datagrid",
+            "datalist",
+            "grid",
+            "list",
+            "nette",
+            "table",
+            "tablegrid"
+        ]
+    },
+    {
+        "name": "venne/grido-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/grido-module.git",
+            "reference": "16338c504c258073e5d1392881e36f6597faf872"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/grido-module/zipball/16338c504c258073e5d1392881e36f6597faf872",
+            "reference": "16338c504c258073e5d1392881e36f6597faf872",
+            "shasum": ""
+        },
+        "require": {
+            "o5/grido": "1.0.0",
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.x-dev"
+        },
+        "time": "2013-10-31 19:21:10",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Grido module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/bootstrapdatetime-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/bootstrapdatetime-module.git",
+            "reference": "6899a1d3068419e3b2a034b607829f5ae1bd8bef"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/bootstrapdatetime-module/zipball/6899a1d3068419e3b2a034b607829f5ae1bd8bef",
+            "reference": "6899a1d3068419e3b2a034b607829f5ae1bd8bef",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*"
+        },
+        "time": "2013-10-01 09:09:02",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Bootstrap-datetime module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/holder-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/holder-module.git",
+            "reference": "aa18e0d6395d63dc25d554b2c42b6e1bda7da9aa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/holder-module/zipball/aa18e0d6395d63dc25d554b2c42b6e1bda7da9aa",
+            "reference": "aa18e0d6395d63dc25d554b2c42b6e1bda7da9aa",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*"
+        },
+        "time": "2013-09-09 08:47:19",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Holder renders image placeholders entirely on the client side.",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/stringtoslug-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/stringtoslug-module.git",
+            "reference": "7a985cdbd489fd9a77eb9fc4426cdaebd6740fd4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/stringtoslug-module/zipball/7a985cdbd489fd9a77eb9fc4426cdaebd6740fd4",
+            "reference": "7a985cdbd489fd9a77eb9fc4426cdaebd6740fd4",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*"
+        },
+        "time": "2013-09-09 08:48:36",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "StringToSlug jquery module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/jquery2.0-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/jquery2.0-module.git",
+            "reference": "e8ecf2afa266b42c39d065113de5b51be406c230"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/jquery2.0-module/zipball/e8ecf2afa266b42c39d065113de5b51be406c230",
+            "reference": "e8ecf2afa266b42c39d065113de5b51be406c230",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*"
+        },
+        "time": "2013-09-09 08:47:55",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "jQuery 2.0.x module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/dynatree-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/dynatree-module.git",
+            "reference": "bbaa630e270463fcd787eb3f430ac3e7364f219b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/dynatree-module/zipball/bbaa630e270463fcd787eb3f430ac3e7364f219b",
+            "reference": "bbaa630e270463fcd787eb3f430ac3e7364f219b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*",
+            "venne/jquery2.0-module": "*"
+        },
+        "time": "2013-09-09 08:46:51",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Dynatree jquery module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/hogan-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/hogan-module.git",
+            "reference": "cb4fc24466306449783fa20161be6b0745ab76ce"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/hogan-module/zipball/cb4fc24466306449783fa20161be6b0745ab76ce",
+            "reference": "cb4fc24466306449783fa20161be6b0745ab76ce",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*"
+        },
+        "time": "2013-09-09 08:47:04",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Hogan jquery module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/typeahead-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/typeahead-module.git",
+            "reference": "7ab7f4aae3d5e33dc2e9a883df1b9543a00400db"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/typeahead-module/zipball/7ab7f4aae3d5e33dc2e9a883df1b9543a00400db",
+            "reference": "7ab7f4aae3d5e33dc2e9a883df1b9543a00400db",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*",
+            "venne/hogan-module": "2.0.*"
+        },
+        "time": "2013-09-09 08:48:49",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.9-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Typeahead jquery module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/select2-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/select2-module.git",
+            "reference": "9edb7c64f04d8eb44dfe1cdba26426d47b586b68"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/select2-module/zipball/9edb7c64f04d8eb44dfe1cdba26426d47b586b68",
+            "reference": "9edb7c64f04d8eb44dfe1cdba26426d47b586b68",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*"
+        },
+        "time": "2013-09-09 08:48:23",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Select2 jquery module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/bootstrapmodal-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/bootstrapmodal-module.git",
+            "reference": "5b5ea03856356e480faa67cb5b275ccb00ad1de1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/bootstrapmodal-module/zipball/5b5ea03856356e480faa67cb5b275ccb00ad1de1",
+            "reference": "5b5ea03856356e480faa67cb5b275ccb00ad1de1",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*"
+        },
+        "time": "2013-09-09 08:46:25",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Bootstrap-modal module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/translator-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/translator-module.git",
+            "reference": "2ca17f58fa535c5b8edb1da76e3d7c33f5d0d138"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/translator-module/zipball/2ca17f58fa535c5b8edb1da76e3d7c33f5d0d138",
+            "reference": "2ca17f58fa535c5b8edb1da76e3d7c33f5d0d138",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*@dev"
+        },
+        "time": "2013-12-09 17:36:21",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "configuration": {
+                    "extensions": {
+                        "translator": "TranslatorModule\\DI\\TranslatorExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "TranslatorModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Translator module",
+        "homepage": "http://venne.cz",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "linkorb/jsmin-php",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/linkorb/jsmin-php.git",
+            "reference": "be85d87fc9c27730e7e9ced742b13010dafc1026"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/linkorb/jsmin-php/zipball/be85d87fc9c27730e7e9ced742b13010dafc1026",
+            "reference": "be85d87fc9c27730e7e9ced742b13010dafc1026",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.0.0"
+        },
+        "time": "2013-03-15 13:16:35",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Joost Faassen",
+                "email": "j.faassen@linkorb.com",
+                "role": "Development"
+            },
+            {
+                "name": "Douglas Crockford",
+                "email": "douglas@crockford.com"
+            },
+            {
+                "name": "Ryan Grove",
+                "email": "ryan@wonko.com",
+                "role": "PHP port"
+            },
+            {
+                "name": "Adam Gofort",
+                "email": "aag@adamgoforth.com",
+                "role": "Updates to the PHP port"
+            }
+        ],
+        "description": "Unofficial package of jsmin-php",
+        "homepage": "http://www.github.com/linkorb/jsmin-php",
+        "keywords": [
+            "javascript",
+            "jsmin",
+            "minify"
+        ]
+    },
+    {
+        "name": "natxet/CssMin",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/natxet/CssMin.git",
+            "reference": "afdcdbdb5fc332313f47a79ae60346df3e69a572"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/natxet/CssMin/zipball/afdcdbdb5fc332313f47a79ae60346df3e69a572",
+            "reference": "afdcdbdb5fc332313f47a79ae60346df3e69a572",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.0"
+        },
+        "time": "2013-07-02 20:53:35",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Joe Scylla",
+                "email": "joe.scylla@gmail.com",
+                "homepage": "https://profiles.google.com/joe.scylla"
+            }
+        ],
+        "description": "Minifying CSS",
+        "homepage": "http://code.google.com/p/cssmin/",
+        "keywords": [
+            "css",
+            "minify"
+        ]
+    },
+    {
+        "name": "janmarek/webloader",
+        "version": "2.1.1",
+        "version_normalized": "2.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/janmarek/WebLoader.git",
+            "reference": "c551ab789eeb39bbc8d74eef3558b5f0e7330f2f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/janmarek/WebLoader/zipball/c551ab789eeb39bbc8d74eef3558b5f0e7330f2f",
+            "reference": "c551ab789eeb39bbc8d74eef3558b5f0e7330f2f",
+            "shasum": ""
+        },
+        "require": {
+            "nette/nette": "2.0.*"
+        },
+        "require-dev": {
+            "mockery/mockery": "0.7.*",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2013-04-04 14:34:03",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "WebLoader": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jan Marek",
+                "email": "mail@janmarek.net",
+                "homepage": "http://www.janmarek.net/",
+                "role": "Author"
+            }
+        ],
+        "description": "Tool for loading or deploying CSS and JS files into web pages",
+        "homepage": "http://addons.nette.org/cs/webloader",
+        "keywords": [
+            "assets",
+            "css",
+            "javascript",
+            "nette",
+            "webloader"
+        ]
+    },
+    {
+        "name": "venne/assets-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/assets-module.git",
+            "reference": "2740ad17172021a645bdab805668399dad7a8a64"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/assets-module/zipball/2740ad17172021a645bdab805668399dad7a8a64",
+            "reference": "2740ad17172021a645bdab805668399dad7a8a64",
+            "shasum": ""
+        },
+        "require": {
+            "janmarek/webloader": "2.1.1",
+            "linkorb/jsmin-php": "1.0.0",
+            "natxet/cssmin": "dev-master@dev",
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*@dev"
+        },
+        "time": "2013-12-09 17:06:46",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "configuration": {
+                    "extensions": {
+                        "assets": "AssetsModule\\DI\\AssetsExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "AssetsModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Assets module with macros and components",
+        "homepage": "http://venne.cz",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "kdyby/forms-replicator",
+        "version": "v1.0.3",
+        "version_normalized": "1.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Kdyby/Replicator.git",
+            "reference": "6746971f2426a7d2cce86161c8fa8a5390297847"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Kdyby/Replicator/zipball/6746971f2426a7d2cce86161c8fa8a5390297847",
+            "reference": "6746971f2426a7d2cce86161c8fa8a5390297847",
+            "shasum": ""
+        },
+        "require": {
+            "nette/nette": "~2.0"
+        },
+        "require-dev": {
+            "nette/tester": "@dev"
+        },
+        "time": "2013-04-03 12:37:12",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Kdyby\\Replicator\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Filip Procházka",
+                "homepage": "http://filip-prochazka.com"
+            }
+        ],
+        "description": "Nette forms container replicator aka addDynamic",
+        "homepage": "http://kdyby.org",
+        "keywords": [
+            "Forms",
+            "addDynamic",
+            "kdyby",
+            "nette",
+            "replicator"
+        ]
+    },
+    {
+        "name": "venne/forms-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/forms-module.git",
+            "reference": "2090f7db5eac257cbaec91c880f16251eb26fb5a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/forms-module/zipball/2090f7db5eac257cbaec91c880f16251eb26fb5a",
+            "reference": "2090f7db5eac257cbaec91c880f16251eb26fb5a",
+            "shasum": ""
+        },
+        "require": {
+            "kdyby/forms-replicator": "v1.0.3",
+            "php": ">=5.3.2",
+            "venne/assets-module": "2.1.*@dev"
+        },
+        "time": "2014-01-06 15:20:26",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "configuration": {
+                    "extensions": {
+                        "forms": "FormsModule\\DI\\FormsExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "FormsModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Forms module with new inputs",
+        "homepage": "http://venne.cz",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "doctrine/dbal",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/dbal.git",
+            "reference": "63ea7df5a5cec43f22b5cd4db9a347328f9d0c3b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/dbal/zipball/63ea7df5a5cec43f22b5cd4db9a347328f9d0c3b",
+            "reference": "63ea7df5a5cec43f22b5cd4db9a347328f9d0c3b",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/common": "2.4.*",
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*",
+            "symfony/console": "2.*"
+        },
+        "suggest": {
+            "symfony/console": "Allows use of the command line interface"
+        },
+        "time": "2014-01-08 12:31:36",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.5.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\DBAL\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com",
+                "homepage": "http://www.jwage.com/",
+                "role": "Creator"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com",
+                "homepage": "http://www.instaclick.com"
+            },
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            }
+        ],
+        "description": "Database Abstraction Layer",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "database",
+            "dbal",
+            "persistence",
+            "queryobject"
+        ]
+    },
+    {
+        "name": "kdyby/bootstrap-form-renderer",
+        "version": "v2.0.0",
+        "version_normalized": "2.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Kdyby/BootstrapFormRenderer.git",
+            "reference": "44a8dde4cbddf4b22e26447bf393687cf5041889"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Kdyby/BootstrapFormRenderer/zipball/44a8dde4cbddf4b22e26447bf393687cf5041889",
+            "reference": "44a8dde4cbddf4b22e26447bf393687cf5041889",
+            "shasum": ""
+        },
+        "require": {
+            "nette/nette": "2.0.*"
+        },
+        "require-dev": {
+            "nette/tester": "@dev"
+        },
+        "time": "2013-01-20 12:11:39",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Kdyby\\BootstrapFormRenderer\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Filip Procházka",
+                "homepage": "http://filip-prochazka.com"
+            }
+        ],
+        "description": "Nette forms renderer with bootstrap",
+        "homepage": "http://kdyby.org",
+        "keywords": [
+            "Forms",
+            "bootstrap",
+            "kdyby",
+            "nette"
+        ]
+    },
+    {
+        "name": "venne/jqueryui1.10-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/jqueryui1.10-module.git",
+            "reference": "a72e93aac7126fbe53f50b279f38e98d55e5511c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/jqueryui1.10-module/zipball/a72e93aac7126fbe53f50b279f38e98d55e5511c",
+            "reference": "a72e93aac7126fbe53f50b279f38e98d55e5511c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*"
+        },
+        "time": "2013-09-09 08:48:10",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.10-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "jQuery-UI 1.10.x module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/cms-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/cms-module.git",
+            "reference": "30e3815c55877eb08905163146d659b7511bd85d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/cms-module/zipball/30e3815c55877eb08905163146d659b7511bd85d",
+            "reference": "30e3815c55877eb08905163146d659b7511bd85d",
+            "shasum": ""
+        },
+        "require": {
+            "kdyby/bootstrap-form-renderer": "v2.0.0",
+            "php": ">=5.3.2",
+            "venne/assets-module": "2.1.*@dev",
+            "venne/bootstrap3-module": "*@dev",
+            "venne/bootstrapdatetime-module": "0.0.*@dev",
+            "venne/bootstrapmodal-module": "2.1.*@dev",
+            "venne/deployment-module": "2.1.*@dev",
+            "venne/doctrine-module": "2.1.*@dev",
+            "venne/dynatree-module": "1.2.*@dev",
+            "venne/grido-module": "2.0.*@dev",
+            "venne/holder-module": "2.0.*@dev",
+            "venne/jquery2.0-module": "*@dev",
+            "venne/jqueryfileupload-module": "8.8.*@dev",
+            "venne/jqueryui1.10-module": "*@dev",
+            "venne/nette-ajax": "dev-venne@dev",
+            "venne/select2-module": "3.4.*@dev",
+            "venne/stringtoslug-module": "1.2.*@dev",
+            "venne/translator-module": "2.1.*@dev",
+            "venne/typeahead-module": "0.9.*@dev"
+        },
+        "require-dev": {
+            "venne/tester": "@dev"
+        },
+        "suggest": {
+            "venne/ace-module": "Great code editor for templates",
+            "venne/blog-module": "Module with blog system",
+            "venne/ckeditor-module": "Popular WYSIWYG editor",
+            "venne/gallery-module": "Simple gallery page based on blog module",
+            "venne/googleanalytics-module": "Google analytics integration",
+            "venne/guestbook-module": "Simple guestbook page",
+            "venne/lightbox-module": "Lightbox integration",
+            "venne/mailform-module": "Mailform page with many useful options",
+            "venne/social-module": "Integration of logging with social networks"
+        },
+        "time": "2014-01-10 17:28:24",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "configuration": {
+                    "extensions": {
+                        "cms": "CmsModule\\DI\\CmsExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "CmsModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "CMS module with administration",
+        "homepage": "http://venne.cz",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/ckeditor-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/ckeditor-module.git",
+            "reference": "342ef94721d3c686f227a9a6419c198840e0b48d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/ckeditor-module/zipball/342ef94721d3c686f227a9a6419c198840e0b48d",
+            "reference": "342ef94721d3c686f227a9a6419c198840e0b48d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/cms-module": "2.1.*"
+        },
+        "time": "2013-12-15 14:38:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "configuration": {
+                    "extensions": {
+                        "ckeditor": "CkeditorModule\\DI\\CkeditorExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "CkeditorModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "CKeditor for editor inputs",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/blog-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/blog-module.git",
+            "reference": "c513107c50e998876f82508e17f6bb8eae8c9e12"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/blog-module/zipball/c513107c50e998876f82508e17f6bb8eae8c9e12",
+            "reference": "c513107c50e998876f82508e17f6bb8eae8c9e12",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/cms-module": "2.1.x-dev"
+        },
+        "time": "2013-12-09 07:59:28",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1.x-dev"
+            },
+            "venne": {
+                "installers": [
+                    "DoctrineModule\\Module\\Installers\\DoctrineInstaller"
+                ],
+                "configuration": {
+                    "extensions": {
+                        "blog": "BlogModule\\DI\\BlogExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "BlogModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Blog module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/gallery-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/gallery-module.git",
+            "reference": "2012f92a81261c579b5d68319425a24511d71ab3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/gallery-module/zipball/2012f92a81261c579b5d68319425a24511d71ab3",
+            "reference": "2012f92a81261c579b5d68319425a24511d71ab3",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/blog-module": "2.1.x-dev",
+            "venne/cms-module": "2.1.x-dev"
+        },
+        "time": "2013-12-01 13:23:40",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1.x-dev"
+            },
+            "venne": {
+                "installers": [
+                    "DoctrineModule\\Module\\Installers\\DoctrineInstaller"
+                ],
+                "configuration": {
+                    "extensions": {
+                        "gallery": "GalleryModule\\DI\\GalleryExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "GalleryModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Photo gallery module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/lightbox-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/lightbox-module.git",
+            "reference": "571e3ed3b48802c9635c902e7d86bfd640dcdd1b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/lightbox-module/zipball/571e3ed3b48802c9635c902e7d86bfd640dcdd1b",
+            "reference": "571e3ed3b48802c9635c902e7d86bfd640dcdd1b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/cms-module": "2.1.x-dev"
+        },
+        "time": "2013-07-31 10:30:12",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1.x-dev"
+            },
+            "venne": {
+                "configuration": {
+                    "extensions": {
+                        "lightbox": "LightboxModule\\DI\\LightboxExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "LightboxModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Lightbox2 module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/guestbook-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/guestbook-module.git",
+            "reference": "39d0f0f565c09c08fdd2336d12ef4a3dba764d1d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/guestbook-module/zipball/39d0f0f565c09c08fdd2336d12ef4a3dba764d1d",
+            "reference": "39d0f0f565c09c08fdd2336d12ef4a3dba764d1d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/cms-module": "2.1.x-dev"
+        },
+        "time": "2013-11-30 12:01:11",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1.x-dev"
+            },
+            "venne": {
+                "installers": [
+                    "DoctrineModule\\Module\\Installers\\DoctrineInstaller"
+                ],
+                "configuration": {
+                    "extensions": {
+                        "guestbook": "GuestbookModule\\DI\\GuestbookExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "GuestbookModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Guestbook module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/mailform-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/mailform-module.git",
+            "reference": "89a78032d220007b9d6e53bc85e60b896baa045c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/mailform-module/zipball/89a78032d220007b9d6e53bc85e60b896baa045c",
+            "reference": "89a78032d220007b9d6e53bc85e60b896baa045c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/cms-module": "2.1.x-dev"
+        },
+        "time": "2013-12-19 15:22:44",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1.x-dev"
+            },
+            "venne": {
+                "installers": [
+                    "DoctrineModule\\Module\\Installers\\DoctrineInstaller"
+                ],
+                "configuration": {
+                    "extensions": {
+                        "mailform": "MailformModule\\DI\\MailformExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "MailformModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Mailform module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/googleanalytics-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/googleanalytics-module.git",
+            "reference": "c769938111e150abc2b5b950e4522242d1cbfdaa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/googleanalytics-module/zipball/c769938111e150abc2b5b950e4522242d1cbfdaa",
+            "reference": "c769938111e150abc2b5b950e4522242d1cbfdaa",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/cms-module": "2.1.*"
+        },
+        "time": "2013-09-22 19:57:03",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "configuration": {
+                    "googleanalytics": {
+                        "account": {
+                            "activated": false,
+                            "accountId": ""
+                        }
+                    },
+                    "extensions": {
+                        "googleanalytics": "GoogleanalyticsModule\\DI\\GoogleanalyticsExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "GoogleanalyticsModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "google analytics module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/importer-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/importer-module.git",
+            "reference": "d4a6028c93224cde48fec870f88b6facf7ab70f3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/importer-module/zipball/d4a6028c93224cde48fec870f88b6facf7ab70f3",
+            "reference": "d4a6028c93224cde48fec870f88b6facf7ab70f3",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/cms-module": "2.1.*"
+        },
+        "time": "2013-10-03 14:53:59",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "configuration": {
+                    "extensions": {
+                        "importer": "ImporterModule\\DI\\ImporterExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "ImporterModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Importer module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/ace-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/ace-module.git",
+            "reference": "77afc03118493ac51f5cb1c250776ab549ca4925"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/ace-module/zipball/77afc03118493ac51f5cb1c250776ab549ca4925",
+            "reference": "77afc03118493ac51f5cb1c250776ab549ca4925",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*"
+        },
+        "time": "2013-09-09 12:29:12",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1-dev"
+            },
+            "venne": {
+                "configuration": {
+                    "extensions": {
+                        "ace": "AceModule\\DI\\AceExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "AceModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Ace module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "opauth/opauth",
+        "version": "0.4.4",
+        "version_normalized": "0.4.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/opauth/opauth.git",
+            "reference": "436fb98c2374c9e8ae4d8adddf83214bee4d9c72"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/opauth/opauth/zipball/436fb98c2374c9e8ae4d8adddf83214bee4d9c72",
+            "reference": "436fb98c2374c9e8ae4d8adddf83214bee4d9c72",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.0"
+        },
+        "suggest": {
+            "opauth/facebook": "Allows Facebook authentication",
+            "opauth/google": "Allows Google authentication",
+            "opauth/twitter": "Allows Twitter authentication"
+        },
+        "time": "2013-05-10 09:01:52",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "lib/Opauth/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "U-Zyn Chua",
+                "email": "chua@uzyn.com",
+                "homepage": "http://uzyn.com"
+            }
+        ],
+        "description": "Multi-provider authentication framework for PHP",
+        "homepage": "http://opauth.org",
+        "keywords": [
+            "Authentication",
+            "OpenId",
+            "auth",
+            "facebook",
+            "google",
+            "oauth",
+            "omniauth",
+            "twitter"
+        ]
+    },
+    {
+        "name": "opauth/openid",
+        "version": "0.1.0",
+        "version_normalized": "0.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/opauth/openid.git",
+            "reference": "ebf166cddbaff78e740234189073ab6919e85eb7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/opauth/openid/zipball/ebf166cddbaff78e740234189073ab6919e85eb7",
+            "reference": "ebf166cddbaff78e740234189073ab6919e85eb7",
+            "shasum": ""
+        },
+        "require": {
+            "opauth/opauth": ">=0.2.0",
+            "php": ">=5.2.0"
+        },
+        "time": "2012-06-08 07:00:03",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "": "."
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "U-Zyn Chua",
+                "email": "chua@uzyn.com",
+                "homepage": "http://uzyn.com"
+            }
+        ],
+        "description": "OpenID strategy for Opauth",
+        "homepage": "http://opauth.org",
+        "keywords": [
+            "Authentication",
+            "OpenId",
+            "auth"
+        ]
+    },
+    {
+        "name": "opauth/github",
+        "version": "0.1.0",
+        "version_normalized": "0.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/opauth/github.git",
+            "reference": "9c4fe16dc6498b2c94f4c2a41ab93b0fe4b7fa73"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/opauth/github/zipball/9c4fe16dc6498b2c94f4c2a41ab93b0fe4b7fa73",
+            "reference": "9c4fe16dc6498b2c94f4c2a41ab93b0fe4b7fa73",
+            "shasum": ""
+        },
+        "require": {
+            "opauth/opauth": ">=0.4.0",
+            "php": ">=5.2.0"
+        },
+        "time": "2012-07-23 06:13:59",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "": "."
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "U-Zyn Chua",
+                "email": "chua@uzyn.com",
+                "homepage": "http://uzyn.com"
+            }
+        ],
+        "description": "GitHub authentication strategy for Opauth",
+        "homepage": "http://opauth.org",
+        "keywords": [
+            "Authentication",
+            "auth",
+            "github"
+        ]
+    },
+    {
+        "name": "opauth/twitter",
+        "version": "0.3.1",
+        "version_normalized": "0.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/opauth/twitter.git",
+            "reference": "24792d512ccc67e7d11e9249737616f039551c11"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/opauth/twitter/zipball/24792d512ccc67e7d11e9249737616f039551c11",
+            "reference": "24792d512ccc67e7d11e9249737616f039551c11",
+            "shasum": ""
+        },
+        "require": {
+            "opauth/opauth": ">=0.2.0",
+            "php": ">=5.2.0"
+        },
+        "time": "2013-06-12 07:50:11",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "": "."
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "U-Zyn Chua",
+                "email": "chua@uzyn.com",
+                "homepage": "http://uzyn.com"
+            }
+        ],
+        "description": "Twitter strategy for Opauth",
+        "homepage": "http://opauth.org",
+        "keywords": [
+            "Authentication",
+            "auth",
+            "twitter"
+        ]
+    },
+    {
+        "name": "opauth/google",
+        "version": "0.2.2",
+        "version_normalized": "0.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/opauth/google.git",
+            "reference": "35df77684c14acb346a8c3753ae3809852d1a47e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/opauth/google/zipball/35df77684c14acb346a8c3753ae3809852d1a47e",
+            "reference": "35df77684c14acb346a8c3753ae3809852d1a47e",
+            "shasum": ""
+        },
+        "require": {
+            "opauth/opauth": ">=0.2.0",
+            "php": ">=5.2.0"
+        },
+        "time": "2012-10-18 14:39:52",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "": "."
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "U-Zyn Chua",
+                "email": "chua@uzyn.com",
+                "homepage": "http://uzyn.com"
+            }
+        ],
+        "description": "Google strategy for Opauth",
+        "homepage": "http://opauth.org",
+        "keywords": [
+            "Authentication",
+            "auth",
+            "google"
+        ]
+    },
+    {
+        "name": "opauth/facebook",
+        "version": "0.2.1",
+        "version_normalized": "0.2.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/opauth/facebook.git",
+            "reference": "28c0e53393a03a66cbfea03073d1d6aacfaddb69"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/opauth/facebook/zipball/28c0e53393a03a66cbfea03073d1d6aacfaddb69",
+            "reference": "28c0e53393a03a66cbfea03073d1d6aacfaddb69",
+            "shasum": ""
+        },
+        "require": {
+            "opauth/opauth": ">=0.2.0",
+            "php": ">=5.2.0"
+        },
+        "time": "2012-09-21 04:47:35",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "": "."
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "U-Zyn Chua",
+                "email": "chua@uzyn.com",
+                "homepage": "http://uzyn.com"
+            }
+        ],
+        "description": "Facebook strategy for Opauth",
+        "homepage": "http://opauth.org",
+        "keywords": [
+            "Authentication",
+            "auth",
+            "facebook"
+        ]
+    },
+    {
+        "name": "venne/opauth-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/opauth-module.git",
+            "reference": "a9dc0ff8cbd7a6338a308436f149a3e37f9ddd1e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/opauth-module/zipball/a9dc0ff8cbd7a6338a308436f149a3e37f9ddd1e",
+            "reference": "a9dc0ff8cbd7a6338a308436f149a3e37f9ddd1e",
+            "shasum": ""
+        },
+        "require": {
+            "opauth/facebook": "0.2.1",
+            "opauth/github": "0.1.0",
+            "opauth/google": "0.2.2",
+            "opauth/opauth": "0.4.4",
+            "opauth/openid": "0.1.0",
+            "opauth/twitter": "0.3.1",
+            "php": ">=5.3.2",
+            "venne/cms-module": "2.1.*"
+        },
+        "time": "2013-11-05 08:08:40",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "configuration": {
+                    "extensions": {
+                        "opauth": "OpauthModule\\DI\\OpauthExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "OpauthModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Opauth module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "doctrine/cache",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/cache.git",
+            "reference": "36c4eee5051629524389da376ba270f15765e49f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/cache/zipball/36c4eee5051629524389da376ba270f15765e49f",
+            "reference": "36c4eee5051629524389da376ba270f15765e49f",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "conflict": {
+            "doctrine/common": ">2.2,<2.4"
+        },
+        "require-dev": {
+            "phpunit/phpunit": ">=3.7",
+            "satooshi/php-coveralls": "~0.6"
+        },
+        "time": "2013-12-18 17:21:03",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Common\\Cache\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com",
+                "homepage": "http://www.jwage.com/",
+                "role": "Creator"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com",
+                "homepage": "http://www.instaclick.com"
+            },
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com",
+                "homepage": "http://jmsyst.com",
+                "role": "Developer of wrapped JMSSerializerBundle"
+            }
+        ],
+        "description": "Caching library offering an object-oriented API for many cache backends",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "cache",
+            "caching"
+        ]
+    },
+    {
+        "name": "venne/deployment-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/deployment-module.git",
+            "reference": "21a9e8af1e3a40289df547c598dab1288d6adb07"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/deployment-module/zipball/21a9e8af1e3a40289df547c598dab1288d6adb07",
+            "reference": "21a9e8af1e3a40289df547c598dab1288d6adb07",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/doctrine-module": "2.1.*@dev",
+            "venne/translator-module": "2.1.*@dev"
+        },
+        "time": "2013-12-09 18:03:48",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "configuration": {
+                    "extensions": {
+                        "deployment": "DeploymentModule\\DI\\DeploymentExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "DeploymentModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Deployment module",
+        "homepage": "http://venne.cz",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/events-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/events-module.git",
+            "reference": "d1ad3796efcc3621ae41ecf075c5cf5b718e46d6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/events-module/zipball/d1ad3796efcc3621ae41ecf075c5cf5b718e46d6",
+            "reference": "d1ad3796efcc3621ae41ecf075c5cf5b718e46d6",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/blog-module": "2.1.x-dev",
+            "venne/cms-module": "2.1.x-dev"
+        },
+        "time": "2013-12-15 09:49:27",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1.x-dev"
+            },
+            "venne": {
+                "installers": [
+                    "DoctrineModule\\Module\\Installers\\DoctrineInstaller"
+                ],
+                "configuration": {
+                    "extensions": {
+                        "events": "EventsModule\\DI\\EventsExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "EventsModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Events module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "symfony/yaml",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "Symfony/Component/Yaml",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/Yaml.git",
+            "reference": "9921872611710df49cf035c259e5a461ea2d0f8c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/Yaml/zipball/9921872611710df49cf035c259e5a461ea2d0f8c",
+            "reference": "9921872611710df49cf035c259e5a461ea2d0f8c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2014-01-07 13:29:57",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\Yaml\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Yaml Component",
+        "homepage": "http://symfony.com"
+    },
+    {
+        "name": "doctrine/orm",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/doctrine2.git",
+            "reference": "4e824ac6e1d9b45889916b9bb01265eb4a3cf435"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/4e824ac6e1d9b45889916b9bb01265eb4a3cf435",
+            "reference": "4e824ac6e1d9b45889916b9bb01265eb4a3cf435",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/collections": "~1.1",
+            "doctrine/dbal": ">=2.5-dev,<2.6-dev",
+            "ext-pdo": "*",
+            "php": ">=5.3.2",
+            "symfony/console": "2.*"
+        },
+        "require-dev": {
+            "satooshi/php-coveralls": "dev-master",
+            "symfony/yaml": "2.1"
+        },
+        "suggest": {
+            "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
+        },
+        "time": "2014-01-06 20:27:50",
+        "bin": [
+            "bin/doctrine",
+            "bin/doctrine.php"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.5.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\ORM\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com",
+                "homepage": "http://www.jwage.com/",
+                "role": "Creator"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com",
+                "homepage": "http://www.instaclick.com"
+            },
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            }
+        ],
+        "description": "Object-Relational-Mapper for PHP",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "database",
+            "orm"
+        ]
+    },
+    {
+        "name": "venne/doctrine-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/doctrine-module.git",
+            "reference": "bea95f0b8173d1b3de4e4d5171122a7774e66e53"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/doctrine-module/zipball/bea95f0b8173d1b3de4e4d5171122a7774e66e53",
+            "reference": "bea95f0b8173d1b3de4e4d5171122a7774e66e53",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/migrations": "dev-master@dev",
+            "doctrine/orm": "~2.4",
+            "php": ">=5.3.2",
+            "symfony/yaml": "~2.4",
+            "venne/forms-module": "2.1.*@dev"
+        },
+        "time": "2013-12-20 14:32:32",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "configuration": {
+                    "parameters": {
+                        "database": {
+                            "driver": "pdo_mysql",
+                            "host": "",
+                            "user": "",
+                            "password": "",
+                            "dbname": "",
+                            "charset": "utf8",
+                            "proxyDir": "%appDir%/proxy",
+                            "proxyNamespace": "proxy",
+                            "port": "",
+                            "path": "",
+                            "memory": ""
+                        }
+                    },
+                    "extensions": {
+                        "doctrine": "DoctrineModule\\DI\\DoctrineExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "DoctrineModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Doctrine module with macros and components",
+        "homepage": "http://venne.cz",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "hybridauth/hybridauth",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hybridauth/hybridauth.git",
+            "reference": "6d89473b379fc7a904e69ee63f548af3308bd4d9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/6d89473b379fc7a904e69ee63f548af3308bd4d9",
+            "reference": "6d89473b379fc7a904e69ee63f548af3308bd4d9",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "php": ">=5.2.0"
+        },
+        "time": "2013-02-21 06:45:16",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Hybrid": "hybridauth/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "(MIT or GPL-3.0+)"
+        ],
+        "authors": [
+            {
+                "name": "Miled",
+                "email": "hybridauth@gmail.com"
+            }
+        ],
+        "description": "Open source social sign on PHP library.",
+        "homepage": "http://hybridauth.sourceforge.net",
+        "keywords": [
+            "OpenId",
+            "facebook",
+            "google",
+            "hybridauth",
+            "login",
+            "oauth",
+            "social",
+            "twitter",
+            "yahoo"
+        ]
+    },
+    {
+        "name": "venne/hybridauth-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/hybridauth-module.git",
+            "reference": "6509a7ea396a4683a248df6e7a12f5dabbb0eaff"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/hybridauth-module/zipball/6509a7ea396a4683a248df6e7a12f5dabbb0eaff",
+            "reference": "6509a7ea396a4683a248df6e7a12f5dabbb0eaff",
+            "shasum": ""
+        },
+        "require": {
+            "hybridauth/hybridauth": "dev-master",
+            "php": ">=5.3.2",
+            "venne/cms-module": "2.1.*"
+        },
+        "time": "2013-11-05 08:09:15",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "configuration": {
+                    "extensions": {
+                        "hybridauth": "HybridauthModule\\DI\\HybridauthExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "HybridauthModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Hybridauth module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "doctrine/annotations",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/annotations.git",
+            "reference": "a11349d39d85bef75a71bd69bd604ac4fb993f03"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/annotations/zipball/a11349d39d85bef75a71bd69bd604ac4fb993f03",
+            "reference": "a11349d39d85bef75a71bd69bd604ac4fb993f03",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/lexer": "1.*",
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "doctrine/cache": "1.*"
+        },
+        "time": "2013-12-20 21:39:07",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Common\\Annotations\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan H. Wage",
+                "email": "jonwage@gmail.com",
+                "homepage": "http://www.jwage.com/",
+                "role": "Creator"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com",
+                "homepage": "http://www.instaclick.com"
+            },
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com",
+                "homepage": "http://jmsyst.com",
+                "role": "Developer of wrapped JMSSerializerBundle"
+            }
+        ],
+        "description": "Docblock Annotations Parser",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "annotations",
+            "docblock",
+            "parser"
+        ]
+    },
+    {
+        "name": "venne/bootstrap3-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/bootstrap3-module.git",
+            "reference": "432f0608ff3c5be609a0534511f4e0245f1d7262"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/bootstrap3-module/zipball/432f0608ff3c5be609a0534511f4e0245f1d7262",
+            "reference": "432f0608ff3c5be609a0534511f4e0245f1d7262",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/framework": "2.0.*"
+        },
+        "time": "2013-12-12 18:46:34",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "jQuery-UI 1.10.x module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "nette/nette",
+        "version": "dev-release-2.0.x",
+        "version_normalized": "dev-release-2.0.x",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nette/nette.git",
+            "reference": "2fcf5c68c5a88cb496cde4c65b2cf3a36534a129"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nette/nette/zipball/2fcf5c68c5a88cb496cde4c65b2cf3a36534a129",
+            "reference": "2fcf5c68c5a88cb496cde4c65b2cf3a36534a129",
+            "shasum": ""
+        },
+        "require": {
+            "ext-iconv": "*",
+            "ext-tokenizer": "*",
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "nette/tester": "0.9.*"
+        },
+        "suggest": {
+            "ext-fileinfo": "*",
+            "ext-gd": "*",
+            "ext-mbstring": "*",
+            "ext-pdo": "*"
+        },
+        "time": "2013-12-21 14:42:49",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-release-2.0.x": "2.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "Nette/loader.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "David Grudl",
+                "homepage": "http://davidgrudl.com"
+            },
+            {
+                "name": "Nette Community",
+                "homepage": "http://nette.org/contributors"
+            }
+        ],
+        "description": "Nette Framework - innovative framework for fast and easy development of secured web applications in PHP. Write less, have cleaner code and your work will bring you joy.",
+        "homepage": "http://nette.org",
+        "keywords": [
+            "Forms",
+            "database",
+            "debugging",
+            "framework",
+            "mailing",
+            "mvc",
+            "templating"
+        ]
+    },
+    {
+        "name": "doctrine/migrations",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/migrations.git",
+            "reference": "199cb62a80c7723942d14107c23bc45168e4241c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/migrations/zipball/199cb62a80c7723942d14107c23bc45168e4241c",
+            "reference": "199cb62a80c7723942d14107c23bc45168e4241c",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/dbal": "~2.0",
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "symfony/console": "2.*",
+            "symfony/yaml": "2.*"
+        },
+        "suggest": {
+            "symfony/console": "to run the migration from the console"
+        },
+        "time": "2014-01-04 09:19:33",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\DBAL\\Migrations": "lib"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com",
+                "homepage": "http://www.jwage.com/",
+                "role": "Creator"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            }
+        ],
+        "description": "Database Schema migrations using Doctrine DBAL",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "database",
+            "migrations"
+        ]
+    }
+]

@@ -1,0 +1,23 @@
+services:
+
+	translator.translator:
+		setup:
+			- '$service->addDictionary(new TranslatorModule\Dictionary(?))'(%modules.opauth.path%/Resources/translations)
+
+
+	opauth.opauthFormFactory:
+		class: OpauthModule\Administration\OpauthFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+
+factories:
+	cms.admin.opauthPresenter:
+		class: OpauthModule\Administration\OpauthPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Opauth:'
+			category: 'System'
+			name: 'Opauth'
+			description: 'Configure authentication by various social apis'
+			priority: -60
+		]]

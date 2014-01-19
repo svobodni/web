@@ -1,0 +1,31 @@
+{define #page}
+<div id="{$control->name}" class="carousel slide">
+
+	{include #page-items items=>$control->getItems(), thumbnail=>"{$width}x{$height}"}
+</div>
+{/define}
+
+
+{define #page-items}
+<!-- Indicators -->
+<ol n:inner-foreach="$items as $item" class="carousel-indicators">
+	<li data-target="#{$control->name}" data-slide-to="{$iterator->counter - 1}" n:class="$iterator->isFirst() ? active"></li>
+</ol>
+
+<!-- Wrapper for slides -->
+<div class="carousel-inner" n:inner-foreach="$items as $item">
+	<div class="{if $iterator->isFirst()}active {/if}item">{include #page-items-item item=>$item, thumbnail=>$thumbnail}</div>
+</div>
+{/define}
+
+
+{define #page-items-item}
+	<img n:if="$item->route->photo" n:src="$item->route->photo->getFileUrl(true), size=>$thumbnail, format=>\Nette\Image::EXACT" alt="{$item->route->name}" />
+    <div class="carousel-caption transparent">
+        <h4>{$item->route->name}</h4>
+        <p>{!$item->route->notation}</p>
+    </div>
+{/define}
+
+
+{include #page}

@@ -1,0 +1,4 @@
+services:
+	ace.resourcesListener:
+		class: AceModule\Listeners\ResourcesListener(%wwwDir%)
+		tags: [listener]

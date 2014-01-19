@@ -1,0 +1,160 @@
+{**
+ * My Application layout template.
+ *
+ * @copyright  Copyright (c) 2010 John Doe
+ * @package    MyApplication
+ *
+ * @param string   $basePath web base path
+ * @param string   $robots   tell robots how to index the content of a page (optional)
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+{head}
+
+	{cache}
+		{css
+			@bootstrap3Module/css/bootstrap.css,
+			@typeaheadModule/typeahead.js-bootstrap.css,
+			@siteModule/css/bootstrap.css,
+			@siteModule/css/application.css,
+			@siteModule/mapa/style.css,
+			media=>'screen'
+		}
+
+		{js
+			@jquery2.0Module/jquery.js,
+			@jquery2.0Module/jquery-migrate.js,
+			@hoganModule/hogan-2.0.0.js,
+		}
+	{/cache}
+
+	{cache $presenter->routeId}
+		{control head}
+	{/cache}
+
+	<link rel="shortcut icon" href="{path @siteModule}/favicon.ico" type="image/x-ms-bmp; charset=binary" />
+
+	{block #head}{/block}
+{/head}
+
+{body}
+
+
+	<div class="container header-container">
+		<div class="row">
+			<div class="col-md-12 col-wb">
+				<div class="header-logo"><a href="{$basePath}/"></a></div>
+
+				<ul>
+					<li><a class="btn btn-default" href="http://www.svobodni.cz/chci-pomoci-strane/" title="Přispět finančně Straně svobodných občanů">Přispět</a></li>
+
+					<li><a class="btn btn-social btn-f" href="https://www.facebook.com/svobodni" title="Přidejte se ke Svobodným na Facebooku"></a></li>
+					<li><a class="btn btn-social btn-g" href="https://plus.google.com/u/0/+svobodn%C3%AD" title="Přidejte si Svobodné do kruhů Google+"></a></li>
+					<li><a class="btn btn-social btn-t" href="https://twitter.com/svobodni" title="Sledujte Svobodné na Twitteru"></a></li>
+					<li><a class="btn btn-social btn-y" href="http://www.youtube.com/user/svobodni?gl=CZ&amp;hl=cs" title="Sledujte videa Svobodných na YouTube"></a></li>
+
+					<li><a class="btn btn-link" href="http://eshop.svobodni.cz/">E-shop</a></li>
+					<li><a class="btn btn-link" href="http://svobodni.cz/">Původní web</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+			<div class="navigation-container navbar navbar-default navbar-static-top" role="navigation">
+				<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Strana svobodných občanů</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					{control navigation}
+				</div><!--/.nav-collapse -->
+				</div>
+			</div>
+
+	{block #content-top}{/block}
+
+	<div class="container">
+		{block #title-container}
+		<div class="row row-title">
+			<div class="col-md-12">
+				<div class="page-header">
+					<div class="pull-right">
+						{cache [$presenter->routeId, $presenter->lang], tags => ['routes']}
+						{control breadcrumb}
+						{/cache}
+					</div>
+					{cache [$presenter->routeId, $presenter->lang], tags => [
+					'route' => $presenter->routeId,
+					]}
+					<h1>{block #title}{$presenter->route->name|firstUpper}{/block}</h1>
+					{/cache}
+				</div>
+			</div>
+		</div>
+		{/block}
+
+		<div class="row">
+
+			{include #layout}
+
+		</div>
+
+		<hr />
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="fb_iframe_widget">
+					<span>
+						<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fsvobodni&amp;width=1180&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:940px; height:258px;" allowtransparency="true"></iframe>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<hr />
+
+		{cache}
+		<footer>
+			<p class="pull-left">
+				<a href="http://svobodni.cz" title="Na Úvodní stránku Svobodni.cz">Svobodni.cz</a> &copy; 2013 &nbsp;
+				· &nbsp; <a href="{$basePath}/kontakty">Kontakty</a> &nbsp;
+				{ifLinkExists Route special=>'sitemap'}{isPublished}· &nbsp; <a n:link>{_Sitemap}</a> &nbsp;{/isPublished}{/ifLinkExists}
+				{ifLinkExists Route special=>'rss'}{isPublished}· &nbsp; <a n:link>RSS</a> &nbsp;{/isPublished}{/ifLinkExists}
+			</p>
+
+			<p class="pull-right">
+				<a rel="nofollow" href="{$basePath}/{$presenter->administrationManager->routePrefix}">{_Administration}</a> &nbsp;
+				· &nbsp; Poháněno <a href="http://www.venne.cz">Venne:CMS</a>
+			</p>
+		</footer>
+		{/cache}
+
+	</div>
+
+{cache}
+	{js
+		@holderModule/holder.js,
+		@bootstrap3Module/js/bootstrap.js,
+	}
+
+
+	{js
+		@netteModule/netteForms.js,
+		@ajaxModule/nette.ajax.js,
+		@ajaxModule/history/history.ajax.js,
+		@siteModule/zaccordion/js/jquery.zaccordion.min.js,
+		@typeaheadModule/typeahead.js,
+		@siteModule/js/application.js,
+	}
+{/cache}
+
+{/body}
+</html>

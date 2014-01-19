@@ -1,0 +1,21 @@
+services:
+
+	translator.translator:
+		setup:
+			- '$service->addDictionary(new TranslatorModule\Dictionary(?))'(%modules.events.path%/Resources/translations)
+
+	events.eventsContent:
+		class: CmsModule\Content\ContentType('EventsModule\Pages\Events\PageEntity')
+		setup:
+			- addSection('Content', @events.tableControlFactory)
+			- addSection('Settings', @events.pageFormFactory)
+		tags: [contentType: [name: 'events']]
+
+	events.routeRepository:
+		class: EventsModule\Pages\Events\RouteRepository
+		factory: @entityManager::getRepository('EventsModule\Pages\Events\ArticleEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+includes:
+	- presenters.neon
+	- components.neon

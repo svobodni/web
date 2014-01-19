@@ -1,0 +1,16 @@
+{extends ../@layout.latte}
+
+{block #layout}
+<div class="col-md-12">
+
+	{control flashMessage TRUE}
+	{block #contentTop}{/block}
+	{block #content}{include #page-content}{/block}
+	{block #contentBottom}{/block}
+
+	<hr />
+
+	<small class="muted">
+		{control itemInfo $presenter->route}
+	</small>
+</div>

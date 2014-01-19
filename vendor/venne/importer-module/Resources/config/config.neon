@@ -1,0 +1,15 @@
+services:
+
+	translator.translator:
+		setup:
+			- '$service->addDictionary(new TranslatorModule\Dictionary(?))'(%modules.importer.path%/Resources/translations)
+
+	cms.admin.importerPresenter:
+		class: ImporterModule\Presenters\ImporterPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Importer:'
+			category: 'Other'
+			name: 'Importer'
+			description: 'Import data from another CMS system'
+			priority: -105
+		]]

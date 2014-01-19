@@ -1,0 +1,50 @@
+{block content}
+
+{if isset($showRefresh)}
+	<script type="text/javascript">
+		$(function () {
+			var url = $('#venne-panel', top.document).contents().get(0).location.href + '&do=refreshElement';
+			$.get(url, function (data) {
+				parameters = data['state'];
+				var html = $(data['snippets']['snippet--element']);
+				var id = html.attr('id');
+
+				$('#' + id, top.document).html(html.html());
+				$("#venne-panel", top.document)[0].contentWindow.redrawRectangles();
+			});
+		});
+	</script>
+{/if}
+
+{snippet elementView}
+	{if isset($showElementView)}
+	<div class="modal" id="optionEdit" tabindex="-1" role="dialog" data-focus-on="input:first" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" onClick="$('#optionEdit').modal('hide')" class="close">×</a>
+					<h3>Edit option</h3>
+				</div>
+				<div class="modal-body">
+					{var $__element = TRUE}
+					{element $presenter->elementName:$presenter->elementView $presenter->elementId}
+					{var $__element = FALSE}
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function () {
+			$('#optionEdit').modal().on('hidden', function(){
+				$.nette.ajax({ url: {link this}});
+			});
+		});
+	</script>
+	{/if}
+{/snippet}
+
+{snippet element}
+	{if isset($showElement) && isset($elementId)}
+		{element $presenter->elementName $presenter->elementId}
+	{/if}
+{/snippet}

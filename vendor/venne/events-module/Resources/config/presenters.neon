@@ -1,0 +1,9 @@
+factories:
+
+    events.pages.events.articlePresenter:
+        class: EventsModule\Pages\Events\ArticlePresenter
+        tags: [presenter]
+
+    events.pages.events.routePresenter:
+        class: EventsModule\Pages\Events\RoutePresenter
+        tags: [presenter]

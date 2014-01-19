@@ -1,0 +1,54 @@
+{var $thumbnail = '96x'}
+
+{foreach $routes as $route}
+	{var $extendedRoute = $route}
+	{if $route instanceof CmsModule\Content\Entities\ExtendedRouteEntity}{var $route = $route->route}{/if}
+
+	{cache [$route->id, $presenter->lang], tags => [\CmsModule\Content\Entities\PageEntity::CACHE, \CmsModule\Content\Entities\RouteEntity::CACHE, \CmsModule\Pages\Tags\TagEntity::CACHE, \CmsModule\Content\Entities\LanguageEntity::CACHE]}
+
+		<div class="col-md-6">
+			<div class="media">
+				<h3><a href="{plink Route route=>$route}">{$route->name ?: $route}</a></h3>
+
+				<a class="pull-left" href="#">
+					<img alt="Petr Mach" class="media-object thumbnail" n:src="$route->photo->getFileUrl(true), size=>'110x134'" />
+				</a>
+				<div class="media-body">
+					<p n:if="$extendedRoute->extendedUser->address">
+						{$extendedRoute->extendedUser->address}
+					</p>
+
+					<p>
+						{$route->notation}
+					</p>
+
+					<dl class="dl-horizontal">
+						{if $extendedRoute->extendedUser->birthDate}
+						<dt>Věk:</dt>
+						<dd>{$extendedRoute->extendedUser->birthDate->diff(new \DateTime)->format('%Y')}</dd>
+						{/if}
+
+						<dt>E-mail:</dt>
+						<dd>{$extendedRoute->email}</dd>
+
+						{if $extendedRoute->extendedUser->phone}
+						<dt>Telefon:</dt>
+						<dd>{$extendedRoute->extendedUser->phone}</dd>
+						{/if}
+
+						{if $extendedRoute->extendedUser->website}
+						<dt>Web:</dt>
+						<dd><a href="http://petrmach.cz/">{$extendedRoute->extendedUser->website}</a></dd>
+						{/if}
+
+						{if $extendedRoute->extendedUser->facebook}
+						<dt>Facebook:</dt>
+						<dd><a href="http://www.facebook.com/petrmach.cz">{$extendedRoute->extendedUser->facebook}</a></dd>
+						{/if}
+					</dl>
+				</div>
+			</div>
+		</div>
+	{/cache}
+
+{/foreach}

@@ -1,0 +1,18 @@
+services:
+
+	mailform.mailformFormFactory:
+		class: MailformModule\Pages\Mailform\MailformFormFactory
+		setup:
+			- injectFactory(@cms.admin.ajaxFormFactory)
+
+
+	mailform.mailformfrontFormFactory:
+		class: MailformModule\Pages\Mailform\MailformfrontFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+factories:
+	mailform.mailControl:
+		class: MailformModule\Pages\Mailform\MailControl(%mailformEntity%)
+		parameters: [mailformEntity]
+		tags: [component]

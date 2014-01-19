@@ -1,0 +1,38 @@
+services:
+
+	guestbook.pages.guestbookContent:
+		class: CmsModule\Content\ContentType('GuestbookModule\Pages\Guestbook\PageEntity')
+		setup:
+			- addSection('Content', @guestbook.pages.guestbook.tableControlFactory)
+			- addSection('Settings', @guestbook.pages.guestbook.pageFormFactory)
+		tags: [contentType: [name: 'guestbook']]
+
+	guestbook.pages.guestbook.commentRepository:
+		class: GuestbookModule\Pages\Guestbook\CommentRepository
+		factory: @entityManager::getRepository('GuestbookModule\Pages\Guestbook\CommentEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	guestbook.pages.guestbook.commentFormFactory:
+		class: GuestbookModule\Pages\Guestbook\CommentFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	guestbook.pages.guestbook.commentFrontFormFactory:
+		class: GuestbookModule\Pages\Guestbook\CommentFrontFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	guestbook.pages.guestbook.pageFormFactory:
+		class: GuestbookModule\Pages\Guestbook\PageFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+factories:
+
+	guestbook.pages.guestbook.tableControl:
+		class: GuestbookModule\Pages\Guestbook\TableControl
+		tags: [component]
+
+	guestbook.pages.guestbook.routePresenter:
+		class: GuestbookModule\Pages\Guestbook\RoutePresenter
+		tags: [presenter]

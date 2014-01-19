@@ -1,0 +1,49 @@
+services:
+
+	translator.translator:
+		setup:
+			- '$service->addDictionary(new TranslatorModule\Dictionary(?))'(%modules.googleanalytics.path%/Resources/translations)
+
+	googleanalytics.analyticsListener:
+		class: GoogleanalyticsModule\Listeners\AnalyticsListener
+		tags: [listener]
+
+	googleanalytics.accountFormFactory:
+		class: GoogleanalyticsModule\Forms\AccountFormFactory(..., %dataDir%/googleanalytics)
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	googleanalytics.contentTableListener:
+		class: GoogleanalyticsModule\Listeners\ContentTableListener
+
+	cms.admin.googleanalyticsaccountPresenter:
+		class: GoogleanalyticsModule\Presenters\AccountPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Googleanalyticsaccount:'
+			category: 'Analytics'
+			name: 'Account settings'
+			description: 'Setup your Google Analytics account'
+			priority: -50
+		]]
+
+	cms.contentTableFactory:
+		setup:
+			- '$service->onAttached[] = ?' ([@googleanalytics.contentTableListener, onAttached])
+
+factories:
+
+	googleanalytics.analyticsControl:
+		class: GoogleanalyticsModule\Components\AnalyticsControl
+		tags: [widget: googleAnalytics]
+
+	googleanalytics.visitorsChartControl:
+		class: GoogleanalyticsModule\Components\VisitorsChartControl
+		tags: [widget: googleAnalyticsVisitors]
+
+	googleanalytics.visitorsChartMultiControl:
+		class: Nette\Application\UI\Multiplier(@googleanalytics.visitorsChartControlFactory)
+		tags: [widget: googleAnalyticsVisitorsMulti]
+
+	googleanalytics.sourcesChartControl:
+		class: GoogleanalyticsModule\Components\SourcesChartControl
+		tags: [widget: googleAnalyticsSources]

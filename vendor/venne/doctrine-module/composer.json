@@ -1,0 +1,52 @@
+{
+	"name": "venne/doctrine-module",
+	"description": "Doctrine module with macros and components",
+	"keywords": ["cms", "nette", "venne", "module"],
+	"version": "2.1.0",
+	"homepage": "http://venne.cz",
+	"authors": [
+		{
+			"name": "Josef Kříž",
+			"homepage": "http://josef-kriz.cz"
+		}
+	],
+	"require": {
+		"php": ">=5.3.2",
+		"venne/forms-module": "2.1.*@dev",
+		"doctrine/orm": "~2.4",
+		"symfony/yaml": "~2.4",
+		"doctrine/migrations": "dev-master@dev"
+	},
+	"autoload": {
+		"psr-0": {
+			"DoctrineModule": ""
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.1-dev"
+		},
+		"venne": {
+			"configuration": {
+				"parameters": {
+					"database": {
+						"driver": "pdo_mysql",
+						"host": "",
+						"user": "",
+						"password": "",
+						"dbname": "",
+						"charset": "utf8",
+						"proxyDir": "%appDir%/proxy",
+						"proxyNamespace": "proxy",
+						"port": "",
+						"path": "",
+						"memory": ""
+					}
+				},
+				"extensions": {
+					"doctrine": "DoctrineModule\\DI\\DoctrineExtension"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"name": "venne/select2-module",
+	"description": "Select2 jquery module",
+	"keywords": ["cms", "nette", "venne", "module"],
+	"version": "3.4.1",
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "Josef Kříž",
+			"homepage": "http://josef-kriz.cz"
+		}
+	],
+	"require": {
+		"php": ">=5.3.2",
+		"venne/framework": "2.0.*"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "3.4-dev"
+		}
+	}
+}

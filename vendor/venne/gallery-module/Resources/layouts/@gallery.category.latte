@@ -1,0 +1,4 @@
+{block #page-content}
+
+{control item $presenter->route, config => [ variant => '@gallery.category' ]}
+{control itemList $presenter->extendedRoute->items, config => [ variant => '@gallery.category' ]}

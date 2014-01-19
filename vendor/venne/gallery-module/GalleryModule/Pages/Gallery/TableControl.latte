@@ -1,0 +1,88 @@
+<ul class="breadcrumb">
+
+	<li{if !$control->key} class="active"{/if}>
+		{if $control->key}<a class="ajax" href="{link this key=>NULL, productEdit=>NULL, categoryCreate=>NULL, productCreate=>NULL}">{/if}root{if $control->key}</a>{/if}
+	</li>
+
+	{if $control->key}
+		<li class="active">
+			{$control->getCategoryEntity()->name}
+		</li>
+	{/if}
+</ul>
+
+{if !$control->key}
+	{control table}
+{else}
+	{control galleryForm}
+	{snippet view}
+	<div class="thumbnails row" id="sortable">
+		{foreach $control->getCategoryEntity()->items as $photo}
+		<div id="photo-{$photo->id}" class="item col-md-3" style="width: 230px; margin: 15px 0;">
+			<div class="thumbnail">
+				<img class="handle" style="width: 168px; height: 168px; cursor: move;" n:src="$photo->route->photo->getFileUrl(TRUE) size=>'168x168', format=>8">
+				<div class="caption">
+					<a href="{link edit! $photo->id}" class="ajax btn btn-xs btn-primary">{_Edit}</a>
+					<a href="{link delete! $photo->id}" class="ajax pull-right btn btn-xs btn-default pull-right">{_Remove}</a>
+				</div>
+			</div>
+		</div>
+		{/foreach}
+	</div>
+	<script>
+		$(function () {
+			var sortFunc = function (event, ui) {
+				var data = [];
+				$("#sortable .item").each(function () {
+					data.push($(this).attr('id').replace('photo-', ''));
+				});
+				$("#frmsortForm-sort").val(JSON.stringify(data));
+			};
+			$("#sortable").sortable({
+				update: sortFunc,
+				handle: ".handle"
+			});
+			$("#sortable").disableSelection();
+			sortFunc();
+		});
+	</script>
+	{/snippet}
+
+	{if count($control->getCategoryEntity()->items) > 0}
+	{control sortForm}
+	{/if}
+
+	{control uploadForm}
+
+	{snippet form}
+		{if $control->id}
+		<div class="modal fade" id="editForm" tabindex="-1" role="dialog" data-focus-on="input:first" aria-hidden="true">>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<a class="close" onClick="$('#editForm').modal('hide')">×</a>
+
+						<h3>{_Photo}</h3>
+					</div>
+					<div class="modal-body">
+						{snippet editForm}
+						{control photoForm}
+						{/snippet}
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(function () {
+				$('#editForm').modal().on('hidden.bs.modal', function () {
+					$.nette.ajax({ url: {link edit! id=>NULL}});
+				});
+			});
+		</script>
+		{/if}
+
+
+	{/snippet}
+
+	{control ajaxFileUploader}
+{/if}

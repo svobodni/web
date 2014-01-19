@@ -1,0 +1,29 @@
+services:
+
+	svobodni.defaultUser:
+		class: CmsModule\Security\UserType('SiteModule\Security\UserEntity')
+		setup:
+			- setFormFactory(@svobodni.adminUserFormFactory)
+			- setFrontFormFactory(@svobodni.frontUserFormFactory)
+			- setRegistrationFormFactory(@svobodni.registrationFormFactory)
+		tags: [user: [name: Svobodní]]
+
+	svobodni.userRepository:
+		class: SiteModule\Security\UserRepository
+		factory: @entityManager::getRepository('SiteModule\Security\UserEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	svobodni.adminUserFormFactory:
+		class: SiteModule\Security\AdminUserFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	svobodni.frontUserFormFactory:
+		class: SiteModule\Security\FrontUserFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	svobodni.registrationFormFactory:
+		class: SiteModule\Security\RegistrationFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)

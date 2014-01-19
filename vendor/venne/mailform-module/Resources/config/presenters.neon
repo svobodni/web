@@ -1,0 +1,5 @@
+factories:
+
+	mailform.pages.mailform.routePresenter:
+		class: MailformModule\Pages\Mailform\RoutePresenter(@mailform.mailControlFactory)
+		tags: [presenter]

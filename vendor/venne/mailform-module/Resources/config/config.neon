@@ -1,0 +1,15 @@
+services:
+
+	translator.translator:
+		setup:
+			- '$service->addDictionary(new TranslatorModule\Dictionary(?))'(%modules.mailform.path%/Resources/translations)
+
+	mailform.mailformContent:
+		class: CmsModule\Content\ContentType('MailformModule\Pages\Mailform\PageEntity')
+		setup:
+			- addSection('Content', @mailform.mailformFormFactory)
+		tags: [contentType: [name: 'mail form']]
+
+includes:
+	- presenters.neon
+	- components.neon

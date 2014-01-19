@@ -1,0 +1,26 @@
+{
+	"name": "venne/nette-ajax",
+	"description": "Flexible utility script for AJAX. Supports snippets, redirects etc.",
+	"keywords": ["nette", "extension", "ajax"],
+	"homepage": "https://github.com/vojtech-dobes/nette.ajax.js",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Vojtěch Dobeš",
+			"email": "me@vojtechdobes.com"
+		}
+	],
+	"suggest": {
+		"janmarek/webloader": "*"
+	},
+	"autoload": {
+		"psr-0": {
+			"VojtechDobes": ""
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.0-dev"
+		}
+	}
+}

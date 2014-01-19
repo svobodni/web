@@ -1,0 +1,123 @@
+{**
+ * My Application layout template.
+ *
+ * @copyright  Copyright (c) 2010 John Doe
+ * @package    MyApplication
+ *
+ * @param string   $basePath web base path
+ * @param string   $robots   tell robots how to index the content of a page (optional)
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+{head}
+
+	{cache}
+		{css
+			@bootstrap3Module/css/bootstrap.css,
+			@bootstrap3Module/css/bootstrap-theme.css,
+			@typeaheadModule/typeahead.js-bootstrap.css,
+			@cmsModule/css/application.css
+		}
+
+		{js
+			@jquery2.0Module/jquery.js,
+			@jquery2.0Module/jquery-migrate.js,
+		}
+	{/cache}
+
+	{cache $presenter->routeId}
+		{control head}
+	{/cache}
+
+	{block #head}{/block}
+{/head}
+
+{body}
+
+<div class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="{$basePath}/">{$presenter->websiteManager->name}</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			{control search}
+			{control login config => [ variant => 'panel' ]}
+
+			{cache $presenter->lang, tags => ['languages']}
+			{if count($presenter->websiteManager->languages) > 1}
+				{control languageswitch}
+			{/if}
+			{/cache}
+		</div>
+	</div>
+</div>
+
+<div class="container" style="padding-top: 60px;">
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="navbar navbar-default">
+				<div class="container">
+					{control navigation}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header">
+				{cache [$presenter->routeId, $presenter->lang], tags => ['routes']}
+				<div class="pull-right">
+					{control breadcrumb}
+				</div>
+				{/cache}
+
+				{cache [$presenter->routeId, $presenter->lang], tags => [
+				'route' => $presenter->routeId,
+				]}
+				<h1>{block #title}{$presenter->route->name|firstUpper}{/block}</h1>
+				{/cache}
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		{include #layout}
+	</div>
+
+	<hr />
+
+	{cache}
+	<footer>
+		<p class="pull-left">
+			&copy; Company {=date('Y')} &nbsp;
+			· &nbsp; Venne:CMS &nbsp;
+			· &nbsp; <a rel="nofollow" href="{$basePath}/{$presenter->administrationManager->routePrefix}">{_Administration}</a>
+		</p>
+
+		<p class="pull-right">
+			{ifLinkExists Route special=>'sitemap'}{isPublished}<a n:link>{_Sitemap}</a> &nbsp;{/isPublished}{/ifLinkExists}
+			{ifLinkExists Route special=>'rss'}{isPublished}· &nbsp; <a n:link>RSS</a> &nbsp;{/isPublished}{/ifLinkExists}
+			· &nbsp; <a href="#">{_'Back to Top'}</a>
+		</p>
+	</footer>
+	{/cache}
+
+</div>
+
+{js
+	@holderModule/holder.js,
+	@netteModule/netteForms.js,
+	@ajaxModule/nette.ajax.js,
+	@ajaxModule/history/history.ajax.js,
+	@bootstrap3Module/js/bootstrap.js,
+	@hoganModule/hogan-2.0.0.js,
+	@typeaheadModule/typeahead.js,
+	@cmsModule/js/application.js,
+}
+
+{/body}
+</html>

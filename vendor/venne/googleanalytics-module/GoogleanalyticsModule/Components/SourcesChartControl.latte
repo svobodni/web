@@ -1,0 +1,77 @@
+{define #page}
+	<div id="char_div_sources_{!$control->name}" style="width: {!$control->size[0]}{if substr($control->size[0], -1)!='%'}px{/if}; height: {!$control->size[1]}{if substr($control->size[1], -1)!='%'}px{/if};"></div>
+	<script type="text/javascript">
+		$(function () {
+			setTimeout(function () {
+				var draw_sources{!$control->name} = function() {
+					var data = google.visualization.arrayToDataTable([
+						['Source', 'Sum'],
+						{foreach $data as $key=>$item}
+						['{!$key}', {!$item}]{sep},
+						{/sep}
+						{/foreach}
+					]);
+
+					var options = {
+						is3D: true,
+						backgroundColor: {
+							fill:'transparent'
+						}
+					};
+
+					var chart = new google.visualization.PieChart(document.getElementById('char_div_sources_{!$control->name}'));
+					chart.draw(data, options);
+				}
+
+				google.load('visualization', '1.0', { 'callback': draw_sources{!$control->name}, 'packages': ['corechart']});
+				google.setOnLoadCallback(draw_sources{!$control->name});
+
+				$(window).resize(draw_sources{!$control->name});
+				$('#char_div_sources_{!$control->name}').bind('resize', draw_sources{!$control->name});
+			}, 0);
+		});
+	</script>
+{/define}
+
+{if !isset($ajax)}
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+{/if}
+
+{snippet data}
+{if isset($data)}
+	{include #page data=>$data}
+{else}
+	{if isset($error)}
+		{foreach $flashes as $flash}
+			<div class="alert alert-{$flash->type}">
+				<a class="close" data-dismiss="alert">×</a>
+				{$flash->message}
+			</div>
+		{/foreach}
+	{else}
+		{if $control->isInCache()}
+			{$control->renderChart()}
+		{else}
+			<p style="text-align: center;">
+				<img src="{$basePath}/resources/cmsModule/admin/images/ajax-loader.gif"/>
+			</p>
+			<script>
+				$(function () {
+					function checkSendAjax() {
+						if ($.active > 2) {
+							window.setTimeout(checkSendAjax, 1000);
+						} else {
+							$.nette.ajax({
+								url: {link load! args=>[size=>$control->size, history=>$control->history, metrics=>$control->metrics, options=>$control->options]},
+								off: ['unique', 'spinner']
+							});
+							return true;
+						}
+					};
+					checkSendAjax();
+				});
+			</script>
+		{/if}
+	{/if}
+{/if}
+{/snippet}

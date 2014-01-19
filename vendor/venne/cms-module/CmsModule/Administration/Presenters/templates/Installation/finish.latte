@@ -1,0 +1,30 @@
+{block #header}{_'Finish'}{/block}
+
+{block toolbar}
+{/block}
+
+{block breadcrumb}
+	<li class="active">{_Installation}</li>
+{/block}
+
+{block content}
+
+<h2>{_'Installation is complete'}</h2>
+
+<p>
+	{_'Now you can start to build a website structure. If you need help, you can use prepared structure.'}
+</p>
+
+
+<h2>{_'Interesting modules'}</h2>
+
+<p>
+	{_'Look at next official modules. You can find them useful.'} <a href="https://github.com/Venne">https://github.com/Venne</a>.
+</p>
+
+<hr />
+
+<h2>{_'Create default structure by installator'}</h2>
+
+<a n:foreach="$presenter->installatorManager->installators as $name=>$installer" n:if="$presenter->isEmptyStructure()" class="btn btn-lg btn-primary" n:href="createStructure! $name">{_ucfirst($name)}</a>
+<a class="btn btn-default btn-lg" n:href="Dashboard:">{_'Skip this step'}</a>

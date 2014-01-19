@@ -1,0 +1,85 @@
+<div id="tree-{$control->name}"></div>
+
+
+<script type="text/javascript">
+// <![CDATA[
+
+    $(function () {
+        $("#tree-{!$control->name}").dynatree({
+            autoFocus:false,
+            onActivate:function (node) {
+                node.deactivate();
+				$.nette.ajax({
+					url: {link click! key=>'this'}.replace('this', node.data.key)
+				});
+            },
+            // persist: true,
+
+            initAjax:{
+                data:{ mode:'all'},
+                url: '{!$presenter->link(':Cms:Admin:Dashboard:default')}?do=panel-browser-getPages'
+            },
+
+            onLazyRead:function (node) {
+                var url = {link getPages! 'this'}.
+                replace('this', node.data.key);
+                node.appendAjax({
+                    url:url
+                });
+            }
+
+			{if count($control->onExpand) > 0}
+			,
+			onExpand:function (flag, dtnode) {
+				var url = {link expand! '-a-', '-b-'}.
+				replace('-a-', dtnode.data.key).replace('-b-', flag);
+				$.nette.ajax({
+					url: url,
+					off: ['history']
+				});
+			}
+			{/if}
+
+			{if $control->dropCallback}
+            ,
+			dnd:{
+                onDragStart:function (node) {
+                    return true;
+                },
+                onDragStop:function (node) {
+
+                },
+                autoExpandMS:1000,
+                preventVoidMoves:true, // Prevent dropping nodes 'before self', etc.
+                onDragEnter:function (node, sourceNode) {
+                    logMsg("tree.onDragEnter(%o, %o)", node, sourceNode);
+                    return true;
+                },
+                onDragOver:function (node, sourceNode, hitMode) {
+                    logMsg("tree.onDragOver(%o, %o, %o)", node, sourceNode, hitMode);
+                    // Prevent dropping a parent below it's own child
+                    if (node.isDescendantOf(sourceNode)) {
+                        return false;
+                    }
+                },
+                onDrop:function (node, sourceNode, hitMode, ui, draggable) {
+                    node.expand(true);
+                    var url = {link setParent 'from'=>'thisfrom', 'to'=>'thisto', 'dropmode'=>'thisdropmode'};
+                    url = url.replace('thisdropmode', hitMode).replace('thisto', node.data.key).replace('thisfrom', sourceNode.data.key);
+                    $.nette.ajax({
+						url: url,
+						off: ['history']
+					});
+                    //alert("move:" + sourceNode.data.key + " to " + node.data.key + " hit " + hitMode);
+                    logMsg("tree.onDrop(%o, %o, %s)", node, sourceNode, hitMode);
+                    sourceNode.move(node, hitMode);
+                },
+                onDragLeave:function (node, sourceNode) {
+                    logMsg("tree.onDragLeave(%o, %o)", node, sourceNode);
+                }
+            }
+			{/if}
+        });
+    });
+// ]]>
+</script>

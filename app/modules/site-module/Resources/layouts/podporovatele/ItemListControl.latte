@@ -1,0 +1,37 @@
+{var $thumbnail = '385x'}
+
+{foreach $routes as $route}
+	{if $route instanceof CmsModule\Content\Entities\ExtendedRouteEntity}{var $route = $route->route}{/if}
+
+	{cache [$route->id, $presenter->lang], tags => [\CmsModule\Content\Entities\PageEntity::CACHE, \CmsModule\Content\Entities\RouteEntity::CACHE, \CmsModule\Pages\Tags\TagEntity::CACHE, \CmsModule\Content\Entities\LanguageEntity::CACHE]}
+		<div class="media">
+
+			{if !$iterator->isFirst()}<hr />{/if}
+
+			<div class="pull-right">
+				{if $route->photo}
+					<img class="media-object" n:src="$route->photo->getFileUrl(true), size=>$thumbnail"
+						 alt="{$route->name}"/>
+				{else}
+					<img src="holder.js/190x110" alt="{$route->name}"/>
+				{/if}
+			</div>
+
+			<div class="media-body">
+				<h2 class="media-heading">
+					{$route->name ?: $route}
+				</h2>
+
+				<p class="lead" n:if="isset($route->notation)">
+					{$route->notation}
+				</p>
+
+				<p n:if="isset($route->text)">
+					{!$route->text|content}
+				</p>
+			</div>
+
+		</div>
+	{/cache}
+
+{/foreach}

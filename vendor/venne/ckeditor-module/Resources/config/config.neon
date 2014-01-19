@@ -1,0 +1,31 @@
+services:
+
+	translator.translator:
+		setup:
+			- '$service->addDictionary(new TranslatorModule\Dictionary(?))'(%modules.ckeditor.path%/Resources/translations)
+
+	ckeditor.resourcesListener:
+		class: CkeditorModule\Listeners\ResourcesListener(%wwwDir%)
+		tags: [listener]
+
+	ckeditor.toolbarFormFactory:
+		class: CkeditorModule\Forms\ToolbarFormFactory(%publicDir%/ckeditor)
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	ckeditor.contentFormFactory:
+		class: CkeditorModule\Forms\ContentFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+
+factories:
+	cms.admin.ckeditorPresenter:
+		class: CkeditorModule\Presenters\CkeditorPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Ckeditor:'
+			category: 'System'
+			name: 'CKEditor'
+			description: 'CKEditor configuration'
+			priority: -50
+		]]

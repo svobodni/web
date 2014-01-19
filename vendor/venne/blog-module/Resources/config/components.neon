@@ -1,0 +1,39 @@
+services:
+
+	blog.blogFormFactory:
+		class: BlogModule\Pages\Blog\BlogFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	blog.pageFormFactory:
+		class: BlogModule\Pages\Blog\PageFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	blog.elementsBlogFormFactory:
+		class: BlogModule\Pages\Blog\BlogElement\BlogFormFactory
+		setup:
+			- injectFactory(@cms.admin.ajaxFormFactory)
+
+	blog.elementsBlogSliderFormFactory:
+		class: BlogModule\Pages\Blog\SliderElement\SliderFormFactory
+		setup:
+			- injectFactory(@cms.admin.ajaxFormFactory)
+
+factories:
+	blog.tableControl:
+		class: BlogModule\Pages\Blog\TableControl
+		tags: [component]
+
+	blog.blogElement:
+		class: BlogModule\Pages\Blog\BlogElement\BlogElement
+		setup:
+			- injectRouteRepository(@blog.routeRepository)
+			- injectSetupForm(@blog.elementsBlogFormFactory)
+		tags: [element: blog]
+
+	blog.blogSliderElement < blog.blogElement:
+		class: BlogModule\Pages\Blog\SliderElement\SliderElement
+		setup:
+			- injectSetupForm(@blog.elementsBlogSliderFormFactory)
+		tags: [element: blogSlider]

@@ -1,0 +1,54 @@
+{capture $navigation}
+{cache $presenter->lang, tags => ['pages']}
+{var $root = isset($root) ? $root : $control->getRoot()}
+
+{define #menu}
+	{foreach $items as $item}
+		{if $sub < $startDepth}
+			{if $control->countChildren($item) > 0}
+				{include #menu items => $control->getChildren($item), sub => ($sub+1), first => TRUE}
+			{/if}
+
+		{else}
+			{first}
+			<ul {if !$first}class="dropdown-menu"{else}class="nav navbar-nav"{/if}>
+				{if $first && $root->navigationShow}
+					{include #item children => FALSE, link => $presenter->link('Route', array('route' => $root->mainRoute)), item => $root}
+				{/if}
+			{/first}
+
+			{if $item->navigationShow}
+				{include #item children => (($sub < ($startDepth + $maxDepth - 1)) && count($item->children) > 0), item => $item, sub => $sub}
+			{/if}
+		{/if}
+
+		{last}</ul>{/last}
+	{/foreach}
+{/define}
+
+{define #item}
+	<li n:class="$children ? dropdown" class="-{$item->mainRoute->url}-">
+		<a href="{$control->getLink($item)}"{if $children} class="dropdown-toogle" data-toggle="dropdown"{/if}>{$item->navigationTitle}</a>
+
+		{if $children}
+			{include #menu items => $control->getChildren($item), sub => ($sub+1), first => FALSE}
+		{/if}
+	</li>
+{/define}
+
+{include #menu items => $control->getChildren($root), sub => 0, first => TRUE, root => $control->getRoot()}
+{/cache}
+{/capture}
+
+<?php
+	$d = preg_match_all('/class="-([^-]*)-"/', $navigation, $matches, PREG_SET_ORDER);
+	foreach ($matches as $m) {
+		if ($control->isUrlActive($m[1])) {
+			$navigation = str_replace('"-' . $m[1] . '-"', 'active', $navigation);
+		} else {
+			$navigation = str_replace($m[0], '', $navigation);
+		}
+	}
+?>
+
+{!$navigation}

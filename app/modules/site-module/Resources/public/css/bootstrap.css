@@ -1,0 +1,87 @@
+h1, h2, h3, h4, h5, h6 {
+	font-family: robotobold;
+}
+h1 {
+	font-size: 28px;
+}
+h2 {
+	font-size: 21px;
+}
+h3 {
+	font-size: 18px;
+}
+h4 {
+	font-size: 16px;
+}
+
+a {
+	color: #008f29;
+}
+a:hover {
+	color: #008f29;
+}
+h2 a,
+h3 a,
+h4 a {
+	color: #005f49;
+}
+
+
+.btn {
+	border-radius: 0;
+	border: 0;
+	padding: 12px 16px;
+}
+.btn-default {
+	background-color: #bfbfbf;
+}
+.btn-default:hover {
+	background-color: #005f49;
+	color: #ffffff;
+}
+.btn-primary {
+	background-color: #005f49;
+}
+.btn-primary:hover {
+	background-color: #007f69;
+}
+.btn-xs {
+	padding: 6px 8px;
+}
+
+
+.breadcrumb {
+	font-size: 13px;
+	background-color: transparent;
+}
+
+.carousel-caption {
+	left: 0;
+	bottom: 0;
+	padding-bottom: 30px;
+	width: 100%;
+	background-color: rgba(0, 95, 73, 0.8);
+}
+.carousel-caption.transparent {
+	background-color: transparent;
+}
+.carousel-caption a {
+	color: #ffffff;
+}
+.carousel-indicators {
+	bottom: 0;
+}
+
+
+@media (min-width: 768px) {
+	.dl-horizontal dt {
+		width: 100px;
+	}
+	.dl-horizontal dd {
+		margin-left: 115px;
+	}
+}
+
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+	display: block;
+}

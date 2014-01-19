@@ -1,0 +1,285 @@
+services:
+	cms.websiteFormFactory:
+		class: CmsModule\Forms\WebsiteFormFactory
+		setup:
+			- injectFactory(@cms.admin.loggableFormFactory)
+
+	cms.languageFormFactory:
+		class: CmsModule\Forms\LanguageFormFactory
+		setup:
+			- injectFactory(@cms.admin.ajaxFormFactory)
+
+	cms.userSocialFormFactory:
+		class: CmsModule\Forms\UserSocialFormFactory
+		setup:
+			- injectSecurityManager(...)
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	cms.roleFormFactory:
+		class: CmsModule\Forms\RoleFormFactory
+		setup:
+			- injectFactory(@cms.admin.ajaxFormFactory)
+
+	cms.loginFormFactory:
+		class: CmsModule\Forms\LoginFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	cms.loginControlFactory:
+		class: CmsModule\Components\LoginControlFactory(@cms.factory.loginControlFactory)
+
+	cms.providerFormFactory:
+		class: CmsModule\Forms\ProviderFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+			- injectSecurityManager()
+
+	cms.resetFormFactory:
+		class: CmsModule\Forms\ResetFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	cms.confirmFormFactory:
+		class: CmsModule\Forms\ConfirmFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	cms.applicationFormFactory:
+		class: CmsModule\Forms\SystemApplicationFormFactory
+		setup:
+			- injectFactory(@cms.admin.loggableAjaxFormFactory)
+
+	cms.databaseFormFactory:
+		class: CmsModule\Forms\SystemDatabaseFormFactory
+		setup:
+			- injectFactory(@cms.admin.loggableAjaxFormFactory)
+
+	cms.accountFormFactory:
+		class: CmsModule\Forms\SystemAccountFormFactory
+		setup:
+			- injectFactory(@cms.admin.loggableAjaxFormFactory)
+
+	cms.mailerFormFactory:
+		class: CmsModule\Forms\SystemMailerFormFactory
+		setup:
+			- injectFactory(@cms.admin.loggableAjaxFormFactory)
+
+	cms.registrationFormFactory:
+		class: CmsModule\Forms\SystemRegistrationFormFactory
+		setup:
+			- injectFactory(@cms.admin.loggableFormFactory)
+
+	cms.systemFormFactory:
+		class: CmsModule\Forms\SystemAdministrationFormFactory
+		setup:
+			- injectFactory(@cms.admin.loggableAjaxFormFactory)
+
+	cms.dirFormFactory:
+		class: CmsModule\Content\Forms\DirFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	cms.fileFormFactory:
+		class: CmsModule\Content\Forms\FileFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	cms.layoutFormFactory:
+		class: CmsModule\Content\Forms\LayoutFormFactory(..., ..., %modules%)
+		setup:
+			- injectFactory(@cms.admin.ajaxFormFactory)
+
+	cms.layouteditFormFactory:
+		class: CmsModule\Content\Forms\LayouteditFormFactory(..., %appDir%, %modules%)
+		setup:
+			- injectFactory(@cms.admin.ajaxFormFactory)
+
+	cms.overloadFormFactory:
+		class: CmsModule\Content\Forms\OverloadFormFactory(%modules%)
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	cms.contentFormFactory:
+		class: CmsModule\Content\Forms\BasicFormFactory
+		setup:
+			- injectFactory(@cms.admin.ajaxFormFactory)
+
+	cms.contentTableFactory:
+		class: CmsModule\Content\Components\ContentTableFactory
+
+	cms.contentRouteFormFactory:
+		class: CmsModule\Content\Forms\RouteFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	cms.permissionsFormFactory:
+		class: CmsModule\Forms\PermissionsFormFactory
+		setup:
+			- injectFactory(@cms.admin.ajaxFormFactory)
+			- injectAuthorizatorFactory
+			- injectAdministrationManager
+			- injectPresenterFactory
+			- injectControlVerifier
+
+	cms.clearFormFactory:
+		class: CmsModule\Content\Elements\Forms\ClearFormFactory
+		setup:
+			- injectFactory(@cms.admin.loggableFormFactory)
+
+	cms.basicFormFactory:
+		class: CmsModule\Content\Elements\Forms\BasicFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	cms.specialFormFactory:
+		class: CmsModule\Content\Forms\SpecialFormFactory
+		setup:
+			- injectFactory(@cms.admin.ajaxFormFactory)
+
+	cms.admin.permissionsFormFactory:
+		class: CmsModule\Content\Forms\PermissionsFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	cms.admin.adminPermissionsFormFactory:
+		class: CmsModule\Content\Forms\AdminPermissionsFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	cms.tagFormFactory:
+		class: CmsModule\Forms\TagFormFactory
+		setup:
+			- injectFactory(@cms.admin.ajaxFormFactory)
+
+	cms.admin.publishFormFactory:
+		class: CmsModule\Administration\Forms\PublishFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	cms.admin.cacheFormFactory:
+		class: CmsModule\Forms\CacheFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	cms.admin.ajaxFileUploaderFactory:
+		class: CmsModule\Administration\Components\AjaxFileUploaderControlFactory(%publicDir%/ajaxFileUpload, %publicDir%)
+
+	cms.admin.fileControlFactory:
+		class: CmsModule\Administration\Components\FileBrowser\FileControlFactory
+
+	cms.admin.fileBrowserControlFactory:
+		class: CmsModule\Administration\Components\FileBrowser\FileBrowserControlFactory
+
+	cms.registrationControlFactory:
+		class: CmsModule\Components\RegistrationControlFactory(@cms.factory.registrationControlFactory)
+
+	cms.admin.mailFormFactory:
+		class: CmsModule\Administration\Forms\MailFormFactory
+		setup:
+			- injectFactory(@cms.admin.ajaxFormFactory)
+
+
+factories:
+
+	cms.admin.basicForm:
+		class: Venne\Forms\Form
+		setup:
+			- setRenderer(@cms.formRenderer)
+			- setTranslator(@translator.translator)
+
+	cms.admin.ajaxForm:
+		class: Venne\Forms\Form
+		setup:
+			- setRenderer(@cms.formRenderer)
+			- setTranslator(@translator.translator)
+			- "$service->getElementPrototype()->class[] = ?"("ajax")
+
+	cms.admin.loggableForm:
+		class: Venne\Forms\Form
+		setup:
+			- setRenderer(@cms.formRenderer)
+			- setTranslator(@translator.translator)
+			- '$service->onSuccess[] = ?'([@cms.formLogListener, 'onSuccess'])
+
+	cms.admin.loggableAjaxForm:
+		class: Venne\Forms\Form
+		setup:
+			- setRenderer(@cms.formRenderer)
+			- setTranslator(@translator.translator)
+			- "$service->getElementPrototype()->class[] = ?"("ajax")
+			- '$service->onSuccess[] = ?'([@cms.formLogListener, 'onSuccess'])
+
+	cms.admin.routeControl:
+		class: CmsModule\Content\Components\RouteControl
+		tags: [component]
+
+	cms.factory.loginControl:
+		class: CmsModule\Components\LoginControl
+
+	cms.factory.registrationControl:
+		class: CmsModule\Components\RegistrationControl(%userType%, %mode%, %loginProviderMode%, %roles%, %emailSender%, %emailFrom%, %emailSubject%, %emailText)
+		parameters: [userType, mode, loginProviderMode, roles, emailSender, emailFrom, emailSubject, emailText]
+		setup:
+			- inject
+
+	cms.headControl:
+		class: CmsModule\Components\HeadControl
+		tags: [widget: head]
+
+	cms.panelControl:
+		class: CmsModule\Components\PanelControl(..., @session::getSection('Venne.panel'))
+		setup:
+			- setTemplateConfigurator(@venne.templateConfigurator)
+		tags: [widget: panel]
+
+	cms.navigationControl:
+		class: CmsModule\Components\NavigationControl
+		tags: [widget: navigation]
+
+	cms.breadcrumbControl:
+		class: CmsModule\Components\BreadcrumbControl
+		tags: [widget: breadcrumb]
+
+	cms.tagCloudControl:
+		class: CmsModule\Components\TagCloudControl
+		tags: [widget: tagCloud]
+
+	cms.authorControl:
+		class: CmsModule\Components\AuthorControl
+		tags: [widget: author]
+
+	cms.itemControl:
+		class: CmsModule\Components\ItemControl
+		tags: [widget: item]
+
+	cms.itemInfoControl:
+		class: CmsModule\Components\ItemInfoControl
+		tags: [widget: itemInfo]
+
+	cms.itemThumbnailControl:
+		class: CmsModule\Components\ItemThumbnailControl
+		tags: [widget: itemThumbnail]
+
+	cms.itemListControl:
+		class: CmsModule\Components\ItemListControl
+		tags: [widget: itemList]
+
+	cms.flashMessageControl:
+		class: CmsModule\Components\FlashMessageControl
+		tags: [widget: flashMessage]
+
+	cms.searchControl:
+		class: CmsModule\Components\SearchControl
+		tags: [widget: search]
+
+	cms.widget.loginControl:
+		class: CmsModule\Components\LoginControl
+		tags: [widget: login]
+
+	cms.languageswitchControl:
+		class: CmsModule\Components\LanguageswitchControl
+		tags: [widget: languageswitch]
+
+	cms.elementErrorControl:
+		class: CmsModule\Content\Elements\Components\ElementErrorControl
+		tags: [widget: elementError]

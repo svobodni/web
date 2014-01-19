@@ -1,0 +1,34 @@
+{define #page}
+	<div id="{$control->name}" class="carousel tv">
+		{include #page-items items=>$control->getItems(), thumbnail=>"{$width}x{$height}"}
+	</div>
+{/define}
+
+
+{define #page-items}
+	<!-- Wrapper for slides -->
+	{var $item = $items[0]}
+	<div class="carousel-inner">
+		<div class="active item">{include #page-items-item item=>$item, thumbnail=>$thumbnail}</div>
+	</div>
+
+	{*<!-- Indicators -->*}
+	{*<div class="row">*}
+		{*<div n:foreach="$items as $item" class="col-md-3">*}
+			{*<div class="thumbnail">*}
+				{*<a href="{plink Route route => $item}"><img src="http://img.youtube.com/vi/{$item->route->notation}/default.jpg" alt="{$item->name}"></a>*}
+			{*</div>*}
+		{*</div>*}
+	{*</div>*}
+{/define}
+
+
+{define #page-items-item}
+	<div class="video-container">
+		<iframe width="628" height="383" src="//www.youtube.com/embed/{$item->route->notation}" frameborder="0" allowfullscreen=""></iframe>
+	</div>
+{/define}
+
+
+{include #page}
+

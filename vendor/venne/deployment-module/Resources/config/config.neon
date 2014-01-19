@@ -1,0 +1,28 @@
+services:
+
+	translator.translator:
+		setup:
+			- '$service->addDictionary(new TranslatorModule\Dictionary(?))'(%modules.deployment.path%/Resources/translations)
+
+	deployment.deploymentManager:
+		class: DeploymentModule\DeploymentManager(%dataDir%/deployment)
+
+	deployment.exportCommand:
+		class: DeploymentModule\Commands\ExportCommand
+		tags: [command]
+
+	deployment.importCommand:
+		class: DeploymentModule\Commands\ImportCommand
+		tags: [command]
+
+	deployment.listCommand:
+		class: DeploymentModule\Commands\ListCommand
+		tags: [command]
+
+	deployment.removeCommand:
+		class: DeploymentModule\Commands\RemoveCommand
+		tags: [command]
+
+	deployment.clearCommand:
+		class: DeploymentModule\Commands\ClearCommand
+		tags: [command]

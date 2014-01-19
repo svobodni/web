@@ -1,0 +1,5 @@
+services:
+
+	lightbox.assetsListener:
+		class: LightboxModule\Listeners\AssetsListener(%wwwDir%)
+		tags: [listener]

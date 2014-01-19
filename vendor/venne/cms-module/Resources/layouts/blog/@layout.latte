@@ -1,0 +1,29 @@
+{extends ../@layout.latte}
+
+{block #layout}
+<div class="col-md-8">
+
+	{control flashMessage TRUE}
+	{block #contentTop}{/block}
+	{block #content}{include #page-content}{/block}
+	{block #contentBottom}{/block}
+
+	<hr />
+
+	<small class="muted">
+		{cache $presenter->routeId, tags => [
+			'route-' . $presenter->routeId,
+		]}
+		{control itemInfo $presenter->route}
+		{/cache}
+	</small>
+</div>
+
+<div class="col-md-4">
+	<div class="well">
+		{block #panel}
+		<h2><a href="{plink this special=>'tags'}">{_Tags}</a></h2>
+		{control tagCloud}
+		{/block}
+	</div>
+</div>

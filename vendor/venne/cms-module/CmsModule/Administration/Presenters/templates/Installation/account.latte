@@ -1,0 +1,17 @@
+{block #header}{_'Administrator\'s account'}{/block}
+
+{block toolbar}
+{/block}
+
+{block breadcrumb}
+	<li class="active">{_Installation}</li>
+{/block}
+
+{block content}
+{if count($flashes) == 1}
+	{control systemAccountForm}
+{else}
+<p>
+	<a n:href="this">{_'Please fix issues and refresh page'}</a>.
+</p>
+{/if}

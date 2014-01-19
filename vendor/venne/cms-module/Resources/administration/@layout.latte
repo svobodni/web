@@ -1,0 +1,219 @@
+{**
+ * Venne:CMS layout template.
+ *
+ * @copyright  Copyright (c) 2011, 2012 Josef Kříž 
+ *
+ * @param string   $basePath	web base path
+ * @param array    $flashes		flash messages
+ *}
+<!DOCTYPE html>
+<html>
+	{head}
+
+		{js
+			@jquery2.0Module/jquery.js,
+			@jquery2.0Module/jquery-migrate.js,
+			@jqueryui1.10Module/jquery-ui.js,
+			@stringtoslugModule/jquery.stringToSlug.js,
+			@cmsModule/typing/jquery.typing-0.2.0.min.js,
+			@holderModule/holder.js,
+			@netteModule/netteForms.js,
+			@bootstrap3Module/js/bootstrap.js,
+			@ajaxModule/nette.ajax.js,
+			@ajaxModule/extensions/spinner.ajax.js,
+			@bootstrapdatetimeModule/bootstrap-datetimepicker.min.js,
+			@formsModule/textWithSelect/textWithSelect.js,
+			@gridoModule/grido.js,
+			@select2Module/select2.js,
+			@dynatreeModule/jquery.dynatree.js,
+			@jqueryfileuploadModule/js/vendor/jquery.ui.widget.js,
+			@jqueryfileuploadModule/js/jquery.iframe-transport.js,
+			@jqueryfileuploadModule/js/jquery.fileupload.js,
+
+			@cmsModule/admin/js/application.js
+		}
+
+		{css
+			@jqueryui1.10Module/themes/base/jquery-ui.css,
+			@bootstrap3Module/css/bootstrap.css,
+			@bootstrapdatetimeModule/bootstrap-datetimepicker.min.css,
+			@gridoModule/grido.css,
+			@CmsModule/admin/css/grido.css,
+			@select2Module/select2.css,
+
+			@CmsModule/admin/css/style.css,
+			@CmsModule/admin/css/fileBrowser.control.css
+		}
+
+		{css @dynatreeModule/skin-bootstrap/ui.dynatree.css}
+
+		{if !$presenter instanceof CmsModule\Administration\Presenters\PanelPresenter}
+			{js @ajaxModule/history/history.ajax.js}
+		{/if}
+
+		{if $presenter instanceof CmsModule\Administration\Presenters\PanelPresenter}
+			{js @CmsModule/admin/js/panel.js}
+			{css @CmsModule/admin/css/inside.css}
+		{/if}
+
+		{control head}
+
+	{/head}
+
+	{body}
+
+		{* Top navigation *}
+		<div class="navbar navbar-fixed-top navbar-inverse navigation" id="navigation" n:snippet="navigation">
+
+
+					<a class="{if !$presenter instanceof CmsModule\Administration\Presenters\PanelPresenter}ajax {/if}navbar-brand" href="{$presenter->link(':Cms:Admin:' . $presenter->administrationManager->defaultPresenter . ':')}"><img src="{$basePath}/resources/cmsModule/admin/images/logo-panel.png" alt="Venne:CMS" /></a>
+
+					<div class="navbar-collapse collapse">
+
+						{if $presenter->user->isLoggedIn() && !isset($hideMenuItems)}
+						<ul class="nav navbar-nav">
+						{if !$presenter instanceof CmsModule\Administration\Presenters\PanelPresenter}
+							{var $pages = $presenter->getContext()->cms->administrationManager->getAdministrationNavigation()}
+							{foreach $pages as $category=>$items}
+								{var $ok = false}
+								{capture $nav}
+								<li class="dropdown">
+									<a class="dropdown-toggle" href="javaScript:;" data-toggle="dropdown">{_$category}</a>
+
+									<ul class="dropdown-menu">
+										{foreach $items as $link=>$item}
+											{if $presenter->isAuthorized(':' . $link)}
+											{var $ok = true}
+											<li>
+												<a class="ajax" href="{plink :$link}">{_$item['name']}{if isset($item["description"]) && $item["description"]}<span>{_$item["description"]}</span>{/if}</a>
+											</li>
+											{/if}
+										{/foreach}
+									</ul>
+								</li>
+								{/capture}
+								{if $ok}{!$nav}{/if}
+							{/foreach}
+						{/if}
+						</ul>
+
+						{if $presenter instanceof CmsModule\Administration\Presenters\PanelPresenter}
+						<ul class="nav navbar-nav">
+							<li>
+								<a id="venne-panel-button-edit" href="javascript:;"><span class="glyphicon glyphicon-edit glyphicon-white"></span> {_'Edit layout'}</a>
+							</li>
+							<li>
+								<a id="venne-panel-button-save" href="javascript:;"><span class="glyphicon glyphicon-ok glyphicon-white"></span> {_'Save layout'}</a>
+							</li>
+						</ul>
+						{/if}
+						{/if}
+
+						<ul class="nav navbar-nav navbar-right">
+
+							{if !isset($hideMenuItems)}
+								{if !$presenter instanceof CmsModule\Administration\Presenters\PanelPresenter}
+									<li n:if="$presenter->user->isLoggedIn()"><a href="{$basePath}/?do=openPanel"><span class="glyphicon glyphicon-refresh glyphicon-white"></span> {_'In-Site administration'}</a></li>
+									<li><a href="{$basePath}/"><span class="glyphicon glyphicon-refresh glyphicon-white"></span> {_'Frontend'}</a></li>
+								{else}
+									<li><a href="{$presenter->link(':Cms:Admin:' . $presenter->administrationManager->defaultPresenter . ':', array('mode'=>NULL))}"><span class="glyphicon glyphicon-refresh glyphicon-white"></span> {_'Full administration'}</a></li>
+								{/if}
+							{/if}
+
+							{if !$presenter instanceof CmsModule\Administration\Presenters\PanelPresenter}
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-flag glyphicon-white"></span> {_$presenter->lang} <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a n:if="$presenter->lang != 'en'" n:href="this lang => 'en'" class="lang">en</a></li>
+										<li><a n:if="$presenter->lang != 'cs'" n:href="this lang => 'cs'" class="lang">cs</a></li>
+									</ul>
+								</li>
+							{/if}
+
+							<li n:if="$presenter->user->isLoggedIn()" class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user glyphicon-white"></span> {if $presenter->user->identity instanceof \CmsModule\Pages\Users\UserEntity}{$presenter->user->identity}{else}{$presenter->user->identity->id}{/if} <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li class="dropdown-header">{_'Actions'}</li>
+									<li n:if="!isset($hideMenuItems) && $presenter->isAuthorized(':Cms:Admin:Account:')"><a class="{if !$presenter instanceof CmsModule\Administration\Presenters\PanelPresenter}ajax{/if}" href="{link :Cms:Admin:Account:}"><i class="glyphicon glyphicon-user glyphicon-white"></i> {_'User card'}</a></li>
+									<li><a href="{link logout! mode=>NULL}"><i class="glyphicon glyphicon-off glyphicon-white"></i> {_'Log out'}</a></li>
+								</ul>
+							</li>
+
+							{if $presenter instanceof CmsModule\Administration\Presenters\PanelPresenter}
+							<li>
+								<a id="venne-panel-button-close" href="javascript:;"><span class="glyphicon glyphicon-remove glyphicon-white"></span> {_'close'}</a>
+							</li>
+							{/if}
+
+						</ul>
+			</div>
+		</div>
+
+		{* Center *}
+		{if !$presenter instanceof CmsModule\Administration\Presenters\PanelPresenter}
+
+			{if $presenter->user->isLoggedIn() && $presenter->context->doctrine->createCheckConnection() && !isset($hideMenuItems)}
+				{if $presenter->isAuthorized(':Cms:Admin:Content:')
+				|| $presenter->isAuthorized(':Cms:Admin:Layouts:')
+				|| $presenter->isAuthorized(':Cms:Admin:Files:')
+				|| $presenter->isAuthorized(':Cms:Admin:Templates:')}
+				{var $_panel = true}
+				<div id="panel" class="row">
+					<div class="col-md-12">
+						{control panel}
+					</div>
+				</div>
+				{/if}
+			{/if}
+
+		<div class="container content" id="content"{if isset($_panel)} style="margin-left: 310px;"{/if}>
+
+					<div class="row">
+						<div class="col-md-12">
+
+							<div class="container content-inner">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="page-header pull-right" n:snippet="header">
+											{block #breadcrumb-container}
+											<ul class="breadcrumb pull-right" style="padding: 8px 15px 12px 15px; background-color: #ffffff;">
+												{block #breadcrumb}
+												<li><span class="divider">{_Path}:</span> <a class="ajax" href="{$presenter->link(':Cms:Admin:' . $presenter->administrationManager->defaultPresenter . ':')}"><span class="glyphicon glyphicon-globe"></span> {_Dashboard}</a></li>
+												{/block}
+											</ul>
+											{/block}
+											<h1 class="pull-left" style="margin: 0px 0 0 0px;">{block #header}{/block}</h1>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							{* content *}
+							<div class="well" n:snippet="content">
+
+								{control flashMessage TRUE}
+
+								{block #toolbar}
+								<ul id="toolbar" class="nav nav-tabs">
+									{block #toolbar-items}{/block}
+								</ul>
+								{/block}
+								{include #content}
+							</div>
+
+							{* footer *}
+							<footer>
+								<p>
+									<span>Copyright © 2011 - 2013 Josef Kříž</span> | <span>version {$presenter->context->parameters['modules']['cms']['version']}</span>{if !$presenter instanceof \Venne\Application\UI\InstallationPresenter} | <span><a class="ajax" href="{link :Cms:Admin:About:}">{_'about'} Venne:CMS</a></span>{/if}
+								</p>
+							</footer>
+
+						</div>
+					</div>
+		</div>
+		{else}
+			{include #content}
+		{/if}
+
+	{/body}
+</html>

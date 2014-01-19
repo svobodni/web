@@ -1,0 +1,123 @@
+{
+    "toolbar": [
+        {
+            "items": [
+                "Source",
+                "-",
+                "NewPage",
+                "Preview",
+                "Print",
+                "Templates"
+            ]
+        },
+        {
+            "items": [
+                "Cut",
+                "Copy",
+                "Paste",
+                "PasteText",
+                "PasteFromWord",
+                "-",
+                "Undo",
+                "Redo"
+            ]
+        },
+        {
+            "items": [
+                "Find",
+                "Replace",
+                "-",
+                "SelectAll",
+                "Scayt"
+            ]
+        },
+        {
+            "items": [
+                "Form",
+                "Checkbox",
+                "Radio",
+                "TextField",
+                "Textarea",
+                "Select",
+                "Button",
+                "ImageButton",
+                "HiddenField"
+            ]
+        },
+        "/",
+        {
+            "items": [
+                "Bold",
+                "Italic",
+                "Underline",
+                "Strike",
+                "Subscript",
+                "Superscript",
+                "-",
+                "RemoveFormat"
+            ]
+        },
+        {
+            "items": [
+                "NumberedList",
+                "BulletedList",
+                "-",
+                "Outdent",
+                "Indent",
+                "Blockquote",
+                "CreateDiv",
+                "JustifyLeft",
+                "JustifyCenter",
+                "JustifyRight",
+                "JustifyBlock",
+                "BidiLtr",
+                "BidiRtl"
+            ]
+        },
+        {
+            "items": [
+                "Link",
+                "Unlink",
+                "Anchor"
+            ]
+        },
+        {
+            "items": [
+                "Image",
+                "Flash",
+                "Table",
+                "HorizontalRule",
+                "Smiley",
+                "SpecialChar",
+                "PageBreak",
+                "Iframe"
+            ]
+        },
+        "/",
+        {
+            "items": [
+                "Styles",
+                "Format",
+                "Font",
+                "FontSize"
+            ]
+        },
+        {
+            "items": [
+                "TextColor",
+                "BGColor"
+            ]
+        },
+        {
+            "items": [
+                "Maximize",
+                "ShowBlocks"
+            ]
+        },
+        {
+            "items": [
+                "About"
+            ]
+        }
+    ]
+}

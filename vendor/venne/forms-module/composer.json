@@ -1,0 +1,36 @@
+{
+	"name": "venne/forms-module",
+	"description": "Forms module with new inputs",
+	"keywords": ["cms", "nette", "venne", "module"],
+	"version": "2.1.0",
+	"homepage": "http://venne.cz",
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "Josef Kříž",
+			"homepage": "http://josef-kriz.cz"
+		}
+	],
+	"require": {
+		"php": ">=5.3.2",
+		"venne/assets-module": "2.1.*@dev",
+		"kdyby/forms-replicator": "v1.0.3"
+	},
+	"autoload": {
+		"psr-0": {
+			"FormsModule": ""
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.1-dev"
+		},
+		"venne": {
+			"configuration": {
+				"extensions": {
+					"forms": "FormsModule\\DI\\FormsExtension"
+				}
+			}
+		}
+	}
+}

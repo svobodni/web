@@ -1,0 +1,39 @@
+{
+	"name": "venne/googleanalytics-module",
+	"description": "google analytics module",
+	"keywords": ["cms", "nette", "venne", "module"],
+	"version": "2.1.0",
+	"authors": [
+		{
+			"name": "Josef Kříž",
+			"homepage": "http://josef-kriz.cz"
+		}
+	],
+	"require": {
+		"php": ">=5.3.2",
+		"venne/cms-module": "2.1.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"GoogleanalyticsModule": ""
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.1-dev"
+		},
+		"venne": {
+			"configuration": {
+				"googleanalytics": {
+					"account": {
+						"activated": false,
+						"accountId": ""
+					}
+				},
+				"extensions": {
+					"googleanalytics": "GoogleanalyticsModule\\DI\\GoogleanalyticsExtension"
+				}
+			}
+		}
+	}
+}

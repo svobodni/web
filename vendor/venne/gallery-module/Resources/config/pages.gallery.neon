@@ -1,0 +1,66 @@
+services:
+
+	gallery.pages.gallery.ArticleContent:
+		class: CmsModule\Content\ContentType('GalleryModule\Pages\Gallery\PageEntity')
+		setup:
+			- addSection('Content', @gallery.pages.gallery.tableControlFactory)
+			- addSection('Settings', @blog.pageFormFactory)
+		tags: [contentType: [name: 'photo gallery']]
+
+	gallery.pages.gallery.routeRepository:
+		class: GalleryModule\Pages\Gallery\RouteRepository
+		factory: @entityManager::getRepository('GalleryModule\Pages\Gallery\RouteEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	gallery.pages.gallery.categoryRepository:
+		class: GalleryModule\Pages\Gallery\CategoryRepository
+		factory: @entityManager::getRepository('GalleryModule\Pages\Gallery\CategoryEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	gallery.pages.gallery.itemRepository:
+		class: GalleryModule\Pages\Gallery\ItemRepository
+		factory: @entityManager::getRepository('GalleryModule\Pages\Gallery\ItemEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+
+	gallery.pages.gallery.galleryFormFactory:
+		class: GalleryModule\Pages\Gallery\GalleryFormFactory
+		setup:
+			- injectFactory(@cms.admin.ajaxFormFactory)
+
+	gallery.pages.gallery.uploadFormFactory:
+		class: GalleryModule\Pages\Gallery\UploadFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	gallery.pages.gallery.sortFormFactory:
+		class: GalleryModule\Pages\Gallery\SortFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	gallery.pages.gallery.photoFormFactory:
+		class: GalleryModule\Pages\Gallery\PhotoFormFactory
+		setup:
+			- injectFactory(@cms.admin.ajaxFormFactory)
+
+	gallery.pages.ajaxFileUploaderFactory:
+		class: GalleryModule\Pages\Gallery\AjaxFileUploaderControlFactory(%publicDir%/ajaxFileUpload, %publicDir%)
+
+
+
+factories:
+	gallery.pages.gallery.tableControl:
+		class: GalleryModule\Pages\Gallery\TableControl
+		tags: [component]
+
+	gallery.pages.gallery.routePresenter:
+		class: GalleryModule\Pages\Gallery\RoutePresenter
+		tags: [presenter]
+
+	gallery.pages.gallery.categoryPresenter:
+		class: GalleryModule\Pages\Gallery\CategoryPresenter
+		tags: [presenter]
+
+	gallery.pages.gallery.itemPresenter:
+		class: GalleryModule\Pages\Gallery\ItemPresenter
+		tags: [presenter]

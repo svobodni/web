@@ -1,0 +1,40 @@
+{
+	"name": "venne/opauth-module",
+	"description": "Opauth module",
+	"keywords": ["cms", "nette", "venne", "module"],
+	"version": "2.1.0",
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "Josef Kříž",
+			"homepage": "http://josef-kriz.cz"
+		}
+	],
+	"require": {
+		"php": ">=5.3.2",
+		"venne/cms-module": "2.1.*",
+		"opauth/opauth": "0.4.4",
+		"opauth/facebook": "0.2.1",
+		"opauth/google": "0.2.2",
+		"opauth/twitter": "0.3.1",
+		"opauth/github": "0.1.0",
+		"opauth/openid": "0.1.0"
+	},
+	"autoload": {
+		"psr-0": {
+			"OpauthModule": ""
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.1-dev"
+		},
+		"venne": {
+			"configuration": {
+				"extensions": {
+					"opauth": "OpauthModule\\DI\\OpauthExtension"
+				}
+			}
+		}
+	}
+}

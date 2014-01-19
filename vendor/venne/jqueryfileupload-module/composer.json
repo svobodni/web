@@ -1,0 +1,25 @@
+{
+	"name": "venne/jqueryfileupload-module",
+	"description": "jQuery file upload module",
+	"keywords": ["cms", "nette", "venne", "module"],
+	"version": "8.8.5",
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "Josef Kříž",
+			"homepage": "http://josef-kriz.cz"
+		}
+	],
+	"require": {
+		"php": ">=5.3.2",
+		"venne/framework": "2.0.*"
+	},
+	"autoload": {
+		"classmap": ["src/UploadHandler.php"]
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "8.8-dev"
+		}
+	}
+}

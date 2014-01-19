@@ -1,0 +1,9 @@
+factories:
+
+    blog.pages.blog.articlePresenter:
+        class: BlogModule\Pages\Blog\ArticlePresenter
+        tags: [presenter]
+
+    blog.pages.blog.routePresenter:
+        class: BlogModule\Pages\Blog\RoutePresenter
+        tags: [presenter]

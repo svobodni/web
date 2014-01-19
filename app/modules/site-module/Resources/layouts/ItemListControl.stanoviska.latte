@@ -1,0 +1,24 @@
+{var $thumbnail = '160x'}
+
+{foreach $routes as $route}
+	{if $route instanceof CmsModule\Content\Entities\ExtendedRouteEntity}{var $route = $route->route}{/if}
+
+	{cache [$route->id, $presenter->lang], tags => [\CmsModule\Content\Entities\PageEntity::CACHE, \CmsModule\Content\Entities\RouteEntity::CACHE, \CmsModule\Pages\Tags\TagEntity::CACHE, \CmsModule\Content\Entities\LanguageEntity::CACHE]}
+		<div class="media media-udalosti media-stanoviska">
+
+			<div class="pull-left">
+				<p class="media-object" n:if="isset($route->notation)">
+					{$route->released|date:'d.m.'}
+				</p>
+			</div>
+
+			<div class="media-body">
+				<h4 class="media-heading">
+					<a href="{plink Route route=>$route}">{$route->name ?: $route}</a>
+				</h4>
+			</div>
+
+		</div>
+	{/cache}
+
+{/foreach}

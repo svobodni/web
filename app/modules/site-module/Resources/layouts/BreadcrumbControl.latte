@@ -1,0 +1,24 @@
+{cache $cacheKey, tags => [\CmsModule\Content\Entities\PageEntity::CACHE, \CmsModule\Content\Entities\RouteEntity::CACHE, \CmsModule\Content\Entities\LanguageEntity::CACHE]}
+
+{var $item = $presenter->route}
+{var $currentUrl = $presenter->route->url}
+
+{define #item}
+
+	{if $item->parent}
+		{include #item item=>$item->parent, active=>false}
+	{/if}
+
+	{var $entity = $item->page}
+	{var $url = $item->url}
+
+	{var $link = $presenter->link('this', array('route' => $item))}
+
+	<li>{if! $active}<a href="{$link}">{/if}{$item->title|truncate:30}{if! $active}</a>{/if}</li>
+
+{/define}
+
+<ul class="breadcrumb">
+	{include #item item=>$item, active=>true}
+</ul>
+{/cache}

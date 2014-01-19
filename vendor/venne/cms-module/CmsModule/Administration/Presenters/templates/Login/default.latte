@@ -1,0 +1,39 @@
+{block header}
+	{_'Sign in'}
+{/block}
+
+{block toolbar}
+{/block}
+
+{block breadcrumb-container}
+{/block}
+
+{block #content}
+
+{if $presenter['signInForm']->isConnected() && count($presenter->registrations)}
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+	<li n:class="!isset($regLoad) ? active"><a href="#login" data-toggle="tab">Home</a></li>
+
+	{foreach $presenter->registrations as $name => $values}
+	<li class="pull-right{if isset($regLoad) && $regLoad == str_replace(' ', '_', $name)} active{/if}"><a href="#{str_replace(' ', '_', $name)}" data-toggle="tab">{_Registration}: {_$name}</a></li>
+	{/foreach}
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+
+	<div class="tab-pane{if !isset($regLoad)} active{/if}" id="login">
+		{control signInForm}
+	</div>
+
+	{foreach $presenter->registrations as $name => $values}
+		{var $name = str_replace(' ', '_', $name)}
+	<div class="tab-pane{if isset($regLoad) && $regLoad == str_replace(' ', '_', $name)} active{/if}" id="{$name}">
+		{control registration-$name}
+	</div>
+	{/foreach}
+</div>
+{else}
+	{control signInForm}
+{/if}

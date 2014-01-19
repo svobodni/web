@@ -1,0 +1,146 @@
+{extends ../@layout.latte}
+
+{block #layout}
+<div class="col-md-8">
+
+	{control flashMessage TRUE}
+	{block #contentTop}{/block}
+	{block #content}{include #page-content}{/block}
+	{block #contentBottom}{/block}
+
+	<hr />
+
+	<iframe id="f1f4eef16" name="f19c87c668" scrolling="no" title="Like this content on Facebook." class="fb_ltr" src="http://www.facebook.com/plugins/like.php?api_key=&amp;channel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D28%23cb%3Df36729472c%26domain%3Dvolby.svobodni.cz%26origin%3Dhttp%253A%252F%252Fvolby.svobodni.cz%252Ff131a1dcbc%26relation%3Dparent.parent&amp;colorscheme=light&amp;extended_social_context=false&amp;href={=urlencode($presenter->link('//Route', array('route' => $presenter->route)))}&amp;layout=standard&amp;locale=cs_CZ&amp;node_type=link&amp;sdk=joey&amp;send=true&amp;show_faces=true&amp;width=598" style="border: none; overflow: hidden; height: 25px; width: 598px;"></iframe>
+
+	<div class="row row-clen">
+		<div class="col-lg-4">
+			<a class="btn btn-block btn-default btn-clen" href="https://www.svobodni.cz/clenstvi/priznivec/">Stát se příznivcem</a>
+		</div>
+		<div class="col-lg-4">
+			<a class="btn btn-block btn-default btn-clen" href="https://www.svobodni.cz/clenstvi/clen/">Stát se členem</a>
+		</div>
+		<div class="col-lg-4">
+			<a class="btn btn-block btn-default btn-clen" href="http://www.svobodni.cz/chci-pomoci-strane/">Přispět finančně</a>
+		</div>
+	</div>
+
+	<hr />
+
+	<small class="muted">
+		{control itemInfo $presenter->route}
+	</small>
+</div>
+
+<script type="application/javascript">
+	$(function() {
+		$('body').scrollspy({ target: '.bs-sidebar' });
+	});
+</script>
+
+<div class="col-md-4 col-dark col-head">
+	<div class="bs-sidebar hidden-print affix" role="complementary" data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+		<ul class="nav bs-sidenav">
+			<li><a href="#I">Pojetí státu</a>
+
+				<ul class="nav">
+					<li><a href="#I_1">Pro Svobodné má stát smysl</a></li>
+					<li><a href="#I_2">Moc musí být omezena</a></li>
+					<li><a href="#I_3">Svrchovanost</a></li>
+				</ul>
+			</li>
+			<li><a href="#II_1">Zahraniční politika</a>
+				<ul class="nav">
+					<li><a href="#II_1">Obecná východiska</a></li>
+					<li><a href="#II_2">Princip nevměšování</a></li>
+					<li><a href="#II_3">Cíle zahraniční politiky a národní zájmy</a></li>
+					<li><a href="#II_4">NATO jako filosofické východisko</a></li>
+					<li><a href="#II_5">Bilaterální diplomacie</a></li>
+					<li><a href="#II_6">Multilaterální vztahy</a></li>
+					<li><a href="#II_7">Evropa</a></li>
+					<li><a href="#II_8">Vztahy se sousedními státy</a></li>
+				</ul>
+			</li>
+			<li><a href="#III">Vnější bezpečnost</a>
+				<ul class="nav">
+					<li><a href="#III_1">Rizika</a></li>
+					<li><a href="#III_2">Zásady budování a použití ozbrojených sil</a></li>
+					<li><a href="#III_3">Obecné zásady</a></li>
+				</ul>
+			</li>
+			<li><a href="#IV">Reforma právní filosofie</a>
+				<ul class="nav">
+					<li><a href="#IV_1">Právní filosofie</a></li>
+					<li><a href="#IV_2">Spravedlivý stát</a></li>
+					<li><a href="#IV_3">Lidská práva</a></li>
+					<li><a href="#IV_4">Soukromí a vlastnické právo</a></li>
+					<li><a href="#IV_5">Rovnost před zákonem</a></li>
+					<li><a href="#IV_6">Přímá demokracie</a></li>
+				</ul>
+			</li>
+			<li><a href="#V">Hospodářská politika</a>
+				<ul class="nav">
+					<li><a href="#V_1">Svobodné podnikání</a></li>
+					<li><a href="#V_2">Energetika</a></li>
+					<li><a href="#V_3">Export a investice</a></li>
+					<li><a href="#V_4">Doprava</a></li>
+				</ul>
+			</li>
+			<li><a href="#VI">Daňová a rozpočtová politika</a>
+				<ul class="nav">
+					<li><a href="#VI_1">Ústavní změny k zastavení zadlužování</a></li>
+					<li><a href="#VI_2">Zrušení daně z příjmu fyzických osob</a></li>
+					<li><a href="#VI_3">Další daně</a></li>
+				</ul>
+			</li>
+			<li><a href="#VII">Měnová politika</a>
+				<ul class="nav">
+					<li><a href="#VII_1">Měnová konkurence</a></li>
+					<li><a href="#VII_2">Referendum o zrušení koruny</a></li>
+					<li><a href="#VII_3">Měnová politika</a></li>
+					<li><a href="#VII_4">Zisk České národní banky</a></li>
+				</ul>
+			</li>
+			<li><a href="#VIII">Silniční doprava</a></li>
+			<li><a href="#IX">Ochrana životního prostředí</a>
+				<ul class="nav">
+					<li><a href="#IX_1">Skutečná ochrana prostředí</a></li>
+					<li><a href="#IX_2">Ochrana přírody versus ideologie</a></li>
+				</ul>
+			</li>
+			<li><a href="#X">Zdravotnictví</a>
+				<ul class="nav">
+					<li><a href="#X_1">Základní povinné pojištění</a></li>
+					<li><a href="#X_2">Individuální pojištění</a></li>
+					<li><a href="#X_3">Další podmínky</a></li>
+					<li><a href="#X_4">Tvorba cen</a></li>
+					<li><a href="#X_5">Placení pojistného</a></li>
+				</ul>
+			</li>
+			<li><a href="#XI">Sociální politika</a>
+				<ul class="nav">
+					<li><a href="#XI_1">Sociální dávky</a></li>
+					<li><a href="#XI_2">Nemocenské pojištění</a></li>
+					<li><a href="#XI_3">Invalidní důchody</a></li>
+					<li><a href="#XI_4">Starobní důchody</a></li>
+					<li><a href="#XI_5">Politika zaměstnanosti</a></li>
+				</ul>
+			</li>
+			<li><a href="#XII">Školství a věda</a></li>
+			<li><a href="#XIII">Zemědělství</a></li>
+			<li><a href="#XIV">Veřejná správa a samospráva</a>
+				<ul class="nav">
+					<li><a href="#XIV_1">Úsporná veřejná správa a samospráva</a></li>
+					<li><a href="#XIV_2">Hospodaření obcí a krajů</a></li>
+				</ul>
+			</li>
+			<li><a href="#XV">Příloha 1: Programový dokument „Svobodný trh informací“</a>
+				<ul class="nav">
+					<li><a href="#XV_1">Autorské právo</a></li>
+					<li><a href="#XV_2">Veřejnoprávní média a koncesionářské poplatky</a></li>
+					<li><a href="#XV_3">Ochrana soukromí</a></li>
+				</ul>
+			</li>
+			<li><a href="#XVI">Příloha 2 - Evropská dohoda[81]</a></li>
+		</ul>
+	</div>
+</div>

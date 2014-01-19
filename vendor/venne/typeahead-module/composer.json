@@ -1,0 +1,23 @@
+{
+	"name": "venne/typeahead-module",
+	"description": "Typeahead jquery module",
+	"keywords": ["cms", "nette", "venne", "module"],
+	"version": "0.9.3",
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "Josef Kříž",
+			"homepage": "http://josef-kriz.cz"
+		}
+	],
+	"require": {
+		"php": ">=5.3.2",
+		"venne/framework": "2.0.*",
+		"venne/hogan-module": "2.0.*"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "0.9-dev"
+		}
+	}
+}

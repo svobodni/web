@@ -1,0 +1,18 @@
+{block header}
+	{_'Importer'}
+{/block}
+
+{block toolbar-items}
+	<li n:foreach="$presenter->importerManager->importers as $type=>$item" class="{if $type == $presenter->type} active{/if}"><a class="ajax" href="{link this type=>$type}">{_$type}</a></li>
+{/block}
+
+{block breadcrumb}
+	{include #parent}
+	<li class="active">{include #header}</li>
+{/block}
+
+{block content}
+
+{if $presenter->type}
+{control form}
+{/if}

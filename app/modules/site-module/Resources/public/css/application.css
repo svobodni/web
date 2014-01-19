@@ -1,0 +1,506 @@
+@font-face {
+	font-family: 'robotolight';
+	src: url('../fonts/roboto-light-webfont.eot');
+	src: url('../fonts/roboto-light-webfont.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/roboto-light-webfont.woff') format('woff'),
+	url('../fonts/roboto-light-webfont.ttf') format('truetype'),
+	url('../fonts/roboto-light-webfont.svg#robotolight') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+@font-face {
+	font-family: 'robotoregular';
+	src: url('../fonts/roboto-regular-webfont.eot');
+	src: url('../fonts/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/roboto-regular-webfont.woff') format('woff'),
+	url('../fonts/roboto-regular-webfont.ttf') format('truetype'),
+	url('../fonts/roboto-regular-webfont.svg#robotoregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+
+
+
+@font-face {
+	font-family: 'robotobold';
+	src: url('../fonts/roboto-bold-webfont.eot');
+	src: url('../fonts/roboto-bold-webfont.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/roboto-bold-webfont.woff') format('woff'),
+	url('../fonts/roboto-bold-webfont.ttf') format('truetype'),
+	url('../fonts/roboto-bold-webfont.svg#robotobold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+
+
+
+@font-face {
+	font-family: 'robotolight_italic';
+	src: url('../fonts/roboto-lightitalic-webfont.eot');
+	src: url('../fonts/roboto-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/roboto-lightitalic-webfont.woff') format('woff'),
+	url('../fonts/roboto-lightitalic-webfont.ttf') format('truetype'),
+	url('../fonts/roboto-lightitalic-webfont.svg#robotolight_italic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+
+
+
+@font-face {
+	font-family: 'robotobold_italic';
+	src: url('../fonts/roboto-bolditalic-webfont.eot');
+	src: url('../fonts/roboto-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/roboto-bolditalic-webfont.woff') format('woff'),
+	url('../fonts/roboto-bolditalic-webfont.ttf') format('truetype'),
+	url('../fonts/roboto-bolditalic-webfont.svg#robotobold_italic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+
+
+
+@font-face {
+	font-family: 'robotoitalic';
+	src: url('../fonts/roboto-italic-webfont.eot');
+	src: url('../fonts/roboto-italic-webfont.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/roboto-italic-webfont.woff') format('woff'),
+	url('../fonts/roboto-italic-webfont.ttf') format('truetype'),
+	url('../fonts/roboto-italic-webfont.svg#robotoitalic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+html, body {
+	font-family: robotoregular, "trebuchet ms", arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+body {
+	background: url('../img/telo-bg.PNG') left top repeat-x;
+}
+
+.header-container .header-logo a {
+	display: block;
+	float: left;
+	width: 385px;
+	height: 150px;
+	background: url('../img/svobodni-logo.PNG') left top no-repeat;
+	position: relative;
+	z-index: 10000;
+
+	-webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.3);
+	-moz-box-shadow:    0px 0px 10px rgba(50, 50, 50, 0.3);
+	box-shadow:         0px 0px 10px rgba(50, 50, 50, 0.3);
+}
+
+.header-container .header-logo a:hover{
+	background: url('../img/svobodni-logo.PNG') left bottom no-repeat;
+}
+
+.header-container ul {
+	list-style: none;
+	float: left;
+	margin: 20px 0 0 20px;
+}
+.header-container ul li {
+	list-style: none;
+	float: left;
+	margin: 0 2px;
+}
+.header-container .btn {
+	height: 38px;
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 9px 16px;
+}
+.header-container .btn-default {
+	color: #ffffff;
+}
+.header-container .btn-social {
+	width: 38px;
+	height: 38px;
+}
+.header-container .btn-link {
+	color: #005f49;
+}
+.header-container .btn-link:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+
+.btn-f {
+	margin-left: 50px;
+	background: url('../img/ikona-f.PNG');
+}
+.btn-f:hover {
+	background-position: 0 38px;
+}
+.btn-g {
+	background: url('../img/ikona-g.PNG');
+}
+.btn-g:hover {
+	background-position: 0 38px;
+}
+.btn-t {
+	background: url('../img/ikona-t.PNG');
+}
+.btn-t:hover {
+	background-position: 0 38px;
+}
+.btn-y {
+	margin-right: 50px;
+	background: url('../img/ikona-y.PNG');
+}
+.btn-y:hover {
+	background-position: 0 38px;
+}
+
+.btn-clen {
+	text-align: left;
+	background: #F1F1F2 url('../img/megatlacitka-a-bg.PNG') right top no-repeat;
+	padding: 20px 35px 20px 33px;
+	font-size: 20px;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 1.2;
+	white-space: normal;
+	border: 1px solid #EAEAEB;
+}
+.btn-clen:hover {
+	background: #F1F1F2 url('../img/megatlacitka-a-bg.PNG') right top no-repeat;
+	color: #000000;
+}
+.btn-block.btn-clen + .btn-block.btn-clen {
+	margin-top: 1px;
+}
+.row-clen .btn-clen {
+	font-size: 14px;
+	padding: 15px 25px 15px 23px;
+}
+
+.navigation-container {
+	background-color: #005f49;
+	border: 0;
+	height: 70px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	position: absolute;
+	width: 100%;
+	top: 80px;
+}
+.navigation-container .navbar-brand {
+	width: 410px;
+	visibility: hidden;
+}
+.navigation-container .navbar-nav {
+	float: left;
+}
+.navigation-container .navbar-nav > li > a {
+	color: #cccccc;
+	font-size: 17px;
+	text-transform: uppercase;
+	/*border-left: 1px solid #007460;*/
+	/*border-right: 1px solid #005440;*/
+
+	text-shadow: 0px -1px 0px #003420;
+	font-weight: bold;
+}
+.navigation-container.navbar-default .navbar-nav > .open > a,
+.navigation-container.navbar-default .navbar-nav > .open > a:focus {
+	color: #ffffff;
+}
+.navigation-container .navbar-nav > li > a:hover {
+	color: #ffffff;
+}
+.navigation-container .navbar-nav > .active > a {
+	background-color: transparent;
+	color: #ffffff;
+}
+.navigation-container .navbar-nav > .active:hover > a {
+	background-color: transparent;
+	text-shadow: none;
+	color: #ffffff;
+}
+.navigation-container .navbar-nav > .open > a,
+.navigation-container .navbar-nav > .open > a:hover,
+.navigation-container .navbar-nav > .open > a:focus {
+	background-color: #005f49;
+}
+.navigation-container .navbar-collapse {
+	border: 0;
+}
+.navigation-container .dropdown-menu > .active > a {
+	background-color: #005f49;
+}
+
+
+@media (max-width: 1199px) {
+	.header-container ul {
+		margin: 20px 0 0 0px;
+	}
+	.btn-f {
+		margin-left: 0px;
+	}
+	.btn-y {
+		margin-right: 0px;
+	}
+	.navigation-container .navbar-nav > li > a {
+		text-transform: none;
+	}
+
+}
+
+@media (max-width: 991px) {
+	.btn-clen {
+		font-size: 16px;
+		width: 33.333333%;
+		float: left;
+	}
+}
+
+
+.col-head {
+	margin-top: 1px;
+	border-top: 5px solid #005f49;
+	padding-bottom: 10px;
+}
+.col-dark {
+	background-color: #f1f1f2;
+	padding-bottom: 10px;
+}
+.col-wb {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.col-dark .media {
+	background-color: #ffffff;
+	padding: 10px;
+}
+
+.row-title {
+	background-color: #ffffff;
+	margin-top: -1px;
+	min-height: 10px;
+}
+
+
+#kraje-mapa {padding: 0; margin: 0;}
+#kraje-mapa-in .img {border: 0px none; padding: 0px; margin: 0px; }
+#kraje-mapa-in {background: #B1B1B1 url('../img/mapa-cr-hover.gif') top left no-repeat; width: 200px; font-size: 1px; }
+
+
+.media-udalosti .media-object {
+	text-align: right;
+	border-right: 1px solid #aaaaaa;
+	padding: 10px 10px 10px 0;
+	font-size: 11px;
+}
+.media-stanoviska {
+	margin-top: 0;
+}
+.media-stanoviska h4 {
+	font-size: 13px;
+}
+
+
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px; height: 0; overflow: hidden;
+}
+.video-container iframe,
+.video-container object,
+.video-container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.podporovatele-box {
+	margin: 0 0 6px 0;
+}
+.podporovatele-box a {
+	display: block;
+	padding: 18px 3px 19px 27px;
+	margin: 60px 0 0 0;
+	text-transform: none;
+	text-decoration: none;
+	color: white !important;
+	background: #005F49 url('../img/podporovatele-box-bg.PNG') 335px 0 no-repeat;
+	border-bottom: 1px solid white;
+	font-size: 18px;
+	position: relative;
+	line-height: 1;
+}
+.podporovatele-box em {
+	font-family: robotobold;
+	font-style: normal;
+	text-transform: uppercase;
+	margin: 0 12px 8px 0;
+	font-size: 32px;
+	padding: 0;
+}
+.podporovatele-box span {
+	position: absolute;
+	top: 16px;
+	right: 65px;
+	font-size: 15px;
+}
+
+
+/*
+Make the Facebook Like box responsive (fluid width)
+https://developers.facebook.com/docs/reference/plugins/like-box/
+*/
+
+/* This element holds injected scripts inside iframes that in some cases may stretch layouts. So, we're just hiding it. */
+#fb-root {
+	display: none;
+}
+
+/* To fill the container and nothing else */
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+	width: 100% !important;
+}
+
+
+
+.accordion {
+	bottom:0;
+	height:200px;
+	left:0;
+	position:absolute;
+	width: 98% !important;
+	margin-right: 20px;
+	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.accordion li {
+	border: 5px solid #ffffff;
+	border-right: 0;
+}
+.accordion .slider-closed {width:100px;}
+.accordion div {
+	position: absolute;
+	bottom: 0;
+	background-color:rgba(0,0,0,0.5);
+	width: 100%;
+}
+.accordion h4 a {
+	color: #ffffff;
+}
+.accordion h4 {
+	color:#fff;
+	display:block;
+	margin: 5px;
+	padding: 10px;
+	text-shadow:none;
+	font-size: 13px;
+}
+.accordion .slider-open strong {color:#fff;font-size:22px;}
+.accordion .slider-closed strong {font-size:18px;margin-bottom:5px;}
+.accordion .slider-closed p {display:none;}
+
+.accordion li {
+	-webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow:    0px 0px 15px rgba(0, 0, 0, 0.4);
+	box-shadow:         0px 0px 15px rgba(0, 0, 0, 0.4);
+}
+
+
+.carousel.tv .carousel-indicators {
+	bottom: -30px;
+}
+.carousel.tv .carousel-indicators li {
+	border: 1px solid #000000;
+}
+.carousel.tv .carousel-indicators .active {
+	background-color: #000000;
+}
+
+
+.media-small p {
+	font-size: 13px;
+}
+
+.pagination {
+
+}
+.pagination > li > a {
+	border: 0;
+}
+
+
+/* All levels of nav */
+.bs-sidebar .nav > li > a {
+	display: block;
+	color: #716b7a;
+	padding: 5px 20px;
+}
+.bs-sidebar .nav > li > a:hover,
+.bs-sidebar .nav > li > a:focus {
+	text-decoration: none;
+	background-color: #e5e3e9;
+	border-right: 1px solid #dbd8e0;
+}
+.bs-sidebar .nav > .active > a,
+.bs-sidebar .nav > .active:hover > a,
+.bs-sidebar .nav > .active:focus > a {
+	font-weight: bold;
+	color: #563d7c;
+	background-color: transparent;
+	border-right: 1px solid #563d7c;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-sidebar .nav .nav {
+	display: none; /* Hide by default, but at >768px, show it */
+	margin-bottom: 8px;
+}
+.bs-sidebar .nav .nav > li > a {
+	padding-top:    3px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	font-size: 90%;
+}
+
+
+.control-search {
+	margin: 10px 0 0 0;
+}
+.twitter-typeahead {
+	width: 100%;
+}
+.twitter-typeahead .tt-hint {
+	visibility: hidden;
+}
+.twitter-typeahead .tt-suggestion.tt-is-under-cursor {
+	background-color: #005f49;
+	background-image: none;
+}
+.twitter-typeahead .tt-suggestion img {
+	float: right;
+}
+.twitter-typeahead .tt-dropdown-menu {
+	width: 100%;
+}

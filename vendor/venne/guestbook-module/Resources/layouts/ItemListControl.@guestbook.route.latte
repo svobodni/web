@@ -1,0 +1,61 @@
+{var $thumbnail = '60x'}
+
+{block #list-items}
+{foreach $routes as $route}
+	{cache [$route->id, $presenter->lang], tags => [\CmsModule\Content\Entities\PageEntity::CACHE, \CmsModule\Content\Entities\RouteEntity::CACHE, \CmsModule\Pages\Tags\TagEntity::CACHE, \CmsModule\Content\Entities\LanguageEntity::CACHE, \CmsModule\Content\Entities\PermissionEntity::CACHE]}
+		<div class="media">
+
+			<a class="pull-left thumbnail" {if $route->route->author}href="{plink Route route=>$route->route->author}"{else}href="#"{/if}>
+				{if $route->route->author && $route->route->author->route->photo}
+					<img class="media-object" n:src="$route->route->author->route->photo->getFileUrl(true), size=>$thumbnail"
+						 alt="{$route->route->author->name}"/>
+				{else}
+					<img src="holder.js/60x60" alt="{$route->name}"/>
+				{/if}
+			</a>
+
+			<div class="media-body">
+
+				<p n:if="isset($route->text)">
+					<strong>
+						{if $route->route->author}
+							<a href="{plink Route route=>$route->route->author}">{$route->route->author}</a>:
+						{else}
+							{$route->author}:
+						{/if}
+					</strong>
+					{!$route->text}
+				</p>
+
+				<p class="muted pull-right">
+					<small>
+						{control itemInfo $route}
+						· <a class="btn btn-mini" href="{plink reply! id=>$route->id}">{_reply}</a>
+						{if $presenter->isAllowed(GuestbookModule\Pages\Guestbook\PageEntity::PRIVILEGE_DELETE) || ( $route->route->author && $presenter->isAllowed(GuestbookModule\Pages\Guestbook\PageEntity::PRIVILEGE_DELETE_OWN) && $route->route->author->id === $presenter->user->identity->id)}
+						· <a class="btn btn-mini btn-danger" href="{plink delete! id=>$route->id}">{_delete}</a>
+						{/if}
+					</small>
+				</p>
+
+			</div>
+
+			{if count($route->children)}
+				<div class="container-fluid">
+					<div class="row-fluid">
+						<div class="span11 offset1">
+							{include #list-items routes=>$route->children}
+						</div>
+					</div>
+				</div>
+			{/if}
+
+			{sep}
+			<hr />
+			{/sep}
+
+		</div>
+
+	{/cache}
+
+{/foreach}
+{/block}

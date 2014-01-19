@@ -1,0 +1,17 @@
+services:
+
+	blog.blogContent:
+		class: CmsModule\Content\ContentType('BlogModule\Pages\Blog\PageEntity')
+		setup:
+			- addSection('Content', @blog.tableControlFactory)
+			- addSection('Settings', @blog.pageFormFactory)
+		tags: [contentType: [name: 'blog']]
+
+	blog.routeRepository:
+		class: BlogModule\Pages\Blog\RouteRepository
+		factory: @entityManager::getRepository('BlogModule\Pages\Blog\ArticleEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+includes:
+	- presenters.neon
+	- components.neon

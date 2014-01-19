@@ -1,0 +1,18 @@
+{
+	"name":"venne/forms-module",
+	"description":"Forms module with new inputs",
+	"keywords":["cms", "nette", "venne", "module"],
+	"authors":[
+		{
+			"name":"Josef Kříž",
+			"homepage":"http://josef-kriz.cz"
+		}
+	],
+	"require":{
+		"kdyby/forms-replicator":"@dev"
+	},
+	"replace":{
+		"nette/nette":"*"
+	},
+	"minimum-stability":"dev"
+}

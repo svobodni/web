@@ -1,0 +1,19 @@
+{
+	"name":"venne/doctrine-module",
+	"description":"Doctrine module with macros and components",
+	"keywords":["cms", "nette", "venne", "module"],
+	"authors":[
+		{
+			"name":"Josef Kříž",
+			"homepage":"http://josef-kriz.cz"
+		}
+	],
+	"require":{
+		"doctrine/orm":"2.3.x",
+		"symfony/yaml":"2.1.x"
+	},
+	"replace":{
+		"symfony/console":"*"
+	}
+}
+

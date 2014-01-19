@@ -1,0 +1,6 @@
+	<li n:if="$presenter->isAuthorized('default')"{if $presenter->isLinkCurrent("default")} class="active"{/if}>
+		<a class="ajax" href="{plink default}">{_'Content'}</a>
+	</li>
+	<li n:if="$presenter->isAuthorized('toolbar')"{if $presenter->isLinkCurrent("toolbar")} class="active"{/if}>
+		<a class="ajax" href="{plink toolbar}">{_'Toolbar'}</a>
+	</li>

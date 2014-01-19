@@ -1,0 +1,34 @@
+{var $thumbnail = '160x'}
+
+{foreach $routes as $route}
+	{if $route instanceof CmsModule\Content\Entities\ExtendedRouteEntity}{var $route = $route->route}{/if}
+
+	{cache [$route->id, $presenter->lang], tags => [\CmsModule\Content\Entities\PageEntity::CACHE, \CmsModule\Content\Entities\RouteEntity::CACHE, \CmsModule\Pages\Tags\TagEntity::CACHE, \CmsModule\Content\Entities\LanguageEntity::CACHE]}
+		<div class="media media-small">
+
+			<h4>
+				<a href="{plink Route route=>$route}">{$route->name ?: $route}</a>
+			</h4>
+
+			<a n:if="$route->photo" class="pull-left" href="{plink Route route=>$route}">
+				<img class="media-object" n:src="$route->photo->getFileUrl(true), size=>$thumbnail" alt="{$route->name}"/>
+			</a>
+
+			<p n:if="isset($route->notation)">
+				{!strip_tags($route->text)|truncate:220}
+			</p>
+
+			{capture $__itemList}{control itemInfo $route, tags => FALSE}{/capture}
+			<small n:if="trim($__itemList)" class="muted">
+				{!$__itemList}
+			</small>
+
+			{capture $__itemList}{control itemInfo $route, dates => FALSE}{/capture}
+			<small n:if="trim($__itemList)" class="muted">
+				{!$__itemList}
+			</small>
+
+		</div>
+	{/cache}
+
+{/foreach}

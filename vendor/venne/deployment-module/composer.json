@@ -1,0 +1,36 @@
+{
+	"name": "venne/deployment-module",
+	"description": "Deployment module",
+	"keywords": ["cms", "nette", "venne", "module"],
+	"version": "2.1.0",
+	"homepage": "http://venne.cz",
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "Josef Kříž",
+			"homepage": "http://josef-kriz.cz"
+		}
+	],
+	"require": {
+		"php": ">=5.3.2",
+		"venne/doctrine-module": "2.1.*@dev",
+		"venne/translator-module": "2.1.*@dev"
+	},
+	"autoload": {
+		"psr-0": {
+			"DeploymentModule": ""
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.1-dev"
+		},
+		"venne": {
+			"configuration": {
+				"extensions": {
+					"deployment": "DeploymentModule\\DI\\DeploymentExtension"
+				}
+			}
+		}
+	}
+}

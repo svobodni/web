@@ -1,0 +1,167 @@
+services:
+
+	user:
+		setup:
+			- '$service->onLoggedOut[] = ?'([@authorizatorFactory, 'clearPermissionSession'])
+			- '$service->onLoggedIn[] = ?'([@authorizatorFactory, 'clearPermissionSession'])
+			- '$service->onLoggedIn[] = ?' ([@cms.userLogListener, onLoggedIn])
+			- '$service->onLoggedOut[] = ?' ([@cms.userLogListener, onLoggedOut])
+
+	translator.translator:
+		setup:
+			- '$service->addDictionary(new TranslatorModule\Dictionary(?))'(%modules.cms.path%/Resources/translations)
+
+	cms.formRenderer:
+		class: CmsModule\Administration\Forms\Bootstrap3Renderer
+
+	cms.contentManager:
+		class: CmsModule\Content\ContentManager
+
+	cms.elementManager:
+		class: CmsModule\Content\ElementManager
+
+	cms.layoutManager:
+		class: CmsModule\Content\LayoutManager(@cms.layoutRepository)
+
+	cms.securityManager:
+		class: CmsModule\Security\SecurityManager
+
+
+	cms.pageRepository:
+		class: CmsModule\Content\Repositories\PageRepository
+		factory: @entityManager::getRepository('CmsModule\Content\Entities\PageEntity')
+
+	cms.layoutRepository:
+		class: CmsModule\Content\Repositories\LayoutRepository
+		factory: @entityManager::getRepository('CmsModule\Content\Entities\LayoutEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	cms.routeRepository:
+		class: CmsModule\Content\Repositories\RouteRepository
+		factory: @entityManager::getRepository('CmsModule\Content\Entities\RouteEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	cms.elementRepository:
+		class: CmsModule\Content\Repositories\ElementRepository
+		factory: @entityManager::getRepository('CmsModule\Content\Elements\ElementEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	cms.languageRepository:
+		class: CmsModule\Content\Repositories\LanguageRepository
+		factory: @entityManager::getRepository('CmsModule\Content\Entities\LanguageEntity')
+		setup:
+			- injectConfigBuilder(@cms.configService)
+
+	cms.loginRepository:
+		class: CmsModule\Security\Repositories\LoginRepository
+		factory: @entityManager::getRepository('CmsModule\Security\Entities\LoginEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	cms.roleRepository:
+		class: CmsModule\Security\Repositories\RoleRepository
+		factory: @entityManager::getRepository('CmsModule\Security\Entities\RoleEntity')
+
+	cms.userRepository:
+		class: CmsModule\Security\Repositories\UserRepository
+		factory: @entityManager::getRepository('CmsModule\Pages\Users\UserEntity')
+
+	cms.permissionRepository:
+		class: CmsModule\Security\Repositories\PermissionRepository
+		factory: @entityManager::getRepository('CmsModule\Security\Entities\PermissionEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	cms.fileRepository:
+		class: CmsModule\Content\Repositories\FileRepository
+		factory: @entityManager::getRepository('CmsModule\Content\Entities\FileEntity')
+		setup:
+			- injectContainer(@container)
+
+	cms.dirRepository:
+		class: CmsModule\Content\Repositories\DirRepository
+		factory: @entityManager::getRepository('CmsModule\Content\Entities\DirEntity')
+		setup:
+			- injectContainer(@container)
+
+	cms.logRepository:
+		class: CmsModule\Content\Repositories\LogRepository
+		factory: @entityManager::getRepository('CmsModule\Content\Entities\LogEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	cms.pageListener:
+		class: CmsModule\Content\Listeners\PageListener
+		tags: [listener]
+
+	cms.extendedPageListener:
+		class: CmsModule\Content\Listeners\ExtendedPageListener
+		tags: [listener]
+
+	cms.extendedRouteListener:
+		class: CmsModule\Content\Listeners\ExtendedRouteListener
+		tags: [listener]
+
+	cms.logListener:
+		class: CmsModule\Content\Listeners\LogListener
+		tags: [listener]
+
+	cms.userLogListener:
+		class: CmsModule\Content\Listeners\UserLogListener
+
+	cms.formLogListener:
+		class: CmsModule\Content\Listeners\FormLogListener(@doctrine.checkConnectionFactory)
+
+	cms.contentHelper:
+		class: CmsModule\Helpers\ContentHelper
+		tags: [helper: content]
+
+factories:
+
+	areaMacro:
+		factory: CmsModule\Content\Macros\ElementMacro::install(%compiler%)
+		parameters: [compiler]
+		tags: [macro]
+
+	confirmMacro:
+		factory: CmsModule\Macros\ConfirmMacro::install(%compiler%)
+		parameters: [compiler]
+		tags: [macro]
+
+	headMacro:
+		factory: CmsModule\Macros\HeadMacro::install(%compiler%)
+		parameters: [compiler]
+		tags: [macro]
+
+	dialogMacro:
+		factory: CmsModule\Macros\DialogMacro::install(%compiler%)
+		parameters: [compiler]
+		tags: [macro]
+
+	mediaMacro:
+		factory: CmsModule\Content\Macros\MediaMacro::install(%compiler%)
+		setup:
+			- setFileRepository(@cms.fileRepository)
+		parameters: [compiler]
+		tags: [macro]
+
+	uiMacro:
+		factory: CmsModule\Content\Macros\UIMacros::install(%compiler%)
+		parameters: [compiler]
+		tags: [macro]
+
+includes:
+	- presenters.neon
+	- components.neon
+	- commands.neon
+	- pages.text.neon
+	- pages.users.neon
+	- pages.userlist.neon
+	- pages.redirect.neon
+	- pages.registration.neon
+	- pages.tags.neon
+	- pages.login.neon
+	- pages.errors.neon
+	- pages.menu.neon
+	- pages.search.neon
+	- pages.sitemap.neon
+	- pages.profile.neon
+	- pages.rss.neon
+	- users.default.neon

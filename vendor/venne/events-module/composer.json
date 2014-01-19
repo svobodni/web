@@ -1,0 +1,36 @@
+{
+	"name": "venne/events-module",
+	"description": "Events module",
+	"keywords": ["cms", "nette", "venne", "module"],
+	"version": "2.1.0",
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "Josef Kříž",
+			"homepage": "http://josef-kriz.cz"
+		}
+	],
+	"require": {
+		"php": ">=5.3.2",
+		"venne/cms-module": "2.1.x-dev",
+		"venne/blog-module": "2.1.x-dev"
+	},
+	"autoload": {
+		"psr-0": {
+			"EventsModule": ""
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.1.x-dev"
+		},
+		"venne": {
+			"installers": ["DoctrineModule\\Module\\Installers\\DoctrineInstaller"],
+			"configuration": {
+				"extensions": {
+					"events": "EventsModule\\DI\\EventsExtension"
+				}
+			}
+		}
+	}
+}

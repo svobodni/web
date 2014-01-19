@@ -1,0 +1,107 @@
+{snippet data}
+
+{define #page}
+	<div id="chart_div{!$control->name}" style="width: {!$control->size[0]}{if substr($control->size[0], -1)!='%'}px{/if}; height: {!$control->size[1]}{if substr($control->size[1], -1)!='%'}px{/if};"></div>
+	<script type="text/javascript">
+		$(function () {
+			setTimeout(function () {
+				var draw{!$control->name} = function() {
+					var data = google.visualization.arrayToDataTable([
+						{foreach $data->getColumnHeaders() as $key=>$header}
+							{first}[{/first}
+							{continueIf $key<4}
+							{if $key==4}'Date',{/if} {$header->getName()} {sep},{/sep} {last}],{/last}
+						{/foreach}
+
+						{foreach $data->getRows() as $row}
+						[
+							{foreach $row as $key=>$cell}
+							{continueIf $key<4}
+							{if $key==4}'{!$row['1']}/{!$row['2']}/{!$row['3']}', {/if}{!$cell} {sep},{/sep}
+							{/foreach}
+						]{sep},{/sep}
+						{/foreach}
+					]);
+
+					var options = {
+						legend:'none',
+						backgroundColor: {
+							fill:'transparent'
+						},
+						width: {if substr($control->size[0], -1)=='%'}'{!$control->size[0]}%'{else}{!$control->size[0]}{/if},
+						height: {if substr($control->size[1], -1)=='%'}'{!$control->size[1]}%'{else}{!$control->size[1]}{/if}
+					};
+
+					{if $control->options}
+					jQuery.extend(options, {!=json_encode($control->options)});
+					{/if}
+
+					var ac = new google.visualization.AreaChart(document.getElementById('chart_div{!$control->name}'));
+					ac.draw(data, options);
+				}
+
+				google.load('visualization', '1.0', { 'callback': draw{!$control->name}, 'packages': ['corechart']});
+				google.setOnLoadCallback(draw{!$control->name});
+
+				$(window).resize(draw{!$control->name});
+				$('#chart_div{!$control->name}').bind('resize', draw{!$control->name});
+			}, 0);
+		});
+	</script>
+{/define}
+
+{define #toolbar}
+{if $control->toolbar}
+	<div class="btn-group">
+		<a n:href="load! showVisits=>!$control->showVisits, args=>[size=>$control->size, history=>$control->history, metrics=>$control->metrics, options=>$control->options, toolbar=>$control->toolbar, filterPath=>$control->filterPath]" class="ajax btn{if $control->showVisits} active{/if}">{_Visits}</a>
+		<a n:href="load! showNewVisits=>!$control->showNewVisits,  args=>[size=>$control->size, history=>$control->history, metrics=>$control->metrics, options=>$control->options, toolbar=>$control->toolbar, filterPath=>$control->filterPath]" class="ajax btn{if $control->showNewVisits} active{/if}">{_'New visits'}</a>
+		<a n:href="load! showPageViews=>!$control->showPageViews,  args=>[size=>$control->size, history=>$control->history, metrics=>$control->metrics, options=>$control->options, toolbar=>$control->toolbar, filterPath=>$control->filterPath]" class="ajax btn{if $control->showPageViews} active{/if}">{_'Page views'}</a>
+	</div>
+{/if}
+{/define}
+
+{if !isset($ajax)}
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+{/if}
+
+{if isset($data)}
+	{include #toolbar}
+	{include #page data=>$data}
+{else}
+	{if isset($error)}
+		{include #toolbar}
+		{foreach $flashes as $flash}
+			<div class="alert alert-{$flash->type}">
+				<a class="close" data-dismiss="alert">×</a>
+				{$flash->message}
+			</div>
+		{/foreach}
+	{else}
+		{if $control->isInCache()}
+			{$control->renderChart()}
+		{else}
+			{include #toolbar}
+
+			<p style="text-align: center;">
+				<img src="{$basePath}/resources/cmsModule/admin/images/ajax-loader.gif"/>
+			</p>
+			<script>
+				$(function () {
+					function checkSendAjax() {
+						if ($.active > 2) {
+							window.setTimeout(checkSendAjax, 1000);
+						} else {
+							$.nette.ajax({
+								url: {link load! args=>[size=>$control->size, history=>$control->history, metrics=>$control->metrics, options=>$control->options, toolbar=>$control->toolbar, filterPath=>$control->filterPath]},
+								off: ['unique', 'spinner']
+							});
+							return true;
+						}
+					};
+					checkSendAjax();
+				});
+			</script>
+		{/if}
+	{/if}
+{/if}
+{/snippet}
