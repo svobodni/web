@@ -141,6 +141,19 @@ body {
 	color: #000000;
 	text-decoration: none;
 }
+.header-container .control-search {
+	width: 250px;
+	margin-top: 14px;
+	position: absolute;
+	right: 0;
+}
+.header-container .control-search .tt-dropdown-menu {
+	position: relative;
+	z-index: 9999 !important;
+}
+.header-container .control-search .twitter-typeahead {
+	background-color: rgba(255, 255, 255, 1);
+}
 
 
 .btn-f {
@@ -199,15 +212,48 @@ body {
 	height: 70px;
 	padding-top: 10px;
 	padding-bottom: 10px;
-
+}
+.navigation-container.navbar-static-top {
 	position: absolute;
 	width: 100%;
 	top: 80px;
 }
 .navigation-container .navbar-brand {
 	width: 410px;
-	visibility: hidden;
+	padding: 0 20px 0 0;
 }
+.navigation-container .navbar-collapse {
+	background-color: #005f49;
+}
+
+@media (max-width: 991px) {
+	.header-container .header-logo {
+		display: none;
+	}
+	.navigation-container .navbar-brand {
+		width: auto;
+	}
+	.navigation-container.navbar-static-top {
+		top: 0;
+	}
+	.puvodni-web {
+		display: none;
+	}
+	.navigation-container .navbar-brand {
+		width: auto;
+	}
+}
+
+
+@media (max-width: 767px) {
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+		color: #dddddd;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+		color: #ffffff;
+	}
+}
+
 .navigation-container .navbar-nav {
 	float: left;
 }
@@ -337,6 +383,10 @@ body {
 
 .podporovatele-box {
 	margin: 0 0 6px 0;
+}
+.podporovatele-box strong {
+	display: block;
+	font-size: 18px;
 }
 .podporovatele-box a {
 	display: block;
@@ -477,6 +527,9 @@ https://developers.facebook.com/docs/reference/plugins/like-box/
 	display: none; /* Hide by default, but at >768px, show it */
 	margin-bottom: 8px;
 }
+.bs-sidebar .nav .active .nav {
+	display: block;
+}
 .bs-sidebar .nav .nav > li > a {
 	padding-top:    3px;
 	padding-bottom: 3px;
@@ -488,6 +541,11 @@ https://developers.facebook.com/docs/reference/plugins/like-box/
 .control-search {
 	margin: 10px 0 0 0;
 }
+.control-search form {
+	width: 100%;
+	margin-bottom: 30px;
+}
+
 .twitter-typeahead {
 	width: 100%;
 }
@@ -503,4 +561,8 @@ https://developers.facebook.com/docs/reference/plugins/like-box/
 }
 .twitter-typeahead .tt-dropdown-menu {
 	width: 100%;
+}
+
+footer .pull-right {
+	text-align: right;
 }

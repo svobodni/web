@@ -54,7 +54,7 @@ class AccountPresenter extends BasePresenter
 
 	public function formSuccess($form)
 	{
-		$this->flashMessage('Account has been saved.', 'success');
+		$this->flashMessage($this->translator->translate('Account has been saved.'), 'success');
 
 		if (!$this->isAjax()) {
 			$this->redirect('this');

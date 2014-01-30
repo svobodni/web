@@ -106,16 +106,16 @@ class Doctrine extends \Nette\Object implements IDataSource
         }
 
         $columns = $condition->column;
-        foreach ($columns as $column) {
+        foreach ($columns as $key => $column) {
             if (!Condition::isOperator($column)) {
-                $columns[$column] = isset($this->filterMapping[$column])
+                $columns[$key] = isset($this->filterMapping[$column])
                     ? $this->filterMapping[$column]
                     : $this->qb->getRootAlias() . '.' . $column;
             }
         }
 
+        $condition->setColumn($columns);
         list($where) = $condition->__toArray(NULL, NULL, FALSE);
-        $where = str_replace(array_keys($columns), array_values($columns), $where);
 
         $rand = $this->getRand();
         $where = preg_replace_callback('/\?/', function() use ($rand) {
@@ -227,30 +227,39 @@ class Doctrine extends \Nette\Object implements IDataSource
     }
 
     /**
-     * @param string $column
+     * @param mixed $column
      * @param array $conditions
+     * @param int $limit
      * @return array
      */
-    public function suggest($column, array $conditions)
+    public function suggest($column, array $conditions, $limit)
     {
         $qb = clone $this->qb;
+        $qb->setMaxResults($limit);
+
         foreach ($conditions as $condition) {
             $this->makeWhere($condition, $qb);
         }
 
         $items = array();
-        foreach ($qb->getQuery()->getScalarResult() as $row) {
-            $mapping = isset($this->filterMapping[$column])
-                ? str_replace('.', '_', $this->filterMapping[$column])
-                : $qb->getRootAlias() . '_' . $column;
+        $data = $qb->getQuery()->getScalarResult();
+        foreach ($data as $row) {
+            if (is_string($column)) {
+                $mapping = isset($this->filterMapping[$column])
+                    ? str_replace('.', '_', $this->filterMapping[$column])
+                    : $qb->getRootAlias() . '_' . $column;
 
-            $value = (string) $row[$mapping];
-            $items[$value] = $value;
+                $value = (string) $row[$mapping];
+                $items[$value] = $value;
+            } elseif (is_callable($column)) {
+                $value = (string) $column($row);
+                $items[$value] = $value;
+
+            } else {
+                throw new \InvalidArgumentException('Column of suggestion must be string or callback, ' . gettype($column) . ' given.');
+            }
         }
 
-        $items = array_values($items);
-        sort($items);
-
-        return $items;;
+        return array_values($items);
     }
 }

@@ -5,7 +5,7 @@
 
 {var $thumbnail = (isset($thumbnail) ? $thumbnail : '96x')}
 
-{if $extendedRoute->items[0]->route->photo}
+{if isset($extendedRoute->items[0]) && $extendedRoute->items[0]->route->photo}
 	<img class="media-object" n:src="$extendedRoute->items[0]->route->photo->getFileUrl(true), size=>$thumbnail"
 		 alt="{$route->name}"/>
 {else}

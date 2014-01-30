@@ -82,6 +82,8 @@ h4 a {
 	}
 }
 
-ul.nav li.dropdown:hover > ul.dropdown-menu {
-	display: block;
+@media (min-width: 992px) {
+	ul.nav li.dropdown:hover > ul.dropdown-menu {
+		display: block;
+	}
 }

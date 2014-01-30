@@ -1,5 +1,11 @@
 {block #page-content}
 
+{cache [$presenter->routeId, $control['pagination']->page], tags => [
+	'page' => $presenter->pageId,
+	'route' => $presenter->routeId,
+	'language' => $presenter->lang,
+]}
 {control pagination, config => [ variant => '@events.route' ]}
 {control itemList $control->getItemsBuilder()->orderBy('r.released', 'DESC')->getQuery()->getResult(), config => [ variant => '@events.route' ]}
 {control pagination, config => [ variant => '@events.route' ]}
+{/cache}

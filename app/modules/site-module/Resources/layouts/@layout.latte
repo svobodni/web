@@ -13,7 +13,8 @@
 <html>
 {head}
 
-	{cache}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 		{css
 			@bootstrap3Module/css/bootstrap.css,
 			@typeaheadModule/typeahead.js-bootstrap.css,
@@ -28,7 +29,8 @@
 			@jquery2.0Module/jquery-migrate.js,
 			@hoganModule/hogan-2.0.0.js,
 		}
-	{/cache}
+
+		<link rel="stylesheet" href="{path @siteModule/font-awesome/css/font-awesome.css}">
 
 	{cache $presenter->routeId}
 		{control head}
@@ -48,16 +50,19 @@
 				<div class="header-logo"><a href="{$basePath}/"></a></div>
 
 				<ul>
-					<li><a class="btn btn-default" href="http://www.svobodni.cz/chci-pomoci-strane/" title="Přispět finančně Straně svobodných občanů">Přispět</a></li>
+					<li><a class="btn btn-default" href="{$basePath}/registrace/prispet-financne" title="Přispět finančně Straně svobodných občanů">Přispět</a></li>
 
 					<li><a class="btn btn-social btn-f" href="https://www.facebook.com/svobodni" title="Přidejte se ke Svobodným na Facebooku"></a></li>
 					<li><a class="btn btn-social btn-g" href="https://plus.google.com/u/0/+svobodn%C3%AD" title="Přidejte si Svobodné do kruhů Google+"></a></li>
 					<li><a class="btn btn-social btn-t" href="https://twitter.com/svobodni" title="Sledujte Svobodné na Twitteru"></a></li>
 					<li><a class="btn btn-social btn-y" href="http://www.youtube.com/user/svobodni?gl=CZ&amp;hl=cs" title="Sledujte videa Svobodných na YouTube"></a></li>
 
-					<li><a class="btn btn-link" href="http://eshop.svobodni.cz/">E-shop</a></li>
-					<li><a class="btn btn-link" href="http://svobodni.cz/">Původní web</a></li>
+					{*<li><a class="btn btn-link" href="http://eshop.svobodni.cz/">E-shop</a></li>*}
 				</ul>
+
+				<div class="control-search">
+					{control search}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -71,7 +76,9 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Strana svobodných občanů</a>
+					<a class="navbar-brand" href="#">
+						<img src="{path @siteModule/img/logo_panel.png}" alt="Strana svobodných občanů" />
+					</a>
 				</div>
 				<div class="collapse navbar-collapse">
 					{control navigation}
@@ -124,22 +131,25 @@
 		{cache}
 		<footer>
 			<p class="pull-left">
-				<a href="http://svobodni.cz" title="Na Úvodní stránku Svobodni.cz">Svobodni.cz</a> &copy; 2013 &nbsp;
-				· &nbsp; <a href="{$basePath}/kontakty">Kontakty</a> &nbsp;
-				{ifLinkExists Route special=>'sitemap'}{isPublished}· &nbsp; <a n:link>{_Sitemap}</a> &nbsp;{/isPublished}{/ifLinkExists}
-				{ifLinkExists Route special=>'rss'}{isPublished}· &nbsp; <a n:link>RSS</a> &nbsp;{/isPublished}{/ifLinkExists}
+				<a href="{$basePath}/kontakty"><i class="fa fa-envelope"></i> Kontakty</a> &nbsp;
+				{ifLinkExists Route special=>'sitemap'}{isPublished}· &nbsp; <a n:link><i class="fa fa-sitemap"></i> {_Sitemap}</a> &nbsp;{/isPublished}{/ifLinkExists}
+				{ifLinkExists Route special=>'rss'}{isPublished}· &nbsp; <a n:link><i class="fa fa-rss"></i> RSS</a> &nbsp;{/isPublished}{/ifLinkExists}
+				· &nbsp; <a href="http://eshop.svobodni.cz"><i class="fa fa-shopping-cart"></i> E-shop</a> &nbsp;
+				· &nbsp; <a href="http://github.com/svobodni"><i class="fa fa-github"></i> GitHub</a> &nbsp;
 			</p>
 
 			<p class="pull-right">
-				<a rel="nofollow" href="{$basePath}/{$presenter->administrationManager->routePrefix}">{_Administration}</a> &nbsp;
-				· &nbsp; Poháněno <a href="http://www.venne.cz">Venne:CMS</a>
+				<a href="http://svobodni.cz" title="Na Úvodní stránku Svobodni.cz">Svobodni.cz</a> &copy; {date('Y')}<br />
+				Powered by <a href="http://www.venne.cz">Venne:CMS</a><br />
+				<a rel="nofollow" href="{$basePath}/{$presenter->administrationManager->routePrefix}">{_Administration}</a>
 			</p>
 		</footer>
 		{/cache}
 
 	</div>
 
-{cache}
+	<a class="puvodni-web" title="Zobrazit původní web" href="http://svobodni.cz/"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 99999;" src="{path @siteModule/img/puvodni_web.png}" alt="Původní web"></a>
+
 	{js
 		@holderModule/holder.js,
 		@bootstrap3Module/js/bootstrap.js,
@@ -154,7 +164,6 @@
 		@typeaheadModule/typeahead.js,
 		@siteModule/js/application.js,
 	}
-{/cache}
 
 {/body}
 </html>

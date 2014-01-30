@@ -270,6 +270,10 @@ class DoctrineExtension extends CompilerExtension
 			->setClass("Doctrine\ORM\Mapping\Driver\YamlDriver", array(array_keys($paths)))
 			->setInternal(TRUE);
 
+		$container->addDefinition($this->configurationsPrefix($name . 'NamingStrategy'))
+			->setClass("DoctrineModule\Mapping\VenneNamingStrategy")
+			->setInternal(TRUE);
+
 
 		$container->addDefinition($this->configurationsPrefix($name))
 			->setClass("Doctrine\ORM\Configuration")
@@ -278,6 +282,7 @@ class DoctrineExtension extends CompilerExtension
 			->addSetup("setMetadataDriverImpl", $this->configurationsPrefix('@' . $name . ucfirst($config['mappingDriver']) . 'Driver'))
 			->addSetup("setProxyDir", $config['proxiesDir'])
 			->addSetup("setProxyNamespace", $config['proxiesNamespace'])
+			->addSetup('setNamingStrategy', $this->configurationsPrefix('@' . $name . "NamingStrategy"))
 			->setInternal(TRUE);
 
 		if ($container->parameters["debugMode"]) {

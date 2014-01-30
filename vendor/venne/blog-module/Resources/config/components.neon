@@ -10,6 +10,11 @@ services:
 		setup:
 			- injectFactory(@cms.admin.basicFormFactory)
 
+	blog.categoryFormFactory:
+		class: BlogModule\Pages\Blog\CategoryFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
 	blog.elementsBlogFormFactory:
 		class: BlogModule\Pages\Blog\BlogElement\BlogFormFactory
 		setup:
@@ -25,10 +30,14 @@ factories:
 		class: BlogModule\Pages\Blog\TableControl
 		tags: [component]
 
+	blog.categoriesTableControl:
+		class: BlogModule\Pages\Blog\CategoriesControl
+		tags: [component]
+
 	blog.blogElement:
 		class: BlogModule\Pages\Blog\BlogElement\BlogElement
 		setup:
-			- injectRouteRepository(@blog.routeRepository)
+			- injectArticleRepository
 			- injectSetupForm(@blog.elementsBlogFormFactory)
 		tags: [element: blog]
 

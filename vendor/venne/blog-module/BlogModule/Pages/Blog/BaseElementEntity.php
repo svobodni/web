@@ -12,6 +12,7 @@
 namespace BlogModule\Pages\Blog;
 
 use CmsModule\Content\Elements\ExtendedElementEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +36,25 @@ class BaseElementEntity extends ExtendedElementEntity
 	 *       )
 	 */
 	protected $pages;
+
+	/**
+	 * @var \BlogModule\Pages\Blog\AbstractCategoryEntity[]
+	 * @ORM\ManyToMany(targetEntity="\BlogModule\Pages\Blog\CategoryEntity")
+	 * @ORM\JoinTable(
+	 *       joinColumns={@ORM\JoinColumn(onDelete="CASCADE")},
+	 *       inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")}
+	 *       )
+	 */
+	protected $categories;
+
+
+	protected function startup()
+	{
+		parent::startup();
+
+		$this->pages = new ArrayCollection;
+		$this->categories = new ArrayCollection;
+	}
 
 
 	/**
@@ -71,4 +91,23 @@ class BaseElementEntity extends ExtendedElementEntity
 	{
 		return $this->pages;
 	}
+
+
+	/**
+	 * @param \BlogModule\Pages\Blog\AbstractCategoryEntity[] $categories
+	 */
+	public function setCategories($categories)
+	{
+		$this->categories = $categories;
+	}
+
+
+	/**
+	 * @return \BlogModule\Pages\Blog\AbstractCategoryEntity[]
+	 */
+	public function getCategories()
+	{
+		return $this->categories;
+	}
+
 }

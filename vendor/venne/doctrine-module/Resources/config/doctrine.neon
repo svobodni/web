@@ -7,5 +7,9 @@ services:
 		class: DoctrineModule\Mapping\DiscriminatorMapDiscoveryListener
 		tags: [listener]
 
+	doctrine.dynamicMapper:
+		class: DoctrineModule\Mapping\DynamicMapper
+		tags: [listener]
+
 factories:
 	checkConnection: @doctrine.checkConnection

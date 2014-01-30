@@ -17,7 +17,6 @@ use ImporterModule\ImporterManager;
 use Nette\Application\BadRequestException;
 use Nette\InvalidArgumentException;
 use Venne\Forms\Form;
-use Venne\Module\ModuleManager;
 
 /**
  * @author Josef Kříž <pepakriz@gmail.com>
@@ -49,6 +48,14 @@ class ImporterPresenter extends AdminPresenter
 	public function getImporterManager()
 	{
 		return $this->importerManager;
+	}
+
+
+	/**
+	 * @secured(privilege="show")
+	 */
+	public function actionDefault()
+	{
 	}
 
 

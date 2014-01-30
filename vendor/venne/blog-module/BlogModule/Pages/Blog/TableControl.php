@@ -17,29 +17,29 @@ namespace BlogModule\Pages\Blog;
 class TableControl extends AbstractTableControl
 {
 
-	/** @var RouteRepository */
-	protected $routeRepository;
+	/** @var ArticleRepository */
+	protected $articleRepository;
 
 	/** @var BlogFormFactory */
 	protected $formFactory;
 
 
 	/**
-	 * @param RouteRepository $routeRepository
+	 * @param ArticleRepository $articleRepository
 	 * @param BlogFormFactory $formFactory
 	 */
-	public function __construct(RouteRepository $routeRepository, BlogFormFactory $formFactory)
+	public function __construct(ArticleRepository $articleRepository, BlogFormFactory $formFactory)
 	{
 		parent::__construct();
 
-		$this->routeRepository = $routeRepository;
+		$this->articleRepository = $articleRepository;
 		$this->formFactory = $formFactory;
 	}
 
 
 	protected function getRepository()
 	{
-		return $this->routeRepository;
+		return $this->articleRepository;
 	}
 
 

@@ -156,7 +156,7 @@ abstract class BaseChartControl extends Control
 		if ($this->analyticsManager->getApiActivated()) {
 			$this->template->render();
 		} else {
-			$this->flashMessage('Google analytics API is deactivated.', 'info');
+			$this->flashMessage($this->presenter->translator->translate('Google analytics API is deactivated.'), 'info');
 			$this->template->error = TRUE;
 			$this->template->render();
 		}

@@ -17,16 +17,13 @@ use CmsModule\Content\Entities\LanguageEntity;
 use CmsModule\Content\Entities\PageEntity;
 use CmsModule\Content\Entities\RouteEntity;
 use CmsModule\Content\Repositories\LanguageRepository;
-use Doctrine\Common\EventArgs;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Event\OnFlushEventArgs;
 use Doctrine\ORM\Events;
 use Nette\Caching\Cache;
 use Nette\Caching\IStorage;
 use Nette\DI\Container;
-use Nette\InvalidArgumentException;
 
 /**
  * @author Josef Kříž <pepakriz@gmail.com>
@@ -100,7 +97,6 @@ class PageListener implements EventSubscriber
 	{
 		return array(
 			Events::onFlush,
-			Events::loadClassMetadata,
 			Events::postLoad,
 		);
 	}
@@ -127,93 +123,6 @@ class PageListener implements EventSubscriber
 			$this->languageEntity = $this->locale instanceof LanguageEntity ? $this->locale : $this->getLanguageRepository()->findOneBy(array('alias' => $this->locale));
 		}
 		return $this->languageEntity;
-	}
-
-
-	private $_l = FALSE;
-
-
-	/**
-	 * @param LoadClassMetadataEventArgs $args
-	 */
-	public function loadClassMetadata(LoadClassMetadataEventArgs $args)
-	{
-		$meta = $args->getClassMetadata();
-
-		if ($this->_l) {
-			if (is_subclass_of($meta->name, 'CmsModule\Content\Entities\ExtendedPageEntity')) {
-				if ($meta->associationMappings['extendedMainRoute']['targetEntity'] === 'CmsModule\Blank') {
-					$meta->associationMappings['extendedMainRoute']['targetEntity'] = $this->getMainRouteByPage($meta->name);
-				}
-			} elseif (is_subclass_of($meta->name, 'CmsModule\Content\Entities\ExtendedRouteEntity')) {
-				if ($meta->associationMappings['extendedPage']['targetEntity'] === 'CmsModule\Blank') {
-					$meta->associationMappings['extendedPage']['targetEntity'] = $this->_l;
-				}
-			}
-			return;
-		}
-
-		if (is_subclass_of($meta->name, 'CmsModule\Content\Entities\ExtendedPageEntity')) {
-			$em = $args->getEntityManager();
-			$mainRouteEntityName = $this->getMainRouteByPage($meta->name);
-
-			$this->_l = $meta->name;
-			$routeMeta = $em->getClassMetadata($mainRouteEntityName);
-			$this->_l = FALSE;
-
-			$meta->associationMappings['extendedMainRoute']['targetEntity'] = $mainRouteEntityName;
-			$routeMeta->associationMappings['extendedPage']['targetEntity'] = $meta->name;
-		} else if (is_subclass_of($meta->name, 'CmsModule\Content\Entities\ExtendedRouteEntity')) {
-			$em = $args->getEntityManager();
-			$pageEntityName = $this->getPageByRoute($meta->name);
-
-			$this->_l = $meta->name;
-			$pageMeta = $em->getClassMetadata($pageEntityName);
-			$this->_l = FALSE;
-
-			$meta->associationMappings['extendedPage']['targetEntity'] = $pageEntityName;
-			$pageMeta->associationMappings['extendedMainRoute']['targetEntity'] = $this->getMainRouteByPage($pageEntityName);
-		}
-	}
-
-
-	/**
-	 * @param $class
-	 * @return string
-	 * @throws \Nette\InvalidArgumentException
-	 */
-	private function getMainRouteByPage($class)
-	{
-		if (($ret = $class::getMainRouteName()) === NULL) {
-			throw new InvalidArgumentException("Entity '{$class}' must implemented method 'getMainRouteName'.");
-		}
-		if (!class_exists($ret)) {
-			throw new InvalidArgumentException("Class '{$ret}' does not exist.");
-		}
-		if (!is_subclass_of($ret, 'CmsModule\Content\Entities\ExtendedRouteEntity')) {
-			throw new InvalidArgumentException("Method 'getMainRouteName' on '{$class}' must return subclass of 'CmsModule\Content\Entities\ExtendedRouteEntity'. '{$ret}' is given.");
-		}
-		return $ret;
-	}
-
-
-	/**
-	 * @param $class
-	 * @return string
-	 * @throws \Nette\InvalidArgumentException
-	 */
-	private function getPageByRoute($class)
-	{
-		if (($ret = $class::getPageName()) === NULL) {
-			throw new InvalidArgumentException("Entity '{$class}' must implemented method 'getPageName'.");
-		}
-		if (!class_exists($ret)) {
-			throw new InvalidArgumentException("Class '{$ret}' does not exist.");
-		}
-		if (!is_subclass_of($ret, 'CmsModule\Content\Entities\ExtendedPageEntity')) {
-			throw new InvalidArgumentException("Method 'getPageName' on '{$class}' must return subclass of 'CmsModule\Content\Entities\ExtendedPageEntity'. '{$ret}' is given.");
-		}
-		return $ret;
 	}
 
 
@@ -264,29 +173,36 @@ class PageListener implements EventSubscriber
 			));
 		}
 
-		if ($entity instanceof \CmsModule\Content\Entities\PageEntity) {
+		if ($entity instanceof \CmsModule\Content\Entities\PageEntity || ($entity instanceof \CmsModule\Content\Entities\ExtendedPageEntity && $entity = $entity->page)) {
 			$this->cache->clean(array(
-				Cache::TAGS => array('pages', 'page-'.$mode, 'page-' . $entity->id),
+				Cache::TAGS => array('pages', 'page-' . $mode, 'page-' . $entity->id),
 			));
-		} elseif ($entity instanceof \CmsModule\Content\Entities\ExtendedPageEntity) {
+		} elseif ($entity instanceof \CmsModule\Content\Entities\RouteEntity || ($entity instanceof \CmsModule\Content\Entities\ExtendedRouteEntity && $entity = $entity->route)) {
 			$this->cache->clean(array(
-				Cache::TAGS => array('pages', 'page-'.$mode, 'page-' . $entity->page->id),
+				Cache::TAGS => array('routes', 'route-' . $mode, 'route-' . $entity->id),
 			));
-		} elseif ($entity instanceof \CmsModule\Content\Entities\RouteEntity) {
+		} elseif ($entity instanceof \CmsModule\Content\Elements\ElementEntity || ($entity instanceof \CmsModule\Content\Elements\ExtendedElementEntity && $entity = $entity->element)) {
 			$this->cache->clean(array(
-				Cache::TAGS => array('routes', 'route-'.$mode, 'route-' . $entity->id),
+				Cache::TAGS => array('elements', 'element-' . $mode, 'element-' . $entity->id),
 			));
-		} elseif ($entity instanceof \CmsModule\Content\Entities\ExtendedRouteEntity) {
-			$this->cache->clean(array(
-				Cache::TAGS => array('routes', 'route-'.$mode, 'route-' . $entity->route->id),
-			));
-		} elseif ($entity instanceof \CmsModule\Content\Entities\ElementEntity) {
-			$this->cache->clean(array(
-				Cache::TAGS => array('routes', 'route-'.$mode),
-			));
-			foreach ($entity->layout->routes as $route) {
+
+			if ($entity->mode === $entity::MODE_LAYOUT) {
+				foreach ($entity->layout->routes as $route) {
+					$this->cache->clean(array(
+						Cache::TAGS => array('routes', 'route-update', 'route-' . $route->id),
+					));
+				}
+			} elseif ($entity->mode === $entity::MODE_PAGE) {
 				$this->cache->clean(array(
-					Cache::TAGS => array('route-' . $route->id),
+					Cache::TAGS => array('pages', 'page-update', 'page-' . $entity->page->id),
+				));
+			} elseif ($entity->mode === $entity::MODE_ROUTE) {
+				$this->cache->clean(array(
+					Cache::TAGS => array('routes', 'route-update', 'page-' . $entity->route),
+				));
+			} else {
+				$this->cache->clean(array(
+					Cache::TAGS => array('routes', 'route-update', 'pages', 'page-update'),
 				));
 			}
 		}

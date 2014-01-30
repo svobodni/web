@@ -63,8 +63,6 @@ class ConnectionPanel extends \Nette\Object implements \Nette\Diagnostics\IBarPa
 			return;
 		}
 
-		//throw new \Exception;
-
 		Debugger::timer('doctrine');
 
 		$this->queries[] = array(

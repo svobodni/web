@@ -39,7 +39,7 @@ class ContentTableListener
 			$presenter = $table->getPresenter();
 
 
-			$column = $table->addColumn('statistics', 'Statistics');
+			$column = $table->addColumnText('statistics', 'Statistics');
 			$column->getCellPrototype()->width = '140';
 			$column->setCustomRender(function ($entity) use ($presenter) {
 					ob_start();

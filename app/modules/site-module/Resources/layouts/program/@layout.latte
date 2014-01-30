@@ -31,14 +31,8 @@
 	</small>
 </div>
 
-<script type="application/javascript">
-	$(function() {
-		$('body').scrollspy({ target: '.bs-sidebar' });
-	});
-</script>
-
-<div class="col-md-4 col-dark col-head">
-	<div class="bs-sidebar hidden-print affix" role="complementary" data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+<div class="col-md-4 visible-md visible-lg">
+	<div id="program-menu" class="bs-sidebar hidden-print col-dark col-head" style="top: 90px;" role="complementary" data-offset='90'>
 		<ul class="nav bs-sidenav">
 			<li><a href="#I">Pojetí státu</a>
 
@@ -144,3 +138,28 @@
 		</ul>
 	</div>
 </div>
+
+<script type="application/javascript">
+	$(function(){
+		var offset = 90;
+
+		$('#program-menu').affix({
+			offset: {
+				top:  250
+			}
+		});
+		$('body').scrollspy({
+			target: '#program-menu',
+			offset: 100
+		});
+		$('#program-menu li a, .col-md-8 a').click(function(event) {
+			event.preventDefault();
+			var hash = this.hash;
+			$('html, body').animate({
+				scrollTop: $(this.hash).offset().top - offset
+			}, 300, function () {
+				window.location.hash = hash;
+			});
+		});
+	});
+</script>

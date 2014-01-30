@@ -17,17 +17,29 @@ namespace Grido\Components\Filters;
  * @package     Grido
  * @subpackage  Components\Filters
  * @author      Petr Bugyík
+ *
+ * @property int $suggestionLimit
+ * @property-write callback $suggestionCallback
  */
 class Text extends Filter
 {
-    /** @var mixed */
-    protected $suggestionColumn;
-
     /** @var string */
     protected $condition = 'LIKE ?';
 
     /** @var string */
     protected $formatValue = '%%value%';
+
+    /** @var bool */
+    protected $suggestion = FALSE;
+
+    /** @var mixed */
+    protected $suggestionColumn;
+
+    /** @var int */
+    protected $suggestionLimit = 10;
+
+    /** @var callback */
+    protected $suggestionCallback;
 
     /**
      * Allows suggestion.
@@ -36,6 +48,7 @@ class Text extends Filter
      */
     public function setSuggestion($column = NULL)
     {
+        $this->suggestion = TRUE;
         $this->suggestionColumn = $column;
 
         $prototype = $this->getControl()->getControlPrototype();
@@ -43,9 +56,10 @@ class Text extends Filter
         $prototype->class[] = 'suggest';
 
         $filter = $this;
-        $this->grid->onRender[] = function(\Grido\Grid $grid) use ($prototype, $filter) {
+        $this->grid->onRender[] = function() use ($prototype, $filter) {
             $replacement = '-query-';
             $prototype->data['grido-suggest-replacement'] = $replacement;
+            $prototype->data['grido-suggest-limit'] = $filter->suggestionLimit;
             $prototype->data['grido-suggest-handler'] = $filter->link('suggest!', array(
                 'query' => $replacement)
             );
@@ -54,7 +68,37 @@ class Text extends Filter
         return $this;
     }
 
+    /**
+     * Sets a limit for suggestion select.
+     * @param int $limit
+     * @return \Grido\Components\Filters\Text
+     */
+    public function setSuggestionLimit($limit)
+    {
+        $this->suggestionLimit = (int) $limit;
+        return $this;
+    }
+
+    /**
+     * Sets custom data callback.
+     * @param callback $callback
+     * @return \Grido\Components\Filters\Text
+     */
+    public function setSuggestionCallback($callback)
+    {
+        $this->suggestionCallback = $callback;
+        return $this;
+    }
+
     /**********************************************************************************************/
+
+    /**
+     * @return int
+     */
+    public function getSuggestionLimit()
+    {
+        return $this->suggestionLimit;
+    }
 
     /**
      * @param string $query - value from input
@@ -62,22 +106,50 @@ class Text extends Filter
      */
     public function handleSuggest($query)
     {
-        if (!$this->getPresenter()->isAjax()) {
+        $name = $this->getName();
+
+        if (!$this->getPresenter()->isAjax() || !$this->suggestion || $query == '') {
             $this->getPresenter()->terminate();
         }
 
         $actualFilter = $this->grid->getActualFilter();
-        if (isset($actualFilter[$this->getName()])) {
-            unset($actualFilter[$this->getName()]);
+        if (isset($actualFilter[$name])) {
+            unset($actualFilter[$name]);
         }
+
         $conditions = $this->grid->__getConditions($actualFilter);
-        $conditions[] = $this->__getCondition($query);
 
-        $column = $this->suggestionColumn ? $this->suggestionColumn : current($this->getColumn());
-        $items = $this->grid->model->suggest($column, $conditions);
+        if ($this->suggestionCallback === NULL) {
+            $conditions[] = $this->__getCondition($query);
 
-        print \Nette\Utils\Json::encode($items);
-        $this->getPresenter()->terminate();
+            $column = $this->suggestionColumn ? $this->suggestionColumn : current($this->getColumn());
+            $items = $this->grid->model->suggest($column, $conditions, $this->suggestionLimit);
+
+        } else {
+            $items = callback($this->suggestionCallback)->invokeArgs(array($query, $actualFilter, $conditions));
+            if (!is_array($items)) {
+                throw new \Exception('Items must be an array.');
+            }
+        }
+
+        //sort items - first begining of item is same as query, then case sensitive and case insensitive
+        $startsWith = $caseSensitive = $caseInsenstive = array();
+        foreach($items as $item){
+            if (stripos($item, $query) === 0) {
+                $startsWith[] = $item;
+            } elseif (strpos($item, $query) !== FALSE) {
+                $caseSensitive[] = $item;
+            } else {
+                $caseInsenstive[] = $item;
+            }
+        }
+
+        sort($startsWith);
+        sort($caseSensitive);
+        sort($caseInsenstive);
+
+        $items = array_merge($startsWith, $caseSensitive, $caseInsenstive);
+        $this->getPresenter()->sendResponse(new \Nette\Application\Responses\JsonResponse($items));
     }
 
     /**

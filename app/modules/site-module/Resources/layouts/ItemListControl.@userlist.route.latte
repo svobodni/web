@@ -1,19 +1,35 @@
 {var $thumbnail = '96x'}
 
+<div class="row">
+{var $key = 0}
 {foreach $routes as $route}
 	{var $extendedRoute = $route}
 	{if $route instanceof CmsModule\Content\Entities\ExtendedRouteEntity}{var $route = $route->route}{/if}
 
+	{if $key > 0 && $key % 2 == 0}
+</div>
+<div class="row">
+	{/if}
+
 	{cache [$route->id, $presenter->lang], tags => [\CmsModule\Content\Entities\PageEntity::CACHE, \CmsModule\Content\Entities\RouteEntity::CACHE, \CmsModule\Pages\Tags\TagEntity::CACHE, \CmsModule\Content\Entities\LanguageEntity::CACHE]}
+
+		{var $p = NULL}
+		{if array_search('předseda', $extendedRoute->extendedUser->user->roles) !== FALSE}
+			{var $p = 'předseda strany'}
+		{elseif array_search('ReP', $extendedRoute->extendedUser->user->roles) !== FALSE}
+				{var $p = 'místopředseda strany'}
+		{elseif array_search('ReV', $extendedRoute->extendedUser->user->roles) !== FALSE}
+			{var $p = 'člen republikového výboru'}
+		{/if}
 
 		<div class="col-md-6">
 			<div class="media">
-				<h3><a href="{plink Route route=>$route}">{$route->name ?: $route}</a></h3>
+				<h3><a href="{plink Route route=>$route}">{$route->name ?: $route}{if $p} &nbsp;<small>({$p})</small>{/if}</a></h3>
 
 				<a class="pull-left" href="#">
-					<img alt="Petr Mach" class="media-object thumbnail" n:src="$route->photo->getFileUrl(true), size=>'110x134'" />
+					<img n:if="$route->photo" alt="{$route->name}" class="media-object thumbnail" n:src="$route->photo->getFileUrl(true), size=>'110x134'" />
 				</a>
-				<div class="media-body">
+				<div n:if="$extendedRoute->extendedUser instanceof SiteModule\Security\UserEntity" class="media-body">
 					<p n:if="$extendedRoute->extendedUser->address">
 						{$extendedRoute->extendedUser->address}
 					</p>
@@ -24,31 +40,61 @@
 
 					<dl class="dl-horizontal">
 						{if $extendedRoute->extendedUser->birthDate}
-						<dt>Věk:</dt>
-						<dd>{$extendedRoute->extendedUser->birthDate->diff(new \DateTime)->format('%Y')}</dd>
+							<dt>Věk:</dt>
+							<dd>{$extendedRoute->extendedUser->birthDate->diff(new \DateTime)->format('%Y')}</dd>
 						{/if}
 
-						<dt>E-mail:</dt>
-						<dd>{$extendedRoute->email}</dd>
+						{if !strpos($extendedRoute->email, '@example.com')}
+							<dt><i title="E-mail" class="glyphicon glyphicon-envelope"></i></dt>
+							<dd><a href="mailto:{$extendedRoute->email}">{$extendedRoute->email}</a></dd>
+						{/if}
 
 						{if $extendedRoute->extendedUser->phone}
-						<dt>Telefon:</dt>
-						<dd>{$extendedRoute->extendedUser->phone}</dd>
+							<dt><i title="Telefon" class="glyphicon glyphicon-earphone"></i></dt>
+							<dd>{$extendedRoute->extendedUser->phone}</dd>
 						{/if}
 
 						{if $extendedRoute->extendedUser->website}
-						<dt>Web:</dt>
-						<dd><a href="http://petrmach.cz/">{$extendedRoute->extendedUser->website}</a></dd>
+							<dt><i title="Web" class="glyphicon glyphicon-globe"></i></dt>
+							<dd><a href="{$extendedRoute->extendedUser->website}">{$extendedRoute->extendedUser->website}</a></dd>
 						{/if}
 
 						{if $extendedRoute->extendedUser->facebook}
-						<dt>Facebook:</dt>
-						<dd><a href="http://www.facebook.com/petrmach.cz">{$extendedRoute->extendedUser->facebook}</a></dd>
+							<dt><i title="Facebook" class="fa fa-facebook"></i></dt>
+							<dd><a href="{$extendedRoute->extendedUser->facebook}">profil</a></dd>
 						{/if}
 					</dl>
+
+					{*<dl class="dl-horizontal">*}
+						{*{if $extendedRoute->extendedUser->birthDate}*}
+						{*<dt>Věk:</dt>*}
+						{*<dd>{$extendedRoute->extendedUser->birthDate->diff(new \DateTime)->format('%Y')}</dd>*}
+						{*{/if}*}
+
+						{*{if !strpos($extendedRoute->email, '@example.com')}*}
+						{*<dt>E-mail:</dt>*}
+						{*<dd>{$extendedRoute->email}</dd>*}
+						{*{/if}*}
+
+						{*{if $extendedRoute->extendedUser->phone}*}
+						{*<dt>Telefon:</dt>*}
+						{*<dd>{$extendedRoute->extendedUser->phone}</dd>*}
+						{*{/if}*}
+
+						{*{if $extendedRoute->extendedUser->website}*}
+						{*<dt>Web:</dt>*}
+						{*<dd><a href="{$extendedRoute->extendedUser->website}">{$extendedRoute->extendedUser->website}</a></dd>*}
+						{*{/if}*}
+
+						{*{if $extendedRoute->extendedUser->facebook}*}
+						{*<dt></dt>*}
+						{*<dd><a href="{$extendedRoute->extendedUser->facebook}">{$extendedRoute->extendedUser->facebook}</a></dd>*}
+						{*{/if}*}
+					{*</dl>*}
 				</div>
 			</div>
 		</div>
 	{/cache}
-
+{var $key = $key + 1}
 {/foreach}
+</div>

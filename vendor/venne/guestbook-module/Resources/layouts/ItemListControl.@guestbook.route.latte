@@ -1,8 +1,13 @@
-{var $thumbnail = '60x'}
-
 {block #list-items}
+
+{var $thumbnail = '60x'}
+{cache if => !count($routes), tags => ['routes']}{/cache}
+
 {foreach $routes as $route}
-	{cache [$route->id, $presenter->lang], tags => [\CmsModule\Content\Entities\PageEntity::CACHE, \CmsModule\Content\Entities\RouteEntity::CACHE, \CmsModule\Pages\Tags\TagEntity::CACHE, \CmsModule\Content\Entities\LanguageEntity::CACHE, \CmsModule\Content\Entities\PermissionEntity::CACHE]}
+	{cache [$route->id, $presenter->lang], tags => [
+		'route-' . $route->id,
+		'language-' . $presenter->lang,
+	]}
 		<div class="media">
 
 			<a class="pull-left thumbnail" {if $route->route->author}href="{plink Route route=>$route->route->author}"{else}href="#"{/if}>
@@ -58,4 +63,3 @@
 	{/cache}
 
 {/foreach}
-{/block}

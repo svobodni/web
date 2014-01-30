@@ -1,5 +1,25 @@
 {block #page-content}
 
-{control pagination, config => [ variant => '@blog.route' ]}
-{control itemList $control->getItemsBuilder()->orderBy('r.released', 'DESC')->getQuery()->getResult(), config => [ variant => '@blog.route' ]}
-{control pagination, config => [ variant => '@blog.route' ]}
+{cache [$presenter->routeId, $control['pagination']->page], tags => [
+	'page-' . $presenter->pageId,
+	'route-' . $presenter->routeId,
+	'language-' . $presenter->lang,
+]}
+
+
+	<div class="row">
+		<div class="col-md-12">
+			{control item $presenter->extendedRoute, config => [ variant => '@blog.category' ]}
+		</div>
+	</div>
+
+	{var $categories = $presenter->getCategories()}
+	{if count($categories)}
+		{control itemList $categories, config => [ variant => '@blog.categories' ]}
+		<hr />
+	{/if}
+
+	{control pagination, config => [ variant => '@blog.route' ]}
+	{control itemList $control->getItemsBuilder()->orderBy('r.released', 'DESC')->getQuery()->getResult(), config => [ variant => '@blog.route' ]}
+	{control pagination, config => [ variant => '@blog.route' ]}
+{/cache}

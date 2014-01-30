@@ -51,28 +51,6 @@ class RoutePresenter extends ItemsPresenter
 	/**
 	 * @return \Doctrine\ORM\QueryBuilder
 	 */
-	public function getItemsBuilder()
-	{
-		$qb = parent::getItemsBuilder();
-
-		if (count($this->extendedPage->roles)) {
-			$ids = array();
-			foreach ($this->extendedPage->roles as $role) {
-				$ids[] = $role->id;
-			}
-			$qb
-				->leftJoin('a.roleEntities', 'e')
-				->andWhere('e.id IN (:ids)')
-				->setParameter('ids', $ids);
-		}
-
-		return $qb;
-	}
-
-
-	/**
-	 * @return \Doctrine\ORM\QueryBuilder
-	 */
 	protected function getQueryBuilder()
 	{
 		$qb = $this->getRepository()->createQueryBuilder('a')
@@ -83,6 +61,17 @@ class RoutePresenter extends ItemsPresenter
 
 		if (count($this->websiteManager->languages) > 1) {
 			$qb->andWhere('(r.language IS NULL OR r.language = :language)')->setParameter('language', $this->getLanguage()->id);
+		}
+
+		if (count($this->extendedPage->roles)) {
+			$ids = array();
+			foreach ($this->extendedPage->roles as $role) {
+				$ids[] = $role->id;
+			}
+			$qb
+				->leftJoin('a.roleEntities', 'e')
+				->andWhere('e.id IN (:ids)')
+				->setParameter('ids', $ids);
 		}
 
 		return $qb;

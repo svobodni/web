@@ -48,7 +48,7 @@ class ConnectionChecker extends Object
 					$ret->val = FALSE;
 				}
 
-				//$connection->getSchemaManager()->tablesExist('user'); // try connect with some sql
+				$connection->getSchemaManager()->tablesExist('user'); // try connect with some sql
 			} catch (\Exception $ex) {
 				$ret->val = FALSE;
 			}

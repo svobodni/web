@@ -31,4 +31,29 @@ $(document).ready(function() {
 	$('.carousel').carousel({
 		interval: 2000
 	});
+
+	$('.header-container .control-search input[name="search"]').on('focus', function() {
+		$(this).closest('.control-search').animate({width:'600px'}, 500);
+		//$(this).closest('.twitter-typeahead').animate({backgroundColor: 'rgba(255,255,255,0.9)'}, 500);
+	});
+	$('.header-container .control-search input[name="search"]').on('focusout', function() {
+		$(this).closest('.control-search').animate({width:'250px'}, 500);
+		//$(this).closest('.twitter-typeahead').animate({backgroundColor: 'rgba(255,255,255,0.3)'}, 500);
+	});
+
+	var _w = false;
+
+	$(window).scroll(function(){
+		var top = $(document).scrollTop();
+
+		if (top > 86 && !_w) {
+			_w = true;
+			$('.navigation-container').removeClass('navbar-static-top');
+			$('.navigation-container').addClass('navbar-fixed-top');
+		} else if (top <= 86 && _w ) {
+			_w = false;
+			$('.navigation-container').removeClass('navbar-fixed-top');
+			$('.navigation-container').addClass('navbar-static-top');
+		}
+	})
 });

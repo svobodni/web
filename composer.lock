@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e9e94c65f9cdd1a703cb6478b088e808",
+    "hash": "c6758d603044d1220f93985aec76491c",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -300,12 +300,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "63ea7df5a5cec43f22b5cd4db9a347328f9d0c3b"
+                "reference": "0a7df7c58aeab4d1cef55a78e5ca50299a12a62b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/63ea7df5a5cec43f22b5cd4db9a347328f9d0c3b",
-                "reference": "63ea7df5a5cec43f22b5cd4db9a347328f9d0c3b",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/0a7df7c58aeab4d1cef55a78e5ca50299a12a62b",
+                "reference": "0a7df7c58aeab4d1cef55a78e5ca50299a12a62b",
                 "shasum": ""
             },
             "require": {
@@ -363,7 +363,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2014-01-08 12:31:36"
+            "time": "2014-01-15 00:19:18"
         },
         {
             "name": "doctrine/inflector",
@@ -497,12 +497,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "199cb62a80c7723942d14107c23bc45168e4241c"
+                "reference": "0742fc7167a4deedaabc8639849a3e71082999f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/199cb62a80c7723942d14107c23bc45168e4241c",
-                "reference": "199cb62a80c7723942d14107c23bc45168e4241c",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/0742fc7167a4deedaabc8639849a3e71082999f1",
+                "reference": "0742fc7167a4deedaabc8639849a3e71082999f1",
                 "shasum": ""
             },
             "require": {
@@ -549,7 +549,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2014-01-04 09:19:33"
+            "time": "2014-01-20 11:29:43"
         },
         {
             "name": "doctrine/orm",
@@ -557,12 +557,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "4e824ac6e1d9b45889916b9bb01265eb4a3cf435"
+                "reference": "9b7e949025fee7bc48ec5acb4af2a36a38979bdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/4e824ac6e1d9b45889916b9bb01265eb4a3cf435",
-                "reference": "4e824ac6e1d9b45889916b9bb01265eb4a3cf435",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/9b7e949025fee7bc48ec5acb4af2a36a38979bdd",
+                "reference": "9b7e949025fee7bc48ec5acb4af2a36a38979bdd",
                 "shasum": ""
             },
             "require": {
@@ -625,7 +625,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-01-06 20:27:50"
+            "time": "2014-01-25 16:36:54"
         },
         {
             "name": "hybridauth/hybridauth",
@@ -992,26 +992,26 @@
         },
         {
             "name": "o5/grido",
-            "version": "1.0.0",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/o5/grido.git",
-                "reference": "984419dc791aea496bb6e3c4356aee02e37745cd"
+                "reference": "75c5f61d12aa5c57cc574a2e155c4e3797c0b550"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/o5/grido/zipball/984419dc791aea496bb6e3c4356aee02e37745cd",
-                "reference": "984419dc791aea496bb6e3c4356aee02e37745cd",
+                "url": "https://api.github.com/repos/o5/grido/zipball/75c5f61d12aa5c57cc574a2e155c4e3797c0b550",
+                "reference": "75c5f61d12aa5c57cc574a2e155c4e3797c0b550",
                 "shasum": ""
             },
             "require": {
-                "nette/nette": "2.0.*",
-                "php": ">=5.3.1"
+                "nette/nette": "~2.0",
+                "php": ">=5.3"
             },
             "require-dev": {
-                "dibi/dibi": "2.1.*",
+                "dibi/dibi": "@dev",
                 "mockery/mockery": "@dev",
-                "nella/doctrine": "dev-master",
+                "nella/doctrine": "@dev",
                 "nette/tester": "@dev"
             },
             "type": "library",
@@ -1044,7 +1044,7 @@
                 "table",
                 "tablegrid"
             ],
-            "time": "2013-10-31 14:41:33"
+            "time": "2014-01-05 14:09:00"
         },
         {
             "name": "opauth/facebook",
@@ -1321,17 +1321,17 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.3.4",
+            "version": "v2.4.1",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "db78f8ff7fc9e28d25ff9a0bf6ddf9f0e35fbbe3"
+                "reference": "4c1ed2ff514bd85ee186eebb010ccbdeeab05af7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/db78f8ff7fc9e28d25ff9a0bf6ddf9f0e35fbbe3",
-                "reference": "db78f8ff7fc9e28d25ff9a0bf6ddf9f0e35fbbe3",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/4c1ed2ff514bd85ee186eebb010ccbdeeab05af7",
+                "reference": "4c1ed2ff514bd85ee186eebb010ccbdeeab05af7",
                 "shasum": ""
             },
             "require": {
@@ -1346,7 +1346,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -1370,7 +1370,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2013-08-17 16:34:49"
+            "time": "2014-01-01 08:14:50"
         },
         {
             "name": "symfony/yaml",
@@ -1543,12 +1543,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Venne/blog-module.git",
-                "reference": "c513107c50e998876f82508e17f6bb8eae8c9e12"
+                "reference": "dc2ac2a9575a0b7c52f7928b289ebaef1b3e4dac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Venne/blog-module/zipball/c513107c50e998876f82508e17f6bb8eae8c9e12",
-                "reference": "c513107c50e998876f82508e17f6bb8eae8c9e12",
+                "url": "https://api.github.com/repos/Venne/blog-module/zipball/dc2ac2a9575a0b7c52f7928b289ebaef1b3e4dac",
+                "reference": "dc2ac2a9575a0b7c52f7928b289ebaef1b3e4dac",
                 "shasum": ""
             },
             "require": {
@@ -1595,7 +1595,7 @@
                 "nette",
                 "venne"
             ],
-            "time": "2013-12-09 07:59:28"
+            "time": "2014-01-28 15:28:47"
         },
         {
             "name": "venne/bootstrap3-module",
@@ -1795,12 +1795,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Venne/cms-module.git",
-                "reference": "30e3815c55877eb08905163146d659b7511bd85d"
+                "reference": "ebeb9c1c58c621f557d5323860c8ce2b99c3c7a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Venne/cms-module/zipball/30e3815c55877eb08905163146d659b7511bd85d",
-                "reference": "30e3815c55877eb08905163146d659b7511bd85d",
+                "url": "https://api.github.com/repos/Venne/cms-module/zipball/ebeb9c1c58c621f557d5323860c8ce2b99c3c7a9",
+                "reference": "ebeb9c1c58c621f557d5323860c8ce2b99c3c7a9",
                 "shasum": ""
             },
             "require": {
@@ -1876,7 +1876,7 @@
                 "nette",
                 "venne"
             ],
-            "time": "2014-01-10 17:28:24"
+            "time": "2014-01-26 11:01:24"
         },
         {
             "name": "venne/deployment-module",
@@ -1943,12 +1943,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Venne/doctrine-module.git",
-                "reference": "bea95f0b8173d1b3de4e4d5171122a7774e66e53"
+                "reference": "cfc4612ce05add5eb498a035e77f62be3a6a2d62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Venne/doctrine-module/zipball/bea95f0b8173d1b3de4e4d5171122a7774e66e53",
-                "reference": "bea95f0b8173d1b3de4e4d5171122a7774e66e53",
+                "url": "https://api.github.com/repos/Venne/doctrine-module/zipball/cfc4612ce05add5eb498a035e77f62be3a6a2d62",
+                "reference": "cfc4612ce05add5eb498a035e77f62be3a6a2d62",
                 "shasum": ""
             },
             "require": {
@@ -2006,7 +2006,7 @@
                 "nette",
                 "venne"
             ],
-            "time": "2013-12-20 14:32:32"
+            "time": "2014-01-28 15:27:59"
         },
         {
             "name": "venne/dynatree-module",
@@ -2060,12 +2060,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Venne/events-module.git",
-                "reference": "d1ad3796efcc3621ae41ecf075c5cf5b718e46d6"
+                "reference": "04a0152aa14be3c467bcbae16de2a8612919c609"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Venne/events-module/zipball/d1ad3796efcc3621ae41ecf075c5cf5b718e46d6",
-                "reference": "d1ad3796efcc3621ae41ecf075c5cf5b718e46d6",
+                "url": "https://api.github.com/repos/Venne/events-module/zipball/04a0152aa14be3c467bcbae16de2a8612919c609",
+                "reference": "04a0152aa14be3c467bcbae16de2a8612919c609",
                 "shasum": ""
             },
             "require": {
@@ -2113,7 +2113,7 @@
                 "nette",
                 "venne"
             ],
-            "time": "2013-12-15 09:49:27"
+            "time": "2014-01-26 13:32:46"
         },
         {
             "name": "venne/forms-module",
@@ -2180,18 +2180,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Venne/framework.git",
-                "reference": "a6448dca976a3c64ba3c79ddacc2fa8b60f49def"
+                "reference": "aacf24a54a3a035138283ad41caa5d5c27cbffd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Venne/framework/zipball/a6448dca976a3c64ba3c79ddacc2fa8b60f49def",
-                "reference": "a6448dca976a3c64ba3c79ddacc2fa8b60f49def",
+                "url": "https://api.github.com/repos/Venne/framework/zipball/aacf24a54a3a035138283ad41caa5d5c27cbffd7",
+                "reference": "aacf24a54a3a035138283ad41caa5d5c27cbffd7",
                 "shasum": ""
             },
             "require": {
                 "nette/nette": "~2.0.0",
                 "php": ">=5.3.2",
-                "symfony/console": "v2.3.4"
+                "symfony/console": "v2.4.1"
             },
             "require-dev": {
                 "nette/tester": "@dev"
@@ -2225,7 +2225,7 @@
                 "doctrine",
                 "nette"
             ],
-            "time": "2013-12-20 14:31:45"
+            "time": "2014-01-26 14:27:32"
         },
         {
             "name": "venne/gallery-module",
@@ -2233,12 +2233,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Venne/gallery-module.git",
-                "reference": "2012f92a81261c579b5d68319425a24511d71ab3"
+                "reference": "82f80476164cb98818485dcce351efad82b6d841"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Venne/gallery-module/zipball/2012f92a81261c579b5d68319425a24511d71ab3",
-                "reference": "2012f92a81261c579b5d68319425a24511d71ab3",
+                "url": "https://api.github.com/repos/Venne/gallery-module/zipball/82f80476164cb98818485dcce351efad82b6d841",
+                "reference": "82f80476164cb98818485dcce351efad82b6d841",
                 "shasum": ""
             },
             "require": {
@@ -2281,7 +2281,7 @@
                 "nette",
                 "venne"
             ],
-            "time": "2013-12-01 13:23:40"
+            "time": "2014-01-26 11:02:32"
         },
         {
             "name": "venne/googleanalytics-module",
@@ -2289,12 +2289,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Venne/googleanalytics-module.git",
-                "reference": "c769938111e150abc2b5b950e4522242d1cbfdaa"
+                "reference": "c1da87248258677b7583be158e14274cb3e2bad8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Venne/googleanalytics-module/zipball/c769938111e150abc2b5b950e4522242d1cbfdaa",
-                "reference": "c769938111e150abc2b5b950e4522242d1cbfdaa",
+                "url": "https://api.github.com/repos/Venne/googleanalytics-module/zipball/c1da87248258677b7583be158e14274cb3e2bad8",
+                "reference": "c1da87248258677b7583be158e14274cb3e2bad8",
                 "shasum": ""
             },
             "require": {
@@ -2339,7 +2339,7 @@
                 "nette",
                 "venne"
             ],
-            "time": "2013-09-22 19:57:03"
+            "time": "2014-01-24 20:58:12"
         },
         {
             "name": "venne/grido-module",
@@ -2347,16 +2347,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Venne/grido-module.git",
-                "reference": "16338c504c258073e5d1392881e36f6597faf872"
+                "reference": "8f8ea7e89514f61cb62cfedf79e5d73bd2ec61ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Venne/grido-module/zipball/16338c504c258073e5d1392881e36f6597faf872",
-                "reference": "16338c504c258073e5d1392881e36f6597faf872",
+                "url": "https://api.github.com/repos/Venne/grido-module/zipball/8f8ea7e89514f61cb62cfedf79e5d73bd2ec61ca",
+                "reference": "8f8ea7e89514f61cb62cfedf79e5d73bd2ec61ca",
                 "shasum": ""
             },
             "require": {
-                "o5/grido": "1.0.0",
+                "o5/grido": "1.0.4",
                 "php": ">=5.3.2",
                 "venne/framework": "2.0.x-dev"
             },
@@ -2385,7 +2385,7 @@
                 "nette",
                 "venne"
             ],
-            "time": "2013-10-31 19:21:10"
+            "time": "2014-01-23 09:02:47"
         },
         {
             "name": "venne/guestbook-module",
@@ -2393,12 +2393,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Venne/guestbook-module.git",
-                "reference": "39d0f0f565c09c08fdd2336d12ef4a3dba764d1d"
+                "reference": "6e88afc2192e14a8ef1c0f3c5decb28a160983e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Venne/guestbook-module/zipball/39d0f0f565c09c08fdd2336d12ef4a3dba764d1d",
-                "reference": "39d0f0f565c09c08fdd2336d12ef4a3dba764d1d",
+                "url": "https://api.github.com/repos/Venne/guestbook-module/zipball/6e88afc2192e14a8ef1c0f3c5decb28a160983e4",
+                "reference": "6e88afc2192e14a8ef1c0f3c5decb28a160983e4",
                 "shasum": ""
             },
             "require": {
@@ -2440,7 +2440,7 @@
                 "nette",
                 "venne"
             ],
-            "time": "2013-11-30 12:01:11"
+            "time": "2014-01-12 13:25:22"
         },
         {
             "name": "venne/hogan-module",
@@ -2596,12 +2596,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Venne/importer-module.git",
-                "reference": "d4a6028c93224cde48fec870f88b6facf7ab70f3"
+                "reference": "3a7fa33f450420c9f8eccd284b2285ae301a4764"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Venne/importer-module/zipball/d4a6028c93224cde48fec870f88b6facf7ab70f3",
-                "reference": "d4a6028c93224cde48fec870f88b6facf7ab70f3",
+                "url": "https://api.github.com/repos/Venne/importer-module/zipball/3a7fa33f450420c9f8eccd284b2285ae301a4764",
+                "reference": "3a7fa33f450420c9f8eccd284b2285ae301a4764",
                 "shasum": ""
             },
             "require": {
@@ -2645,7 +2645,7 @@
                 "nette",
                 "venne"
             ],
-            "time": "2013-10-03 14:53:59"
+            "time": "2014-01-24 20:59:24"
         },
         {
             "name": "venne/jquery2.0-module",

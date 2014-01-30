@@ -1,0 +1,28 @@
+{block #page-content}
+
+{cache [$presenter->routeId, $control['pagination']->page], tags => [
+	'page-' . $presenter->pageId,
+	'route-' . $presenter->routeId,
+	'language-' . $presenter->lang,
+]}
+
+{var $result = (array)$control->getItemsBuilder()->orderBy('r.released', 'ASC')->getQuery()->getResult()}
+{var $r = array(reset($result))}
+
+<div class="row">
+	<div class="col-md-12">
+		{control itemList $r, config => [ variant => '@userlist.route' ]}
+
+		{!$r[0]->route->text}
+	</div>
+</div>
+
+<hr />
+
+<?php unset($result[0]); ?>
+
+
+
+{control itemList $result, config => [ variant => '@userlist.route' ]}
+{control pagination, config => [ variant => '@userlist.route' ]}
+{/cache}

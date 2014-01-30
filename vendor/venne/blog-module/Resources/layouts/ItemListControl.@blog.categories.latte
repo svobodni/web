@@ -1,0 +1,38 @@
+{cache $presenter->routeId, tags => [
+	'routes',
+	'languages',
+]}
+<div class="row">
+	<div class="col-md-6">
+		<ul class="nav nav-pills nav-stacked">
+			{foreach $routes as $category}
+				{continueIf $iterator->isEven()}
+				<li><a href="{plink this route => $category->route}">{include #categories-items-item, category => $category}</a></li>
+			{/foreach}
+		</ul>
+	</div>
+	<div class="col-md-6">
+		<ul class="nav nav-pills nav-stacked">
+			{foreach $routes as $category}
+				{continueIf $iterator->isOdd()}
+				<li><a href="{plink this route => $category->route}">{include #categories-items-item, category => $category}</a></li>
+			{/foreach}
+		</ul>
+	</div>
+</div>
+
+
+{define #categories-items-item}
+	{var $thumbnail = 'x32'}
+
+	<div class="media">
+		{if $category->route->photo}
+			<img class="media-object img-rounded pull-right" n:src="$category->route->photo->getFileUrl(true), size=>$thumbnail" alt="{$category}" height="32">
+		{else}
+			<img class="media-object img-rounded pull-right" src="holder.js/32x32" alt="{$category->route->name}"/>
+		{/if}
+		<div class="media-body"><strong>{$category}</strong> <small>{$category->route->notation|truncate:60}</small></div>
+	</div>
+{/define}
+
+{/cache}

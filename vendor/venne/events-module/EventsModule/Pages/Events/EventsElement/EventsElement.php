@@ -67,7 +67,7 @@ class EventsElement extends BaseElement
 			->andWhere('r.expired IS NULL OR r.expired > :now')->setParameter('now', new \DateTime)
 			->setMaxResults($this->getExtendedElement()->itemsPerPage)
 			->setFirstResult($this['vp']->getPaginator()->getOffset())
-			->orderBy('a.date', 'DESC')
+			->orderBy('a.date', 'ASC')
 			->getQuery();
 
 		return $query->getResult();
@@ -79,6 +79,9 @@ class EventsElement extends BaseElement
 	 */
 	protected function getQueryBuilder()
 	{
+		$today = new \DateTime;
+		$today->setTime(0, 0, 0);
+
 		$dql = $this->routeRepository->createQueryBuilder('a');
 
 		if (count($this->getExtendedElement()->pages) > 0) {
@@ -91,7 +94,7 @@ class EventsElement extends BaseElement
 			$dql = $dql->andWhere('p.id IN (:ids)')->setParameter('ids', $ids);
 		}
 
-		$dql->andWhere('a.date >= :now')->setParameter('now', new \DateTime);
+		$dql->andWhere('a.date >= :today')->setParameter('today', $today);
 
 		return $dql;
 	}

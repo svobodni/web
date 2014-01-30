@@ -13,7 +13,7 @@ use Tester\Assert,
     Grido\Grid,
     Grido\Components\Filters\Condition;
 
-require_once __DIR__ . '/DataSource.TestCase.php';
+require_once __DIR__ . '/TestCase.php';
 
 class ArraySourceTest extends DataSourceTestCase
 {
@@ -27,11 +27,16 @@ class ArraySourceTest extends DataSourceTestCase
                 ->setSortable();
             $grid->addColumnText('surname', 'Surname');
             $grid->addColumnText('gender', 'Gender');
-            $grid->addColumnText('telephonenumber', 'Phone');
+            $grid->addColumnText('phone', 'Phone')
+                ->setColumn('telephonenumber')
+                ->setFilterText();
 
             $grid->addFilterText('name', 'Name')
                 ->setColumn('surname')
-                ->setColumn('firstname', Condition::OPERATOR_AND);
+                ->setColumn('firstname', Condition::OPERATOR_AND)
+                ->setSuggestion(function(array $row) {
+                    return $row['firstname'];
+            });
 
             $grid->addColumnText('country', 'Country')
                 ->setSortable()
@@ -43,25 +48,15 @@ class ArraySourceTest extends DataSourceTestCase
                     TRUE => array('gender', '= ?', 'male')
                 ));
 
+            $grid->addFilterCheck('tall', 'Only tall')
+                ->setWhere(function($value, array $row) {
+                    Assert::true($value);
+                    return $row['centimeters'] >= 180;
+                });
+
             $grid->setExport();
 
         })->run();
-    }
-
-    function testSetWhere()
-    {
-        Helper::grid(function(Grid $grid) {
-            $grid->setModel(json_decode(file_get_contents(__DIR__ . '/files/users.json'), 1));
-            $grid->addFilterCheck('male', 'Only male')
-                ->setWhere(function($value, array $row) {
-                    Assert::true($value);
-                    return $row['gender'] == 'male';
-                });
-
-        })->run(array('grid-filter' => array('male' => TRUE)));
-
-        Helper::$grid->data;
-        Assert::same(19, Helper::$grid->count);
     }
 
     function testCompare()
@@ -76,6 +71,9 @@ class ArraySourceTest extends DataSourceTestCase
 
         Assert::true($source->compare('Lucie', '=', 'Lucie'));
         Assert::false($source->compare('Lucie', '=', 'lucie'));
+
+        Assert::true($source->compare('Lucie', '<>', 'Petr'));
+        Assert::false($source->compare('Lucie', '<>', 'Lucie'));
 
         Assert::true($source->compare(NULL, 'IS NULL', NULL));
         Assert::false($source->compare('', 'IS NULL', NULL));

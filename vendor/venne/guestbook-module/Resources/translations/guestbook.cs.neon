@@ -1,3 +1,6 @@
 guestbook: návštěvní kniha
 reply: odpovědět
 message max length: maximální délka textu
+message has been deleted.: zpráva byla smazána.
+you are logged in as superadmin. You can not send new comments.: jste přihlášen jako superadministrátor
+message has been saved.: zpráva byla uložena

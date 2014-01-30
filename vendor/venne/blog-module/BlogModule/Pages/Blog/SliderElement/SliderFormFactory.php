@@ -28,6 +28,7 @@ class SliderFormFactory extends BlogFormFactory
 		$form->addGroup();
 		$form->addText('itemsPerPage', 'Items per page');
 		$form->addManyToMany('pages', 'Pages');
+		$form->addManyToMany('categories', 'Categories');
 
 		$form->addGroup('Dimensions');
 		$form->addText('width', 'Width')->addCondition($form::FILLED)->addRule($form::INTEGER);

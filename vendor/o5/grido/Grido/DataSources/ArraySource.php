@@ -62,7 +62,13 @@ class ArraySource extends \Nette\Object implements IDataSource
 
                 } else {
                     $i = count($condition->condition) > 1 ? $i : 0;
-                    $results[] = (int) $that->compare($row[$column], $condition->condition[$i], $condition->value[$i]);
+                    $results[] = (int) $that->compare(
+                        $row[$column],
+                        $condition->condition[$i],
+                        isset($condition->value[$i])
+                            ? $condition->value[$i]
+                            : NULL
+                    );
 
                     $i++;
                 }
@@ -86,12 +92,16 @@ class ArraySource extends \Nette\Object implements IDataSource
     {
         $expected = current((array) $expected);
         $cond = str_replace(' ?', '', $condition);
+
         if ($cond === 'LIKE') {
             $pattern = str_replace('%', '.*', preg_quote($expected));
             return (bool) preg_match("/^{$pattern}$/i", $actual);
 
         } else if ($cond === '=') {
             return $actual == $expected;
+
+        } else if ($cond === '<>') {
+            return $actual != $expected;
 
         } elseif ($cond === 'IS NULL') {
             return $actual === NULL;
@@ -176,26 +186,33 @@ class ArraySource extends \Nette\Object implements IDataSource
     }
 
     /**
-     * @param string $column
+     * @param mixed $column
      * @param array $conditions
+     * @param int $limit
      * @return array
      */
-    public function suggest($column, array $conditions)
+    public function suggest($column, array $conditions, $limit)
     {
         $data = $this->data;
         foreach ($conditions as $condition) {
             $data = $this->makeWhere($condition, $data);
         }
 
+        array_slice($data, 1, $limit);
+
         $items = array();
         foreach ($data as $row) {
-            $value = (string) $row[$column];
+            if (is_string($column)) {
+                $value = (string) $row[$column];
+            } elseif (is_callable($column)) {
+                $value = (string) $column($row);
+            } else {
+                throw new \InvalidArgumentException('Column of suggestion must be string or callback, ' . gettype($column) . ' given.');
+            }
+
             $items[$value] = $value;
         }
 
-        $items = array_values($items);
-        sort($items);
-
-        return $items;;
+        return array_values($items);
     }
 }

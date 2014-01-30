@@ -56,6 +56,7 @@ class AjaxFileUploaderControlFactory extends AbstractAjaxFileUploaderControlFact
 		/** @var FileEntity $fileEntity */
 		$fileEntity = $this->fileRepository->createNew();
 		$fileEntity->setFile(new \SplFileInfo($this->ajaxDir . '/' . $fileName));
+		$this->fileRepository->save($fileEntity);
 
 		$this->categoryEntity->items[] = $photoEntity = new ItemEntity($this->categoryEntity->extendedPage);
 		$photoEntity->route->setPhoto($fileEntity);

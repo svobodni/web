@@ -25,6 +25,7 @@ class AdminUserFormFactory extends BaseAdminFormFactory
 	{
 		return array_merge(parent::getControlExtensions(), array(
 			new ControlExtension,
+			new \CmsModule\Content\ControlExtension()
 		));
 	}
 
@@ -33,7 +34,7 @@ class AdminUserFormFactory extends BaseAdminFormFactory
 	{
 		parent::configure($form);
 
-		$form->addGroup('Další informace');
+		$group = $form->addGroup('Další informace');
 		$form->addText('address', 'Adresa');
 		$form->addDateTime('birthDate', 'Datum narození');
 		$form->addText('phone', 'Phone');
@@ -41,6 +42,10 @@ class AdminUserFormFactory extends BaseAdminFormFactory
 		$form->addText('facebook', 'Facebook');
 		$form->addText('twitter', 'Twitter');
 		$form->addText('linkedIn', 'LinkedIn');
+
+		$route = $form['user']['route'];
+		$route->setCurrentGroup($group);
+		$route->addContentEditor('text');
 	}
 
 }

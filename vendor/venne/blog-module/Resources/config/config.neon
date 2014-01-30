@@ -4,12 +4,18 @@ services:
 		class: CmsModule\Content\ContentType('BlogModule\Pages\Blog\PageEntity')
 		setup:
 			- addSection('Content', @blog.tableControlFactory)
+			- addSection('Categories', @blog.categoriesTableControlFactory)
 			- addSection('Settings', @blog.pageFormFactory)
 		tags: [contentType: [name: 'blog']]
 
-	blog.routeRepository:
-		class: BlogModule\Pages\Blog\RouteRepository
+	blog.articleRepository:
+		class: BlogModule\Pages\Blog\ArticleRepository
 		factory: @entityManager::getRepository('BlogModule\Pages\Blog\ArticleEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	blog.categoryRepository:
+		class: BlogModule\Pages\Blog\CategoryRepository
+		factory: @entityManager::getRepository('BlogModule\Pages\Blog\CategoryEntity')
 		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
 
 includes:

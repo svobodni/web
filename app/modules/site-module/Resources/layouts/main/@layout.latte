@@ -13,9 +13,9 @@
 </div>
 
 <div class="col-md-4 col-wb">
-	<a class="btn btn-block btn-default btn-clen" href="https://www.svobodni.cz/clenstvi/priznivec/">Stát se příznivcem</a>
-	<a class="btn btn-block btn-default btn-clen" href="https://www.svobodni.cz/clenstvi/clen/">Stát se členem</a>
-	<a class="btn btn-block btn-default btn-clen" href="http://www.svobodni.cz/chci-pomoci-strane/">Přispět finančně</a>
+	<a class="btn btn-block btn-default btn-clen" href="{$basePath}/registrace/stat-se-priznivcem">Stát se příznivcem</a>
+	<a class="btn btn-block btn-default btn-clen" href="{$basePath}/registrace/stat-se-clenem">Stát se členem</a>
+	<a class="btn btn-block btn-default btn-clen" href="{$basePath}/registrace/prispet-financne">Přispět finančně</a>
 </div>
 
 </div>
@@ -48,9 +48,9 @@
 
 <div class="col-md-4 col-head">
 
-	<div class="control-search">
-		{control search}
-	</div>
+	{*<div class="control-search">*}
+		{*{control search}*}
+	{*</div>*}
 
 	<div class="page-header">
 		<h2><a href="{$basePath}/udalosti">Události</a></h2>
@@ -77,10 +77,10 @@
 	{element blog stanoviska, config => [ variant => 'stanoviska' ]}
 	<a href="{$basePath}/clanky/stanoviska-strany" class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-chevron-right"></span> Další</a>
 
-	<div class="page-header">
-		<h2>Předsednictvo</h2>
-	</div>
-	{element blogSlider predsednictvo, config => [ variant => 'predsednictvo' ]}
+	{*<div class="page-header">*}
+		{*<h2>Předsednictvo</h2>*}
+	{*</div>*}
+	{*{element blogSlider predsednictvo, config => [ variant => 'predsednictvo' ]}*}
 
 
 	<div class="page-header">

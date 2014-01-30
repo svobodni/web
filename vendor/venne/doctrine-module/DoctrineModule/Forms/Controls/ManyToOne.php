@@ -11,9 +11,9 @@
 
 namespace DoctrineModule\Forms\Controls;
 
-use Venne;
 use Nette\Forms\Controls\BaseControl;
 use Nette;
+use Venne;
 
 /**
  * @author     Josef Kříž
@@ -79,13 +79,12 @@ class ManyToOne extends BaseControl
 		if ($this->query) {
 			$items = $this->query->getQuery()->getResult();
 		} else {
-			$ref = $this->getParent()->data->getReflection()->getProperty($this->name)->getAnnotation('ORM\\' . $this->type);
-
-			$class = $ref["targetEntity"];
-			if (substr($class, 0, 1) != "\\") {
-				$class = "\\" . $this->getParent()->data->getReflection()->getNamespaceName() . "\\" . $class;
+			$meta = $this->form->mapper->entityManager->getClassMetadata(get_class($this->parent->data));
+			if (!$meta->hasAssociation($this->name)) {
+				throw new Nette\InvalidStateException;
 			}
 
+			$class = $meta->associationMappings[$this->name]['targetEntity'];
 			$items = $this->getParent()->form->mapper->entityManager->getRepository($class)->findBy($this->criteria, $this->orderBy, $this->limit, $this->offset);
 		}
 
@@ -438,7 +437,7 @@ class ManyToOne extends BaseControl
 	 * @param $name
 	 * @return ManyToOne
 	 */
-	public function  setDependOn(\Nette\Forms\IControl $control, $name = NULL)
+	public function setDependOn(\Nette\Forms\IControl $control, $name = NULL)
 	{
 		$_this = $this;
 		$this->dependOn = array($control, $name ? : $control->name);
@@ -451,9 +450,12 @@ class ManyToOne extends BaseControl
 			$control->getControlPrototype()->onChange = "$('#frm{$form->name}-{$_this->name}_reload').click();";
 		};
 
-		$control->form->onSave[] = function ($form) use ($_this, $control, $name) {
+		$f = function ($form) use ($_this, $control, $name) {
 			$_this->setCriteria(array($name => $control->value));
 		};
+
+		$control->form->onAttached[] = $f;
+		$control->form->onLoad[] = $f;
 
 		return $this;
 	}

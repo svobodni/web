@@ -12,6 +12,7 @@
 namespace CmsModule\Components;
 
 use CmsModule\Content\ContentManager;
+use CmsModule\Content\Entities\ExtendedPageEntity;
 use Nette\Http\SessionSection;
 use Venne\Application\UI\Control;
 use Venne\Module\TemplateManager;
@@ -184,7 +185,7 @@ class PanelControl extends Control
 
 			$data2 = array();
 			foreach ($this->templateManager->getLayoutsByModule($moduleName) as $name => $key) {
-				$s = array('title' => '@' . $name . ' <small class="muted">' . $this->template->translate('layout') . '</small>', 'key' => $key);
+				$s = array('isFolder' => TRUE, 'title' => '@' . $name . ' <small class="muted">' . $this->template->translate('layout') . '</small>', 'key' => $key);
 
 				foreach ($this->templateManager->getTemplatesByModule($moduleName, $name) as $name => $key) {
 					$item2 = array('title' => $name . ' <small class="muted">' . $this->template->translate('template') . '</small>', 'key' => $key);
@@ -235,6 +236,10 @@ class PanelControl extends Control
 
 		$types = $this->contentManager->getContentTypes();
 		foreach ($dql->getQuery()->getResult() as $page) {
+			if (!$page->isAllowedInBackend($this->presenter->user, ExtendedPageEntity::ADMIN_PRIVILEGE_SHOW)) {
+				continue;
+			}
+
 			$type = explode('.', $types[$page->class]);
 			$type = $this->presenter->template->translate(end($type));
 			$item = array('title' => $page->mainRoute->name . ' <small class="muted">' . $type . '</small>', 'key' => $page->id);

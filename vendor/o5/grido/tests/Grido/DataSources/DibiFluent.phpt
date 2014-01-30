@@ -13,34 +13,35 @@ use Tester\Assert,
     Grido\Grid,
     Grido\Components\Filters\Condition;
 
-require_once __DIR__ . '/DataSource.TestCase.php';
+require_once __DIR__ . '/TestCase.php';
 
 class DibiFluentTest extends DataSourceTestCase
 {
-    /** @var \DibiFluent */
-    public $fluent;
-
     function setUp()
     {
-        $that = $this;
-        Helper::grid(function(Grid $grid, TestPresenter $presenter) use ($that) {
-            $that->fluent = $presenter->context->dibi_sqlite
+        Helper::grid(function(Grid $grid, TestPresenter $presenter) {
+            $fluent = $presenter->context->dibi_sqlite
                 ->select('u.*, c.title AS country')
                 ->from('[user] u')
                 ->join('[country] c')->on('u.country_code = c.code');
 
-            $grid->setModel($that->fluent);
+            $grid->setModel($fluent);
             $grid->setDefaultPerPage(3);
 
             $grid->addColumnText('firstname', 'Firstname')
                 ->setSortable();
             $grid->addColumnText('surname', 'Surname');
             $grid->addColumnText('gender', 'Gender');
-            $grid->addColumnText('telephonenumber', 'Phone');
+            $grid->addColumnText('phone', 'Phone')
+                ->setColumn('telephonenumber')
+                ->setFilterText();
 
             $grid->addFilterText('name', 'Name')
                 ->setColumn('surname')
-                ->setColumn('firstname', Condition::OPERATOR_AND);
+                ->setColumn('firstname', Condition::OPERATOR_AND)
+                ->setSuggestion(function(\DibiRow $row) {
+                    return $row['firstname'];
+                });
 
             $grid->addColumnText('country', 'Country')
                 ->setSortable()
@@ -52,26 +53,15 @@ class DibiFluentTest extends DataSourceTestCase
                     TRUE => array('gender', '= ?', 'male')
                 ));
 
+            $grid->addFilterCheck('tall', 'Only tall')
+                ->setWhere(function($value, \DibiFluent $fluent) {
+                    Assert::true($value);
+                    $fluent->where('[centimeters] >= %i', 180);
+                });
+
             $grid->setExport();
 
         })->run();
-    }
-
-    function testSetWhere()
-    {
-        $that = $this;
-        Helper::grid(function(Grid $grid) use ($that) {
-            $grid->setModel($that->fluent);
-            $grid->addFilterCheck('male', 'Only male')
-                ->setWhere(function($value, \DibiFluent $fluent) {
-                    Assert::true($value);
-                    $fluent->where('[gender] = %s', 'male');
-                });
-
-        })->run(array('grid-filter' => array('male' => TRUE)));
-
-        Helper::$grid->data;
-        Assert::same(19, Helper::$grid->count);
     }
 }
 

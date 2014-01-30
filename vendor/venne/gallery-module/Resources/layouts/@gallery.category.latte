@@ -1,4 +1,10 @@
 {block #page-content}
 
+{cache $presenter->routeId, tags => [
+	'page-' . $presenter->pageId,
+	'route-' . $presenter->routeId,
+	'language-' . $presenter->lang,
+]}
 {control item $presenter->route, config => [ variant => '@gallery.category' ]}
 {control itemList $presenter->extendedRoute->items, config => [ variant => '@gallery.category' ]}
+{/cache}

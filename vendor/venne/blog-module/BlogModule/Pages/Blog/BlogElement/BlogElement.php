@@ -11,7 +11,7 @@
 
 namespace BlogModule\Pages\Blog\BlogElement;
 
-use BlogModule\Pages\Blog\RouteRepository;
+use BlogModule\Pages\Blog\ArticleRepository;
 use CmsModule\Content\Elements\BaseElement;
 use Venne\Forms\FormFactory;
 
@@ -21,8 +21,8 @@ use Venne\Forms\FormFactory;
 class BlogElement extends BaseElement
 {
 
-	/** @var RouteRepository */
-	private $routeRepository;
+	/** @var ArticleRepository */
+	private $articleRepository;
 
 	/** @var TextFormFactory */
 	protected $setupFormFactory;
@@ -38,11 +38,11 @@ class BlogElement extends BaseElement
 
 
 	/**
-	 * @param RouteRepository $routeRepository
+	 * @param ArticleRepository $articleRepository
 	 */
-	public function injectRouteRepository(RouteRepository $routeRepository)
+	public function injectArticleRepository(ArticleRepository $articleRepository)
 	{
-		$this->routeRepository = $routeRepository;
+		$this->articleRepository = $articleRepository;
 	}
 
 
@@ -78,7 +78,7 @@ class BlogElement extends BaseElement
 	 */
 	protected function getQueryBuilder()
 	{
-		$dql = $this->routeRepository->createQueryBuilder('a');
+		$dql = $this->articleRepository->createQueryBuilder('a');
 
 		if (count($this->getExtendedElement()->pages) > 0) {
 			$ids = array();
@@ -86,8 +86,20 @@ class BlogElement extends BaseElement
 				$ids[] = $page->id;
 			}
 
-			$dql = $dql->join('a.extendedPage', 'p');
-			$dql = $dql->andWhere('p.id IN (:ids)')->setParameter('ids', $ids);
+			$dql
+				->leftJoin('a.extendedPage', 'p')
+				->andWhere('p.id IN (:ids)')->setParameter('ids', $ids);
+		}
+
+		if (count($this->getExtendedElement()->categories) > 0) {
+			$ids = array();
+			foreach ($this->getExtendedElement()->categories as $category) {
+				$ids[] = $category->id;
+			}
+
+			$dql
+				->leftJoin('a.categories', 'c')
+				->andWhere('(a.category IN (:cids) OR c.id IN (:cids))')->setParameter('cids', $ids);
 		}
 
 		return $dql;

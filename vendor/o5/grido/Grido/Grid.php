@@ -470,9 +470,9 @@ class Grid extends Components\Container
     public function getTablePrototype()
     {
         if ($this->tablePrototype === NULL) {
-            $this->tablePrototype = \Nette\Utils\Html::el('table')
-                ->id($this->getName())
-                ->class('table table-striped table-hover');
+            $this->tablePrototype = \Nette\Utils\Html::el('table');
+            $this->tablePrototype->id($this->getName())
+                ->class[] = 'table table-striped table-hover';
         }
 
         return $this->tablePrototype;
@@ -612,6 +612,7 @@ class Grid extends Components\Container
     {
         $values = $button->form->values[Filter::ID];
         foreach ($values as $name => $value) {
+            $value = (string) $value;
             if ($value != '' || isset($this->defaultFilter[$name])) {
                 $this->filter[$name] = $this->getFilter($name)->changeValue($value);
             } elseif (isset($this->filter[$name])) {
@@ -662,6 +663,7 @@ class Grid extends Components\Container
     public function reload()
     {
         if ($this->presenter->isAjax()) {
+            $this->presenter->payload->grido = TRUE;
             $this->invalidateControl();
         } else {
             $this->redirect('this');
@@ -753,8 +755,11 @@ class Grid extends Components\Container
         foreach ($this->sort as $column => $dir) {
             $component = $this->getColumn($column, FALSE);
             if (!$component) {
-                trigger_error("Column with name '$column' does not exist.", E_USER_NOTICE);
-                break;
+                if (!isset($this->defaultSort[$column])) {
+                    trigger_error("Column with name '$column' does not exist.", E_USER_NOTICE);
+                    break;
+                }
+
             } elseif (!$component->isSortable()) {
                 if (isset($this->defaultSort[$column])) {
                     $component->setSortable();
@@ -762,7 +767,9 @@ class Grid extends Components\Container
                     trigger_error("Column with name '$column' is not sortable.", E_USER_NOTICE);
                     break;
                 }
-            } elseif (!in_array($dir, array(Column::ORDER_ASC, Column::ORDER_DESC))) {
+            }
+
+            if (!in_array($dir, array(Column::ORDER_ASC, Column::ORDER_DESC))) {
                 if ($dir == '' && isset($this->defaultSort[$column])) {
                     unset($this->sort[$column]);
                     break;
@@ -772,7 +779,7 @@ class Grid extends Components\Container
                 break;
             }
 
-            $sort[$component->column] = $dir == Column::ORDER_ASC ? 'ASC' : 'DESC';
+            $sort[$component ? $component->column : $column] = $dir == Column::ORDER_ASC ? 'ASC' : 'DESC';
         }
 
         if ($sort) {

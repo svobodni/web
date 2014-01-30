@@ -100,7 +100,8 @@ class NavigationControl extends Control
 			->andWhere('a.parent = :parent')->setParameter('parent', $page ? $page->id : NULL)
 			->andWhere('(r.language IS NULL OR r.language = :language)')->setParameter('language', $this->presenter->language->id)
 			->andWhere('a.published = :true')
-			->andWhere('r.published = :true')->setParameter('true', TRUE);
+			->andWhere('r.published = :true')->setParameter('true', TRUE)
+			->orderBy('a.position', 'ASC');
 	}
 
 

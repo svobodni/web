@@ -35,6 +35,7 @@ class BlogFormFactory extends FormFactory
 	{
 		$form->addText('itemsPerPage', 'Items per page');
 		$form->addManyToMany('pages', 'Pages');
+		$form->addManyToMany('categories', 'Categories');
 
 		$form->addSaveButton('Save');
 	}
