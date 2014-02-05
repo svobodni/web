@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 	var _w = false;
 
-	$(window).scroll(function(){
+	var toggleNavigation = function() {
 		var top = $(document).scrollTop();
 
 		if (top > 86 && !_w) {
@@ -55,5 +55,8 @@ $(document).ready(function() {
 			$('.navigation-container').removeClass('navbar-fixed-top');
 			$('.navigation-container').addClass('navbar-static-top');
 		}
-	})
+	}
+
+	$(window).scroll(toggleNavigation);
+	toggleNavigation();
 });

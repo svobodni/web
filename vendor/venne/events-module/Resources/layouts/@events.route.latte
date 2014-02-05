@@ -1,11 +1,19 @@
 {block #page-content}
 
-{cache [$presenter->routeId, $control['pagination']->page], tags => [
+{cache [$presenter->routeId, $control['pagination']->page, $presenter->archive], tags => [
 	'page' => $presenter->pageId,
 	'route' => $presenter->routeId,
 	'language' => $presenter->lang,
 ]}
-{control pagination, config => [ variant => '@events.route' ]}
-{control itemList $control->getItemsBuilder()->orderBy('r.released', 'DESC')->getQuery()->getResult(), config => [ variant => '@events.route' ]}
-{control pagination, config => [ variant => '@events.route' ]}
+
+	<ul class="nav nav-tabs">
+		<li n:class="!$presenter->archive ? active"><a n:href="this archive => NULL">{_'Coming events'}</a></li>
+		<li n:class="$presenter->archive ? active"><a n:href="this archive => TRUE">{_'Past events'}</a></li>
+	</ul>
+
+	{control pagination, config => [ variant => '@events.route' ]}
+	{var $qb = $control->getItemsBuilder()}
+	{var $qb = $presenter->archive ? $qb->orderBy('a.date', 'DESC') : $qb->orderBy('a.date', 'ASC')}
+	{control itemList $qb->getQuery()->getResult(), config => [ variant => '@events.route' ]}
+	{control pagination, config => [ variant => '@events.route' ]}
 {/cache}

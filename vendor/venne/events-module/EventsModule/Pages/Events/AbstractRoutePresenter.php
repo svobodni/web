@@ -17,6 +17,9 @@ namespace EventsModule\Pages\Events;
 abstract class AbstractRoutePresenter extends \BlogModule\Pages\Blog\AbstractRoutePresenter
 {
 
+	/** @persistent */
+	public $archive = FALSE;
+
 	/**
 	 * @return \Doctrine\ORM\QueryBuilder
 	 */
@@ -25,8 +28,15 @@ abstract class AbstractRoutePresenter extends \BlogModule\Pages\Blog\AbstractRou
 		$date = new \DateTime;
 		$date->setTime(0, 0, 0);
 
-		return parent::getQueryBuilder()
-			->andWhere('a.date >= :now')->setParameter('now', $date);
+		$qb = parent::getQueryBuilder();
+
+		if (!$this->archive) {
+			$qb->andWhere('a.date >= :now')->setParameter('now', $date);
+		} else {
+			$qb->andWhere('a.date < :now')->setParameter('now', $date);
+		}
+
+		return $qb;
 	}
 
 }

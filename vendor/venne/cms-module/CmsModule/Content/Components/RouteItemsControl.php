@@ -129,18 +129,28 @@ class RouteItemsControl extends Control
 		// columns
 		$table = $admin->getTable();
 		$table->setModel(new Doctrine($this->repository->createQueryBuilder('a')
-				->andWhere('a.extendedPage = :page')
-				->setParameter('page', $this->extendedPage->id)
+				->addSelect('r')
+				->innerJoin('a.route', 'r')
+				->andWhere('a.extendedPage = :page')->setParameter('page', $this->extendedPage->id),
+			array('name' => 'r.name', 'created' => 'r.created')
 		));
+		$table->setDefaultSort(array('created' => 'DESC'));
 
 		$table->addColumnText('name', 'Name')
 			->setCustomRender(function ($entity) {
 				return $entity->route->name;
 			})
 			->setSortable()
-			->getCellPrototype()->width = '100%';
+			->getCellPrototype()->width = '70%';
 		$table->getColumn('name')
 			->setFilterText()->setSuggestion();
+
+		$table->addColumnDate('created', 'Created')
+			->setCustomRender(function ($entity) {
+				return $entity->route->created->format('Y-m-d H:i:s');
+			})
+			->setSortable()
+			->getCellPrototype()->width = '30%';
 
 		// actions
 		$table->addAction('publish', 'Published')

@@ -1,89 +1,5 @@
-@font-face {
-	font-family: 'robotolight';
-	src: url('../fonts/roboto-light-webfont.eot');
-	src: url('../fonts/roboto-light-webfont.eot?#iefix') format('embedded-opentype'),
-	url('../fonts/roboto-light-webfont.woff') format('woff'),
-	url('../fonts/roboto-light-webfont.ttf') format('truetype'),
-	url('../fonts/roboto-light-webfont.svg#robotolight') format('svg');
-	font-weight: normal;
-	font-style: normal;
-
-}
-
-@font-face {
-	font-family: 'robotoregular';
-	src: url('../fonts/roboto-regular-webfont.eot');
-	src: url('../fonts/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
-	url('../fonts/roboto-regular-webfont.woff') format('woff'),
-	url('../fonts/roboto-regular-webfont.ttf') format('truetype'),
-	url('../fonts/roboto-regular-webfont.svg#robotoregular') format('svg');
-	font-weight: normal;
-	font-style: normal;
-
-}
-
-
-
-
-@font-face {
-	font-family: 'robotobold';
-	src: url('../fonts/roboto-bold-webfont.eot');
-	src: url('../fonts/roboto-bold-webfont.eot?#iefix') format('embedded-opentype'),
-	url('../fonts/roboto-bold-webfont.woff') format('woff'),
-	url('../fonts/roboto-bold-webfont.ttf') format('truetype'),
-	url('../fonts/roboto-bold-webfont.svg#robotobold') format('svg');
-	font-weight: normal;
-	font-style: normal;
-
-}
-
-
-
-
-@font-face {
-	font-family: 'robotolight_italic';
-	src: url('../fonts/roboto-lightitalic-webfont.eot');
-	src: url('../fonts/roboto-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
-	url('../fonts/roboto-lightitalic-webfont.woff') format('woff'),
-	url('../fonts/roboto-lightitalic-webfont.ttf') format('truetype'),
-	url('../fonts/roboto-lightitalic-webfont.svg#robotolight_italic') format('svg');
-	font-weight: normal;
-	font-style: normal;
-
-}
-
-
-
-
-@font-face {
-	font-family: 'robotobold_italic';
-	src: url('../fonts/roboto-bolditalic-webfont.eot');
-	src: url('../fonts/roboto-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
-	url('../fonts/roboto-bolditalic-webfont.woff') format('woff'),
-	url('../fonts/roboto-bolditalic-webfont.ttf') format('truetype'),
-	url('../fonts/roboto-bolditalic-webfont.svg#robotobold_italic') format('svg');
-	font-weight: normal;
-	font-style: normal;
-
-}
-
-
-
-
-@font-face {
-	font-family: 'robotoitalic';
-	src: url('../fonts/roboto-italic-webfont.eot');
-	src: url('../fonts/roboto-italic-webfont.eot?#iefix') format('embedded-opentype'),
-	url('../fonts/roboto-italic-webfont.woff') format('woff'),
-	url('../fonts/roboto-italic-webfont.ttf') format('truetype'),
-	url('../fonts/roboto-italic-webfont.svg#robotoitalic') format('svg');
-	font-weight: normal;
-	font-style: normal;
-
-}
-
 html, body {
-	font-family: robotoregular, "trebuchet ms", arial, sans-serif;
+	font-family: "Roboto", "trebuchet ms", arial, sans-serif;
 	font-size: 14px;
 	line-height: 1.5;
 }
@@ -256,6 +172,8 @@ body {
 
 .navigation-container .navbar-nav {
 	float: left;
+	margin-left: 390px;
+	position: absolute;
 }
 .navigation-container .navbar-nav > li > a {
 	color: #cccccc;
@@ -317,6 +235,9 @@ body {
 		font-size: 16px;
 		width: 33.333333%;
 		float: left;
+	}
+	.navigation-container .navbar-nav {
+		margin-left: 180px;
 	}
 }
 
@@ -402,7 +323,7 @@ body {
 	line-height: 1;
 }
 .podporovatele-box em {
-	font-family: robotobold;
+	font-weight: bold;
 	font-style: normal;
 	text-transform: uppercase;
 	margin: 0 12px 8px 0;
@@ -493,33 +414,24 @@ https://developers.facebook.com/docs/reference/plugins/like-box/
 	font-size: 13px;
 }
 
-.pagination {
-
-}
-.pagination > li > a {
-	border: 0;
-}
-
-
 /* All levels of nav */
 .bs-sidebar .nav > li > a {
 	display: block;
 	color: #716b7a;
-	padding: 5px 20px;
+	padding: 2px 20px;
 }
 .bs-sidebar .nav > li > a:hover,
 .bs-sidebar .nav > li > a:focus {
 	text-decoration: none;
-	background-color: #e5e3e9;
+	background-color: #eeeeee;
 	border-right: 1px solid #dbd8e0;
 }
 .bs-sidebar .nav > .active > a,
 .bs-sidebar .nav > .active:hover > a,
 .bs-sidebar .nav > .active:focus > a {
 	font-weight: bold;
-	color: #563d7c;
+	color: #005f49;
 	background-color: transparent;
-	border-right: 1px solid #563d7c;
 }
 
 /* Nav: second level (shown on .active) */
@@ -531,10 +443,10 @@ https://developers.facebook.com/docs/reference/plugins/like-box/
 	display: block;
 }
 .bs-sidebar .nav .nav > li > a {
-	padding-top:    3px;
-	padding-bottom: 3px;
+	padding-top:    0px;
+	padding-bottom: 0px;
 	padding-left: 30px;
-	font-size: 90%;
+	font-size: 85%;
 }
 
 

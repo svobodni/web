@@ -13,6 +13,7 @@ namespace CmsModule\Content\Components;
 
 use CmsModule\Administration\Components\AdminGrid\AdminGrid;
 use CmsModule\Content\Repositories\PageRepository;
+use Grido\DataSources\Doctrine;
 use Venne\BaseFactory;
 
 /**
@@ -46,19 +47,26 @@ class ContentTableFactory extends BaseFactory
 		$adminGrid = new AdminGrid($this->pageRepository);
 
 		$table = $adminGrid->getTable();
+		$table->setModel(new Doctrine($this->pageRepository->createQueryBuilder('a')
+				->addSelect('r')
+				->innerJoin('a.mainRoute', 'r'),
+			array('name' => 'r.name', 'created' => 'r.created', 'url' => 'r.url')
+		));
 
 		$table->addColumnText('name', 'Name')
 			->setCustomRender(function ($entity) {
 				return $entity->mainRoute->name;
 			})
 			->setSortable()
-			->setFilterText()
-				->setSuggestion(function($item) { return $item->mainRoute->name; });
+			->setFilterText()->setSuggestion();
 		$table->getColumn('name')->getCellPrototype()->width = '50%';
-		$table->addColumnText('mainRoute', 'URL')
+		$table->addColumnText('url', 'URL')
+			->setCustomRender(function($entity){
+				return $entity->mainRoute->url;
+			})
 			->setSortable()
 			->setFilterText()->setSuggestion();
-		$table->getColumn('mainRoute')->getCellPrototype()->width = '25%';
+		$table->getColumn('url')->getCellPrototype()->width = '25%';
 		$table->addColumnText('language', 'Language')
 			->getCellPrototype()->width = '25%';
 

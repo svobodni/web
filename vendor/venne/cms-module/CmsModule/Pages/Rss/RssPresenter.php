@@ -73,6 +73,8 @@ class RssPresenter extends ItemsPresenter
 			$qb = $qb->andWhere('a.page IN (:page)')->setParameter('page', $ids);
 		}
 
+		$qb->orderBy('a.released', 'DESC');
+
 		return $qb;
 	}
 

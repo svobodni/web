@@ -41,8 +41,7 @@ class HeadMacro extends MacroSet
 
 	public function headEnd(MacroNode $node, $writer)
 	{
-		return $writer->write('?></head>
-<?php $presenter->context->eventManager->dispatchEvent(\CmsModule\Events\RenderEvents::onHeadEnd, $_renderEventsArgs);');
+		return $writer->write('$presenter->context->eventManager->dispatchEvent(\CmsModule\Events\RenderEvents::onHeadEnd, $_renderEventsArgs);?></head><?php');
 	}
 
 

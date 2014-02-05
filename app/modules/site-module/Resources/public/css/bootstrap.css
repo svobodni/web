@@ -1,5 +1,6 @@
 h1, h2, h3, h4, h5, h6 {
-	font-family: robotobold;
+	font-family: "Roboto", "trebuchet ms", arial, sans-serif;
+	font-weight: bold;
 }
 h1 {
 	font-size: 28px;
@@ -86,4 +87,33 @@ h4 a {
 	ul.nav li.dropdown:hover > ul.dropdown-menu {
 		display: block;
 	}
+}
+
+.pagination {
+	text-align: center;
+	width: 100%;
+}
+.pagination > .disabled > a,
+.pagination > li > a {
+	color: #cccccc;
+	background-color: #005f49;
+	padding: 12px 14px;
+	margin: 5px;
+	border: 0;
+	float: none;
+	font-weight: bold;
+}
+.pagination > li > a:hover {
+	color: #ffffff;
+	background-color: #005f49;
+}
+.pagination > li.active > a,
+.pagination > li.active > a:hover {
+	background-color: #008f29;
+	color: #ffffff;
+}
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover{
+	background-color: #eeeeee;
+	color: #555555;
 }

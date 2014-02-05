@@ -1364,12 +1364,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Venne/cms-module.git",
-            "reference": "ebeb9c1c58c621f557d5323860c8ce2b99c3c7a9"
+            "reference": "4906ac39af8d2d66164aacb48e3eabb28108d1d8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Venne/cms-module/zipball/ebeb9c1c58c621f557d5323860c8ce2b99c3c7a9",
-            "reference": "ebeb9c1c58c621f557d5323860c8ce2b99c3c7a9",
+            "url": "https://api.github.com/repos/Venne/cms-module/zipball/4906ac39af8d2d66164aacb48e3eabb28108d1d8",
+            "reference": "4906ac39af8d2d66164aacb48e3eabb28108d1d8",
             "shasum": ""
         },
         "require": {
@@ -1407,7 +1407,7 @@
             "venne/mailform-module": "Mailform page with many useful options",
             "venne/social-module": "Integration of logging with social networks"
         },
-        "time": "2014-01-26 11:01:24",
+        "time": "2014-02-02 10:22:48",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1514,19 +1514,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Venne/blog-module.git",
-            "reference": "dc2ac2a9575a0b7c52f7928b289ebaef1b3e4dac"
+            "reference": "4011908aa00755474b93df647e8ca4593dbf2b9a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Venne/blog-module/zipball/dc2ac2a9575a0b7c52f7928b289ebaef1b3e4dac",
-            "reference": "dc2ac2a9575a0b7c52f7928b289ebaef1b3e4dac",
+            "url": "https://api.github.com/repos/Venne/blog-module/zipball/4011908aa00755474b93df647e8ca4593dbf2b9a",
+            "reference": "4011908aa00755474b93df647e8ca4593dbf2b9a",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.2",
             "venne/cms-module": "2.1.x-dev"
         },
-        "time": "2014-01-28 15:28:47",
+        "time": "2014-02-01 12:28:48",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2467,12 +2467,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Venne/events-module.git",
-            "reference": "04a0152aa14be3c467bcbae16de2a8612919c609"
+            "reference": "aa168d7e378cf02c0f391633e5e07431b4f2a06e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Venne/events-module/zipball/04a0152aa14be3c467bcbae16de2a8612919c609",
-            "reference": "04a0152aa14be3c467bcbae16de2a8612919c609",
+            "url": "https://api.github.com/repos/Venne/events-module/zipball/aa168d7e378cf02c0f391633e5e07431b4f2a06e",
+            "reference": "aa168d7e378cf02c0f391633e5e07431b4f2a06e",
             "shasum": ""
         },
         "require": {
@@ -2480,7 +2480,7 @@
             "venne/blog-module": "2.1.x-dev",
             "venne/cms-module": "2.1.x-dev"
         },
-        "time": "2014-01-26 13:32:46",
+        "time": "2014-01-31 15:25:48",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2579,12 +2579,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/doctrine2.git",
-            "reference": "9b7e949025fee7bc48ec5acb4af2a36a38979bdd"
+            "reference": "310afdf5d7fb684365eca2470118d52f0346fc26"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/9b7e949025fee7bc48ec5acb4af2a36a38979bdd",
-            "reference": "9b7e949025fee7bc48ec5acb4af2a36a38979bdd",
+            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/310afdf5d7fb684365eca2470118d52f0346fc26",
+            "reference": "310afdf5d7fb684365eca2470118d52f0346fc26",
             "shasum": ""
         },
         "require": {
@@ -2601,7 +2601,7 @@
         "suggest": {
             "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
         },
-        "time": "2014-01-25 16:36:54",
+        "time": "2014-01-31 19:33:30",
         "bin": [
             "bin/doctrine",
             "bin/doctrine.php"

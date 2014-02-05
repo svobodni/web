@@ -203,40 +203,15 @@ $(function () {
 		},
 		selector: 'input[type=date], input[type=datetime]'
 	});
-	$.nette.ext('gridoBind', {
-		load: function (rh) {
-			$('.grido .actions a').off('click.nette');
-			$('.grido').grido();
-			$('.grido .actions a').on('click.nette', rh);
-		}
-	});
-	$.nette.ext('formsIframePostBind', {
-		load: function () {
-			this.init($('body'));
-		}
-	}, {
-		init: function (target) {
-			target.find(this.selector).each(function () {
-				$(this).parents('form').each(function () {
-					if (!$(this).data('formsIframePostBind')) {
-						$(this).data('formsIframePostBind', true);
-
-						$(this).removeClass('ajax');
-						var _id = $(this).attr('id');
-
-						$(this).iframePostForm({
-							iframeID: this.idPrefix + _id,
-							complete: function (response) {
-								url = $('#' + this.idPrefix + _id).get(0).contentWindow.location;
-								$.nette.ajax({url: url});
-							}
-						});
-					}
-				});
-			});
+	$.nette.ext('grido', {
+		load: function() {
+			this.selector = $('.grido');
+			this.selector.grido();
 		},
-		selector: 'form.ajax input:file',
-		idPrefix: 'iframe-post-form-'
+		success: function(payload) {
+			this.selector.trigger('success.ajax.grido', payload);
+			$('html, body').animate({scrollTop: 0}, 400);
+		}
 	});
 	$.nette.ext('formsFileUpload', {
 		load: function () {
@@ -327,18 +302,6 @@ $(function () {
 				e.stopImmediatePropagation();
 				return false;
 			}
-		}
-	});
-
-	$('.table tr').on('click', function (event) {
-		if (!$(event.target).closest('input[type=checkbox]').length > 0) {
-			var checkbox = $(this).find('input[type=checkbox]').each(function () {
-				if (this.checked) {
-					this.checked = false;
-				} else {
-					this.checked = true;
-				}
-			});
 		}
 	});
 

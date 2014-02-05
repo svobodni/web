@@ -14,13 +14,21 @@
 	{cache [$route->id, $presenter->lang], tags => [\CmsModule\Content\Entities\PageEntity::CACHE, \CmsModule\Content\Entities\RouteEntity::CACHE, \CmsModule\Pages\Tags\TagEntity::CACHE, \CmsModule\Content\Entities\LanguageEntity::CACHE]}
 
 		{var $p = NULL}
-		{if array_search('předseda', $extendedRoute->extendedUser->user->roles) !== FALSE}
-			{var $p = 'předseda strany'}
-		{elseif array_search('ReP', $extendedRoute->extendedUser->user->roles) !== FALSE}
+		{foreach $extendedRoute->extendedUser->user->roles as $role}
+			{if $role == 'předseda'}
+				{var $p = 'předseda strany'}
+			{elseif $role == 'ReP'}
 				{var $p = 'místopředseda strany'}
-		{elseif array_search('ReV', $extendedRoute->extendedUser->user->roles) !== FALSE}
-			{var $p = 'člen republikového výboru'}
-		{/if}
+			{elseif $role == 'ReV'}
+				{var $p = 'člen republikového výboru'}
+			{elseif \Nette\Utils\Strings::startsWith($role, 'předseda')}
+				{var $p = 'předseda kraje'}
+			{elseif \Nette\Utils\Strings::startsWith($role, 'místopředseda')}
+				{var $p = 'místopředseda kraje'}
+			{/if}
+
+			{breakIf $p}
+		{/foreach}
 
 		<div class="col-md-6">
 			<div class="media">

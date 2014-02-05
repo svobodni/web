@@ -8,7 +8,7 @@
 
 	<p>Vítejte v aplikaci Vyrovnejte rozpočet a ještě si snižte daně.</p>
 
-	<p>Je to snadné, stačí vybrat pouze zlomek opatření v seznamu. A to co dosud nedokázali politici je hotovo. Rozpočet vyrovnán. A můžete zvolit, kde škrtat a kde ne. Dokonce můžete výdaje státu snížit natolik, že získáte vyrovnaný rozpočet i při zrušení vybraných daní, například Daně z příjmu fyzických osob.</p>
+	<p>Je to snadné, stačí vybrat pouze zlomek opatření v seznamu. A to, co dosud nedokázali politici je hotovo. Rozpočet vyrovnán. A můžete zvolit, kde škrtat a kde ne. Dokonce můžete výdaje státu snížit natolik, že získáte vyrovnaný rozpočet i při zrušení vybraných daní, například Daně z příjmu fyzických osob.</p>
 
 	<p>Vysvětlení, čím se zabývají úřady navrhované na zrušení, najdete stránkách časopisu <a href="http://www.nechtenasbyt.cz/urad/" target="_blank">Laissez Faire </a>.</p>
 
@@ -35,6 +35,11 @@
 				outgoings.text((outgoings.data('amount')).format() + ' Kč');
 				interests.text((interests.data('amount')).format() + ' Kč');
 				deficit.text((deficit.data('amount')).format() + ' Kč');
+
+				$('#incomes2').text(incomes.text());
+				$('#outgoings2').text(outgoings.text());
+				$('#interests2').text(interests.text());
+				$('#deficit2').text(deficit.text());
 			}
 
 			$('.kalkulacka input[type="checkbox"]').on('change', function(){
@@ -64,8 +69,26 @@
 
 	<div class="row kalkulacka">
 
-	<div class="col-md-4">
-		<div data-spy="affix" data-offset-top="60" data-offset-bottom="800">
+	<div class="col-md-12 visible-xs visible-sm">
+			<dl class="dl-horizontal">
+				<dt>Příjmy:</dt>
+				<dd data-amount="1080767603000" id="incomes2">1 080 767 603 000 Kč</dd>
+
+				<dt>Výdaje:</dt>
+				<dd data-amount="1112167435000" id="outgoings2">1 112 167 435 000 Kč</dd>
+
+				<dt>Úroky:</dt>
+				<dd data-amount="68600168000" id="interests2">68 600 168 000 Kč</dd>
+			</dl>
+
+			<dl class="dl-horizontal">
+				<dt>Bilance:</dt>
+				<dd class="big" data-amount="-100000000000" id="deficit2">-100 000 000 000 Kč</dd>
+			</dl>
+	</div>
+
+	<div class="col-md-4 visible-md visible-lg">
+		<div id="result" style="top: 150px;"  role="complementary" data-offset='90'>
 			<dl class="dl-horizontal">
 				<dt>Příjmy:</dt>
 				<dd data-amount="1080767603000" id="incomes">1 080 767 603 000 Kč</dd>
@@ -555,3 +578,16 @@
 		{control itemInfo $presenter->route}
 	</small>
 </div>
+
+
+<script type="application/javascript">
+	$(function(){
+
+		$('#result').affix({
+			offset: {
+				top:  250
+			}
+		});
+
+	});
+</script>

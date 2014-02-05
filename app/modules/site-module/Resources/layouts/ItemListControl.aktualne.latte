@@ -19,9 +19,9 @@
 				{/if}
 			</a>
 
-				<p n:if="isset($route->notation)">
-					{!strip_tags($route->text)|truncate:220}
-				</p>
+			<p n:if="isset($route->notation)">
+				{!html_entity_decode($route->text)|stripTags|truncate:220}
+			</p>
 
 			{capture $__itemList}{control itemInfo $route, tags => FALSE}{/capture}
 			<small n:if="trim($__itemList)" class="muted">

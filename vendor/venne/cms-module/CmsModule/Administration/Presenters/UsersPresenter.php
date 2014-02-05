@@ -19,6 +19,7 @@ use CmsModule\Forms\UserSocialFormFactory;
 use CmsModule\Pages\Users\AdminUserFormFactory;
 use CmsModule\Security\SecurityManager;
 use CmsModule\Security\Repositories\UserRepository;
+use Grido\DataSources\Doctrine;
 
 /**
  * @author Josef Kříž <pepakriz@gmail.com>
@@ -158,13 +159,17 @@ class UsersPresenter extends BasePresenter
 
 	protected function createComponentTable()
 	{
-		$_this = $this;
 		$repository = $this->entityManager->getRepository($this->type);
 		$admin = new AdminGrid($repository);
-
-		// columns
 		$table = $admin->getTable();
 		$table->setTranslator($this->translator);
+		$table->setModel(new Doctrine($repository->createQueryBuilder('a')
+				->addSelect('u')
+				->innerJoin('a.user', 'u'),
+			array('email' => 'u.email')
+		));
+
+		// columns
 		$table->addColumnText('email', 'E-mail')
 			->setCustomRender(function ($entity) {
 				return $entity->user->email;
@@ -175,7 +180,6 @@ class UsersPresenter extends BasePresenter
 			->setFilterText()->setSuggestion();
 
 		$table->addColumnText('roles', 'Roles')
-			->setSortable()
 			->getCellPrototype()->width = '40%';
 		$table->getColumn('roles')
 			->setCustomRender(function ($entity) {

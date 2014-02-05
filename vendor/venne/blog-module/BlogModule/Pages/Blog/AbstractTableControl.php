@@ -53,10 +53,6 @@ abstract class AbstractTableControl extends SectionControl
 		$adminControl = new RouteItemsControl($repository, $this->getExtendedPage());
 		$admin = $adminControl->getTable();
 		$table = $admin->getTable();
-		$table->setModel(new Doctrine($repository->createQueryBuilder('a')
-				->andWhere('a.extendedPage = :page')
-				->setParameter('page', $this->extendedPage->id)
-		));
 
 		$entity = $this->extendedPage;
 		$form = $admin->createForm($formFactory, '', function () use ($repository, $entity, $_this) {
