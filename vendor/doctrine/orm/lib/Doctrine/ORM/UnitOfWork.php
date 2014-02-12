@@ -19,6 +19,7 @@
 
 namespace Doctrine\ORM;
 
+use Doctrine\DBAL\LockMode;
 use Exception;
 use InvalidArgumentException;
 use UnexpectedValueException;
@@ -559,7 +560,15 @@ class UnitOfWork implements PropertyChangedListener
         foreach ($class->reflFields as $name => $refProp) {
             $value = $refProp->getValue($entity);
 
-            if ($class->isCollectionValuedAssociation($name) && $value !== null && ! ($value instanceof PersistentCollection)) {
+            if ($class->isCollectionValuedAssociation($name) && $value !== null) {
+                if ($value instanceof PersistentCollection) {
+                    if ($value->getOwner() === $entity) {
+                        continue;
+                    }
+
+                    $value = new ArrayCollection($value->getValues());
+                }
+
                 // If $value is not a Collection then use an ArrayCollection.
                 if ( ! $value instanceof Collection) {
                     $value = new ArrayCollection($value);
@@ -2306,8 +2315,8 @@ class UnitOfWork implements PropertyChangedListener
 
         $class = $this->em->getClassMetadata(get_class($entity));
 
-        switch ($lockMode) {
-            case \Doctrine\DBAL\LockMode::OPTIMISTIC;
+        switch (true) {
+            case LockMode::OPTIMISTIC === $lockMode;
                 if ( ! $class->isVersioned) {
                     throw OptimisticLockException::notVersioned($class->name);
                 }
@@ -2324,8 +2333,9 @@ class UnitOfWork implements PropertyChangedListener
 
                 break;
 
-            case \Doctrine\DBAL\LockMode::PESSIMISTIC_READ:
-            case \Doctrine\DBAL\LockMode::PESSIMISTIC_WRITE:
+            case LockMode::NONE === $lockMode:
+            case LockMode::PESSIMISTIC_READ === $lockMode:
+            case LockMode::PESSIMISTIC_WRITE === $lockMode:
                 if (!$this->em->getConnection()->isTransactionActive()) {
                     throw TransactionRequiredException::transactionRequired();
                 }
@@ -2514,14 +2524,14 @@ class UnitOfWork implements PropertyChangedListener
                 && isset($hints[Query::HINT_REFRESH_ENTITY])
                 && ($unmanagedProxy = $hints[Query::HINT_REFRESH_ENTITY]) !== $entity
                 && $unmanagedProxy instanceof Proxy
-                && (($unmanagedProxyClass = $this->em->getClassMetadata(get_class($unmanagedProxy))) === $class)
+                && $this->isIdentifierEquals($unmanagedProxy, $entity)
             ) {
                 // DDC-1238 - we have a managed instance, but it isn't the provided one.
                 // Therefore we clear its identifier. Also, we must re-fetch metadata since the
                 // refreshed object may be anything
 
-                foreach ($unmanagedProxyClass->identifier as $fieldName) {
-                    $unmanagedProxyClass->reflFields[$fieldName]->setValue($unmanagedProxy, null);
+                foreach ($class->identifier as $fieldName) {
+                    $class->reflFields[$fieldName]->setValue($unmanagedProxy, null);
                 }
 
                 return $unmanagedProxy;
@@ -2611,7 +2621,7 @@ class UnitOfWork implements PropertyChangedListener
 
                         // use the given entity association
                         if (isset($data[$field]) && is_object($data[$field]) && isset($this->entityStates[spl_object_hash($data[$field])])) {
-                            
+
                             $this->originalEntityData[$oid][$field] = $data[$field];
 
                             $class->reflFields[$field]->setValue($entity, $data[$field]);
@@ -3319,5 +3329,38 @@ class UnitOfWork implements PropertyChangedListener
         if ($this->evm->hasListeners(Events::postFlush)) {
             $this->evm->dispatchEvent(Events::postFlush, new PostFlushEventArgs($this->em));
         }
+    }
+
+    /**
+     * Verifies if two given entities actually are the same based on identifier comparison
+     *
+     * @param object $entity1
+     * @param object $entity2
+     *
+     * @return bool
+     */
+    private function isIdentifierEquals($entity1, $entity2)
+    {
+        if ($entity1 === $entity2) {
+            return true;
+        }
+
+        $class = $this->em->getClassMetadata(get_class($entity1));
+
+        if ($class !== $this->em->getClassMetadata(get_class($entity2))) {
+            return false;
+        }
+
+        $oid1 = spl_object_hash($entity1);
+        $oid2 = spl_object_hash($entity2);
+
+        $id1 = isset($this->entityIdentifiers[$oid1])
+            ? $this->entityIdentifiers[$oid1]
+            : $this->flattenIdentifier($class, $class->getIdentifierValues($entity1));
+        $id2 = isset($this->entityIdentifiers[$oid2])
+            ? $this->entityIdentifiers[$oid2]
+            : $this->flattenIdentifier($class, $class->getIdentifierValues($entity2));
+
+        return $id1 === $id2 || implode(' ', $id1) === implode(' ', $id2);
     }
 }

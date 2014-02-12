@@ -1,4 +1,4 @@
-{var $thumbnail = '190x'}
+{var $thumbnail = '190x107'}
 
 {foreach $routes as $route}
 	{if $route instanceof CmsModule\Content\Entities\ExtendedRouteEntity}{var $route = $route->route}{/if}
@@ -8,7 +8,7 @@
 
 			<a n:if="$route->photo" class="pull-left" href="{plink Route route=>$route}">
 				{if $route->photo}
-					<img class="media-object" n:src="$route->photo->getFileUrl(true), size=>$thumbnail"
+					<img class="media-object" n:src="$route->photo->getFileUrl(true), size=>$thumbnail, format => 8"
 						 alt="{$route->name}"/>
 				{else}
 					<img src="holder.js/190x110" alt="{$route->name}"/>

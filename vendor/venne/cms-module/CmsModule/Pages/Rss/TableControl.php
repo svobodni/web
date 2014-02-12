@@ -12,14 +12,14 @@
 namespace CmsModule\Pages\Rss;
 
 use CmsModule\Content\Components\RouteItemsControl;
-use CmsModule\Content\SectionControl;
+use CmsModule\Content\Control;
 use CmsModule\Pages\Users\UserEntity;
 use Grido\DataSources\Doctrine;
 
 /**
  * @author Josef Kříž <pepakriz@gmail.com>
  */
-class TableControl extends SectionControl
+class TableControl extends Control
 {
 
 	/** @var RssRepository */
@@ -45,15 +45,11 @@ class TableControl extends SectionControl
 		$_this = $this;
 		$repository = $this->rssRepository;
 
-		$adminControl = new RouteItemsControl($this->rssRepository, $this->getExtendedPage());
+		$adminControl = new RouteItemsControl($this->rssRepository, $this->presenter->getExtendedPage());
 		$admin = $adminControl->getTable();
 		$table = $admin->getTable();
-		$table->setModel(new Doctrine($this->rssRepository->createQueryBuilder('a')
-				->andWhere('a.extendedPage = :page')
-				->setParameter('page', $this->extendedPage->id)
-		));
 
-		$entity = $this->extendedPage;
+		$entity = $this->presenter->extendedPage;
 		$form = $admin->createForm($this->rssFormFactory, 'RSS', function () use ($repository, $entity, $_this) {
 			$entity = $repository->createNew(array($entity));
 			if ($_this->presenter->user->identity instanceof UserEntity) {

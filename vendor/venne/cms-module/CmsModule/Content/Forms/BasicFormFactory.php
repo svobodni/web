@@ -11,8 +11,9 @@
 
 namespace CmsModule\Content\Forms;
 
+use CmsModule\Content\Entities\PageEntity;
+use DoctrineModule\Forms\Controls\ManyToOne;
 use DoctrineModule\Forms\FormFactory;
-use DoctrineModule\Repositories\BaseRepository;
 use Venne\Forms\Form;
 
 /**
@@ -101,7 +102,11 @@ class BasicFormFactory extends FormFactory
 		}
 
 		if ($form->data->page->parent) {
-			$page->addManyToOne('parent', 'Parent')->setPrompt(NULL);
+			/** @var ManyToOne $parent */
+			$parent = $page->addManyToOne('parent', 'Parent');
+			$parent
+				->setQuery($this->getPagesQueryBuilder($form->data->page))
+				->setPrompt(NULL);
 		}
 
 		if ($this->getUserPage()) {
@@ -197,35 +202,35 @@ class BasicFormFactory extends FormFactory
 				detectCheckbox();
 				detectAuto();
 
-				$(".localUrl").bind("keydown keyup blur", function(){
+				$(".localUrl").on("keydown keyup blur", function(){
 					$("#form-checkbox").attr("checked", false);
 					detectCheckbox();
 					detectAuto();
 				});
 
-				$(".formTitle").bind("keydown keyup blur", function(){
+				$(".formTitle").on("keydown keyup blur", function(){
 					$("#form-checkbox-title").attr("checked", false);
 					detectCheckbox();
 					detectAuto();
 				});
 
-				$(".formNavigation").bind("keydown keyup blur", function(){
+				$(".formNavigation").on("keydown keyup blur", function(){
 					$("#form-checkbox-navigationTitle").attr("checked", false);
 					detectCheckbox();
 					detectAuto();
 				});
 
-				$("#form-checkbox").live("click", function(event){
+				$("#form-checkbox").on("click", function(event){
 				    detectAuto();
 				    $("#' . $form['page']['mainRoute']['name']->getHtmlId() . '").trigger("keyup");
 				});
 
-				$("#form-checkbox-title").live("click", function(){
+				$("#form-checkbox-title").on("click", function(){
 				    detectAuto();
 				    $("#' . $form['page']['mainRoute']['name']->getHtmlId() . '").trigger("keyup");
 				});
 
-				$("#form-checkbox-navigationTitle").live("click", function(){
+				$("#form-checkbox-navigationTitle").on("click", function(){
 				    detectAuto();
 				    $("#' . $form['page']['mainRoute']['name']->getHtmlId() . '").trigger("keyup");
 				});
@@ -267,5 +272,22 @@ class BasicFormFactory extends FormFactory
 			$this->userPageEntity = $this->mapper->getEntityManager()->getRepository('CmsModule\Pages\Users\PageEntity')->findOneBy(array());
 		}
 		return $this->userPageEntity;
+	}
+
+
+	/**
+	 * @param PageEntity $page
+	 * @return \Doctrine\ORM\QueryBuilder
+	 */
+	private function getPagesQueryBuilder(PageEntity $page = NULL)
+	{
+		$qb = $this->mapper->getEntityManager()->getRepository('CmsModule\Content\Entities\PageEntity')->createQueryBuilder('a')
+			->orderBy('a.positionString', 'ASC');
+
+		if ($page) {
+			$qb->andWhere('a.positionString NOT LIKE :pos')->setParameter('pos', $page->positionString . '%');
+		}
+
+		return $qb;
 	}
 }

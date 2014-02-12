@@ -1,5 +1,5 @@
 {block #page-content}
-	{cache $presenter->routeId, tags => ['pages', 'routes']}
+	{cache $presenter->routeId, $presenter->lang, tags => ['pages', 'routes']}
 	{include #page-item items => array($presenter->getRootPage()), floor => 1, skip => ['403', '404', '500']}
 	{/cache}
 {/block}

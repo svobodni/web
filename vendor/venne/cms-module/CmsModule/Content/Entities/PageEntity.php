@@ -15,6 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\UnitOfWork;
 use DoctrineModule\Entities\IdentifiedEntity;
+use DoctrineModule\Entities\IOptionEntity;
 use Nette\Callback;
 use Nette\InvalidArgumentException;
 use Nette\Security\User;
@@ -28,6 +29,7 @@ use Nette\Utils\Strings;
  * @ORM\Table(name="page", indexes={
  * @ORM\Index(name="special_idx", columns={"special"}),
  * @ORM\Index(name="class_idx", columns={"class"}),
+ * @ORM\Index(name="positionString_idx", columns={"positionString"}),
  * })
  *
  * @property RouteEntity $mainRoute
@@ -35,7 +37,7 @@ use Nette\Utils\Strings;
  * @property string $special
  * @property bool $secured
  */
-class PageEntity extends IdentifiedEntity implements IloggableEntity
+class PageEntity extends IdentifiedEntity implements IloggableEntity, IOptionEntity
 {
 
 	const CACHE = 'Cms.PageEntity';
@@ -61,6 +63,9 @@ class PageEntity extends IdentifiedEntity implements IloggableEntity
 
 	/** @ORM\Column(type="integer") */
 	protected $position = 1;
+
+	/** @ORM\Column(type="string") */
+	protected $positionString = '';
 
 	/**
 	 * @var PageEntity[]
@@ -220,6 +225,30 @@ class PageEntity extends IdentifiedEntity implements IloggableEntity
 
 
 	/**
+	 * @return string
+	 */
+	public function __toOptionString()
+	{
+		$floor = $this->getFloor();
+
+		if ($floor < 1) {
+			return $this->__toString();
+		}
+
+		return str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $floor - 1) . ($floor > 0 ? '+-&nbsp;&nbsp;' : '') . $this->__toString();
+	}
+
+
+	/**
+	 * @return int
+	 */
+	public function getFloor()
+	{
+		return substr_count($this->positionString, ';');
+	}
+
+
+	/**
 	 * @param LanguageEntity $locale
 	 */
 	public function setLocale(LanguageEntity $locale = NULL)
@@ -346,10 +375,23 @@ class PageEntity extends IdentifiedEntity implements IloggableEntity
 		$position = $this->getPrevious() ? $this->getPrevious()->position + 1 : 1;
 
 		$this->position = $position;
+		$this->positionString = ($this->parent ? $this->parent->positionString . ';' : '') . str_pad($this->position, 3, '0', STR_PAD_LEFT);
 
-		if ($recursively && $this->getNext()) {
-			$this->getNext()->generatePosition();
+		if ($recursively) {
+			if ($this->getNext()) {
+				$this->getNext()->generatePosition();
+			}
+
+			foreach ($this->children as $item) {
+				$item->generatePosition();
+			}
 		}
+	}
+
+
+	public function getPositionString()
+	{
+		return $this->positionString;
 	}
 
 

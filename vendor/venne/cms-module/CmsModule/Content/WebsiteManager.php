@@ -52,6 +52,9 @@ class WebsiteManager extends Object
 	private $author;
 
 	/** @var string */
+	private $robots;
+
+	/** @var string */
 	private $routePrefix;
 
 	/** @var string */
@@ -80,6 +83,7 @@ class WebsiteManager extends Object
 	 * @param $description
 	 * @param $errorPresenter
 	 * @param $keywords
+	 * @param $robots
 	 * @param $languages
 	 * @param $name
 	 * @param $oneWayRoutePrefix
@@ -88,7 +92,7 @@ class WebsiteManager extends Object
 	 * @param $title
 	 * @param $titleSeparator
 	 */
-	public function __construct($author, $defaultLanguage, $defaultPresenter, $description, $errorPresenter, $keywords, $languages, $name, $oneWayRoutePrefix, $routePrefix, $theme, $title, $titleSeparator)
+	public function __construct($author, $defaultLanguage, $defaultPresenter, $description, $errorPresenter, $keywords, $robots, $languages, $name, $oneWayRoutePrefix, $routePrefix, $theme, $title, $titleSeparator)
 	{
 		$this->author = $author;
 		$this->defaultLanguage = $defaultLanguage;
@@ -96,6 +100,7 @@ class WebsiteManager extends Object
 		$this->description = $description;
 		$this->errorPresenter = $errorPresenter;
 		$this->keywords = $keywords;
+		$this->robots = $robots;
 		$this->languages = $languages;
 		$this->name = $name;
 		$this->oneWayRoutePrefix = $oneWayRoutePrefix;
@@ -211,6 +216,15 @@ class WebsiteManager extends Object
 	public function getTitle()
 	{
 		return $this->title;
+	}
+
+
+	/**
+	 * @return string
+	 */
+	public function getRobots()
+	{
+		return $this->robots;
 	}
 
 

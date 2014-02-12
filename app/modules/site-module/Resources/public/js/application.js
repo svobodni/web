@@ -28,10 +28,6 @@ $(document).ready(function() {
 		trigger: "mouseover"
 	});
 
-	$('.carousel').carousel({
-		interval: 2000
-	});
-
 	$('.header-container .control-search input[name="search"]').on('focus', function() {
 		$(this).closest('.control-search').animate({width:'600px'}, 500);
 		//$(this).closest('.twitter-typeahead').animate({backgroundColor: 'rgba(255,255,255,0.9)'}, 500);

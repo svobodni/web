@@ -5,7 +5,7 @@
 
 	{foreach $steps as $step}
 	{if $step == $paginator->page}
-		<li class="active"><a href="#">{$step}</a></li>
+		<li class="disabled"><a href="#">{$step}</a></li>
 	{else}
 		<li><a href="{link this, 'page' => $step}">{$step}</a></li>
 	{/if}

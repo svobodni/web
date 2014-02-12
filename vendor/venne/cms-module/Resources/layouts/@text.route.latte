@@ -1,6 +1,6 @@
 {block #page-content}
 
-{cache $presenter->routeId, tags => [
+{cache [$presenter->routeId, $presenter->lang], tags => [
 	'page-' . $presenter->pageId,
 	'route-' . $presenter->routeId,
 	'language-' . $presenter->lang,

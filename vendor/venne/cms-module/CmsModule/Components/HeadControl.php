@@ -82,6 +82,7 @@ class HeadControl extends Control
 		$this->author = $this->websiteManager->author;
 		$this->keywords = $this->websiteManager->keywords;
 		$this->description = $this->websiteManager->description;
+		$this->robots = $this->websiteManager->robots;
 	}
 
 

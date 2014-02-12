@@ -103,7 +103,7 @@ body {
 	text-align: left;
 	background: #F1F1F2 url('../img/megatlacitka-a-bg.PNG') right top no-repeat;
 	padding: 20px 35px 20px 33px;
-	font-size: 20px;
+	font-size: 24px;
 	font-weight: bold;
 	text-transform: uppercase;
 	line-height: 1.2;
@@ -227,17 +227,26 @@ body {
 	.navigation-container .navbar-nav > li > a {
 		text-transform: none;
 	}
-
+	.btn-clen {
+		font-size: 16px;
+	}
 }
 
 @media (max-width: 991px) {
 	.btn-clen {
 		font-size: 16px;
-		width: 33.333333%;
+		width: 50%;
 		float: left;
 	}
 	.navigation-container .navbar-nav {
 		margin-left: 180px;
+	}
+}
+
+@media (max-width: 767px) {
+	.navigation-container .navbar-nav {
+		position: relative;
+		margin-left: 0;
 	}
 }
 

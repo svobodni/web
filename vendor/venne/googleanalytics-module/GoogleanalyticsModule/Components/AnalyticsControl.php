@@ -12,6 +12,7 @@
 namespace GoogleanalyticsModule\Components;
 
 use CmsModule\Content\Control;
+use Nette\Http\Request;
 
 /**
  * @author Josef Kříž <pepakriz@gmail.com>
@@ -19,21 +20,35 @@ use CmsModule\Content\Control;
 class AnalyticsControl extends Control
 {
 
+
+	/** @var Request */
+	private $httpRequest;
+
+
+	/**
+	 * @param Request $httpRequest
+	 */
+	public function __construct(Request $httpRequest)
+	{
+		parent::__construct();
+
+		$this->httpRequest = $httpRequest;
+	}
+
+
 	public function render($accountId)
 	{
-		echo '<script type="text/javascript">
+		echo '<script>
+  (function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,\'script\',\'//www.google-analytics.com/analytics.js\',\'ga\');
 
-  var _gaq = _gaq || [];
-  _gaq.push([\'_setAccount\', \'' . $accountId . '\']);
-  _gaq.push([\'_trackPageview\']);
+  ga(\'create\', \'' . $accountId . '\', \'' . $this->httpRequest->url->host . '\');
+  ga(\'send\', \'pageview\');
 
-  (function() {
-    var ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;
-    ga.src = (\'https:\' == document.location.protocol ?  \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';
-    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-		</script>
+</script>
 ';
 	}
+
 }

@@ -4,11 +4,11 @@
 
 {*if !$hideAuthor && $route->author}{var $__itemInfo = TRUE} &nbsp; · &nbsp; <span class="glyphicon glyphicon-user"></span> <a href="{plink Route route=>$route->author}">{$route->author}</a>{/if*}
 {if !$hideDates} &nbsp; · &nbsp; <span class="glyphicon glyphicon-calendar"></span> {$route->released|date: "%d.%m.%Y"}{/if}
-{if !$hideTags && count($route->tags)} &nbsp; · &nbsp; <strong><span class="glyphicon glyphicon-tag"></span> {_Tags}:</strong>
+{*if !$hideTags && count($route->tags)} &nbsp; · &nbsp; <strong><span class="glyphicon glyphicon-tag"></span> {_Tags}:</strong>
 	{foreach $route->tags as $tag}
 		<a href="{plink this route=>$tag}">{$tag}</a>{sep}, {/sep}
 	{/foreach}
-{/if}
+{/if*}
 {if isset($__itemInfo)}
 {?unset($__itemInfo);}
 &nbsp; · &nbsp;

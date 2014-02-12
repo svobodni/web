@@ -11,6 +11,7 @@
 
 namespace DoctrineModule\Forms\Controls;
 
+use DoctrineModule\Entities\IOptionEntity;
 use Nette\Forms\Controls\BaseControl;
 use Nette;
 use Venne;
@@ -205,8 +206,12 @@ class ManyToOne extends BaseControl
 				if ($value2 instanceof Nette\Utils\Html) {
 					$dest->add((string)$value2->selected(isset($selected[$key2])));
 				} else {
+					if ($value2 instanceof IOptionEntity) {
+						$value2 = $value2->__toOptionString();
+					}
+
 					$value2 = (string)$this->translate($value2);
-					$dest->add((string)$option->value($key2 === $value2 ? "" : $key2)->selected(in_array($key2, $selected))->setText($value2));
+					$dest->add((string)$option->value($key2 === $value2 ? "" : $key2)->selected(in_array($key2, $selected))->setHtml($value2));
 				}
 			}
 		}

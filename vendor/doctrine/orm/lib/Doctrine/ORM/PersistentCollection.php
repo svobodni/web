@@ -118,7 +118,7 @@ final class PersistentCollection implements Collection, Selectable
      *
      * @param EntityManager $em    The EntityManager the collection will be associated with.
      * @param ClassMetadata $class The class descriptor of the entity type of this collection.
-     * @param array         $coll  The collection elements.
+     * @param Collection    $coll  The collection elements.
      */
     public function __construct(EntityManager $em, $class, $coll)
     {
@@ -471,6 +471,13 @@ final class PersistentCollection implements Collection, Selectable
      */
     public function containsKey($key)
     {
+
+        if (! $this->initialized && $this->association['fetch'] === Mapping\ClassMetadataInfo::FETCH_EXTRA_LAZY
+            && isset($this->association['indexBy'])) {
+            $persister = $this->em->getUnitOfWork()->getCollectionPersister($this->association);
+
+            return $this->coll->containsKey($key) || $persister->containsKey($this, $key);
+        }
         $this->initialize();
 
         return $this->coll->containsKey($key);
@@ -599,9 +606,7 @@ final class PersistentCollection implements Collection, Selectable
      */
     public function isEmpty()
     {
-        $this->initialize();
-
-        return $this->coll->isEmpty();
+        return $this->coll->isEmpty() && $this->count() === 0;
     }
 
     /**
@@ -778,7 +783,7 @@ final class PersistentCollection implements Collection, Selectable
     public function next()
     {
         $this->initialize();
-        
+
         return $this->coll->next();
     }
 

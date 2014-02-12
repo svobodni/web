@@ -65,18 +65,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/collections.git",
-            "reference": "e6d8f1240e10f268c8e8c30e9e88a12853f84695"
+            "reference": "b99c5c46c87126201899afe88ec490a25eedd6a2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/collections/zipball/e6d8f1240e10f268c8e8c30e9e88a12853f84695",
-            "reference": "e6d8f1240e10f268c8e8c30e9e88a12853f84695",
+            "url": "https://api.github.com/repos/doctrine/collections/zipball/b99c5c46c87126201899afe88ec490a25eedd6a2",
+            "reference": "b99c5c46c87126201899afe88ec490a25eedd6a2",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.2"
         },
-        "time": "2014-01-01 23:58:38",
+        "time": "2014-02-03 23:07:43",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -197,83 +197,6 @@
             "pluralize",
             "singularize",
             "string"
-        ]
-    },
-    {
-        "name": "doctrine/common",
-        "version": "2.4.x-dev",
-        "version_normalized": "2.4.9999999.9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/common.git",
-            "reference": "c94d6ff79e25418b1225e187c782bf4742f23a8b"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/common/zipball/c94d6ff79e25418b1225e187c782bf4742f23a8b",
-            "reference": "c94d6ff79e25418b1225e187c782bf4742f23a8b",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/annotations": "1.*",
-            "doctrine/cache": "1.*",
-            "doctrine/collections": "1.*",
-            "doctrine/inflector": "1.*",
-            "doctrine/lexer": "1.*",
-            "php": ">=5.3.2"
-        },
-        "time": "2013-09-07 10:20:35",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.4.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\Common\\": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com",
-                "homepage": "http://www.jwage.com/",
-                "role": "Creator"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com",
-                "homepage": "http://www.instaclick.com"
-            },
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            },
-            {
-                "name": "Johannes Schmitt",
-                "email": "schmittjoh@gmail.com",
-                "homepage": "http://jmsyst.com",
-                "role": "Developer of wrapped JMSSerializerBundle"
-            }
-        ],
-        "description": "Common Library for Doctrine projects",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "annotations",
-            "collections",
-            "eventmanager",
-            "persistence",
-            "spl"
         ]
     },
     {
@@ -1194,12 +1117,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/dbal.git",
-            "reference": "0a7df7c58aeab4d1cef55a78e5ca50299a12a62b"
+            "reference": "3faa3a656eada9da854bfd033d7a66b23bfc2acf"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/dbal/zipball/0a7df7c58aeab4d1cef55a78e5ca50299a12a62b",
-            "reference": "0a7df7c58aeab4d1cef55a78e5ca50299a12a62b",
+            "url": "https://api.github.com/repos/doctrine/dbal/zipball/3faa3a656eada9da854bfd033d7a66b23bfc2acf",
+            "reference": "3faa3a656eada9da854bfd033d7a66b23bfc2acf",
             "shasum": ""
         },
         "require": {
@@ -1213,7 +1136,7 @@
         "suggest": {
             "symfony/console": "Allows use of the command line interface"
         },
-        "time": "2014-01-15 00:19:18",
+        "time": "2014-02-08 09:03:49",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1364,12 +1287,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Venne/cms-module.git",
-            "reference": "4906ac39af8d2d66164aacb48e3eabb28108d1d8"
+            "reference": "dfdebdb1e391ad28ad36b68962190fb7beadf5b6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Venne/cms-module/zipball/4906ac39af8d2d66164aacb48e3eabb28108d1d8",
-            "reference": "4906ac39af8d2d66164aacb48e3eabb28108d1d8",
+            "url": "https://api.github.com/repos/Venne/cms-module/zipball/dfdebdb1e391ad28ad36b68962190fb7beadf5b6",
+            "reference": "dfdebdb1e391ad28ad36b68962190fb7beadf5b6",
             "shasum": ""
         },
         "require": {
@@ -1407,7 +1330,7 @@
             "venne/mailform-module": "Mailform page with many useful options",
             "venne/social-module": "Integration of logging with social networks"
         },
-        "time": "2014-02-02 10:22:48",
+        "time": "2014-02-09 20:39:56",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1455,19 +1378,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Venne/ckeditor-module.git",
-            "reference": "342ef94721d3c686f227a9a6419c198840e0b48d"
+            "reference": "261096f729376977f8a8d06e29d55b6201f5099c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Venne/ckeditor-module/zipball/342ef94721d3c686f227a9a6419c198840e0b48d",
-            "reference": "342ef94721d3c686f227a9a6419c198840e0b48d",
+            "url": "https://api.github.com/repos/Venne/ckeditor-module/zipball/261096f729376977f8a8d06e29d55b6201f5099c",
+            "reference": "261096f729376977f8a8d06e29d55b6201f5099c",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.2",
             "venne/cms-module": "2.1.*"
         },
-        "time": "2013-12-15 14:38:00",
+        "time": "2014-02-02 12:41:14",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1802,19 +1725,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Venne/googleanalytics-module.git",
-            "reference": "c1da87248258677b7583be158e14274cb3e2bad8"
+            "reference": "03068f61cde621db1cc252b63d64aee64ed207c0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Venne/googleanalytics-module/zipball/c1da87248258677b7583be158e14274cb3e2bad8",
-            "reference": "c1da87248258677b7583be158e14274cb3e2bad8",
+            "url": "https://api.github.com/repos/Venne/googleanalytics-module/zipball/03068f61cde621db1cc252b63d64aee64ed207c0",
+            "reference": "03068f61cde621db1cc252b63d64aee64ed207c0",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.2",
             "venne/cms-module": "2.1.*"
         },
-        "time": "2014-01-24 20:58:12",
+        "time": "2014-02-06 18:09:55",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2467,12 +2390,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Venne/events-module.git",
-            "reference": "aa168d7e378cf02c0f391633e5e07431b4f2a06e"
+            "reference": "5083c73a582bd28c0917607efac07fd11e027697"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Venne/events-module/zipball/aa168d7e378cf02c0f391633e5e07431b4f2a06e",
-            "reference": "aa168d7e378cf02c0f391633e5e07431b4f2a06e",
+            "url": "https://api.github.com/repos/Venne/events-module/zipball/5083c73a582bd28c0917607efac07fd11e027697",
+            "reference": "5083c73a582bd28c0917607efac07fd11e027697",
             "shasum": ""
         },
         "require": {
@@ -2480,7 +2403,7 @@
             "venne/blog-module": "2.1.x-dev",
             "venne/cms-module": "2.1.x-dev"
         },
-        "time": "2014-01-31 15:25:48",
+        "time": "2014-02-04 15:58:12",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2579,12 +2502,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/doctrine2.git",
-            "reference": "310afdf5d7fb684365eca2470118d52f0346fc26"
+            "reference": "6cd0861fa3e9702a6bd5304344de93a500323d66"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/310afdf5d7fb684365eca2470118d52f0346fc26",
-            "reference": "310afdf5d7fb684365eca2470118d52f0346fc26",
+            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/6cd0861fa3e9702a6bd5304344de93a500323d66",
+            "reference": "6cd0861fa3e9702a6bd5304344de93a500323d66",
             "shasum": ""
         },
         "require": {
@@ -2601,7 +2524,7 @@
         "suggest": {
             "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
         },
-        "time": "2014-01-31 19:33:30",
+        "time": "2014-02-09 15:54:22",
         "bin": [
             "bin/doctrine",
             "bin/doctrine.php"
@@ -2657,12 +2580,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Venne/doctrine-module.git",
-            "reference": "cfc4612ce05add5eb498a035e77f62be3a6a2d62"
+            "reference": "a3b8fd52b4f926a91b2f3bc30dbd5df339babfa5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Venne/doctrine-module/zipball/cfc4612ce05add5eb498a035e77f62be3a6a2d62",
-            "reference": "cfc4612ce05add5eb498a035e77f62be3a6a2d62",
+            "url": "https://api.github.com/repos/Venne/doctrine-module/zipball/a3b8fd52b4f926a91b2f3bc30dbd5df339babfa5",
+            "reference": "a3b8fd52b4f926a91b2f3bc30dbd5df339babfa5",
             "shasum": ""
         },
         "require": {
@@ -2672,7 +2595,7 @@
             "symfony/yaml": "~2.4",
             "venne/forms-module": "2.1.*@dev"
         },
-        "time": "2014-01-28 15:27:59",
+        "time": "2014-02-06 16:14:27",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2841,12 +2764,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/annotations.git",
-            "reference": "a11349d39d85bef75a71bd69bd604ac4fb993f03"
+            "reference": "218d670dd2fbb96c515e2fb4f8f7104ae4d73edb"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/annotations/zipball/a11349d39d85bef75a71bd69bd604ac4fb993f03",
-            "reference": "a11349d39d85bef75a71bd69bd604ac4fb993f03",
+            "url": "https://api.github.com/repos/doctrine/annotations/zipball/218d670dd2fbb96c515e2fb4f8f7104ae4d73edb",
+            "reference": "218d670dd2fbb96c515e2fb4f8f7104ae4d73edb",
             "shasum": ""
         },
         "require": {
@@ -2856,7 +2779,7 @@
         "require-dev": {
             "doctrine/cache": "1.*"
         },
-        "time": "2013-12-20 21:39:07",
+        "time": "2014-02-03 22:09:20",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2875,7 +2798,7 @@
         ],
         "authors": [
             {
-                "name": "Jonathan H. Wage",
+                "name": "Jonathan Wage",
                 "email": "jonwage@gmail.com",
                 "homepage": "http://www.jwage.com/",
                 "role": "Creator"
@@ -3087,12 +3010,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Venne/framework.git",
-            "reference": "aacf24a54a3a035138283ad41caa5d5c27cbffd7"
+            "reference": "98bf0eeaf45275fa6a9f694762f3facfffbac1ce"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Venne/framework/zipball/aacf24a54a3a035138283ad41caa5d5c27cbffd7",
-            "reference": "aacf24a54a3a035138283ad41caa5d5c27cbffd7",
+            "url": "https://api.github.com/repos/Venne/framework/zipball/98bf0eeaf45275fa6a9f694762f3facfffbac1ce",
+            "reference": "98bf0eeaf45275fa6a9f694762f3facfffbac1ce",
             "shasum": ""
         },
         "require": {
@@ -3103,7 +3026,11 @@
         "require-dev": {
             "nette/tester": "@dev"
         },
-        "time": "2014-01-26 14:27:32",
+        "time": "2014-02-08 21:17:54",
+        "bin": [
+            "bin/venne",
+            "bin/venne.php"
+        ],
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3301,6 +3228,83 @@
         "keywords": [
             "database",
             "migrations"
+        ]
+    },
+    {
+        "name": "doctrine/common",
+        "version": "2.4.x-dev",
+        "version_normalized": "2.4.9999999.9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/common.git",
+            "reference": "9a7e20e779360f3b8a02c27a89d47d5a6fdce8d1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/common/zipball/9a7e20e779360f3b8a02c27a89d47d5a6fdce8d1",
+            "reference": "9a7e20e779360f3b8a02c27a89d47d5a6fdce8d1",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/annotations": "1.*",
+            "doctrine/cache": "1.*",
+            "doctrine/collections": "1.*",
+            "doctrine/inflector": "1.*",
+            "doctrine/lexer": "1.*",
+            "php": ">=5.3.2"
+        },
+        "time": "2014-02-03 23:31:47",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Common\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com",
+                "homepage": "http://www.jwage.com/",
+                "role": "Creator"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com",
+                "homepage": "http://www.instaclick.com"
+            },
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com",
+                "homepage": "http://jmsyst.com",
+                "role": "Developer of wrapped JMSSerializerBundle"
+            }
+        ],
+        "description": "Common Library for Doctrine projects",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "annotations",
+            "collections",
+            "eventmanager",
+            "persistence",
+            "spl"
         ]
     }
 ]

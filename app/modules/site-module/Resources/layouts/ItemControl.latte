@@ -2,11 +2,11 @@
 
 {cache [$route->id, $presenter->lang], tags => [\CmsModule\Content\Entities\PageEntity::CACHE, \CmsModule\Content\Entities\RouteEntity::CACHE, \CmsModule\Pages\Tags\TagEntity::CACHE, \CmsModule\Content\Entities\LanguageEntity::CACHE]}
 
-{var $thumbnail = (isset($thumbnail) ? $thumbnail : '385x')}
+{var $thumbnail = (isset($thumbnail) ? $thumbnail : '385x216')}
 
 {if $route->photo}
 	<div class="img-thumbnail pull-left" style="margin: 0  10px 10px 0;">
-		<img n:src="$route->photo->getFileUrl(true), size=>$thumbnail" alt="{$route->name}" />
+		<img n:src="$route->photo->getFileUrl(true), size=>$thumbnail, format => 8" alt="{$route->name}" />
 	</div>
 {/if}
 
