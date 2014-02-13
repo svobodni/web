@@ -4,7 +4,7 @@
 	{if $route instanceof CmsModule\Content\Entities\ExtendedRouteEntity}{var $route = $route->route}{/if}
 
 	{cache [$route->id, $presenter->lang], tags => [\CmsModule\Content\Entities\PageEntity::CACHE, \CmsModule\Content\Entities\RouteEntity::CACHE, \CmsModule\Pages\Tags\TagEntity::CACHE, \CmsModule\Content\Entities\LanguageEntity::CACHE]}
-		<div class="media media-small">
+		<div class="media">
 
 			<a n:if="$route->photo" class="pull-left" href="{plink Route route=>$route}">
 				{if $route->photo}

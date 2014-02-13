@@ -41,12 +41,12 @@
 {/capture}
 
 <?php
-	$d = preg_match_all('/class=";([^;]*);"/', $navigation, $matches, PREG_SET_ORDER);
+	$d = preg_match_all('/class=";([^;]*);/', $navigation, $matches, PREG_SET_ORDER);
 	foreach ($matches as $m) {
 		if ($control->isUrlActive($m[1])) {
-			$navigation = str_replace('";' . $m[1] . ';"', 'active', $navigation);
+			$navigation = str_replace('";' . $m[1] . ';', '"active', $navigation);
 		} else {
-			$navigation = str_replace($m[0], '', $navigation);
+			$navigation = str_replace('";' . $m[1] . ';', '"', $navigation);
 		}
 	}
 ?>

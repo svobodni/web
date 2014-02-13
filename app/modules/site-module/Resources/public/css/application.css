@@ -1,6 +1,6 @@
 html, body {
 	font-family: "Roboto", "trebuchet ms", arial, sans-serif;
-	font-size: 14px;
+	font-size: 15px;
 	line-height: 1.5;
 }
 
@@ -325,6 +325,7 @@ body {
 	border-right: 1px solid #aaaaaa;
 	padding: 10px 10px 10px 0;
 	font-size: 11px;
+	min-width: 60px;
 }
 .media-stanoviska {
 	margin-top: 0;

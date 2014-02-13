@@ -49,6 +49,7 @@ $(document).ready(function() {
 			$('.navigation-container').css('-webkit-box-shadow', '0px 0px 20px 0px rgba(50, 50, 50, ' + t + ')');
 			$('.navigation-container').css('-moz-box-shadow', '0px 0px 20px 0px rgba(50, 50, 50, ' + t + ')');
 			$('.navigation-container').css('box-shadow', '0px 0px 20px 0px rgba(50, 50, 50, ' + t + ')');
+			_s = false;
 		} else if (top <= 86 && _s != 1) {
 			$('.navigation-container').css('-webkit-box-shadow', 'none');
 			$('.navigation-container').css('-moz-box-shadow', 'none');
