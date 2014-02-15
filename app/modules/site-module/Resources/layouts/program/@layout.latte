@@ -153,14 +153,16 @@
 			target: '#program-menu',
 			offset: 100
 		});
-		$('#program-menu li a, .col-md-8 a').click(function(event) {
-			event.preventDefault();
-			var hash = this.hash;
-			$('html, body').animate({
-				scrollTop: $(this.hash).offset().top - offset
-			}, 300, function () {
-				window.location.hash = hash;
-			});
+		$('#program-menu li a, .col-md-8 a').on('click', function(event) {
+			if ($(this).attr('href').substr(0, 1) == '#') {
+				event.preventDefault();
+				var hash = this.hash;
+				$('html, body').animate({
+					scrollTop: $(this.hash).offset().top - offset
+				}, 300, function () {
+					window.location.hash = hash;
+				});
+			}
 		});
 	});
 </script>
