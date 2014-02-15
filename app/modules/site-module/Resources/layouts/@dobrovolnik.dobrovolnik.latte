@@ -1,0 +1,9 @@
+{block #page-content}
+
+{cache $presenter->routeId, tags => [
+	'page-' . $presenter->pageId,
+	'route-' . $presenter->routeId,
+	'language-' . $presenter->lang,
+]}
+{control item $presenter->route, config => [ variant => '@blog.article' ]}
+{/cache}

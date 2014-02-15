@@ -1,0 +1,58 @@
+services:
+
+	site.dobrovolnikContent:
+		class: CmsModule\Content\ContentType('SiteModule\Pages\Dobrovolnik\PageEntity')
+		setup:
+			- addSection('Content', @site.tableControlFactory)
+			- addSection('Categories', @site.categoriesTableControlFactory)
+			- addSection('Settings', @site.pageFormFactory)
+		tags: [contentType: [name: 'Svobodní - dobrovolník']]
+
+	site.dobrovolnik.pageRepository:
+		class: SiteModule\Pages\Dobrovolnik\PageRepository
+		factory: @entityManager::getRepository('SiteModule\Pages\Dobrovolnik\PageEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	site.dobrovolnikRepository:
+		class: SiteModule\Pages\Dobrovolnik\DobrovolnikRepository
+		factory: @entityManager::getRepository('SiteModule\Pages\Dobrovolnik\DobrovolnikEntity')
+		tags: [proxy: CmsModule\Security\Repositories\AbstractUserRepository]
+
+	site.categoryRepository:
+		class: SiteModule\Pages\Dobrovolnik\CategoryRepository
+		factory: @entityManager::getRepository('SiteModule\Pages\Dobrovolnik\CategoryEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	site.dobrovolnikFormFactory:
+		class: SiteModule\Pages\Dobrovolnik\DobrovolnikFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	site.pageFormFactory:
+		class: SiteModule\Pages\Dobrovolnik\PageFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	site.categoryFormFactory:
+		class: SiteModule\Pages\Dobrovolnik\CategoryFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+
+factories:
+
+	site.tableControl:
+		class: SiteModule\Pages\Dobrovolnik\TableControl
+		tags: [component]
+
+	site.categoriesTableControl:
+		class: SiteModule\Pages\Dobrovolnik\CategoriesControl
+		tags: [component]
+
+	site.pages.dobrovolnik.dobrovolnikPresenter:
+		class: SiteModule\Pages\Dobrovolnik\DobrovolnikPresenter
+		tags: [presenter]
+
+	site.pages.dobrovolnik.routePresenter:
+		class: SiteModule\Pages\Dobrovolnik\RoutePresenter
+		tags: [presenter]

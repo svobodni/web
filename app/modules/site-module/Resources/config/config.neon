@@ -6,3 +6,4 @@ services:
 
 includes:
 	- users.svobodni.neon
+	- pages.dobrovolnik.neon
