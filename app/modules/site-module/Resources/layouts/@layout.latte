@@ -133,7 +133,8 @@
 		{cache}
 		<footer>
 			<p class="pull-left">
-				<a href="{$basePath}/kontakty"><i class="fa fa-envelope"></i> Kontakty</a> &nbsp;
+				<a title="Zobrazit původní web" href="http://svobodni.cz/"><i class="glyphicon glyphicon-globe"></i> původní web</a> &nbsp;
+				· &nbsp; <a href="{$basePath}/kontakty"><i class="fa fa-envelope"></i> Kontakty</a> &nbsp;
 				{ifLinkExists Route special=>'sitemap'}{isPublished}· &nbsp; <a n:link><i class="fa fa-sitemap"></i> {_Sitemap}</a> &nbsp;{/isPublished}{/ifLinkExists}
 				{ifLinkExists Route special=>'rss'}{isPublished}· &nbsp; <a n:link><i class="fa fa-rss"></i> RSS</a> &nbsp;{/isPublished}{/ifLinkExists}
 				· &nbsp; <a href="http://eshop.svobodni.cz"><i class="fa fa-shopping-cart"></i> E-shop</a> &nbsp;
