@@ -1,0 +1,55 @@
+a:2:{s:10:"1995-12-30";s:758:"29.12.1995 #253
+země|měna|množství|kód|kurz
+Austrálie|dolar|1|AUD|19,858
+Belgie|frank|100|BEF|90,368
+Dánsko|koruna|1|DKK|4,796
+EMS|ECU|1|XEU|34,058
+Finsko|marka|1|FIM|6,097
+Francie|frank|1|FRF|5,428
+Irsko|libra|1|IEP|42,749
+Itálie|lira|1000|ITL|16,780
+Japonsko|jen|100|JPY|25,928
+Kanada|dolar|1|CAD|19,577
+Lucembursko|frank|100|LUF|90,368
+MMF|SDR|1|XDR|39,543
+Nizozemí|gulden|1|NLG|16,583
+Norsko|koruna|1|NOK|4,207
+Nový Zéland|dolar|1|NZD|17,416
+Portugalsko|eskudo|100|PTE|17,766
+Rakousko|šilink|1|ATS|2,639
+Řecko|drachma|100|GRD|11,212
+Slovensko|koruna|100|SKK|89,992
+SRN|marka|1|DEM|18,573
+Španělsko|peseta|100|ESP|21,927
+Švédsko|koruna|1|SEK|3,994
+Švýcarsko|frank|1|CHF|23,064
+USA|dolar|1|USD|26,602
+Velká Británie|libra|1|GBP|41,384
+";s:100:"http://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt?date=30.12.1996";s:758:"30.12.1996 #252
+země|měna|množství|kód|kurz
+Austrálie|dolar|1|AUD|21,731
+Belgie|frank|100|BEF|85,292
+Dánsko|koruna|1|DKK|4,593
+EMS|ECU|1|XEU|33,868
+Finsko|marka|1|FIM|5,882
+Francie|frank|1|FRF|5,206
+Irsko|libra|1|IEP|45,458
+Itálie|lira|1000|ITL|17,856
+Japonsko|jen|100|JPY|23,729
+Kanada|dolar|1|CAD|20,018
+Lucembursko|frank|100|LUF|85,292
+MMF|SDR|1|XDR|39,192
+Nizozemí|gulden|1|NLG|15,655
+Norsko|koruna|1|NOK|4,229
+Nový Zéland|dolar|1|NZD|19,258
+Portugalsko|eskudo|100|PTE|17,450
+Rakousko|šilink|1|ATS|2,497
+Řecko|drachma|100|GRD|11,045
+Slovensko|koruna|100|SKK|85,616
+SRN|marka|1|DEM|17,570
+Španělsko|peseta|100|ESP|20,855
+Švédsko|koruna|1|SEK|3,978
+Švýcarsko|frank|1|CHF|20,280
+USA|dolar|1|USD|27,302
+Velká Británie|libra|1|GBP|45,876
+";}

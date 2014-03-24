@@ -76,6 +76,12 @@ class PagePresenter extends \CmsModule\Presenters\FrontPresenter
 	 */
 	public $_page;
 
+	/**
+	 * @persistent
+	 * @var string
+	 */
+	public $_domain;
+
 	/** @var LanguageEntity */
 	private $language;
 

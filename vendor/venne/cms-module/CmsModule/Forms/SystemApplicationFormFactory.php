@@ -107,6 +107,8 @@ class SystemApplicationFormFactory extends FormFactory
 		$container->addCheckbox('autoStart', 'Autostart')->setDefaultValue(FALSE);
 		$container->addText /*WithSelect*/
 			('expiration', 'Expiration'); //->setItems(array('+ 1 day', '+ 10 days', '+ 30 days', '+ 1 year'), false);
+		$container->addText('cookiePath', 'Cookie path')->setDefaultValue('/');
+		$container->addText('cookieDomain', 'Cookie domain');
 
 		/* templating */
 		$nette->setCurrentGroup($form->addGroup('Templating'));

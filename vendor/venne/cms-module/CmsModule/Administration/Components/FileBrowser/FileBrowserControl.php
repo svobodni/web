@@ -141,7 +141,7 @@ class FileBrowserControl extends Control
 	 */
 	public function checkCurrentDir()
 	{
-		if ($this->root && $this->root->id) {
+		if ($this->root) {
 			if ($this->key) {
 				$entity = $this->getCurrentDir();
 				$t = FALSE;

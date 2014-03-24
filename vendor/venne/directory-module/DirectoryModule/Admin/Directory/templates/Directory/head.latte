@@ -1,0 +1,15 @@
+<li n:if="$presenter->isAuthorized('default')"{if $presenter->isLinkCurrent("default")} class="active"{/if}>
+	<a class="ajax" href="{plink default}">{_'Payments'}</a>
+</li>
+<li n:if="$presenter->isAuthorized('persons')"{if $presenter->isLinkCurrent("persons")} class="active"{/if}>
+	<a class="ajax" href="{plink persons}">{_'Persons'}</a>
+</li>
+<li n:if="$presenter->isAuthorized('accounts')"{if $presenter->isLinkCurrent("accounts")} class="active"{/if}>
+	<a class="ajax" href="{plink accounts}">{_'Accounts'}</a>
+</li>
+<li n:if="$presenter->isAuthorized('banks')"{if $presenter->isLinkCurrent("banks")} class="active"{/if}>
+	<a class="ajax" href="{plink banks}">{_'Banks'}</a>
+</li>
+<li n:if="$presenter->isAuthorized('currency')"{if $presenter->isLinkCurrent("currency")} class="active"{/if}>
+	<a class="ajax" href="{plink currency}">{_'currency'}</a>
+</li>

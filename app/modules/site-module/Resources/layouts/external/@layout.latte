@@ -1,0 +1,11 @@
+{extends ../@layout.latte}
+
+{block #navigation.begin}<% navigation.begin %>{/block}
+{block #navigation.end}<% navigation.end %>{/block}
+
+{block #title}<% title.begin %>Titulek<% title.end %>{/block}
+
+{block #layout}
+<div class="col-md-12">
+	<% content.begin %><% content.end %>
+</div>

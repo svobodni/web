@@ -1,11 +1,39 @@
 {block #page-content}
 
 {if $presenter->user->isLoggedIn()}
-
 	<script type="text/javascript"
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlh24-Q-psVFwE0COKjhbA9vyJVPzwXtI&sensor=false">
 	</script>
 	<script type="text/javascript">
+
+		var markers = [
+			{foreach $presenter->getItemsBuilder()->getQuery()->getResult() as $item}
+			{!json_encode(array(
+				'name' => $item->name,
+				'surname' => $item->surname,
+				'email' => $item->email,
+				'lat' => $item->latitude,
+				'long' => $item->longitude,
+				'gravatar' => 'http://www.gravatar.com/avatar/' . md5(strtolower(trim($item->email))) . '?s=96',
+				'removeLink' => $presenter->link('remove!', array($item->id)),
+			))}
+			{sep},{/sep}
+			{/foreach}
+		];
+
+		var villages = [
+			{foreach $presenter->villageRepository->findAll() as $item}
+				{continueIf !$item->latitude || !$item->longitude}
+				{!json_encode(array(
+					'name' => $item->name,
+					'lat' => $item->latitude,
+					'long' => $item->longitude,
+					'sum' => count($item->dobrovolnici)
+				))}
+				{sep},{/sep}
+			{/foreach}
+		]
+
 		function initialize() {
 			var mapOptions = {
 				center: new google.maps.LatLng(49.7, 15.26),
@@ -14,25 +42,66 @@
 			var map = new google.maps.Map(document.getElementById("map-canvas"),
 					mapOptions);
 
-			{foreach $presenter->getItemsBuilder()->getQuery()->getResult() as $item}
-			{continueIf !$item->latitude || !$item->longitude}
+			var marker;
+			var location = {};
+			var infowindow;
 
-				{var $l = $presenter->link('remove!', array($item->id))}
-				{var $gravatar = 'http://www.gravatar.com/avatar/' . md5(strtolower(trim($item->email))) . '?s=96';}
+			for (i = 0; i < markers.length; i++) {
+				location = markers[i];
+				if (location.lat == undefined || location.long == undefined) {
+					continue;
+				}
 
-				var infowindow = new google.maps.InfoWindow({
-					content: '<h1 id="firstHeading" class="firstHeading">{!$item->name} {!$item->surname}</h1>'+
-							'<img src="{!$gravatar}" />'+
-							'<p><a href="{!$l}">smazat dobrovolníka</a></p>'
+				marker = new google.maps.Marker({
+					position: new google.maps.LatLng(location.lat, location.long),
+					title: location.name + " " + location.surname
 				});
-
-				var marker = new google.maps.Marker({ position: new google.maps.LatLng({$item->latitude}, {$item->longitude}), title:"{!$item->name} {!$item->surname}"});
 				marker.setMap(map);
 
-				google.maps.event.addListener(marker, 'click', function() {
-					infowindow.open(map,marker);
+				google.maps.event.addListener(marker, 'click', (function(marker, location) {
+					return function() {
+						if (infowindow) {
+							infowindow.close();
+						}
+
+						infowindow = new google.maps.InfoWindow({
+							content: '<h1 id="firstHeading" class="firstHeading">' + location.name + ' ' + location.surname + '</h1>'+
+									'<img src="' + location.gravatar + '" />'+
+									'<p><a href="' + location.removeLink + '">smazat dobrovolníka</a></p>'
+						});
+
+						infowindow.open(map,marker);
+					};
+				})(marker, location));
+			}
+
+			for (i = 0; i < villages.length; i++) {
+				location = villages[i];
+				if (location.lat == undefined || location.long == undefined) {
+					continue;
+				}
+
+				marker = new google.maps.Marker({
+					position: new google.maps.LatLng(location.lat, location.long),
+					title: location.name,
+					icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + location.sum + '|62FE56|000000'
 				});
-			{/foreach}
+				marker.setMap(map);
+
+				google.maps.event.addListener(marker, 'click', (function(marker, location) {
+					return function() {
+						if (infowindow) {
+							infowindow.close();
+						}
+
+						infowindow = new google.maps.InfoWindow({
+							content: '<h1 id="firstHeading" class="firstHeading">' + location.name + '</h1>'
+						});
+
+						infowindow.open(map,marker);
+					};
+				})(marker, location));
+			}
 
 		}
 		google.maps.event.addDomListener(window, 'load', initialize);

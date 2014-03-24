@@ -16,6 +16,4 @@ app/data/*
 !app/data/.gitignore
 www/public/*
 !www/public/.gitignore
-app/config/config.neon
 app/config/config_*.neon
-app/config/settings.php

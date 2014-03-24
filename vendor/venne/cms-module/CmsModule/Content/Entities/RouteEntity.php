@@ -17,6 +17,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Nette\Callback;
 use Nette\InvalidArgumentException;
+use Nette\InvalidStateException;
 use Nette\Utils\Strings;
 
 /**
@@ -86,6 +87,13 @@ class RouteEntity extends \DoctrineModule\Entities\IdentifiedEntity
 	 * @ORM\Column(type="string")
 	 */
 	protected $localUrl = '';
+
+	/**
+	 * @var DomainEntity|NULL
+	 * @ORM\ManyToOne(targetEntity="\CmsModule\Content\Entities\DomainEntity")
+	 * @ORM\JoinColumn(onDelete="SET NULL")
+	 */
+	protected $domain;
 
 	/** @ORM\Column(type="string") */
 	protected $params = '[]';
@@ -356,7 +364,13 @@ class RouteEntity extends \DoctrineModule\Entities\IdentifiedEntity
 		} else {
 			$l = $this->getParent()->getLocale();
 			$this->getParent()->setLocale($this->locale);
-			$this->setTranslatedValue('url', trim($this->getParent()->getUrl() . '/' . $this->getTranslatedValue('localUrl'), '/'));
+
+			if ($this->domain && !$this->parent->domain) {
+				$this->setTranslatedValue('url', '');
+			} else {
+				$this->setTranslatedValue('url', trim($this->getParent()->getUrl() . '/' . $this->getTranslatedValue('localUrl'), '/'));
+			}
+
 			$this->getParent()->setLocale($l);
 		}
 
@@ -403,6 +417,35 @@ class RouteEntity extends \DoctrineModule\Entities\IdentifiedEntity
 		$this->setTranslatedValue('localUrl', $localUrl);
 		$this->generateUrl($recursively);
 		return $this;
+	}
+
+
+	/**
+	 * @param DomainEntity $domain
+	 * @param bool $inRecursion
+	 * @throws \Nette\InvalidStateException
+	 */
+	public function setDomain(DomainEntity $domain = NULL, $inRecursion = FALSE)
+	{
+		if (!$inRecursion && (!$this->parent || ($this->parent && $this->parent->domain))) {
+			throw new InvalidStateException("This route cannot be configured for domain.");
+		}
+
+		foreach ($this->children as $children) {
+			$children->setDomain($domain, TRUE);
+		}
+
+		$this->domain = $domain;
+		$this->generateUrl();
+	}
+
+
+	/**
+	 * @return \CmsModule\Content\Entities\DomainEntity|NULL
+	 */
+	public function getDomain()
+	{
+		return $this->domain;
 	}
 
 
@@ -546,6 +589,10 @@ class RouteEntity extends \DoctrineModule\Entities\IdentifiedEntity
 	{
 		if ($this->getParent() == $parent) {
 			return;
+		}
+
+		if ($this->parent && $this->parent->domain === $this->domain) {
+			$this->domain = $parent->domain;
 		}
 
 		$this->parent = $parent;

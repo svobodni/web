@@ -1,5 +1,5 @@
 {capture $navigation}
-{cache $presenter->lang, tags => ['pages']}
+{cache [$presenter->lang, $presenter->_domain], tags => ['routes']}
 {var $root = isset($root) ? $root : $control->getRoot()}
 
 {define #menu}
@@ -27,7 +27,7 @@
 {/define}
 
 {define #item}
-	<li class=";{$item->mainRoute->url};{if $children} dropdown{/if}">
+	<li class=";;;{$control->getUrl($item)};;;{$item->mainRoute->domain ? $item->mainRoute->domain->domain : ''};;;{if $children} dropdown{/if}">
 		<a href="{$control->getLink($item)}"{if $children} class="dropdown-toogle" data-toggle="dropdown"{/if}>{$item->navigationTitle}</a>
 
 		{if $children}
@@ -41,12 +41,12 @@
 {/capture}
 
 <?php
-	$d = preg_match_all('/class=";([^;]*);/', $navigation, $matches, PREG_SET_ORDER);
+	$d = preg_match_all('/;;;([^;]*);;;([^;]*);;;/', $navigation, $matches, PREG_SET_ORDER);
 	foreach ($matches as $m) {
-		if ($control->isUrlActive($m[1])) {
-			$navigation = str_replace('";' . $m[1] . ';', '"active', $navigation);
+		if ($control->isUrlActive($m[1]) && $control->isDomainActive($m[2])) {
+			$navigation = str_replace(';;;' . $m[1] . ';;;' . $m[2] . ';;;', 'active', $navigation);
 		} else {
-			$navigation = str_replace('";' . $m[1] . ';', '"', $navigation);
+			$navigation = str_replace($m[0], '', $navigation);
 		}
 	}
 ?>

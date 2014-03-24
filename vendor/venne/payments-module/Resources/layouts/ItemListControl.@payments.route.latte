@@ -1,0 +1,19 @@
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>{_Date}</th>
+			<th>{_'Variabil symbol'}</th>
+			<th>{_'Message'}</th>
+			<th>{_'Amount'}</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr n:foreach="$routes as $item">
+			<td>{$item->date|date:'m.d.Y'}</td>
+			<td>{$item->variableSymbol}</td>
+			<td>{$item->message}</td>
+			<td>{$item->amount}</td>
+		</tr>
+	</tbody>
+</table>

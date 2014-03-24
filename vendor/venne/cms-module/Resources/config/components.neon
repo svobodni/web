@@ -141,6 +141,12 @@ services:
 		setup:
 			- injectFactory(@cms.admin.basicFormFactory)
 
+	cms.admin.domainFormFactory:
+		class: CmsModule\Administration\Forms\DomainFormFactory
+		setup:
+			- injectPageRepository
+			- injectFactory(@cms.admin.ajaxFormFactory)
+
 	cms.admin.adminPermissionsFormFactory:
 		class: CmsModule\Content\Forms\AdminPermissionsFormFactory
 		setup:

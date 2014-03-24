@@ -1,0 +1,27 @@
+29.12.1995 #253
+země|měna|množství|kód|kurz
+Austrálie|dolar|1|AUD|19,858
+Belgie|frank|100|BEF|90,368
+Dánsko|koruna|1|DKK|4,796
+EMS|ECU|1|XEU|34,058
+Finsko|marka|1|FIM|6,097
+Francie|frank|1|FRF|5,428
+Irsko|libra|1|IEP|42,749
+Itálie|lira|1000|ITL|16,780
+Japonsko|jen|100|JPY|25,928
+Kanada|dolar|1|CAD|19,577
+Lucembursko|frank|100|LUF|90,368
+MMF|SDR|1|XDR|39,543
+Nizozemí|gulden|1|NLG|16,583
+Norsko|koruna|1|NOK|4,207
+Nový Zéland|dolar|1|NZD|17,416
+Portugalsko|eskudo|100|PTE|17,766
+Rakousko|šilink|1|ATS|2,639
+Řecko|drachma|100|GRD|11,212
+Slovensko|koruna|100|SKK|89,992
+SRN|marka|1|DEM|18,573
+Španělsko|peseta|100|ESP|21,927
+Švédsko|koruna|1|SEK|3,994
+Švýcarsko|frank|1|CHF|23,064
+USA|dolar|1|USD|26,602
+Velká Británie|libra|1|GBP|41,384

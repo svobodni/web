@@ -72,6 +72,8 @@ class RouteFormFactory extends FormFactory
 
 		$form->setCurrentGroup($form->addGroup());
 		$form->addFileEntityInput('photo', 'Photo');
+		$form->addTextArea('notation', 'Notation');
+		$form->addTextArea('text', 'Text');
 
 		$form->addGroup('Dates');
 		$form->addDateTime('created', 'Created')->setDisabled(TRUE);

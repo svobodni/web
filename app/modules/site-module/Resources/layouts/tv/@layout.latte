@@ -1,17 +1,31 @@
 {extends ../@layout.latte}
 
 {block #layout}
-<div class="col-md-8">
+<div class="col-md-8" id="video-column">
 
 	{control flashMessage TRUE}
 	{block #contentTop}{/block}
 	{block #content}{include #page-content}{/block}
 	{block #contentBottom}{/block}
 
+	<a href="javascript:;" id="btn-fullsize" class="btn btn-primary pull-right" onclick="$('#video-column').animate({ width: '100%' });$(this).addClass('hide');$('#btn-smallsize').removeClass('hide');"><i class="fa fa-arrows-h"></i> Zvětšit</a>
+	<a href="javascript:;" id="btn-smallsize" class="btn btn-primary pull-right hide" onclick="$('#video-column').animate({ width: '66.6666665%' });$(this).addClass('hide');$('#btn-fullsize').removeClass('hide');"><i class="fa fa-arrows-h"></i> Zmenšit</a>
+
 	<hr />
 
 	<iframe id="f1f4eef16" name="f19c87c668" scrolling="no" title="Like this content on Facebook." class="fb_ltr" src="http://www.facebook.com/plugins/like.php?api_key=&amp;channel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D28%23cb%3Df36729472c%26domain%3Dvolby.svobodni.cz%26origin%3Dhttp%253A%252F%252Fvolby.svobodni.cz%252Ff131a1dcbc%26relation%3Dparent.parent&amp;colorscheme=light&amp;extended_social_context=false&amp;href={=urlencode($presenter->link('//Route', array('route' => $presenter->route)))}&amp;layout=standard&amp;locale=cs_CZ&amp;node_type=link&amp;sdk=joey&amp;send=true&amp;show_faces=true&amp;width=598" style="border: none; overflow: hidden; height: 25px; width: 598px;"></iframe>
 
+</div>
+
+<div class="col-md-4 col-dark col-head pull-right">
+	{block #panel}
+
+	<h2>Archiv</h2>
+	{element blog tvHistory, config => [ variant => 'aktualne' ]}
+	{/block}
+</div>
+
+<div class="col-md-8">
 	<div class="row row-clen">
 		<div class="col-lg-4">
 			<a class="btn btn-block btn-default btn-clen" href="https://www.svobodni.cz/clenstvi/priznivec/">Stát se příznivcem</a>
@@ -23,18 +37,4 @@
 			<a class="btn btn-block btn-default btn-clen" href="http://www.svobodni.cz/chci-pomoci-strane/">Přispět finančně</a>
 		</div>
 	</div>
-
-	<hr />
-
-	<small class="muted">
-		{control itemInfo $presenter->route}
-	</small>
-</div>
-
-<div class="col-md-4 col-dark col-head">
-	{block #panel}
-
-	<h2>Archiv</h2>
-	{element blog tvHistory, config => [ variant => 'aktualne' ]}
-	{/block}
 </div>

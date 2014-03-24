@@ -243,6 +243,7 @@ class LoginControl extends Control
 		}
 
 		$this->onSuccess($this);
+		$this->redirect('this');
 	}
 
 

@@ -122,20 +122,52 @@ class NavigationControl extends Control
 	public function isUrlActive($url)
 	{
 		$currentUrl = $this->presenter->slug;
-		return (!$url && !$currentUrl) || ($url && strpos($currentUrl . '/', $url . '/') !== FALSE);
+		return (!$url && $this->presenter->_domain) || (!$url && !$currentUrl) || ($url && strpos($currentUrl . '/', $url . '/') !== FALSE);
 	}
 
 
+	/**
+	 * @param $domain
+	 * @return bool
+	 */
+	public function isDomainActive($domain)
+	{
+		return $domain == $this->presenter->_domain;
+	}
+
+
+	/**
+	 * @param \CmsModule\Content\Entities\PageEntity $entity
+	 * @return string
+	 */
 	public function getLink(\CmsModule\Content\Entities\PageEntity $entity)
 	{
-		if ($entity instanceof PageEntity) {
-			if ($entity->page) {
-				return $this->presenter->link('Route', array('route' => $entity->page->mainRoute));
+		if ($entity->extendedPage instanceof PageEntity) {
+			if ($entity->extendedPage->redirect) {
+				return $this->presenter->link('Route', array('route' => $entity->extendedPage->redirect->mainRoute));
 			} else {
-				return $this->template->basePath . '/' . $entity->redirectUrl;
+				return $this->template->basePath . '/' . $entity->extendedPage->redirectUrl;
 			}
 		} else {
 			return $this->presenter->link('Route', array('route' => $entity->mainRoute));
+		}
+	}
+
+
+	/**
+	 * @param \CmsModule\Content\Entities\PageEntity $entity
+	 * @return string
+	 */
+	public function getUrl(\CmsModule\Content\Entities\PageEntity $entity)
+	{
+		if ($entity->extendedPage instanceof PageEntity) {
+			if ($entity->extendedPage->redirect) {
+				return $entity->extendedPage->redirect->mainRoute;
+			} else {
+				return $entity->extendedPage->redirectUrl;
+			}
+		} else {
+			return $entity->mainRoute->url;
 		}
 	}
 

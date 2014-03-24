@@ -3,7 +3,9 @@ services:
 	site.dobrovolnikContent:
 		class: CmsModule\Content\ContentType('SiteModule\Pages\Dobrovolnik\PageEntity')
 		setup:
+			- addSection('Souhrn', @site.summaryControlFactory)
 			- addSection('Content', @site.tableControlFactory)
+			- addSection('Obce', @site.villagesControlFactory)
 			- addSection('Categories', @site.categoriesTableControlFactory)
 			- addSection('Settings', @site.pageFormFactory)
 		tags: [contentType: [name: 'Svobodní - dobrovolník']]
@@ -18,6 +20,11 @@ services:
 		factory: @entityManager::getRepository('SiteModule\Pages\Dobrovolnik\DobrovolnikEntity')
 		tags: [proxy: CmsModule\Security\Repositories\AbstractUserRepository]
 
+	site.villageRepository:
+		class: SiteModule\Pages\Dobrovolnik\VillageRepository
+		factory: @entityManager::getRepository('SiteModule\Pages\Dobrovolnik\VillageEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
 	site.categoryRepository:
 		class: SiteModule\Pages\Dobrovolnik\CategoryRepository
 		factory: @entityManager::getRepository('SiteModule\Pages\Dobrovolnik\CategoryEntity')
@@ -28,8 +35,18 @@ services:
 		setup:
 			- injectFactory(@cms.admin.basicFormFactory)
 
+	site.dobrovolnikAdminFormFactory:
+		class: SiteModule\Pages\Dobrovolnik\DobrovolnikAdminFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
 	site.pageFormFactory:
 		class: SiteModule\Pages\Dobrovolnik\PageFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	site.villageFormFactory:
+		class: SiteModule\Pages\Dobrovolnik\VillageFormFactory
 		setup:
 			- injectFactory(@cms.admin.basicFormFactory)
 
@@ -43,6 +60,14 @@ factories:
 
 	site.tableControl:
 		class: SiteModule\Pages\Dobrovolnik\TableControl
+		tags: [component]
+
+	site.summaryControl:
+		class: SiteModule\Pages\Dobrovolnik\SummaryControl
+		tags: [component]
+
+	site.villagesControl:
+		class: SiteModule\Pages\Dobrovolnik\VillagesControl
 		tags: [component]
 
 	site.categoriesTableControl:

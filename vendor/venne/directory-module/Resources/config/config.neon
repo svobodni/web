@@ -1,0 +1,31 @@
+services:
+
+	translator.translator:
+		setup:
+			- '$service->addDictionary(new TranslatorModule\Dictionary(?))'(%modules.directory.path%/Resources/translations)
+
+	directory.personRepository:
+		class: DirectoryModule\Admin\Directory\PersonRepository
+		factory: @entityManager::getRepository('DirectoryModule\Admin\Directory\PersonEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	directory.personTableFactory:
+		class: DirectoryModule\Admin\Directory\PersonTableFactory
+
+	directory.personFormFactory:
+		class: DirectoryModule\Admin\Directory\PersonFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+
+factories:
+
+	cms.admin.directoryPresenter:
+		class: DirectoryModule\Admin\Directory\DirectoryPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Directory:'
+			category: 'Office'
+			name: 'Directory'
+			description: 'Manage artificial and natural persons'
+			priority: 0
+		]]

@@ -1,0 +1,8 @@
+services:
+
+	fio.fioDriver:
+		class: FioModule\FioDriver(%tempDir%/fio)
+
+	payments.paymentManager:
+		setup:
+			- addDriver(@fio.fioDriver)

@@ -1,0 +1,26 @@
+bank: banka
+currency: měna
+payments: platby
+accounts: účty
+account number: číslo účtu
+amount: množství
+bank code: kód banky
+cS: kS
+vS: vS
+sS: sS
+user identification: identifikace uživatele
+synchronize: synchronizovat
+code: kód
+last sync. date: datum poslední synchronizace
+payment ID: ID platby
+offset number: číslo protiúčtu
+offset code: kód protiúčtu
+offset name: jméno protiúčtu
+constant sb.: konstantní symb.
+variable sb.: variabilní symb.
+specific sb.: specifický symb.
+user identific.: identifikace uživatele
+message: zpráva
+performed: provádí
+specification: specifikace
+instruction ID: ID instrukce

@@ -12,6 +12,7 @@
 namespace SiteModule\Pages\Dobrovolnik;
 
 use BlogModule\Pages\Blog\AbstractArticleEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Nette\Utils\Strings;
 
@@ -46,6 +47,12 @@ class DobrovolnikEntity extends AbstractArticleEntity
 	 * @ORM\Column(type="string")
 	 */
 	protected $city;
+
+	/**
+	 * @var VillageEntity[]
+	 * @ORM\ManyToMany(targetEntity="VillageEntity", inversedBy="dobrovolnici", cascade={"all"})
+	 */
+	protected $villages;
 
 	/**
 	 * @var string
@@ -174,11 +181,31 @@ class DobrovolnikEntity extends AbstractArticleEntity
 
 		$name = Strings::random(20);
 
+		$this->villages = new ArrayCollection;
+
 		$this->getRoute()
 			->setPublished(TRUE)
 			->setName($name)
 			->setTitle($name)
 			->setLocalUrl(Strings::webalize($name));
+	}
+
+
+	/**
+	 * @param \SiteModule\Pages\Dobrovolnik\VillageEntity[] $villages
+	 */
+	public function setVillages($villages)
+	{
+		$this->villages = $villages;
+	}
+
+
+	/**
+	 * @return \SiteModule\Pages\Dobrovolnik\VillageEntity[]
+	 */
+	public function getVillages()
+	{
+		return $this->villages;
 	}
 
 

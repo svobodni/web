@@ -1111,79 +1111,6 @@
         ]
     },
     {
-        "name": "doctrine/dbal",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/dbal.git",
-            "reference": "3faa3a656eada9da854bfd033d7a66b23bfc2acf"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/dbal/zipball/3faa3a656eada9da854bfd033d7a66b23bfc2acf",
-            "reference": "3faa3a656eada9da854bfd033d7a66b23bfc2acf",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/common": "2.4.*",
-            "php": ">=5.3.2"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "3.7.*",
-            "symfony/console": "2.*"
-        },
-        "suggest": {
-            "symfony/console": "Allows use of the command line interface"
-        },
-        "time": "2014-02-08 09:03:49",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.5.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\DBAL\\": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com",
-                "homepage": "http://www.jwage.com/",
-                "role": "Creator"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com",
-                "homepage": "http://www.instaclick.com"
-            },
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            }
-        ],
-        "description": "Database Abstraction Layer",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "database",
-            "dbal",
-            "persistence",
-            "queryobject"
-        ]
-    },
-    {
         "name": "kdyby/bootstrap-form-renderer",
         "version": "v2.0.0",
         "version_normalized": "2.0.0.0",
@@ -1287,12 +1214,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Venne/cms-module.git",
-            "reference": "dfdebdb1e391ad28ad36b68962190fb7beadf5b6"
+            "reference": "58b9a45b25fa7c9d8860c94b26e12ce39e391859"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Venne/cms-module/zipball/dfdebdb1e391ad28ad36b68962190fb7beadf5b6",
-            "reference": "dfdebdb1e391ad28ad36b68962190fb7beadf5b6",
+            "url": "https://api.github.com/repos/Venne/cms-module/zipball/58b9a45b25fa7c9d8860c94b26e12ce39e391859",
+            "reference": "58b9a45b25fa7c9d8860c94b26e12ce39e391859",
             "shasum": ""
         },
         "require": {
@@ -1330,7 +1257,7 @@
             "venne/mailform-module": "Mailform page with many useful options",
             "venne/social-module": "Integration of logging with social networks"
         },
-        "time": "2014-02-09 20:39:56",
+        "time": "2014-02-23 13:35:43",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2384,69 +2311,6 @@
         ]
     },
     {
-        "name": "venne/events-module",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Venne/events-module.git",
-            "reference": "5083c73a582bd28c0917607efac07fd11e027697"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Venne/events-module/zipball/5083c73a582bd28c0917607efac07fd11e027697",
-            "reference": "5083c73a582bd28c0917607efac07fd11e027697",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2",
-            "venne/blog-module": "2.1.x-dev",
-            "venne/cms-module": "2.1.x-dev"
-        },
-        "time": "2014-02-04 15:58:12",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.1.x-dev"
-            },
-            "venne": {
-                "installers": [
-                    "DoctrineModule\\Module\\Installers\\DoctrineInstaller"
-                ],
-                "configuration": {
-                    "extensions": {
-                        "events": "EventsModule\\DI\\EventsExtension"
-                    }
-                }
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "EventsModule": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause",
-            "GPL-2.0",
-            "GPL-3.0"
-        ],
-        "authors": [
-            {
-                "name": "Josef Kříž",
-                "homepage": "http://josef-kriz.cz"
-            }
-        ],
-        "description": "Events module",
-        "keywords": [
-            "cms",
-            "module",
-            "nette",
-            "venne"
-        ]
-    },
-    {
         "name": "symfony/yaml",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -2454,18 +2318,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/Yaml.git",
-            "reference": "9921872611710df49cf035c259e5a461ea2d0f8c"
+            "reference": "e49a47d60348665261f6e279ba383241deb73cab"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/Yaml/zipball/9921872611710df49cf035c259e5a461ea2d0f8c",
-            "reference": "9921872611710df49cf035c259e5a461ea2d0f8c",
+            "url": "https://api.github.com/repos/symfony/Yaml/zipball/e49a47d60348665261f6e279ba383241deb73cab",
+            "reference": "e49a47d60348665261f6e279ba383241deb73cab",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2014-01-07 13:29:57",
+        "time": "2014-02-24 16:21:51",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2485,7 +2349,9 @@
         "authors": [
             {
                 "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
+                "email": "fabien@symfony.com",
+                "homepage": "http://fabien.potencier.org",
+                "role": "Lead Developer"
             },
             {
                 "name": "Symfony Community",
@@ -2502,12 +2368,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/doctrine2.git",
-            "reference": "6cd0861fa3e9702a6bd5304344de93a500323d66"
+            "reference": "a522aa0a81ead014f78b619f860320aa911f589b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/6cd0861fa3e9702a6bd5304344de93a500323d66",
-            "reference": "6cd0861fa3e9702a6bd5304344de93a500323d66",
+            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/a522aa0a81ead014f78b619f860320aa911f589b",
+            "reference": "a522aa0a81ead014f78b619f860320aa911f589b",
             "shasum": ""
         },
         "require": {
@@ -2524,7 +2390,7 @@
         "suggest": {
             "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
         },
-        "time": "2014-02-09 15:54:22",
+        "time": "2014-03-01 11:47:57",
         "bin": [
             "bin/doctrine",
             "bin/doctrine.php"
@@ -2647,129 +2513,18 @@
         ]
     },
     {
-        "name": "hybridauth/hybridauth",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/hybridauth/hybridauth.git",
-            "reference": "6d89473b379fc7a904e69ee63f548af3308bd4d9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/6d89473b379fc7a904e69ee63f548af3308bd4d9",
-            "reference": "6d89473b379fc7a904e69ee63f548af3308bd4d9",
-            "shasum": ""
-        },
-        "require": {
-            "ext-curl": "*",
-            "php": ">=5.2.0"
-        },
-        "time": "2013-02-21 06:45:16",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Hybrid": "hybridauth/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "(MIT or GPL-3.0+)"
-        ],
-        "authors": [
-            {
-                "name": "Miled",
-                "email": "hybridauth@gmail.com"
-            }
-        ],
-        "description": "Open source social sign on PHP library.",
-        "homepage": "http://hybridauth.sourceforge.net",
-        "keywords": [
-            "OpenId",
-            "facebook",
-            "google",
-            "hybridauth",
-            "login",
-            "oauth",
-            "social",
-            "twitter",
-            "yahoo"
-        ]
-    },
-    {
-        "name": "venne/hybridauth-module",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Venne/hybridauth-module.git",
-            "reference": "6509a7ea396a4683a248df6e7a12f5dabbb0eaff"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Venne/hybridauth-module/zipball/6509a7ea396a4683a248df6e7a12f5dabbb0eaff",
-            "reference": "6509a7ea396a4683a248df6e7a12f5dabbb0eaff",
-            "shasum": ""
-        },
-        "require": {
-            "hybridauth/hybridauth": "dev-master",
-            "php": ">=5.3.2",
-            "venne/cms-module": "2.1.*"
-        },
-        "time": "2013-11-05 08:09:15",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.1-dev"
-            },
-            "venne": {
-                "configuration": {
-                    "extensions": {
-                        "hybridauth": "HybridauthModule\\DI\\HybridauthExtension"
-                    }
-                }
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "HybridauthModule": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause",
-            "GPL-2.0",
-            "GPL-3.0"
-        ],
-        "authors": [
-            {
-                "name": "Josef Kříž",
-                "homepage": "http://josef-kriz.cz"
-            }
-        ],
-        "description": "Hybridauth module",
-        "keywords": [
-            "cms",
-            "module",
-            "nette",
-            "venne"
-        ]
-    },
-    {
         "name": "doctrine/annotations",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/annotations.git",
-            "reference": "218d670dd2fbb96c515e2fb4f8f7104ae4d73edb"
+            "reference": "088ea3b5dfbe52adf7b12623caa897e9ee1d795e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/annotations/zipball/218d670dd2fbb96c515e2fb4f8f7104ae4d73edb",
-            "reference": "218d670dd2fbb96c515e2fb4f8f7104ae4d73edb",
+            "url": "https://api.github.com/repos/doctrine/annotations/zipball/088ea3b5dfbe52adf7b12623caa897e9ee1d795e",
+            "reference": "088ea3b5dfbe52adf7b12623caa897e9ee1d795e",
             "shasum": ""
         },
         "require": {
@@ -2779,7 +2534,7 @@
         "require-dev": {
             "doctrine/cache": "1.*"
         },
-        "time": "2014-02-03 22:09:20",
+        "time": "2014-02-23 21:16:16",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3305,6 +3060,608 @@
             "eventmanager",
             "persistence",
             "spl"
+        ]
+    },
+    {
+        "name": "doctrine/dbal",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/dbal.git",
+            "reference": "149f18001a459c22e1f2a87903e455eb89c1b4de"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/dbal/zipball/149f18001a459c22e1f2a87903e455eb89c1b4de",
+            "reference": "149f18001a459c22e1f2a87903e455eb89c1b4de",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/common": "2.4.*",
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*",
+            "symfony/console": "2.*"
+        },
+        "suggest": {
+            "symfony/console": "Allows use of the command line interface"
+        },
+        "time": "2014-02-26 21:39:13",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.5.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\DBAL\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com",
+                "homepage": "http://www.jwage.com/",
+                "role": "Creator"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com",
+                "homepage": "http://www.instaclick.com"
+            },
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            }
+        ],
+        "description": "Database Abstraction Layer",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "database",
+            "dbal",
+            "persistence",
+            "queryobject"
+        ]
+    },
+    {
+        "name": "venne/events-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/events-module.git",
+            "reference": "5083c73a582bd28c0917607efac07fd11e027697"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/events-module/zipball/5083c73a582bd28c0917607efac07fd11e027697",
+            "reference": "5083c73a582bd28c0917607efac07fd11e027697",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/blog-module": "2.1.x-dev",
+            "venne/cms-module": "2.1.x-dev"
+        },
+        "time": "2014-02-04 15:58:12",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1.x-dev"
+            },
+            "venne": {
+                "installers": [
+                    "DoctrineModule\\Module\\Installers\\DoctrineInstaller"
+                ],
+                "configuration": {
+                    "extensions": {
+                        "events": "EventsModule\\DI\\EventsExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "EventsModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Events module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "hybridauth/hybridauth",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hybridauth/hybridauth.git",
+            "reference": "8e0c83ee80e7553c008bacb82d41b01f81c18ce2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/8e0c83ee80e7553c008bacb82d41b01f81c18ce2",
+            "reference": "8e0c83ee80e7553c008bacb82d41b01f81c18ce2",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "php": ">=5.2.0"
+        },
+        "time": "2014-03-01 19:15:04",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Hybrid": "hybridauth/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "(MIT or GPL-3.0+)"
+        ],
+        "authors": [
+            {
+                "name": "Miled",
+                "email": "hybridauth@gmail.com"
+            }
+        ],
+        "description": "Open source social sign on PHP library.",
+        "homepage": "http://hybridauth.sourceforge.net",
+        "keywords": [
+            "OpenId",
+            "facebook",
+            "google",
+            "hybridauth",
+            "login",
+            "oauth",
+            "social",
+            "twitter",
+            "yahoo"
+        ]
+    },
+    {
+        "name": "venne/hybridauth-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/hybridauth-module.git",
+            "reference": "6509a7ea396a4683a248df6e7a12f5dabbb0eaff"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/hybridauth-module/zipball/6509a7ea396a4683a248df6e7a12f5dabbb0eaff",
+            "reference": "6509a7ea396a4683a248df6e7a12f5dabbb0eaff",
+            "shasum": ""
+        },
+        "require": {
+            "hybridauth/hybridauth": "dev-master",
+            "php": ">=5.3.2",
+            "venne/cms-module": "2.1.*"
+        },
+        "time": "2013-11-05 08:09:15",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "configuration": {
+                    "extensions": {
+                        "hybridauth": "HybridauthModule\\DI\\HybridauthExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "HybridauthModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Hybridauth module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "h4kuna/object-wrapper",
+        "version": "v1.0.8",
+        "version_normalized": "1.0.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/h4kuna/object-wrapper.git",
+            "reference": "a0df08b9ecf67e0ebec82c8d4efffdb1858d731a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/h4kuna/object-wrapper/zipball/a0df08b9ecf67e0ebec82c8d4efffdb1858d731a",
+            "reference": "a0df08b9ecf67e0ebec82c8d4efffdb1858d731a",
+            "shasum": ""
+        },
+        "require": {
+            "nette/nette": "*",
+            "php": ">=5.3.0"
+        },
+        "time": "2014-01-31 15:07:18",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "./",
+                "./CUrl/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Milan Matějček",
+                "email": "milan.matejcek@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Helper whose create object above php function, forexample: curl, fsocket, file...",
+        "homepage": "https://github.com/h4kuna/object-wrapper",
+        "keywords": [
+            "Object-oriented programming php"
+        ]
+    },
+    {
+        "name": "h4kuna/data-type",
+        "version": "v1.0.5",
+        "version_normalized": "1.0.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/h4kuna/data-type.git",
+            "reference": "52fc30501f8372c8ba651a81cdbeef95a7c07ce4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/h4kuna/data-type/zipball/52fc30501f8372c8ba651a81cdbeef95a7c07ce4",
+            "reference": "52fc30501f8372c8ba651a81cdbeef95a7c07ce4",
+            "shasum": ""
+        },
+        "require": {
+            "nette/nette": ">=2.0.0"
+        },
+        "time": "2013-06-03 07:28:10",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "./"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Milan Matějček",
+                "email": "milan.matejcek@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Basic data type, int, float, string, set, gps",
+        "homepage": "https://github.com/h4kuna/data-type"
+    },
+    {
+        "name": "h4kuna/iterators",
+        "version": "v1.0.6",
+        "version_normalized": "1.0.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/h4kuna/iterators.git",
+            "reference": "a40286fb8dd88d282545efbe3c59a5b7caf634dd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/h4kuna/iterators/zipball/a40286fb8dd88d282545efbe3c59a5b7caf634dd",
+            "reference": "a40286fb8dd88d282545efbe3c59a5b7caf634dd",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "time": "2013-04-03 11:11:33",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "./"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Milan Matějček",
+                "email": "milan.matejcek@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "tools ala iterators",
+        "homepage": "https://github.com/h4kuna/iterators"
+    },
+    {
+        "name": "h4kuna/fio",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/h4kuna/fio.git",
+            "reference": "6e6c679a1adc938a077a0fd9c8434cb5b2551fcb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/h4kuna/fio/zipball/6e6c679a1adc938a077a0fd9c8434cb5b2551fcb",
+            "reference": "6e6c679a1adc938a077a0fd9c8434cb5b2551fcb",
+            "shasum": ""
+        },
+        "require": {
+            "h4kuna/data-type": "1.0.*",
+            "h4kuna/iterators": "1.0.*",
+            "h4kuna/object-wrapper": "~1.0.8",
+            "nette/nette": ">=2.0.6"
+        },
+        "time": "2014-01-31 15:31:48",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "./"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Milan Matějček",
+                "email": "milan.matejcek@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Read email or gpc file from Fio bank",
+        "homepage": "https://github.com/h4kuna/fio"
+    },
+    {
+        "name": "venne/directory-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/directory-module.git",
+            "reference": "7ac3c30cb6da4d5f2dd9a83362bbc7900d31c9a3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/directory-module/zipball/7ac3c30cb6da4d5f2dd9a83362bbc7900d31c9a3",
+            "reference": "7ac3c30cb6da4d5f2dd9a83362bbc7900d31c9a3",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/cms-module": "2.1.x-dev"
+        },
+        "time": "2014-01-02 16:13:24",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "installers": [
+                    "DoctrineModule\\Module\\Installers\\DoctrineInstaller"
+                ],
+                "configuration": {
+                    "extensions": {
+                        "directory": "DirectoryModule\\DI\\DirectoryExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "DirectoryModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Directory module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/payments-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/payments-module.git",
+            "reference": "ccdca140e8f1d6ad1058055fb9b3a1fec42cd4fb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/payments-module/zipball/ccdca140e8f1d6ad1058055fb9b3a1fec42cd4fb",
+            "reference": "ccdca140e8f1d6ad1058055fb9b3a1fec42cd4fb",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "venne/directory-module": "2.1.x-dev"
+        },
+        "time": "2014-02-17 16:59:19",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "installers": [
+                    "DoctrineModule\\Module\\Installers\\DoctrineInstaller"
+                ],
+                "configuration": {
+                    "extensions": {
+                        "payments": "PaymentsModule\\DI\\PaymentsExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "PaymentsModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Payments module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
+        ]
+    },
+    {
+        "name": "venne/fio-module",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Venne/fio-module.git",
+            "reference": "5accd629c9c02c92ff1bdc6274dd5430dce0e989"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Venne/fio-module/zipball/5accd629c9c02c92ff1bdc6274dd5430dce0e989",
+            "reference": "5accd629c9c02c92ff1bdc6274dd5430dce0e989",
+            "shasum": ""
+        },
+        "require": {
+            "h4kuna/fio": "dev-master",
+            "php": ">=5.3.2",
+            "venne/payments-module": "2.1.*@dev"
+        },
+        "time": "2014-01-02 11:56:21",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            },
+            "venne": {
+                "installers": [
+                    "DoctrineModule\\Module\\Installers\\DoctrineInstaller"
+                ],
+                "configuration": {
+                    "extensions": {
+                        "fio": "FioModule\\DI\\FioExtension"
+                    }
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "FioModule": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Josef Kříž",
+                "homepage": "http://josef-kriz.cz"
+            }
+        ],
+        "description": "Fio module",
+        "keywords": [
+            "cms",
+            "module",
+            "nette",
+            "venne"
         ]
     }
 ]

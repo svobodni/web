@@ -1,0 +1,23 @@
+{
+    "name": "h4kuna/fio",
+    "type": "library",
+    "description": "Read email or gpc file from Fio bank",
+    "homepage": "https://github.com/h4kuna/fio",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Milan Matějček",
+            "email": "milan.matejcek@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "nette/nette": ">=2.0.6",
+        "h4kuna/iterators": "1.0.*",
+        "h4kuna/object-wrapper": "~1.0.8",
+        "h4kuna/data-type": "1.0.*"
+    },
+    "autoload": {
+        "classmap": ["./"]
+    }
+}

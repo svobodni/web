@@ -14,6 +14,7 @@ namespace CmsModule\Content\Routes;
 use CmsModule\Content\Entities\ExtendedRouteEntity;
 use CmsModule\Content\Entities\PageEntity;
 use CmsModule\Content\Entities\RouteEntity;
+use CmsModule\Content\Repositories\DomainRepository;
 use CmsModule\Content\Repositories\LanguageRepository;
 use CmsModule\Content\Repositories\RouteRepository;
 use Doctrine\ORM\NoResultException;
@@ -84,7 +85,12 @@ class PageRoute extends Route
 					self::VALUE => '',
 					self::FILTER_IN => NULL,
 					self::FILTER_OUT => NULL,
-				)
+				),
+				'domain' => array(
+					self::VALUE => NULL,
+					self::FILTER_IN => NULL,
+					self::FILTER_OUT => NULL,
+				),
 			), $oneWay ? Route::ONE_WAY : NULL);
 	}
 
@@ -108,6 +114,15 @@ class PageRoute extends Route
 
 
 	/**
+	 * @return DomainRepository
+	 */
+	protected function getDomainRepository()
+	{
+		return $this->container->cms->domainRepository;
+	}
+
+
+	/**
 	 * Maps HTTP request to a Request object.
 	 *
 	 * @param  Nette\Http\IRequest
@@ -118,7 +133,6 @@ class PageRoute extends Route
 		if (($request = parent::match($httpRequest)) === NULL || !array_key_exists('slug', $request->parameters)) {
 			return NULL;
 		}
-
 
 		if (!$this->checkConnectionFactory->invoke()) {
 			return NULL;
@@ -138,10 +152,10 @@ class PageRoute extends Route
 			$this->_defaultLang = TRUE;
 		}
 
-		$key = array($httpRequest->getUrl()->getAbsoluteUrl(), $parameters['lang']);
+		$key = array($httpRequest->getUrl()->getAbsoluteUrl(), $parameters['lang'], isset($parameters['domain']) ? $parameters['domain'] : NULL);
 		$data = $this->cache->load($key);
 		if ($data) {
-			return $this->modifyMatchRequest($request, $data[0], $data[1], $data[2], $data[3], $parameters);
+			return $this->modifyMatchRequest($request, $data[0], $data[1], $data[2], $data[3], $data[4], $parameters);
 		}
 
 		if (count($this->languages) > 1) {
@@ -154,37 +168,39 @@ class PageRoute extends Route
 			} catch (NoResultException $e) {
 			}
 
-			try {
-				if (!isset($tr) || !$tr) {
-					$route = $this->getRouteRepository()->createQueryBuilder('a')
-						->leftJoin('a.language', 'p')
-						->andWhere('a.language IS NULL OR p.alias = :lang')->setParameter('lang', $parameters['lang'])
-						->andWhere('a.url = :url')->setParameter('url', $parameters['slug'])
-						->getQuery()->getSingleResult();
-				} else {
-					$route = $this->getRouteRepository()->createQueryBuilder('a')
-						->leftJoin('a.translations', 't')
-						->where('t.id = :id')->setParameter('id', $tr->id)
-						->getQuery()->getSingleResult();
-				}
-			} catch (NoResultException $e) {
-				return NULL;
+			if (!isset($tr) || !$tr) {
+				$qb = $this->getRouteRepository()->createQueryBuilder('a')
+					->leftJoin('a.language', 'p')
+					->andWhere('a.language IS NULL OR p.alias = :lang')->setParameter('lang', $parameters['lang'])
+					->andWhere('a.url = :url')->setParameter('url', $parameters['slug']);
+			} else {
+				$qb = $this->getRouteRepository()->createQueryBuilder('a')
+					->leftJoin('a.translations', 't')
+					->where('t.id = :id')->setParameter('id', $tr->id);
 			}
 		} else {
-			try {
-				$route = $this->getRouteRepository()->createQueryBuilder('a')
-					->where('a.url = :url')
-					->setParameter('url', $parameters['slug'])
-					->getQuery()->getSingleResult();
-			} catch (NoResultException $e) {
-				return NULL;
-			}
+			$qb = $this->getRouteRepository()->createQueryBuilder('a')
+				->where('a.url = :url')
+				->setParameter('url', $parameters['slug']);
 		}
 
-		$this->cache->save($key, array($route->id, $route->page->id, $route->type, $route->params), array(
+		$domain = isset($parameters['domain']) && $parameters['domain'] ? $this->getDomainRepository()->findOneBy(array('domain' => $parameters['domain'])) : NULL;
+		if ($domain) {
+			$qb->andWhere('a.domain = :domain')->setParameter('domain', $domain->id);
+		} else {
+			$qb->andWhere('a.domain IS NULL');
+		}
+
+		try {
+			$route = $qb->getQuery()->getSingleResult();
+		} catch (NoResultException $e) {
+			return NULL;
+		}
+
+		$this->cache->save($key, array($route->id, $route->page->id, $route->type, $domain ? $domain->name : NULL, $route->params), array(
 			Cache::TAGS => array(RouteEntity::CACHE),
 		));
-		return $this->modifyMatchRequest($request, $route, $route->page, $route->type, $route->params, $parameters);
+		return $this->modifyMatchRequest($request, $route, $route->page, $route->type, $domain, $route->params, $parameters);
 	}
 
 
@@ -197,7 +213,7 @@ class PageRoute extends Route
 	 * @param string $slug
 	 * @return \Nette\Application\Request
 	 */
-	protected function modifyMatchRequest(\Nette\Application\Request $appRequest, $route, $page, $routeType, $routeParameters, $parameters)
+	protected function modifyMatchRequest(\Nette\Application\Request $appRequest, $route, $page, $routeType, $domain, $routeParameters, $parameters)
 	{
 		if (is_object($route)) {
 			$parameters['routeId'] = $route->id;
@@ -212,6 +228,8 @@ class PageRoute extends Route
 		} else {
 			$parameters['pageId'] = $page;
 		}
+
+		$parameters['_domain'] = is_object($domain) ? $domain->domain : $domain;
 
 		$parameters = $routeParameters + $parameters;
 		$type = explode(':', $routeType);
@@ -317,14 +335,17 @@ class PageRoute extends Route
 			return NULL;
 		}
 
+		$domain = $parameters['_domain'];
+
 		unset($parameters['_route']);
 		unset($parameters['_page']);
+		unset($parameters['_domain']);
 		unset($parameters['routeId']);
 		unset($parameters['pageId']);
 
-		$this->modifyConstructRequest($appRequest, $this->getRouteRepository()->find($route), $parameters);
-
+		$this->modifyConstructRequest($appRequest, $this->getRouteRepository()->find($route), $parameters, $domain);
 		$data = parent::constructUrl($appRequest, $refUrl);
+
 		$this->cache->save($key, $data, array(
 			Cache::TAGS => array(RouteEntity::CACHE),
 		));
@@ -338,9 +359,10 @@ class PageRoute extends Route
 	 * @param \Nette\Application\Request $request
 	 * @param RouteEntity $route
 	 * @param $parameters
+	 * @param string $domain
 	 * @return \Nette\Application\Request
 	 */
-	protected function modifyConstructRequest(Request $request, RouteEntity $route, $parameters)
+	protected function modifyConstructRequest(Request $request, RouteEntity $route, $parameters, $domain)
 	{
 		$request->setPresenterName(self::DEFAULT_MODULE . ':' . self::DEFAULT_PRESENTER);
 		$request->setParameters(array(
@@ -349,6 +371,7 @@ class PageRoute extends Route
 				'action' => self::DEFAULT_ACTION,
 				'lang' => isset($parameters['lang']) ? $parameters['lang'] : ($route->page->language ? $route->page->language->alias : $this->defaultLanguage),
 				'slug' => $route->getUrl(),
+				'domain' => $route->domain ? $route->domain->domain : '',
 			) + $parameters);
 		return $request;
 	}

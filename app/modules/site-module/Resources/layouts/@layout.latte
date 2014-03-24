@@ -45,6 +45,15 @@
 
 {body}
 
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MXB8S8"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script n:syntax="off">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MXB8S8');</script>
+    <!-- End Google Tag Manager -->
 
 	<div class="container header-container">
 		<div class="row">
@@ -83,7 +92,9 @@
 					</a>
 				</div>
 				<div class="collapse navbar-collapse">
+					{block #navigation.begin}{/block}
 					{control navigation}
+					{block #navigation.end}{/block}
 				</div><!--/.nav-collapse -->
 				</div>
 			</div>
@@ -101,7 +112,7 @@
 						{/cache}
 					</div>
 					{cache [$presenter->routeId, $presenter->lang], tags => [
-					'route' => $presenter->routeId,
+					'route-' . $presenter->routeId,
 					]}
 					<h1>{block #title}{$presenter->route->name|firstUpper}{/block}</h1>
 					{/cache}
@@ -111,47 +122,72 @@
 		{/block}
 
 		<div class="row">
-
 			{include #layout}
-
 		</div>
+	</div>
 
-		<hr />
+<footer>
+	<div class="container">
+		{cache}
+			<div class="row">
+				<div class="col-md-3 col-sm-4">
+					<h4>Důležité odkazy</h4>
 
-		<div class="row">
-			<div class="col-md-12">
-				<div class="fb_iframe_widget">
+					<ul class="list-unstyled">
+						<li><a href="{$basePath}/pro-media/kontakty"><i class="fa fa-envelope"></i> Kontakty</a></li>
+						<li><a n:href="Route special=>'sitemap'"><i class="fa fa-sitemap"></i> {_Sitemap}</a></li>
+						<li><a n:href="Route special=>'rss'"><i class="fa fa-rss"></i> RSS</a></li>
+						<li><a href="http://eshop.svobodni.cz"><i class="fa fa-shopping-cart"></i> E-shop</a></li>
+						<li><a title="Zobrazit původní web" href="http://svobodni.cz/"><i class="glyphicon glyphicon-globe"></i> původní web</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-sm-4">
+					<h4>Svobodní na sociálních sítích</h4>
+
+					<ul class="list-unstyled">
+						<li><a href="https://www.facebook.com/svobodni"><i class="fa fa-facebook"></i> Facebook</a></li>
+						<li><a href="https://plus.google.com/u/0/+svobodn%C3%AD"><i class="fa fa-google-plus"></i> Google+</a></li>
+						<li><a href="https://twitter.com/svobodni"><i class="fa fa-twitter"></i> Twitter</a></li>
+						<li><a href="http://www.youtube.com/user/svobodni?gl=CZ&amp;hl=cs"><i class="fa fa-youtube"></i> Youtube</a></li>
+						<li><a href="http://github.com/svobodni"><i class="fa fa-github"></i> GitHub</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2 col-sm-4">
+					<h4>Po přihlášení</h4>
+
+					<ul class="list-unstyled">
+						<li><a href="http://forum.svobodni.cz/default.aspx"><i class="fa fa-comments"></i> Stranické fórum</a></li>
+						<li><a href="http://wiki.svobodni.cz/"><i class="fa fa-users"></i> Wiki</a></li>
+						<li><a href="https://www.svobodni.cz/po-prihlaseni/volebni-mistnost/"><i class="fa fa-thumbs-up"></i> Volební místnost</a></li>
+					</ul>
+				</div>
+				<div class="col-md-4 col-sm-12">
+						<div class="fb_iframe_widget">
 					<span>
-						<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fsvobodni&amp;width=1180&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:940px; height:258px;" allowtransparency="true"></iframe>
+						<iframe id="iframe-likebox" src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fsvobodni&amp;width=590&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false" style="border:none; overflow:hidden; width:940px; height:258px; background-color:transparent;"></iframe>
+						<!--[if lt IE 9]><script> $("#iframe-likebox").attr("allowTransparency", "true"); </script><![endif]-->
 					</span>
+						</div>
 				</div>
 			</div>
-		</div>
 
-		<hr />
+			<hr />
 
-		{cache}
-		<footer>
 			<p class="pull-left">
-				<a title="Zobrazit původní web" href="http://svobodni.cz/"><i class="glyphicon glyphicon-globe"></i> původní web</a> &nbsp;
-				· &nbsp; <a href="{$basePath}/kontakty"><i class="fa fa-envelope"></i> Kontakty</a> &nbsp;
-				{ifLinkExists Route special=>'sitemap'}{isPublished}· &nbsp; <a n:link><i class="fa fa-sitemap"></i> {_Sitemap}</a> &nbsp;{/isPublished}{/ifLinkExists}
-				{ifLinkExists Route special=>'rss'}{isPublished}· &nbsp; <a n:link><i class="fa fa-rss"></i> RSS</a> &nbsp;{/isPublished}{/ifLinkExists}
-				· &nbsp; <a href="http://eshop.svobodni.cz"><i class="fa fa-shopping-cart"></i> E-shop</a> &nbsp;
-				· &nbsp; <a href="http://github.com/svobodni"><i class="fa fa-github"></i> GitHub</a> &nbsp;
+				<a href="http://svobodni.cz" title="Na Úvodní stránku Svobodni.cz">Svobodni.cz</a> &copy; {date('Y')}
+				{if file_exists($presenter->context->parameters['wwwDir'] . '/../.git/refs/heads/master')}{var $version = file_get_contents($presenter->context->parameters['wwwDir'] . '/../.git/refs/heads/master')} &nbsp; · &nbsp; <a href="https://github.com/svobodni/web/tree/{$version}">Verze webu: <small>{substr($version, 0, 10)}</small></a>{/if}
 			</p>
 
 			<p class="pull-right">
-				<a href="http://svobodni.cz" title="Na Úvodní stránku Svobodni.cz">Svobodni.cz</a> &copy; {date('Y')}<br />
-				Powered by <a href="http://www.venne.cz">Venne:CMS</a><br />
-				<a rel="nofollow" href="{$basePath}/{$presenter->administrationManager->routePrefix}">{_Administration}</a>
+				Powered by <a href="http://www.venne.cz">Venne:CMS</a> &nbsp;
+				· &nbsp; <a rel="nofollow" href="{$basePath}/{$presenter->administrationManager->routePrefix}">{_Administration}</a>
 			</p>
-		</footer>
 		{/cache}
 
 	</div>
 
 	<a class="puvodni-web" title="Zobrazit původní web" href="http://svobodni.cz/"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 99999;" src="{path @siteModule/img/puvodni_web.png}" alt="Původní web"></a>
+	</footer>
 
 	{js
 		@holderModule/holder.js,
@@ -168,18 +204,5 @@
 		@siteModule/js/application.js,
 	}
 
-	<script type="text/javascript">
-		/* <![CDATA[ */
-		var google_conversion_id = 996678576;
-		var google_custom_params = window.google_tag_params;
-		var google_remarketing_only = true;
-		/* ]]> */
-	</script>
-	<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
-	<noscript>
-		<div style="display:inline;">
-			<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/996678576/?value=0&amp;guid=ON&amp;script=0"/>
-		</div>
-	</noscript>
 {/body}
 </html>

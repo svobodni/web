@@ -75,8 +75,9 @@ factories:
 			category: 'Website'
 			name: 'Language settings'
 			description: 'Manage website languages, aliases,...'
-			priority: 150
+			priority: 155
 		]]
+
 
 	cms.admin.informationPresenter:
 		class: CmsModule\Administration\Presenters\InformationPresenter
@@ -85,7 +86,17 @@ factories:
 			category: 'Website'
 			name: 'Basic meta information'
 			description: 'Edit basic meta information about this website'
-			priority: 155
+			priority: 160
+		]]
+
+	cms.admin.domainPresenter:
+		class: CmsModule\Administration\Presenters\DomainPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Domain:'
+			category: 'Website'
+			name: 'Subdomain settings'
+			description: 'Manage website subdomains'
+			priority: 150
 		]]
 
 	cms.admin.applicationPresenter:

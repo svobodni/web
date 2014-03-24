@@ -37,24 +37,27 @@ class DobrovolnikFormFactory extends FormFactory
 	 */
 	public function configure(Form $form)
 	{
-		$route = $form->addOne('route');
-
-		$group = $form->addGroup('Kontaktní údaje');
+		$form->addGroup('Kontaktní údaje');
 		$form->addText('name', 'Jméno')
-			->addRule($form::FILLED);
+			->addRule($form::FILLED, 'Vyplňte prosím jméno');
 		$form->addText('surname', 'Příjmení')
-			->addRule($form::FILLED);
+			->addRule($form::FILLED, 'Vyplňte prosím příjmení');
 		$form->addText('email', 'E-mail')
 			->addCondition($form::FILLED)
 			->addRule($form::EMAIL, 'Zadejte prosím správný tvar emailové adresy');
-		$form->addText('city', 'Obec');
 		$form->addText('phone', 'Telefon');
+		$form->addText('city', 'Obec');
+		$gps = $form->addCheckbox('gps', 'Zadat přesnou GPS polohu');
+		$gps
+			->addCondition($form::EQUAL, TRUE)->toggle('group-gps');
 
-		$form->addGroup('Určení polohy ...');
+		$form->addGroup('Určení polohy ...')->setOption('id', 'group-gps');
 		$form->addText('latitude', 'Zeměpisná šířka (N)')
+			->addConditionOn($gps, $form::EQUAL, TRUE)
 			->addCondition($form::FILLED)->addRule($form::FLOAT, 'Zadaná souřadnice je ve špatném tvaru');
 		$longitude = $form->addText('longitude', 'Zeměpisná výška (E)');
 		$longitude
+			->addConditionOn($gps, $form::EQUAL, TRUE)
 			->addCondition($form::FILLED)->addRule($form::FLOAT, 'Zadaná souřadnice je ve špatném tvaru');
 
 		$label = Html::el();
@@ -88,7 +91,7 @@ class DobrovolnikFormFactory extends FormFactory
 
 		$form->addGroup('Nabízím reklamní plochu či prostory ...');
 		$form->addCheckbox('adFacade', 'Mám fasádu či plot na viditelném a frekventovaném místě')
-			->setOption('description', 'Na můj plot či fasádu si rád umístit reklamní banner o rozměru 200 x 100 m. Případně nabízím atypickou plochu.');
+			->setOption('description', 'Na můj plot či fasádu si rád umístit reklamní banner o rozměru 200 x 100 cm. Případně nabízím atypickou plochu.');
 		$form->addCheckbox('adWindow', 'Vylepím si za okno plakát')
 			->setOption('description', 'Mohu si za své okno vylepit jeden z plakátů Svobodných a upozornit tak sousedy a kolemjdoucí.');
 		$form->addCheckbox('adShop', 'Vylepím si plakát do výlohy prodejny')
@@ -107,6 +110,34 @@ class DobrovolnikFormFactory extends FormFactory
 		$form->addGroup('Pomohu jinak ...');
 		$form->addTextArea('otherwiseHelp', ' ')->getControlPrototype()->placeholder = 'Pomohu jinak ...';
 
-		$form->addSaveButton('Odeslat')->getControlPrototype()->class = 'btn-primary btn-block';
+		$confirm = $form->addCheckbox('_confirm', 'Odesláním formuláře souhlasím se zpracováním osobních údajů dle příslušné legislativy a se zařazením do seznamu dobrovolníků Strany svobodných občanů.');
+		$confirm->setDefaultValue(TRUE);
+		$confirm
+			->addRule($form::FILLED, 'Potvrďte prosím souhlas se zpracováním osobních údajů.');
+		$confirm->getLabelPrototype()->style[] = 'margin-top: 40px;';
+
+		$submit = $form->addSaveButton('Odeslat');
+		$submit->getControlPrototype()->class = 'btn-primary btn-block';
+		$submit->getControlPrototype()->style[] = 'font-size: 25px; font-style: italic;';
 	}
+
+
+	public function handleLoad(Form $form)
+	{
+		if ($form->data->latitude) {
+			$form['gps']->value = TRUE;
+		}
+	}
+
+
+	public function handleSave(Form $form)
+	{
+		if (!$form['gps']->value) {
+			$form->data->latitude = NULL;
+			$form->data->longitude = NULL;
+		}
+
+		parent::handleSave($form);
+	}
+
 }

@@ -1,0 +1,35 @@
+{
+	"name": "venne/payments-module",
+	"description": "Payments module",
+	"keywords": ["cms", "nette", "venne", "module"],
+	"version": "2.1.0",
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "Josef Kříž",
+			"homepage": "http://josef-kriz.cz"
+		}
+	],
+	"require": {
+		"php": ">=5.3.2",
+		"venne/directory-module": "2.1.x-dev"
+	},
+	"autoload": {
+		"psr-0": {
+			"PaymentsModule": ""
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.1-dev"
+		},
+		"venne": {
+			"installers": ["DoctrineModule\\Module\\Installers\\DoctrineInstaller"],
+			"configuration": {
+				"extensions": {
+					"payments": "PaymentsModule\\DI\\PaymentsExtension"
+				}
+			}
+		}
+	}
+}

@@ -81,9 +81,9 @@
             {foreach $columns as $column}
                 {!$column->getHeaderPrototype()->startTag()}
                     {if $column->isSortable()}
-                        <a n:if="!$column->getSort()" n:href="sort! [$column->getName() => Grido\Components\Columns\Column::ORDER_ASC]" class="ajax">{_$column->getLabel()}</a>
-                        <a n:if="$column->getSort() == Grido\Components\Columns\Column::ORDER_ASC" n:href="sort! [$column->getName() => Grido\Components\Columns\Column::ORDER_DESC]" class="sort ajax">{_$column->getLabel()}</a>
-                        <a n:if="$column->getSort() == Grido\Components\Columns\Column::ORDER_DESC" n:href="sort! [$column->getName() => Grido\Components\Columns\Column::ORDER_ASC]" class="sort ajax">{_$column->getLabel()}</a>
+                        <a n:if="!$column->getSort()" n:href="sort! [$column->getName() => Grido\Components\Columns\Column::ORDER_ASC]" class="ajax">{if is_string($column->getLabel())}{_$column->getLabel()}{else}{$column->getLabel()}{/if}</a>
+                        <a n:if="$column->getSort() == Grido\Components\Columns\Column::ORDER_ASC" n:href="sort! [$column->getName() => Grido\Components\Columns\Column::ORDER_DESC]" class="sort ajax">{if is_string($column->getLabel())}{_$column->getLabel()}{else}{$column->getLabel()}{/if}</a>
+                        <a n:if="$column->getSort() == Grido\Components\Columns\Column::ORDER_DESC" n:href="sort! [$column->getName() => Grido\Components\Columns\Column::ORDER_ASC]" class="sort ajax">{if is_string($column->getLabel())}{_$column->getLabel()}{else}{$column->getLabel()}{/if}</a>
                         <span></span>
                     {else}
                         {_$column->getLabel()}

@@ -1,0 +1,22 @@
+{
+    "name": "h4kuna/object-wrapper",
+    "type": "library",
+    "description": "Helper whose create object above php function, forexample: curl, fsocket, file...",
+    "keywords": ["Object-oriented programming php"],
+    "homepage": "https://github.com/h4kuna/object-wrapper",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Milan Matějček",
+            "email": "milan.matejcek@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "nette/nette": "*"
+    },
+    "autoload": {
+        "classmap": ["./", "./CUrl/"]
+    }
+}

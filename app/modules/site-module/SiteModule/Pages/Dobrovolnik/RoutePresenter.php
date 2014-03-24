@@ -28,6 +28,9 @@ class RoutePresenter extends AbstractRoutePresenter
 	/** @var CategoryRepository */
 	private $categoryRepository;
 
+	/** @var VillageRepository */
+	private $villageRepository;
+
 	/** @var DobrovolnikFormFactory */
 	private $formFactory;
 
@@ -35,18 +38,33 @@ class RoutePresenter extends AbstractRoutePresenter
 	/**
 	 * @param DobrovolnikRepository $repository
 	 * @param CategoryRepository $categoryRepository
+	 * @param VillageRepository $villageRepository
 	 * @param DobrovolnikFormFactory $formFactory
 	 */
 	public function inject(
 		DobrovolnikRepository $repository,
 		CategoryRepository $categoryRepository,
+		VillageRepository $villageRepository,
 		DobrovolnikFormFactory $formFactory
 	)
 	{
 		$this->repository = $repository;
 		$this->categoryRepository = $categoryRepository;
+		$this->villageRepository = $villageRepository;
 		$this->formFactory = $formFactory;
 	}
+
+
+
+
+	/**
+	 * @return \SiteModule\Pages\Dobrovolnik\VillageRepository
+	 */
+	public function getVillageRepository()
+	{
+		return $this->villageRepository;
+	}
+
 
 
 	/**
@@ -71,13 +89,21 @@ class RoutePresenter extends AbstractRoutePresenter
 	{
 		$form = $this->formFactory->invoke(new DobrovolnikEntity($this->extendedPage));
 		$form->onSuccess[] = $this->formSuccess;
+		$form->onError[] = $this->formError;
 		return $form;
 	}
 
 
 	public function formSuccess(Form $form)
 	{
-		$this->flashMessage('Děkujeme za Vaši ochotu a čas a těšíme se na spolupráci. V nejbližších hodinách Vás bude kontaktovat člen volebního štábu.', 'success');
+		$this->flashMessage('Děkujeme za Vaši ochotu a čas a těšíme se na spolupráci. Do 14 dnů Vás bude kontaktovat člen volebního štábu.', 'success');
+		$this->redirect('this');
+	}
+
+
+	public function formError(Form $form)
+	{
+		$this->flashMessage('Něco proběhlo špatně', 'warning');
 		$this->redirect('this');
 	}
 

@@ -1,0 +1,77 @@
+services:
+
+	translator.translator:
+		setup:
+			- '$service->addDictionary(new TranslatorModule\Dictionary(?))'(%modules.payments.path%/Resources/translations)
+
+	payments.paymentManager:
+		class: PaymentsModule\PaymentManager
+
+	payments.paymentRepository:
+		class: PaymentsModule\Admin\Payments\PaymentRepository
+		factory: @entityManager::getRepository('PaymentsModule\Admin\Payments\PaymentEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	payments.accountRepository:
+		class: PaymentsModule\Admin\Payments\AccountRepository
+		factory: @entityManager::getRepository('PaymentsModule\Admin\Payments\AccountEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	payments.currencyRepository:
+		class: PaymentsModule\Admin\Payments\CurrencyRepository
+		factory: @entityManager::getRepository('PaymentsModule\Admin\Payments\CurrencyEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	payments.bankRepository:
+		class: PaymentsModule\Admin\Payments\BankRepository
+		factory: @entityManager::getRepository('PaymentsModule\Admin\Payments\BankEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
+	payments.paymentsTableFactory:
+		class: PaymentsModule\Admin\Payments\PaymentsTableFactory
+
+	payments.accountsTableFactory:
+		class: PaymentsModule\Admin\Payments\AccountsTableFactory
+
+	payments.currencyTableFactory:
+		class: PaymentsModule\Admin\Payments\CurrencyTableFactory
+
+	payments.bankTableFactory:
+		class: PaymentsModule\Admin\Payments\BankTableFactory
+
+	payments.accountFormFactory:
+		class: PaymentsModule\Admin\Payments\AccountFormFactory
+		setup:
+			- inject
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	payments.paymentFormFactory:
+		class: PaymentsModule\Admin\Payments\PaymentFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	payments.currencyFormFactory:
+		class: PaymentsModule\Admin\Payments\CurrencyFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	payments.bankFormFactory:
+		class: PaymentsModule\Admin\Payments\BankFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+
+factories:
+
+	cms.admin.paymentsPresenter:
+		class: PaymentsModule\Admin\Payments\PaymentsPresenter
+		tags: [presenter, administration: [
+			link: 'Cms:Admin:Payments:'
+			category: 'Office'
+			name: 'Payments'
+			description: 'Payments'
+			priority: 0
+		]]
+
+includes:
+	- pages.payments.neon

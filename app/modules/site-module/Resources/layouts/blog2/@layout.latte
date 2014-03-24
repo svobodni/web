@@ -1,0 +1,36 @@
+{extends ../@layout.latte}
+
+{block #layout}
+
+<div id="blok-4">
+	<div id="blok-4-1">
+		<div class="obsah">
+
+			<div class="module-clanek-global">
+
+				<h1>{block #title}{$presenter->route->name|firstUpper}{/block}</h1>
+
+				{control flashMessage}
+				{block #contentTop}{/block}
+				{include #content}
+				{block #contentBottom}{/block}
+
+				<hr class="cleaner"/>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="blok-4-2">
+		<div class="aktualne-box">
+			<h3><a href="http://volby.svobodni.cz//aktualne/" title="Zobrazit další aktuality">Aktuálně</a></h3>
+
+			{element blog 'blog history'}
+
+				<div class="dalsi"><a href="{$basePath}/clanky" title="Zobrazit další články">Další</a>
+			</div>
+		</div>
+	</div>
+
+	<hr class="cistic">
+</div>

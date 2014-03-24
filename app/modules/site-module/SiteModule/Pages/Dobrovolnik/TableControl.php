@@ -22,7 +22,7 @@ class TableControl extends AbstractTableControl
 	/** @var DobrovolnikRepository */
 	protected $articleRepository;
 
-	/** @var DobrovolnikFormFactory */
+	/** @var DobrovolnikAdminFormFactory */
 	protected $formFactory;
 
 
@@ -30,7 +30,7 @@ class TableControl extends AbstractTableControl
 	 * @param DobrovolnikRepository $articleRepository
 	 * @param DobrovolnikFormFactory $formFactory
 	 */
-	public function __construct(DobrovolnikRepository $articleRepository, DobrovolnikFormFactory $formFactory)
+	public function __construct(DobrovolnikRepository $articleRepository, DobrovolnikAdminFormFactory $formFactory)
 	{
 		parent::__construct();
 

@@ -1,0 +1,275 @@
+{extends ../@layout.latte}
+
+{block #layout}
+
+{var $items = [
+'Petr Mach' => [
+'img' => 'mach.jpg',
+'text' => '<p>Petr Mach je od založení strany předsedou Svobodných. Je mu 38 let, přednáší ekonomii na vysokých školách. Tématem Evropské unie se zabývá dlouhodobě. Napsal knihu Úskalí evropské integrace (2003) a knihu Jak vystoupit z EU (2009).</p>
+
+<p>„Chtěl bych se přidat do frakce k Nigelu Farageovi, tvořit skutečnou opozici mašinérii EU a hlasovat proti všem návrhům, které omezují svobodu českých obyvatel a svrchovanost České republiky. Chci navrhnout změnu smlouvy o EU, která by dala České republice výjimku ze zavedení eura,“ dodává předseda Svobodných Petr Mach.</p>'
+],
+
+'Jiří Payne' => [
+'img' => 'payne.jpg',
+'text' => '<p>Jiří Payne by se v Evropském parlamentu rád věnoval přípravě scénáře na vystoupení z EU:</p>
+
+<p>„Je nezbytné nové i stávající normy třídit do několika skupin. Některé předpisy je možné okamžitě po vystoupení zrušit. Některé by se měly redukovat a změnit na mezivládní dohody. Některé bude nutné rekodifikovat a bude záležet na tom, jak rychle by se to dalo stíhat. Bude nutné stanovit priority. V návaznosti na chystané referendum o vystoupení Velké Británie z EU je třeba navazovat kontakty a jednat s partnery ze všech zemí o tom, jak by vystoupení mohlo proběhnout. Určitě bude výhodné sledovat přípravy Britů a spolupracovat s nimi. Proces vystoupení bude obdobný, jako bylo rozdělení Československa, mnohé zkušenosti bude možné využít,“ vysvětlil svou představu o činnosti v Evropském parlamentu místopředseda Svobodných Jiří Payne.</p>'
+],
+
+'Tomáš Pajonk' => [
+'img' => 'novypajonk.jpg',
+'text' => '<p>Tomáš Pajonk vystudoval Operační výzkum na VŠE. Je mu 32 let, je ženatý a má tři děti. Vytvořil program Tasha, který zlepšuje rozvozové trasy (a šetří tím peníze a auta) dopravcům v ČR a Velké Británii. Má rád deskové hry, v létě chodí do rumunských hor a zajímá se o historii, ekonomii a vývoj společnosti. Říká, že opakovat chyby našich předků nemusíme. Je místopředsedou Svobodných.</p>
+
+<p>„Země v EU chudnou. Chci zastupovat ty, kteří vědí, že zvýhodnit jedny, znamená znevýhodnit druhé. Chci zastupovat ty, kteří na "evropské integraci" prodělávají kalhoty, což jsme skoro všichni. Proti nám stojí majitelé grantových agentur, vysocí úředníci, kariérní evropští politici a byrokraté. Nenechme si vnutit jejich vizi světa,” podotknul místopředseda Svobodných Tomáš Pajonk.</p>'
+],
+
+'Vít Jedlička' => [
+'img' => 'jedlicka-1.jpg',
+'text' => '<p>Vít Jedlička (narozen r. 1983 v Hradci Králové), studoval ekonomii a politologii, předseda Strany svobodných občanů v Královéhradeckém kraji. Vystudoval obor mezinárodní obchod na Vysoké škole ekonomické a aktuálně dokončuje studium politologie na Vysoké škole CEVRO. V roce 2010 založil občanské sdružení Reformy.cz, jehož hlavní náplní je překlad zahraničních videí podporujících politickou a ekonomickou svobodu. Letos videa především z Evropského parlamentu publikovaná sdružením překonaly 10 miliónů zhlédnutí a patří tak k nejsledovanějším českým reportážním kanálům na internetu. V současné době pracuje jako analytik finančních trhů. Jeho dlouhodobým politickým cílem je udělat z Evropského parlamentu muzeum Evropské unie.</p>'
+],
+
+'Martin Pánek' => [
+'img' => 'panek-1.jpg',
+'text' => '<p>Ing. Martin Pánek vystudoval obor ekonomická analýza na VŠE a momentálně pracuje na pozici IT helpdesk. Je šéfredaktorem časopisu Laissez Faire a portálu euroSEPTIK.cz. Mluví plynně anglicky a německy, rok svého studia strávil v Bavorsku, půl roku v USA a půl roku v Číně.</p>
+
+<p>Evropské unii se věnuje soustavně. Přeložil několik hodin videí, které se týkají EU a jejího fungování. Evropské unii věnuje velkou část svého volného času, má nastudovanou literaturu, publikuje o ní články, jeho bakalářská i diplomová práce se Evropskou unií zabývají. Jako europoslanec by chtěl především zviditelnit Svobodné a upozorňovat na zrůdnosti bruselské eurokracie.</p>'
+],
+
+'Miloslav Bednář' => [
+'img' => 'bednar.jpg',
+'text' => '<p>Prof. PhDr. Miroslav Bednář, CSc. je vědecký pracovník Akademie věd ČR a vysokoškolský učitel zaměřený na politickou filosofii a věcnou kritiku Evropské unie. O politiku se pokouší v praxi. protože to pokládá za svou povinnost.</p>
+
+<p>Kandiduje proto, že naše členství v Evropské unii považuje za chybu a chce přispět k její nápravě.. Rád by se zasloužil o to, aby Česká republika mohla o svém osudu rozhodovat svobodně.</p>'
+],
+
+'Jan Polanecký' => [
+'img' => 'polanecky.jpg',
+'text' => '<p>Ing. Jan Polanecký vystudoval Vysokou školu ekonomickou v oborech finance a politologie. Pracuje jako manažer vnitřních služeb v české pobočce Citibank. Narodil se před 37 lety v Praze, je ženatý a má dvě děti.</p>
+
+<p>I přes neskrývanou skepsi k institucím Evropské unie kandiduje v primárních volbách Strany svobodných občanů pro volby do Evropského parlamentu, aby se spolu s ostatními kriticky smýšlejícími politiky zasadil o omezení moci bruselské byrokracie nad členskými státy a jejich občany. Domnívá se totiž, že postupný návrat k demokratickým principům, skutečnému kapitalismu a svobodě je možný pouze s využitím podmínek stávajícího politického prostředí.</p>'
+],
+
+'Vítězslav Kremlík' => [
+'img' => 'kremlik.jpg',
+'text' => '<p>Mgr. Vítězslav Kremlík, překladatel a historik. Autor stránek Klimaskeptik.cz, zdokumentoval celý podvod s globálním oteplováním. Vystupoval v televizi i v Senátu Parlamentu ČR, publikuje články v Lidových novinách.</p>
+
+<p>„Věřím, že jako europoslanec bych měl lepší zázemí pro osvětu. Změny klimatu existovaly vždy, zastavit je nelze a uhlíková daň počasí nezlepší. Europarlament může fungovat jako hráz, v roce 2011 zamítl zvyšování nesmyslných klimatických závazků z 20 na 30 %,“ vysvětluje Vítězslav Kremlík. Eurokomisař Tajani označil boj proti CO2 za „ekonomický masakr“. Energie jsou kvůli tomu až 3x dražší než v USA. Jde ale i o mravní otázku. Klimatické náboženství se svým pronásledováním kacířů a svou iracionalitou nás vrací zpátky do středověku.“</p>'
+],
+
+'Milan Vodička' => [
+'img' => 'vodicka.jpg',
+'text' => '<p>Ing. Milan Vodička, CSc., ekonom a soudní znalec (oceňování podniků), předseda krajského sdružení Svobodných ve Středočeském kraji. Kandidoval v roce 2012 za Svobodné do Senátu v obvodě Benešov s výsledkem 2300 hlasů (6 %). V roce 2000 řídil Organizační centrum pro přípravu a organizaci Výročních zasedání MMF a Světové banky, má zkušenosti z řízení a organizace firem.</p>
+
+<p>V EP chce prosazovat výjimku vůči eurozóně (nezavedení eura v ČR), rušení nesmyslných energetických koncepcí a zrušení směrnice EP č. 2000/84 o úpravě letního času.</p>'
+],
+
+'Jakub Ježek' => [
+'img' => 'jezek.jpg',
+'text' => '<p>Mgr. Jakub Ježek je předsedou Svobodných Jihomoravského kraje, má 30 let a profesí je právník. Pracuje pro ekonomické a osobní svobody jednotlivců, proti přebujelému státu a Bruselskému direktivismu. V Evropském parlamentu chce především hájit dodržování svobody jednotlivců a mezinárodní nezávislost národních států. Za největší nebezpečí z Bruselu považuje prosazování radikálního EUismu, ekoalarmismu, enviromentalismu, multikulturalismu, socialismu, etatismu, a jiných kolektivismů.</p>'
+],
+
+'Josef Zbořil' => [
+'img' => 'zboril.jpg',
+'text' => '<p><a href="http://www.zboriljosef.cz/" target="_blank">Ing. Zbořil Josef, Ph.D.</a>&nbsp;(1979) je pracovníkem výzkumu a vývoje ve strojírenství a Olomouckým krajským předsedou Strany svobodných občanů. Více o názorech a postojích v článku -&nbsp;<a href="http://zboril.blog.idnes.cz/c/356036/Predstaveni-olomouckeho-lidra-Svobodnych-pro-volby-do-PSP-CR-2013.html" target="_blank">Josef Zbořil: kandidát Svobodných č. 11 do Evropského Parlamentu 2014</a>.</p>'
+],
+
+'Irena Steinhauserová' => [
+'img' => 'steinhauserova.jpg',
+'text' => '<p>Irena Steinhauserová vystudovala stavební fakultu a, jak sama říká, na prahu stáří psychologii. Má šest vlastních dětí a má bohaté zkušenosti s domácím vzděláváním.</p>
+
+<p>Evropskou civilizaci a její hodnoty považuje za to nejlepší, co zatím v historii bylo. „To si myslím především jako žena, protože postavení žen v naší společnosti je výjimečné. Feminismus a genderové aktivity považuji za zbytečné, protože rovnoprávnost už máme a rovnost není možná. Návrh evropské komisařky Redingové na 40% zastoupení žen ve velkých firmách a podobné konkurenci evropských podniků ohrožující nápady považuji za nesmyslné,“ doplňuje Irena Steinhauserová.
+Její oblíbenou političkou je Margaret Thatcherová, která prohlásila: „Feministky jsou ženy, které by chtěly něco dostat, aniž by pro to musely cokoliv udělat.“</p>'
+],
+
+'Jiří Strachota' => [
+'img' => 'strachota.jpg',
+'text' => '<p>Jiří Strachota vstoupil poprvé do politické strany ve svých 62 letech, když zjistil, že politická filozofie Svobodných a jejich vnitřní kultura jsou zcela v souladu s jeho životním postojem. Povoláním fyzik, pracoval do roku 1994 na největších světových urychlovačích v mezinárodních experimentech. Pět let okusil zaměstnání v průmyslu, potom založil firmu s posláním informatizace lidské společnosti, s kterou se loni rozloučil. V EP chce bránit české voliče proti návratu socializmu a Velkého svazu „oknem“ a pro řádný výkon mandátu využít své znalosti jazyků, reálií a celoživotní zkušenosti mezinárodní spolupráce.</p>'
+],
+
+'Pavel Pešan' => [
+'img' => 'pesan.jpg',
+'text' => '<p>Pavel Pešan je členem Svobodných od vzniku strany na jaře 2009, podruhé za sebou byl zvolen místopředsedou pražských Svobodných. Krom činnosti ve Straně svobodných občanů se věnuje poradenské činnosti z pozice předsedy OS Jeden Domov&nbsp;<a href="http://www.jedendomov.cz/">www.jedendomov.cz</a>&nbsp;. Aktivně se podílí na organizaci předvolebních kampaní, protestních demonstrací (viz&nbsp;<a href="https://www.youtube.com/watch?v=lpNYWMXv6XM">https://www.youtube.com/watch?v=lpNYWMXv6XM</a>). Důvodem ke kandidatuře je, že odmítá nadále sledovat &nbsp;bez odporu ztrátu suverenity České republiky. Je odhodlán stáhnout vlajku EU z Pražského hradu.</p>'
+],
+
+'Miroslav Jahoda' => [
+'img' => 'jahoda.jpg',
+'text' => '<p>Miroslav Jahoda vystudoval politiku a mezinárodní vztahy na Christchurch Canterbury University ve Velké Británii. Věnuje se překládání videí euroskeptiků, reformistů a psaní článků obhajujících volný trh. O roli v Evropském parlamentu si nedělá iluze, jelikož jeho poslanci dostali od EU jen omezené pravomoce.</p>
+
+<p>Jeho cílem v této instituci je: blokovat jakékoli nařízení EU proti svobodnému trhu a svobodě člověka, zorganizovat mezinárodní EU skeptickou koalici, která bude mít šanci na změnu, podporovat Svobodné v ČR jako z pozice europoslance, vzájemně si pomáhat s mezinárodními organizacemi typu IEA, Cato Inst., Freedom Works, které zastávají obdobné názory.</p>'
+],
+
+'Philip Prentis' => [
+'img' => 'prentis.jpg',
+'text' => '<p>Philip Prentis je místopředsedou středočeského krajského sdružení Svobodných a  dlouhodobým příznivcem ideje štíhlého státu s nízkými a jednoduchými daněmi. Jako občan ČR a Velké Británie se cítí být Evropanem, a vadí mu, jak EU nedemokratickými cestami postupně okrádá své občany o možnost rozhodovat sami za sebe.</p>
+
+<p>V Evropském parlamentu by chtěl využít svou jazykovou vybavenost a pomoct Svobodným spojit se s britskou UKIP a s dalšími euroskeptickými stranami, abychom dokázali společně čelit nekonečnému proudu direktiv Evropské komise, které omezují naši národní suverenitu i osobní svobodu každého z nás.</p>'
+],
+
+'Veronika Miňovská' => [
+'img' => 'minovska.jpg',
+'text' => '<p>Veronika Miňovská vystudovala Vysokou školu ekonomickou, obor Mezinárodní politika a diplomacie. Navštěvovala nesčetné množství předmětů zaměřených na EU a její fungování. Je nadšencem do internetu a nových technologií. V současnosti pracuje v českém IT startupu zaměřeném na globální trh. Mluví plynně anglicky a domluví se i německy a rusky.</p>
+
+<p>Ke kandidatuře do EP ji vede především nesouhlas s obrovským (a neustále se zvětšujícím) objemem dotací, s jejichž negativním vlivem na business se denně setkává. Těší se na chvíli, kdy nebude z veřejných peněz podporován neefektivní business a zároveň se nebudou házet klacky pod nohy podnikání, které má na trhu své místo.</p>'
+],
+
+'Jana Urzová' => [
+'img' => 'urzova.jpg',
+'text' => '<p>Janě Urzové je 42 let, vdaná, absolventka MFF UK, přednáší fyziku a matematiku na FBMI ČVUT a vyučuje fyziku na gymnáziu. Místopředsedkyně Středočeského krajského sdružení.</p>
+
+<p>Zastává názor, že o sobě si vždycky musíme rozhodovat sami a za svoje rozhodnutí nést odpovědnost. Do voleb jde s tím, že čím méně nám bude do života zasahovat EU, tím lépe. Prohlašuje, že nepotřebujeme zbytečné úředníky, přebujelou byrokracii a uměle vytvořené problémy, které nám vnucují z Bruselu, protože sami máme svých starostí až dost a nikdo za nás nic nevyřeší. „Nemá smysl čekat na kouzelný zásah zvenčí, musíme se zvednout a začít řešit problémy sami,“ domnívá se Jana Urzová.</p>'
+],
+
+]}
+
+{var $items = $items + ['Tereza Sladkovská' => [
+'img' => 'sladkovska.jpg',
+'text' => '<p>Tereza Sladkovská je členkou Svobodných od října 2012, od roku 2013 se aktivně podílí na dění ve straně. V současné době studuje 2. lékařskou fakultu UK, zajímá se o astronomii, přírodní vědy, historii a stravování.</p>
+
+<p>„Většina lidí vám bude tvrdit, že chtějí do Evropského parlamentu, aby hájili zájmy České republiky a osobní svobody. Takovou ambici já nemám. Zesměšnění institucí EU a jejích představitelů. Čistý mediální teror. Více vám reálně nabídnout nemohu,“ řekla o kandidatuře Tereza Sladkovská.</p>'
+],
+
+'Damir Špoljarič' => [
+'img' => 'spoljaric.jpg',
+'text' => '<p>Damir Špoljarič studoval Vysokou školu ekonomickou a následně se začal naplno věnovat informačním technologiím a telekomunikacím. V tomto oboru také aktivně od svých 18 let podniká s mezinárodním dosahem. Dále se věnuje dopravě a snaží se publikační činností upozorňovat na chystané dopravní regulace a jejich škodlivé důsledky. Oba obory, kterým se aktivně věnuje, jsou, jak ze strany státu, tak ze strany Evropské unie, neustále pod palbou nových regulací, čemuž by se snažil z pozice europoslance bránit.</p>'
+],
+
+'Petra Korbelová' => [
+'img' => 'korbelova.jpg',
+'text' => '<p>Petra Korbelová se celoživotně věnuje oboru právo. Vystudovala obor "právo v podnikání". Nyní se dále věnuje své specializaci na ZČU Fakultě právnické oboru "právo a právní věda". Členkou je od r. 2013 a velmi intenzivně se podílela na organizaci předvolební kampaně v Praze při volbách do PSP 2013. Kandidaturu zvolila jako nástroj k propagaci myšlenek Svobodných.</p>'
+],
+
+'Miroslav Červenka' => [
+'img' => 'cervenka.jpg',
+'text' => '<p>Miroslav Červenka je svobodomyslný podnikatel předdůchodového věku, který si rád dělá, co chce a kdy chce, a bytostně nesnáší nespravedlnost, přetvářku a dogmatismus. Je stoupencem svobody a demokracie. Člen republikového výboru Svobodných.</p>
+
+<p>“Systém fungování EU mi leží v žaludku již hodně let. Lze to i doložit: již v roce 2003 jsem byl v době jednostranně manipulovaného referenda o vstupu do EU krajským koordinátorem hnutí Euroskeptik, založeného pány Barákem, Hanákem a Kurasem. Je příznačné, že dva z těchto tří pánů byli o šest let později i u založení Svobodných.”</p>'
+],
+
+'Alice Hejdová' => [
+'img' => 'hejdova.JPG',
+'text' => '<p>Alice Hejdová je ve Svobodných od roku 2009. Aktivně se účastní dění ve straně. Je členkou Republikového výboru Svobodných a má na starost Prahu 8 a Prahu 9.</p>
+
+<p>„Se stejným zájmem sleduji politickou situaci v České republice a také v Evropské unii. Po zvolení do Evropského parlamentu budeme přímo v centru tvorby mnoha absurdit, které můžeme bez příkras sdělit českému národu. Důležitá je i obrana nezávislosti a o boj proti zavedení eura v České republice,“ sdělila Alice Hejdová.</p>'
+],
+
+'Josef Lebduška' => [
+'img' => 'lebduska.jpg',
+'text' => '<p>„Kandiduji proto, že pamatuji dobu nedávno minulou, a tak nějak mi ji to s tou EU připomíná, protože mi lezou nařízení EU krkem, také proto, že EU si hraje na stát, kterým není. Také proto, že pokud budou v EP sedět jenom tací poslanci, kteří pro vše zvednou ruku, tak to k lepšímu nepovede. Také bych rád, aby moje vnoučata žila ve svobodné a odpovědné společnosti a mohla byla hrdá na svůj suverénní stát,“ vysvětlil své názory Josef Lebduška. Kandiduje také proto, aby byl větší výběr kandidátů a domnívá se, že by v EP měl především sedět Petr Mach a další. Josef Lebduška má vysokoškolské vzdělání, nepije, nekouří, nekrade, je těsně před důchodem a nechce nic radikálního, jen svobodu, odpovědnost a suverenitu.</p>'
+],
+
+'Jiří Zapletal' => [
+'img' => 'zapletal.jpg',
+'text' => '<p>Ing. Jiří Zapletal, 33 let, bytem Ostrava, zadaný, jedno dítě, absolvent Ekonomické fakulty VŠB-TU Ostrava, obor Národní hospodářství, specialista zadávacích řízení, předseda krajského sdružení Strany svobodných občanů v Moravskoslezském kraji. Členem Svobodných od roku 2012.</p>
+
+<p>Cílem jeho kandidatury je prosazování myšlenek Svobodných nejen v ČR, ale také v EU. Posílení pozice České republiky jako samostatného a suverénního státu, o jehož budoucnosti rozhodují občané České republiky a nikdo jiný. Zamezení byrokratizace společnosti a omezení zásahů do svobod jednotlivců.</p>'
+],
+
+'Václav Kupilík' => [
+'img' => 'kupilik2.jpg',
+'text' => '<p>Václav Kupilík je předsedou Svobodných v Jihočeském kraji. Živí se jako manažer v direct marketingu a je mu 41 let. Žije v Českých Budějovicích.</p>'
+],
+
+'Markéta Chvalovská' => [
+'img' => 'chvalovska.jpg',
+'text' => '<p>Markéta Chvalovská má 31 let, trvale žije v obci Zlonín v okrese Praha-Východ. Vystudovala Masarykovu střední školu chemickou v Praze. Pracuje na pozici vedoucí vývojové laboratoře ve firme Styl, zabývající se výrobou čisticích prostředků do domácností. Ve volném čase se věnuje převážně sportu, fotografování a historii.</p>
+
+<p>„Přihlásila jsem se ke kandidatuře, protože vnitřně nesouhlasím s omezováním svobod občanů a států ze strany Evropské unie. Je potřeba zamezit dalšímu útlaku a zbytečným nařízením ze strany úředníku, kteří ovlivňují náš život nesmyslnými dotacemi, multikulturalismem, normami v průmyslu, zemědělství a v dalších odvětvích ve snaze vytvořit jeden velký super stát, řízený velkými mocnostmi,“ vysvětlila své názory Markéta Chvalovská.</p>'
+],
+
+'Jiří Rybář' => [
+'img' => 'rybar.jpg',
+'text' => '<p>Jiří Rybář je 26letý IT konzultant v oblasti designu a přípravy webových stránek s dlouhodobým zájmem o EU, zejména od doby odmítnutí Euroústavy. Na to nejhorší, co přichází z per euroúředníků úspěšně upozorňuje na http://euroskeptik.tumblr.com a http://twitter.com/euroskeptik. Mimo jiné jako jeden z mála sleduje přenosy z EP (podle některých Svobodných jako jediný na světě), případně čte zápisy neuvěřitelných výroků eurofederalistů (tedy většiny europoslanců) z plenárních zasedání. Seznam toho, co mu vadí na Evropské unii, by měl více bodů, než kolik mají Svobodní do těchto voleb kandidátů.</p>'
+]
+
+]}
+
+<div class="col-md-12">
+	<p class="lead">
+		Představujeme Vám kandidáty Strany svobodných občanů, kteří se ucházejí o Vaše hlasy ve volbách do Evropského parlamentu 2014:
+	</p>
+</div>
+
+<div class="col-md-8">
+
+	{control flashMessage TRUE}
+	{block #contentTop}{/block}
+	{block #content}{include #page-content}{/block}
+	{block #contentBottom}{/block}
+
+	<div class="row">
+		{foreach $items as $name => $item}
+			<div class="col-md-12">
+				<div class="media">
+					<a n:if="$item['img']" class="pull-left" href="#">
+						<img class="media-object thumbnail" src="/public/media/kandidati/{!$item['img']}" style="height:300px; width:200px" alt="{!$name}">
+					</a>
+					<div class="media-body">
+						<h4 class="media-heading"><a id="kandidat-{!substr($item['img'], 0, -4)}" name="kandidat-{!substr($item['img'], 0, -4)}">{$iterator->counter}.&nbsp;{!$name}</a></h4>
+						{!$item['text']}
+					</div>
+				</div>
+				{sep}<hr />{/sep}
+			</div>
+		{/foreach}
+	</div>
+
+	<hr />
+
+	<iframe id="f1f4eef16" name="f19c87c668" scrolling="no" title="Like this content on Facebook." class="fb_ltr" src="http://www.facebook.com/plugins/like.php?api_key=&amp;channel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D28%23cb%3Df36729472c%26domain%3Dvolby.svobodni.cz%26origin%3Dhttp%253A%252F%252Fvolby.svobodni.cz%252Ff131a1dcbc%26relation%3Dparent.parent&amp;colorscheme=light&amp;extended_social_context=false&amp;href={=urlencode($presenter->link('//Route', array('route' => $presenter->route)))}&amp;layout=standard&amp;locale=cs_CZ&amp;node_type=link&amp;sdk=joey&amp;send=true&amp;show_faces=true&amp;width=598" style="border: none; overflow: hidden; height: 25px; width: 598px;"></iframe>
+
+	<div class="row row-clen">
+		<div class="col-lg-4">
+			<a class="btn btn-block btn-default btn-clen" href="https://www.svobodni.cz/clenstvi/priznivec/">Stát se příznivcem</a>
+		</div>
+		<div class="col-lg-4">
+			<a class="btn btn-block btn-default btn-clen" href="https://www.svobodni.cz/clenstvi/clen/">Stát se členem</a>
+		</div>
+		<div class="col-lg-4">
+			<a class="btn btn-block btn-default btn-clen" href="http://www.svobodni.cz/chci-pomoci-strane/">Přispět finančně</a>
+		</div>
+	</div>
+
+</div>
+
+<div class="col-md-4 visible-md visible-lg">
+	<div id="program-menu" class="bs-sidebar hidden-print" style="top: 90px;"  role="complementary" data-offset='90'>
+
+		<ul class="nav bs-sidenav">
+			<li><a href="#I">Kandidáti</a>
+				<ul class="nav">
+				{foreach $items as $name => $item}
+				<li><a href="#kandidat-{!substr($item['img'], 0, -4)}">{$iterator->counter}.&nbsp;{!$name}</a></li>
+				{/foreach}
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<script type="application/javascript">
+	$(function(){
+		var offset = 90;
+
+		$('#program-menu').affix({
+			offset: {
+				top:  250
+			}
+		});
+		$('body').scrollspy({
+			target: '#program-menu',
+			offset: 100
+		});
+		$('#program-menu li a, .col-md-8 a').on('click', function(event) {
+			if ($(this).attr('href').substr(0, 1) == '#') {
+				event.preventDefault();
+				var hash = this.hash;
+				$('html, body').animate({
+					scrollTop: $(this.hash).offset().top - offset
+				}, 300, function () {
+					window.location.hash = hash;
+				});
+			}
+		});
+	});
+</script>

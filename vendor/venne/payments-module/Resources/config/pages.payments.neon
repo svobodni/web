@@ -1,0 +1,17 @@
+services:
+	payments.pages.paymentsPage:
+		class: CmsModule\Content\ContentType('PaymentsModule\Pages\Payments\PageEntity')
+		setup:
+			- addSection('Content', @payments.pages.payments.pageFormFactory)
+		tags: [contentType: 'payments']
+
+	payments.pages.payments.pageFormFactory:
+		class: PaymentsModule\Pages\Payments\PageFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+		tags: [component]
+
+factories:
+	payments.pages.payments.routePresenter:
+		class: PaymentsModule\Pages\Payments\RoutePresenter
+		tags: [presenter]
