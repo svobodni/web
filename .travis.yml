@@ -1,0 +1,17 @@
+language: php
+
+php:
+  - 5.4
+
+before_script:
+  - composer self-update
+  - "composer require 'alexandresalome/php-selenium:v1.0.3'"
+  - "composer require 'nette/tester:~1.0.0'"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - "wget http://selenium.googlecode.com/files/selenium-server-standalone-2.39.0.jar"
+  - "java -jar selenium-server-standalone-2.39.0.jar > /dev/null 2>&1 &"
+#  - "php -S localhost -t www/ &"
+  - "sleep 30"
+
+script: VERBOSE=true vendor/bin/tester tests/

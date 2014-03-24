@@ -18,6 +18,10 @@
 		"venne/events-module": "2.1.x@dev",
 		"venne/hybridauth-module": "2.1.*@dev"
 	},
+	"require-dev": {
+		"alexandresalome/php-selenium": "v1.0.3",
+		"nette/tester": "~1.0.0"
+	},
 	"extra":{
 		"branch-alias":{
 			"dev-master":"2.0.x-dev"
