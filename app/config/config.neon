@@ -48,7 +48,6 @@ nette:
 		email: ""
 		
 	application:
-		catchExceptions: true
 		debugger: true
 		
 	routing:

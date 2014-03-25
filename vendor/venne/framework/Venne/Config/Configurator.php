@@ -274,6 +274,7 @@ class Configurator extends \Nette\Config\Configurator
 	{
 		$ret = array();
 		$ret[] = $this->parameters['configDir'] . '/config.neon';
+		$ret[] = $this->parameters['configDir'] . "/config.local.neon";
 		$ret[] = $this->parameters['configDir'] . "/config_{$this->parameters['environment']}.neon";
 		return $ret;
 	}

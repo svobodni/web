@@ -1,0 +1,12 @@
+parameters:
+	database:
+		user: ''
+		password: ''
+		dbname: ''
+		hostname: 127.0.0.1
+
+cms:
+	administration:
+		login:
+			name: admin
+			password: pass
