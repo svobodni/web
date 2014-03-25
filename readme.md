@@ -1,4 +1,4 @@
-Republikový web Svobodných
+Republikový web Svobodných [![Build Status](https://secure.travis-ci.org/svobodni/web.png)](http://travis-ci.org/svobodni/web)
 ==========================
 
 Instalace
