@@ -1,3 +1,11 @@
 {block #page-content}
 
+{cache [$presenter->routeId, $presenter->lang], tags => [
+	'page-' . $presenter->pageId,
+	'route-' . $presenter->routeId,
+	'language-' . $presenter->lang,
+]}
+{control item $presenter->route, config => [ variant => '@text.route' ]}
+{/cache}
+
 {control form}

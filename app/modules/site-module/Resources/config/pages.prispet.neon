@@ -2,6 +2,8 @@ services:
 
 	site.prispetContent:
 		class: CmsModule\Content\ContentType('SiteModule\Pages\Prispet\PageEntity')
+		setup:
+			- addSection('Content', @cms.pages.text.textFormFactory)
 		tags: [contentType: [name: 'Svobodní - prispet']]
 
 	site.prispetFormFactory:
