@@ -9,3 +9,12 @@
 {/cache}
 
 {control form}
+
+<script>
+	$(function(){
+		$('#frmform-money-pair .col-lg-10').html('<div class="btn-group" data-toggle="buttons">' + $('#frmform-money-pair .col-lg-10').html() + '</div>');
+		$('#frmform-money-pair .col-lg-10 label').addClass('btn btn-default');
+		$('#frmform-money-pair .col-lg-10 label').css('margin-right', '10px');
+		$('#frmform-money-pair .col-lg-10 label').first().addClass('active');
+	});
+</script>

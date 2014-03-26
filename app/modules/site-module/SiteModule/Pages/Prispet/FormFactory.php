@@ -25,13 +25,13 @@ class FormFactory extends \Venne\Forms\FormFactory
 	public function configure(Form $form)
 	{
 		$form->addGroup();
-		$money = $form->addSelect('money', 'Přispívám částkou')->setItems(array(
-			'1000' => '1 000',
-			'100' => '100',
-			'250' => '250',
-			'500' => '500',
-			'2500' => '2 500',
-			'5000' => '5 000',
+		$money = $form->addRadioList('money', 'Přispívám částkou')->setItems(array(
+			'1000' => '1 000,-',
+			'100' => '100,-',
+			'250' => '250,-',
+			'500' => '500,-',
+			'2500' => '2 500,-',
+			'5000' => '5 000,-',
 			'other' => 'jinou',
 		));
 		$money
@@ -44,14 +44,14 @@ class FormFactory extends \Venne\Forms\FormFactory
 			->addRule($form::INTEGER, 'Částka musí být celé kladné číslo');
 
 		$form->addGroup();
-		$form->addSelect('ucely', 'Peníze použít na', array(
+		$form->addRadioList('ucely', 'Peníze použít na', array(
 			'1' => 'Nechám to na Vás',
 			'2' => 'Kancelář',
 			'4' => 'Internetová reklama',
 			'8' => 'Billboardy',
 			'16' => 'Kontaktní kampaň',
 			'32' => 'Tiskoviny a reklamní materiály',
-		));
+		))->setDefaultValue('1');
 
 		$person = $form->addRadioList('person', 'Osoba', array(
 			'fyzicka' => 'Fyzická osoba',
@@ -105,7 +105,6 @@ class FormFactory extends \Venne\Forms\FormFactory
 		$form->setCurrentGroup();
 		$submit = $form->addSaveButton('Odeslat');
 		$submit->getControlPrototype()->class = 'btn-primary btn-block';
-		$submit->getControlPrototype()->style[] = 'font-size: 25px; font-style: italic;';
 	}
 
 }
