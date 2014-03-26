@@ -1,0 +1,16 @@
+services:
+
+	site.prispetContent:
+		class: CmsModule\Content\ContentType('SiteModule\Pages\Prispet\PageEntity')
+		tags: [contentType: [name: 'Svobodní - prispet']]
+
+	site.prispetFormFactory:
+		class: SiteModule\Pages\Prispet\FormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+factories:
+
+	site.pages.prispet.routePresenter:
+		class: SiteModule\Pages\Prispet\RoutePresenter
+		tags: [presenter]
