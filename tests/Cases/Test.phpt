@@ -14,11 +14,26 @@ class Test extends TestCase
 	/** @var \Selenium\Browser */
 	private $browser;
 
+	/** @var string */
+	private $basePath = '';
+
 
 	protected function setUp()
 	{
-		$client = new \Selenium\Client('127.0.0.1');
-		$this->browser = $client->getBrowser('http://s-web.zvara.cz');
+		$host = '127.0.0.1';
+		$startPage = 'http://localhost/svobodni';
+
+		if (getenv('TRAVIS')) {
+			if (getenv('TRAVIS_PULL_REQUEST')) {
+				$this->basePath = '/pull/' . getenv('TRAVIS_PULL_REQUEST') . '/www';
+			} else {
+				$this->basePath = '/branch/' . getenv('TRAVIS_BRANCH') . '/www';
+			}
+			$startPage = 'http://s-webt.zvara.cz' . $this->basePath;
+		}
+
+		$client = new \Selenium\Client($host);
+		$this->browser = $client->getBrowser($startPage);
 		$this->browser->start();
 	}
 
@@ -66,7 +81,7 @@ class Test extends TestCase
 		foreach (self::dataTestReplaceBlock() as $url => $data)
 
 			$this->browser
-				->open($url)
+				->open($this->basePath . $url)
 				->waitForPageToLoad(5);
 
 		Assert::same($data[0], $this->browser->getTitle());
