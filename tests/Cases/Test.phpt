@@ -24,7 +24,7 @@ class Test extends TestCase
 		$startPage = 'http://localhost/svobodni';
 
 		if (getenv('TRAVIS')) {
-			if (getenv('TRAVIS_PULL_REQUEST')) {
+			if (getenv('TRAVIS_PULL_REQUEST') && getenv('TRAVIS_PULL_REQUEST') != 'false') {
 				$this->basePath = '/pull/' . getenv('TRAVIS_PULL_REQUEST') . '/www';
 			} else {
 				$this->basePath = '/branch/' . getenv('TRAVIS_BRANCH') . '/www';
