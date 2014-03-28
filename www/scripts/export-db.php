@@ -200,6 +200,8 @@ namespace {
 
 	$loader = require_once __DIR__ . '/../../vendor/autoload.php';
 
+	header('Content-Type: text/plain; charset=utf-8');
+
 	// create and run application
 	$configurator = new \Venne\Config\Configurator(__DIR__ . '/../../app', $loader);
 	$configurator->enableDebugger();
