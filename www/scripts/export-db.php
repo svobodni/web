@@ -204,7 +204,7 @@ namespace {
 	$configurator = new \Venne\Config\Configurator(__DIR__ . '/../../app', $loader);
 	$configurator->enableDebugger();
 	$configurator->enableLoader();
-	\Nette\Diagnostics\Debugger::enable('development', __DIR__ . '/../../app/log');
+	//\Nette\Diagnostics\Debugger::enable('development', __DIR__ . '/../../app/log');
 	/** @var \Doctrine\ORM\EntityManager $db */
 	$db = $configurator->createContainer()->entityManager;
 
