@@ -43,13 +43,16 @@ class RoutePresenter extends PagePresenter
 	{
 		$form = $this->formFactory->invoke();
 		$form->onSuccess[] = $this->formSuccess;
-		$form->onError[] = $this->formError;
 		return $form;
 	}
 
 
 	public function formSuccess(Form $form)
 	{
+		if ($form->isSubmitted() !== $form->getSaveButton()) {
+			return;
+		}
+
 		$values = $form->values;
 
 		$data = array(
@@ -87,13 +90,6 @@ class RoutePresenter extends PagePresenter
 			$this->flashMessage('Nastala chyba při ukládání, zopakujte prosím akci později', 'warning');
 		}
 
-		$this->redirect('this');
-	}
-
-
-	public function formError(Form $form)
-	{
-		$this->flashMessage('Něco proběhlo špatně', 'warning');
 		$this->redirect('this');
 	}
 

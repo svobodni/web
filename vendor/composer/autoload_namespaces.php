@@ -23,6 +23,7 @@ return array(
     'Hybrid' => array($vendorDir . '/hybridauth/hybridauth/hybridauth'),
     'GuestbookModule' => array($vendorDir . '/venne/guestbook-module'),
     'Grido' => array($vendorDir . '/o5/grido'),
+    'Gregwar\\Captcha' => array($vendorDir . '/gregwar/captcha'),
     'GoogleanalyticsModule' => array($vendorDir . '/venne/googleanalytics-module'),
     'GalleryModule' => array($vendorDir . '/venne/gallery-module'),
     'FormsModule' => array($vendorDir . '/venne/forms-module'),
