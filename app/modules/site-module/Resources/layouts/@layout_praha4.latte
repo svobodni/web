@@ -1,0 +1,208 @@
+{**
+ * My Application layout template.
+ *
+ * @copyright  Copyright (c) 2010 John Doe
+ * @package    MyApplication
+ *
+ * @param string   $basePath web base path
+ * @param string   $robots   tell robots how to index the content of a page (optional)
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+{head}
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300,400italic,300italic,700italic&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+		{css
+			@bootstrap3Module/css/bootstrap.css,
+			@typeaheadModule/typeahead.js-bootstrap.css,
+			@siteModule/css/bootstrap.css,
+			@siteModule/css/application.css,
+			@siteModule/mapa/style.css,
+			media=>'screen'
+		}
+
+		{js
+			@jquery2.0Module/jquery.js,
+			@jquery2.0Module/jquery-migrate.js,
+			@hoganModule/hogan-2.0.0.js,
+		}
+
+		<link rel="stylesheet" href="{path @siteModule/font-awesome/css/font-awesome.css}">
+
+	{cache $presenter->routeId}
+		{control head}
+	{/cache}
+
+	<link rel="shortcut icon" href="{path @siteModule}/favicon.png"/>
+	<!--[if IE]><link rel="shortcut icon" href="{path @siteModule}/favicon.ico"/><![endif]-->
+
+	{block #head}{/block}
+{/head}
+
+{body}
+
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MXB8S8"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script n:syntax="off">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MXB8S8');</script>
+    <!-- End Google Tag Manager -->
+
+	<div class="container header-container">
+		<div class="row">
+			<div class="col-md-12 col-wb">
+				<div class="header-logo"><a href="{$basePath}/"></a></div>
+
+				<ul>
+					<li><a class="btn btn-default" href="{$basePath}/registrace/prispet-financne" title="Přispět finančně Straně svobodných občanů">Přispět</a></li>
+
+					<li><a class="btn btn-social btn-f" href="https://www.facebook.com/svobodni" title="Přidejte se ke Svobodným na Facebooku"></a></li>
+					<li><a class="btn btn-social btn-g" href="https://plus.google.com/u/0/+svobodn%C3%AD" title="Přidejte si Svobodné do kruhů Google+"></a></li>
+					<li><a class="btn btn-social btn-t" href="https://twitter.com/svobodni" title="Sledujte Svobodné na Twitteru"></a></li>
+					<li><a class="btn btn-social btn-y" href="http://www.youtube.com/user/svobodni?gl=CZ&amp;hl=cs" title="Sledujte videa Svobodných na YouTube"></a></li>
+
+					{*<li><a class="btn btn-link" href="http://eshop.svobodni.cz/">E-shop</a></li>*}
+				</ul>
+
+				<div class="control-search">
+					{control search}
+				</div>
+			</div>
+		</div>
+	</div>
+
+			<div class="navigation-container navbar navbar-default navbar-static-top" role="navigation">
+				<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="{$basePath}/">
+						<img src="{path @siteModule/img/logo_panel_dark.png}" alt="Strana svobodných občanů" />
+					</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					{block #navigation.begin}{/block}
+					{control navigation NULL, NULL, $presenter->entityManager->getRepository('CmsModule\Content\Entities\PageEntity')->find(66)}
+					{block #navigation.end}{/block}
+				</div><!--/.nav-collapse -->
+				</div>
+			</div>
+
+	{block #content-top}{/block}
+
+	<div class="container">
+		{block #title-container}
+		<div class="row row-title">
+			<div class="col-md-12">
+				<div class="page-header">
+					<div class="pull-right">
+						{cache [$presenter->routeId, $presenter->lang], tags => ['routes']}
+						{control breadcrumb}
+						{/cache}
+					</div>
+					{cache [$presenter->routeId, $presenter->lang], tags => [
+					'route-' . $presenter->routeId,
+					]}
+					<h1>{block #title}{$presenter->route->name|firstUpper}{/block}</h1>
+					{/cache}
+				</div>
+			</div>
+		</div>
+		{/block}
+
+		<div class="row">
+			{include #layout}
+		</div>
+	</div>
+
+<footer>
+	<div class="container">
+		{cache}
+			<div class="row">
+				<div class="col-md-3 col-sm-4">
+					<h4>Důležité odkazy</h4>
+
+					<ul class="list-unstyled">
+						<li><a href="{$basePath}/pro-media/kontakty"><i class="fa fa-envelope"></i> Kontakty</a></li>
+						<li><a n:href="Route special=>'sitemap'"><i class="fa fa-sitemap"></i> {_Sitemap}</a></li>
+						<li><a n:href="Route special=>'rss'"><i class="fa fa-rss"></i> RSS</a></li>
+						<li><a href="http://eshop.svobodni.cz"><i class="fa fa-shopping-cart"></i> E-shop</a></li>
+						<li><a title="Zobrazit původní web" href="http://svobodni.cz/"><i class="glyphicon glyphicon-globe"></i> původní web</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-sm-4">
+					<h4>Svobodní na sociálních sítích</h4>
+
+					<ul class="list-unstyled">
+						<li><a href="https://www.facebook.com/svobodni"><i class="fa fa-facebook"></i> Facebook</a></li>
+						<li><a href="https://plus.google.com/u/0/+svobodn%C3%AD"><i class="fa fa-google-plus"></i> Google+</a></li>
+						<li><a href="https://twitter.com/svobodni"><i class="fa fa-twitter"></i> Twitter</a></li>
+						<li><a href="http://www.youtube.com/user/svobodni?gl=CZ&amp;hl=cs"><i class="fa fa-youtube"></i> Youtube</a></li>
+						<li><a href="http://github.com/svobodni"><i class="fa fa-github"></i> GitHub</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2 col-sm-4">
+					<h4>Po přihlášení</h4>
+
+					<ul class="list-unstyled">
+						<li><a href="http://forum.svobodni.cz/default.aspx"><i class="fa fa-comments"></i> Stranické fórum</a></li>
+						<li><a href="http://wiki.svobodni.cz/"><i class="fa fa-users"></i> Wiki</a></li>
+						<li><a href="https://www.svobodni.cz/po-prihlaseni/volebni-mistnost/"><i class="fa fa-thumbs-up"></i> Volební místnost</a></li>
+					</ul>
+				</div>
+				<div class="col-md-4 col-sm-12">
+						<div class="fb_iframe_widget">
+					<span>
+						<iframe id="iframe-likebox" src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fsvobodni&amp;width=590&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false" style="border:none; overflow:hidden; width:940px; height:258px; background-color:transparent;"></iframe>
+						<!--[if lt IE 9]><script> $("#iframe-likebox").attr("allowTransparency", "true"); </script><![endif]-->
+					</span>
+						</div>
+				</div>
+			</div>
+
+			<hr />
+
+			<p class="pull-left">
+				<a href="http://svobodni.cz" title="Na Úvodní stránku Svobodni.cz">Svobodni.cz</a> &copy; {date('Y')}
+				{if file_exists($presenter->context->parameters['wwwDir'] . '/../.git/refs/heads/master')}{var $version = file_get_contents($presenter->context->parameters['wwwDir'] . '/../.git/refs/heads/master')} &nbsp; · &nbsp; <a href="https://github.com/svobodni/web/tree/{$version}">Verze webu: <small>{substr($version, 0, 10)}</small></a>{/if}
+			</p>
+
+			<p class="pull-right">
+				Powered by <a href="http://www.venne.cz">Venne:CMS</a> &nbsp;
+				· &nbsp; <a rel="nofollow" href="{$basePath}/{$presenter->administrationManager->routePrefix}">{_Administration}</a>
+			</p>
+		{/cache}
+
+	</div>
+
+	<a class="puvodni-web" title="Zobrazit původní web" href="http://svobodni.cz/"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 99999;" src="{path @siteModule/img/puvodni_web.png}" alt="Původní web"></a>
+	</footer>
+
+	{js
+		@holderModule/holder.js,
+		@bootstrap3Module/js/bootstrap.js,
+	}
+
+
+	{js
+		@netteModule/netteForms.js,
+		@ajaxModule/nette.ajax.js,
+		@ajaxModule/history/history.ajax.js,
+		@siteModule/zaccordion/js/jquery.zaccordion.min.js,
+		@typeaheadModule/typeahead.js,
+		@siteModule/js/application.js,
+	}
+
+{/body}
+</html>

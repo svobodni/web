@@ -1,21 +1,13 @@
 {var $thumbnail = '96x'}
+{dump $route}
 
-<div class="row">
-{var $key = 0}
-{foreach $routes as $route}
-	{if $route instanceof SiteModule\Security\UserEntity}{var $route = $route->user}{/if}
-	{var $extendedRoute = $route}
-	{if $route instanceof CmsModule\Content\Entities\ExtendedRouteEntity}{var $route = $route->route}{/if}
+{if $route instanceof SiteModule\Security\UserEntity}{var $route = $route->user}{/if}
+{var $extendedRoute = $route}
+{if $route instanceof CmsModule\Content\Entities\ExtendedRouteEntity}{var $route = $route->route}{/if}
 
-	{if $key > 0 && $key % 2 == 0}
-</div>
-<div class="row">
-	{/if}
-
-	{cache [$route->id, $presenter->lang], tags => [\CmsModule\Content\Entities\PageEntity::CACHE, \CmsModule\Content\Entities\RouteEntity::CACHE, \CmsModule\Pages\Tags\TagEntity::CACHE, \CmsModule\Content\Entities\LanguageEntity::CACHE]}
 
 		{var $p = NULL}
-		{foreach $extendedRoute->extendedUser->user->roles as $role}
+		{foreach $route->extendedRoute->roles as $role}
 			{if $role == 'předseda'}
 				{var $p = 'předseda strany'}
 			{elseif $role == 'ReP'}
@@ -31,7 +23,6 @@
 			{breakIf $p}
 		{/foreach}
 
-		<div class="col-md-6">
 			<div class="media">
 				<h3><a href="{plink Route route=>$route}">{$route->name ?: $route}{if $p} &nbsp;<small>({$p})</small>{/if}</a></h3>
 
@@ -102,8 +93,4 @@
 					{*</dl>*}
 				</div>
 			</div>
-		</div>
-	{/cache}
-{var $key = $key + 1}
-{/foreach}
-</div>
+

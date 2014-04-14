@@ -1,5 +1,5 @@
 {capture $navigation}
-{cache [$presenter->lang, $presenter->_domain], tags => ['routes']}
+{cache [$presenter->lang, $presenter->_domain, $root ? $root->id : NULL], tags => ['routes']}
 {var $root = isset($root) ? $root : $control->getRoot()}
 
 {define #menu}
@@ -36,7 +36,7 @@
 	</li>
 {/define}
 
-{include #menu items => $control->getChildren($root), sub => 0, first => TRUE, root => $control->getRoot()}
+{include #menu items => $control->getChildren($root), sub => 0, first => TRUE, root => $root}
 {/cache}
 {/capture}
 
