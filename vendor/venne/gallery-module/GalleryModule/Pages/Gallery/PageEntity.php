@@ -15,10 +15,35 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @author Josef Kříž <pepakriz@gmail.com>
- * @ORM\Entity(repositoryClass="\CmsModule\Content\Repositories\PageRepository")
+ * @ORM\Entity(repositoryClass="\GalleryModule\Pages\Gallery\PageRepository")
  * @ORM\Table(name="gallery_page")
  */
 class PageEntity extends AbstractPageEntity
 {
+
+	/**
+	 * @var \CmsModule\Content\Entities\PageEntity
+	 * @ORM\ManyToOne(targetEntity="\CmsModule\Content\Entities\PageEntity")
+	 * @ORM\JoinColumn(onDelete="SET NULL")
+	 */
+	protected $linkedPage;
+
+
+	/**
+	 * @param \CmsModule\Content\Entities\PageEntity $linkedPage
+	 */
+	public function setLinkedPage($linkedPage)
+	{
+		$this->linkedPage = $linkedPage;
+	}
+
+
+	/**
+	 * @return \CmsModule\Content\Entities\PageEntity
+	 */
+	public function getLinkedPage()
+	{
+		return $this->linkedPage;
+	}
 
 }

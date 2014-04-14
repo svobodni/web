@@ -39,6 +39,9 @@ class GalleryFormFactory extends FormFactory
 			->setCurrentGroup($group)
 			->addTextArea('notation', 'Notation', NULL, 4)->getControlPrototype()->attrs['class'] = 'input-block-level';
 
+		$form->addManyToOne('linkedRoute', 'Linked route')
+			->setCriteria(array('page' => $form->data->extendedPage->linkedPage->id));
+
 		$form->addSaveButton('Save');
 	}
 }

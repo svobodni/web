@@ -1,0 +1,37 @@
+{var $item = $control->getItem()}
+{if $item}
+
+{var $thumbnail = '96x'}
+
+{if !isset($flags)}{var flags=>0}{/if}
+{if !isset($size)}{var size=>'350x'}{/if}
+
+{foreach $item->items as $route}
+	{if $route instanceof CmsModule\Content\Entities\ExtendedRouteEntity}{var $route = $route->route}{/if}
+
+	{cache [$route->id, $presenter->lang], tags => [\CmsModule\Content\Entities\PageEntity::CACHE, \CmsModule\Content\Entities\RouteEntity::CACHE, \CmsModule\Pages\Tags\TagEntity::CACHE, \CmsModule\Content\Entities\LanguageEntity::CACHE]}
+
+
+	{if ($iterator->getCounter() - 1) % 3 === 0}
+		<div class="row">
+		<div class="thumbnails">
+	{/if}
+
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<a href="{$route->photo->getFileUrl()}" rel="lightbox"{if $route->description} title="{$route->description}"{/if}><img alt="{$route->name}" n:src="$route->photo->getFileUrl(TRUE) size=>$size, format=>$flags"></a>
+				<div class="caption" n:if="$route->name || $route->description">
+					<h3 n:if="$route->name">{$route->name}</h3>
+					<p n:if="$route->notation">{$route->notation}</p>
+				</div>
+			</div>
+		</div>
+
+	{if ($iterator->getCounter() - 1) % 3 === 2 || $iterator->isLast()}
+		</div>
+		</div>
+	{/if}
+	{/cache}
+
+{/foreach}
+{/if}
