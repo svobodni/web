@@ -28,11 +28,14 @@ abstract class AbstractCategoryEntity extends AbstractArticleEntity
 	 */
 	protected $items;
 
-
 	/**
-	 * @param PageEntity $page
-	 * @param $name
+	 * @var \CmsModule\Content\Entities\RouteEntity
+	 * @ORM\ManyToOne(targetEntity="\CmsModule\Content\Entities\RouteEntity")
+	 * @ORM\JoinColumn(onDelete="SET NULL")
 	 */
+	protected $linkedRoute;
+
+
 	protected function startup()
 	{
 		parent::startup();
@@ -57,4 +60,23 @@ abstract class AbstractCategoryEntity extends AbstractArticleEntity
 	{
 		return $this->items;
 	}
+
+
+	/**
+	 * @param \CmsModule\Content\Entities\RouteEntity $linkedRoute
+	 */
+	public function setLinkedRoute($linkedRoute)
+	{
+		$this->linkedRoute = $linkedRoute;
+	}
+
+
+	/**
+	 * @return \CmsModule\Content\Entities\RouteEntity
+	 */
+	public function getLinkedRoute()
+	{
+		return $this->linkedRoute;
+	}
+
 }

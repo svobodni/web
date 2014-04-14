@@ -8,6 +8,8 @@ function p24_krajeMapa(idDOM,kolik) {
 }
 
 $(document).ready(function() {
+	$("a[rel=lightbox]").fancybox({'type' : 'image'});alert
+
 	jQuery('body').width(jQuery('body').width()+1).width('auto');
 	$(".accordion").find('li div').css('display', 'none');
 	$(".accordion").zAccordion({

@@ -6,7 +6,9 @@
 	{control flashMessage TRUE}
 	{block #contentTop}{/block}
 	{block #content}{include #page-content}{/block}
-	{block #contentBottom}{/block}
+	{block #contentBottom}
+		{element gallery gallery, config => [ variant => '@gallery.element' ], mode => 2}
+	{/block}
 
 	<hr />
 
