@@ -11,6 +11,10 @@
 
 namespace SiteModule\Pages\Prispet;
 
+use Gregwar\Captcha\CaptchaBuilder;
+use Nette\Http\Session;
+use Nette\Http\SessionSection;
+use Nette\Utils\Html;
 use Venne\Forms\Form;
 
 /**
@@ -18,6 +22,22 @@ use Venne\Forms\Form;
  */
 class FormFactory extends \Venne\Forms\FormFactory
 {
+
+	/** @var SessionSection */
+	private $sessionSection;
+
+	/** @var CaptchaBuilder */
+	private $captchaBuilder;
+
+
+	/**
+	 * @param Session $session
+	 */
+	public function __construct(Session $session)
+	{
+		$this->sessionSection = $session->getSection('Prispet.Form.Captcha');
+	}
+
 
 	/**
 	 * @param Form $form
@@ -70,6 +90,7 @@ class FormFactory extends \Venne\Forms\FormFactory
 			->addConditionOn($person, $form::EQUAL, 'fyzicka')
 			->addRule($form::FILLED, 'Prosím vyplňte jméno a příjmení');
 		$fyzicka->addText('bornDate', 'Datum narození')
+			->setOption('description', '(vzor: 23.10.1980)')
 			->addConditionOn($person, $form::EQUAL, 'fyzicka')
 			->addRule($form::FILLED, 'Prosím vyplňte datum narození');
 
@@ -103,8 +124,39 @@ class FormFactory extends \Venne\Forms\FormFactory
 
 
 		$form->setCurrentGroup();
+		$form->addText('_captcha', 'Opište text z obrázku');
+
 		$submit = $form->addSaveButton('Odeslat');
 		$submit->getControlPrototype()->class = 'btn-primary btn-block';
+	}
+
+
+	public function handleLoad(Form $form)
+	{
+		$form['_captcha']->setOption('input-prepend', Html::el('img')->setStyle('margin-bottom: 10px;')->src($this->getCaptchaBuilder()->inline()));
+	}
+
+
+	public function handleValidate(Form $form)
+	{
+		if (!isset($this->sessionSection->captcha) || $form['_captcha']->value != $this->sessionSection->captcha) {
+			$form->addError('Nesprávně opsaný obrázek, zkuste to prosím znovu');
+			$form['_captcha']->setOption('description', Html::el('img')->src($this->getCaptchaBuilder()->inline()));
+		}
+	}
+
+
+	/**
+	 * @return CaptchaBuilder
+	 */
+	private function getCaptchaBuilder()
+	{
+		if (!$this->captchaBuilder) {
+			$this->captchaBuilder = new CaptchaBuilder;
+			$this->captchaBuilder->build(200, 80);
+			$this->sessionSection->captcha = $this->captchaBuilder->getPhrase();
+		}
+		return $this->captchaBuilder;
 	}
 
 }
