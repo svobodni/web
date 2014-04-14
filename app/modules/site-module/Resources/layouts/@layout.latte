@@ -87,8 +87,8 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="{$basePath}/">
-						<img src="{path @siteModule/img/logo_panel_dark.png}" alt="Strana svobodných občanů" />
+					<a class="navbar-brand hidden" href="{$basePath}/">
+						<img style="width: 0;" src="{path @siteModule/img/logo_panel_dark.png}" alt="Strana svobodných občanů" />
 					</a>
 				</div>
 				<div class="collapse navbar-collapse">
@@ -101,7 +101,7 @@
 
 	{block #content-top}{/block}
 
-	<div class="container">
+	<div class="container content-container">
 		{block #title-container}
 		<div class="row row-title">
 			<div class="col-md-12">
@@ -186,8 +186,13 @@
 
 	</div>
 
-	<a class="puvodni-web" title="Zobrazit původní web" href="http://svobodni.cz/"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 99999;" src="{path @siteModule/img/puvodni_web.png}" alt="Původní web"></a>
 	</footer>
+
+	{*<a class="puvodni-web" title="Zobrazit původní web" href="http://svobodni.cz/"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 99999;" src="{path @siteModule/img/puvodni_web.png}" alt="Původní web"></a>*}
+
+	<div class="volte-24" title="Volte číslo 24">
+		<img style="position: fixed; top: 0; right: 0; border: 0; z-index: 99999;" src="{path @siteModule/img/stuzka-volte24.png}" alt="Volte číslo 24"></a>
+	</div>
 
 	{js
 		@holderModule/holder.js,

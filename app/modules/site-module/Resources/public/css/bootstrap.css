@@ -16,15 +16,18 @@ h4 {
 }
 
 a {
-	color: #008f29;
+	color: #6c247b;
 }
 a:hover {
-	color: #008f29;
+	color: #6c247b;
 }
 h2 a,
-h3 a,
+h3 a {
+	color: #00654d;
+}
+
 h4 a {
-	color: #005f49;
+	color: #6c247b;
 }
 
 
