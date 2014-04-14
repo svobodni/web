@@ -1,0 +1,19 @@
+services:
+
+	site.kandidatContent:
+		class: CmsModule\Content\ContentType('SiteModule\Pages\Kandidat\PageEntity')
+		setup:
+			- addSection('Content', @cms.pages.text.textFormFactory)
+			- addSection('Nastavení kandidáta', @site.kandidatFormFactory)
+		tags: [contentType: [name: 'Svobodní - kandidát']]
+
+	site.kandidatFormFactory:
+		class: SiteModule\Pages\Kandidat\FormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+factories:
+
+	site.pages.kandidat.routePresenter:
+		class: SiteModule\Pages\Kandidat\RoutePresenter
+		tags: [presenter]

@@ -1,0 +1,19 @@
+services:
+
+	site.pobockaContent:
+		class: CmsModule\Content\ContentType('SiteModule\Pages\Pobocka\PageEntity')
+		setup:
+			- addSection('Content', @cms.pages.text.textFormFactory)
+			- addSection('Nastavení pobočky', @site.pobockaFormFactory)
+		tags: [contentType: [name: 'Svobodní - pobočka']]
+
+	site.pobockaFormFactory:
+		class: SiteModule\Pages\Pobocka\FormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+factories:
+
+	site.pages.pobocka.routePresenter:
+		class: SiteModule\Pages\Pobocka\RoutePresenter
+		tags: [presenter]

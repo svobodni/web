@@ -8,3 +8,5 @@ includes:
 	- users.svobodni.neon
 	- pages.dobrovolnik.neon
 	- pages.prispet.neon
+	- pages.pobocka.neon
+	- pages.kandidat.neon

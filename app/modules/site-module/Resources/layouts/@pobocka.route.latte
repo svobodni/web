@@ -1,0 +1,98 @@
+{block #page-content}
+
+<div class="row">
+	<div class="col-md-8">
+		<div class="row">
+			<div class="col-md-12">
+				{cache [$presenter->routeId, $presenter->lang], tags => [
+					'page-' . $presenter->pageId,
+					'route-' . $presenter->routeId,
+					'language-' . $presenter->lang,
+				]}
+				{control item $presenter->route, config => [ variant => '@pobocka.route' ]}
+				{/cache}
+			</div>
+
+			<div class="col-md-12 col-dark col-head">
+				<h2><a href="{link this}/clanky">Aktuálně</a></h2>
+				{element blog pobockaAktualne, config => [ variant => 'aktualne' ], mode => 4}
+				<a href="{link this}/clanky" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-chevron-right"></span> Další</a>
+				<hr />
+
+				{if $presenter->extendedPage->coordinator}
+					<h2>Koordinátor pobočky</h2>
+					{control item $presenter->extendedPage->coordinator->user, config => [ variant => 'user' ]}
+				{/if}
+
+				{if count($presenter->extendedPage->members)}
+					<h2>Členové</h2>
+					{control itemList $presenter->extendedPage->members, config => [ variant => '@pobocka.route' ]}
+				{/if}
+
+				{if count($presenter->extendedPage->supporters)}
+					<h2>Příznivci</h2>
+					{control itemList $presenter->extendedPage->supporters, config => [ variant => '@pobocka.route' ]}
+				{/if}
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-4 col-head">
+		<div class="page-header">
+			<h2>Kontakty</h2>
+		</div>
+
+		<address>
+			{if $presenter->route->title}<strong>{$presenter->route->title}</strong><br>{/if}
+			{if $presenter->extendedPage->street}{$presenter->extendedPage->street}<br>{/if}
+			{if $presenter->extendedPage->city}{$presenter->extendedPage->city}{if $presenter->extendedPage->zip}, {$presenter->extendedPage->zip}{/if}<br>{/if}
+			{if $presenter->extendedPage->phone}<abbr title="Telefon">Tel.:</abbr> (+420) {$presenter->extendedPage->phone}<br>{/if}
+			{if $presenter->extendedPage->email}<abbr title="E-mail">E-mail.:</abbr> {$presenter->extendedPage->email}{/if}
+			{if $presenter->extendedPage->account}<abbr title="Transparentní účet">Číslo účtu:</abbr> {$presenter->extendedPage->account}{/if}
+		</address>
+
+		{if $presenter->extendedPage->city}
+		<script type="text/javascript"
+				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlh24-Q-psVFwE0COKjhbA9vyJVPzwXtI&sensor=false">
+		</script>
+		<script type="text/javascript">
+			function initialize() {
+				geocoder = new google.maps.Geocoder();
+				geocoder.geocode({
+					'address': '{!$presenter->extendedPage->street}, {!$presenter->extendedPage->city}'
+				}, function(results, status) {
+					if (status == google.maps.GeocoderStatus.OK) {
+						var mapOptions = {
+							center: results[0].geometry.location,
+							zoom: 12
+						};
+						var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+						marker = new google.maps.Marker({
+							position: results[0].geometry.location,
+							title: 'test'
+						});
+						marker.setMap(map);
+					}
+				});
+
+			}
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+		<div id="map-canvas" style="width: 100%; height: 200px;"></div>
+		{/if}
+
+		{if $presenter->extendedPage->fb}
+		<div class="page-header">
+			<h2>Facebook</h2>
+		</div>
+
+		<div class="fb_iframe_widget">
+					<span>
+						<iframe id="iframe-likebox" src="//www.facebook.com/plugins/likebox.php?href={urlencode($presenter->extendedPage->fb)}&amp;width=590&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false" style="border:none; overflow:hidden; width:940px; height:258px; background-color:transparent;"></iframe>
+						<!--[if lt IE 9]><script> $("#iframe-likebox").attr("allowTransparency", "true"); </script><![endif]-->
+					</span>
+		</div>
+		{/if}
+	</div>
+</div>
