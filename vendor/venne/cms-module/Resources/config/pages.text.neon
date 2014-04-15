@@ -21,6 +21,11 @@ services:
 		setup:
 			- injectFactory(@cms.admin.basicFormFactory)
 
+	cms.pages.text.navigationElement.navigationFormFactory:
+		class: CmsModule\Pages\Text\NavigationElement\NavigationFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
 factories:
 	cms.pages.text.routePresenter:
 		class: CmsModule\Pages\Text\RoutePresenter
@@ -57,6 +62,12 @@ factories:
 			- injectSetupForm(...)
 			- injectModuleHelpers(...)
 		tags: [element: thumbnail]
+
+	cms.pages.text.navigationElement:
+		class: CmsModule\Pages\Text\NavigationElement\NavigationElement
+		setup:
+			- injectSetupForm
+		tags: [element: navigation]
 
 	cms.pages.text.textareaElement.textFormFactory:
 		class: CmsModule\Pages\Text\TextElement\TextFormFactory
