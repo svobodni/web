@@ -6,112 +6,61 @@
 	</div>
 {/block}
 
-{block #layout}
+{block #content-top}
+	<div class="container slider-container" style="background-color: transparent; margin: 20px auto 20px auto;">
+		<div class="row">
+			<div class="col-md-8 col-head col-wb hidden-xs">
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="4000">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="3"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="4"></li>
+					</ol>
 
-<div class="col-md-8 col-wb hidden-xs">
-	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="4000">
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-			<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-			<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-			<li data-target="#carousel-example-generic" data-slide-to="3"></li>
-			<li data-target="#carousel-example-generic" data-slide-to="4"></li>
-		</ol>
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner">
+						<div class="item active">
+							<img src="{path @siteModule/img/slider/banner1.jpg}" alt="Posvítíme si na euronesmysly">
+						</div>
+						<div class="item">
+							<img src="{path @siteModule/img/slider/banner2.jpg}" alt="Volte Svobodné / 23. - 24. května">
+						</div>
+						<div class="item">
+							<img src="{path @siteModule/img/slider/banner3.jpg}" alt="Naše koruna má smysl, euro se prodraží">
+						</div>
+						<div class="item">
+							<img src="{path @siteModule/img/slider/banner4.jpg}" alt="Bránit se byrokracii EU má smysl">
+						</div>
+						<div class="item">
+							<img src="{path @siteModule/img/slider/banner5.jpg}" alt="Jít k eurovolbám má smysl">
+						</div>
+					</div>
 
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner">
-			<div class="item active">
-				<img src="{path @siteModule/img/slider/banner1.jpg}" alt="Posvítíme si na euronesmysly">
+					<!-- Controls -->
+					<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</a>
+					<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
 			</div>
-			<div class="item">
-				<img src="{path @siteModule/img/slider/banner2.jpg}" alt="Volte Svobodné / 23. - 24. května">
-			</div>
-			<div class="item">
-				<img src="{path @siteModule/img/slider/banner3.jpg}" alt="Naše koruna má smysl, euro se prodraží">
-			</div>
-			<div class="item">
-				<img src="{path @siteModule/img/slider/banner4.jpg}" alt="Bránit se byrokracii EU má smysl">
-			</div>
-			<div class="item">
-				<img src="{path @siteModule/img/slider/banner5.jpg}" alt="Jít k eurovolbám má smysl">
+
+			<div class="col-md-4 col-wb">
+				<a class="btn btn-block btn-default btn-clen" href="{$basePath}/kdo-jsou-svobodni">Kdo jsou Svobodní</a>
+				<a class="btn btn-block btn-default btn-clen" href="{$basePath}/registrace/stat-se-priznivcem">Stát se<br class="visible-lg visible-md" /> příznivcem</a>
+				<a class="btn btn-block btn-default btn-clen" href="{$basePath}/registrace/stat-se-clenem">Stát se<br class="visible-lg visible-md" /> členem</a>
+				<a class="btn btn-block btn-default btn-clen" href="{$basePath}/registrace/prispet-financne">Přispět<br class="visible-lg visible-md" /> finančně</a>
 			</div>
 		</div>
-
-		<!-- Controls -->
-		<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left"></span>
-		</a>
-		<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right"></span>
-		</a>
 	</div>
-	{*<script type="text/javascript"
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlh24-Q-psVFwE0COKjhbA9vyJVPzwXtI
-&sensor=true">
-	</script>
-	<script type="text/javascript">
-		function initialize() {
-			var mapOptions = {
-				center: new google.maps.LatLng(49.817492, 15.472962),
-				zoom: 7
-			};
-			var map = new google.maps.Map(document.getElementById("map-canvas"),
-					mapOptions);
+{/block}
 
-			var contentString = '<div id="content">'+
-					'<div id="siteNotice">'+
-					'</div>'+
-					'<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-					'<div id="bodyContent">'+
-					'<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-					'sandstone rock formation in the southern part of the '+
-					'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-					'south west of the nearest large town, Alice Springs; 450&#160;km '+
-					'(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-					'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-					'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-					'Aboriginal people of the area. It has many springs, waterholes, '+
-					'rock caves and ancient paintings. Uluru is listed as a World '+
-					'Heritage Site.</p>'+
-					'<p>Attribution: Uluru, <a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-					'http://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-					'(last visited June 22, 2009).</p>'+
-					'</div>'+
-					'</div>';
-
-			var infowindow = new google.maps.InfoWindow({
-				content: contentString
-			});
-
-			// To add the marker to the map, use the 'map' property
-			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(49.817492, 15.472962),
-				map: map,
-				draggable:true,
-				title:"Hello World!"
-			});
-
-			google.maps.event.addListener(marker, 'click', function() {
-				infowindow.open(map,marker);
-			});
-		}
-		google.maps.event.addDomListener(window, 'load', initialize);
-	</script>
-	<div id="map-canvas" style="height: 360px; width: 100%;"></div>*}
-</div>
-
-<div class="col-md-4 col-wb">
-	<a class="btn btn-block btn-default btn-clen" href="{$basePath}/kdo-jsou-svobodni">Kdo jsou Svobodní</a>
-	<a class="btn btn-block btn-default btn-clen" href="{$basePath}/registrace/stat-se-priznivcem">Stát se<br class="visible-lg visible-md" /> příznivcem</a>
-	<a class="btn btn-block btn-default btn-clen" href="{$basePath}/registrace/stat-se-clenem">Stát se<br class="visible-lg visible-md" /> členem</a>
-	<a class="btn btn-block btn-default btn-clen" href="{$basePath}/registrace/prispet-financne">Přispět<br class="visible-lg visible-md" /> finančně</a>
-</div>
-
-</div>
-<div class="row">
-
-<div class="col-md-8 col-dark col-head">
+{block #layout}
+<div class="col-md-8 col-dark">
 
 	<h2><a href="{$basePath}/clanky">Aktuálně</a></h2>
 	{element blog aktualne, config => [ variant => 'aktualne' ]}
