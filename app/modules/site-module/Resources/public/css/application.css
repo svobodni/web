@@ -26,6 +26,14 @@ body {
 	background: url('../img/svobodni-logo.PNG') left bottom no-repeat;
 }
 
+.header-container .volte-24 img {
+	position: fixed;
+	top: 0;
+	right: 0;
+	border: 0;
+	z-index: 99999;
+}
+
 .header-container ul {
 	list-style: none;
 	float: left;
@@ -159,6 +167,22 @@ body {
 	}
 	.navigation-container .navbar-brand {
 		width: auto;
+	}
+	.header-container .volte-24 img {
+		bottom: -5px;
+		top: initial;
+		/*transform*/
+		-webkit-transform:rotate(-26deg);
+		-moz-transform:rotate(-26deg);
+		-ms-transform:rotate(-26deg);
+		-o-transform:rotate(-26deg);
+		transform:rotate(-26deg);
+		/*transform-origin*/
+		-webkit-transform-origin:right;
+		-moz-transform-origin:right;
+		-ms-transform-origin:right;
+		-o-transform-origin:right;
+		transform-origin:right;
 	}
 }
 
