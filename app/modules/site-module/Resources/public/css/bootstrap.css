@@ -98,25 +98,25 @@ h4 a {
 }
 .pagination > .disabled > a,
 .pagination > li > a {
-	color: #cccccc;
-	background-color: #005f49;
-	padding: 12px 14px;
+	color: #555555;
+	background-color: #dddddd;
+	padding: 6px 8px;
 	margin: 5px;
 	border: 0;
 	float: none;
 	font-weight: bold;
 }
 .pagination > li > a:hover {
-	color: #ffffff;
-	background-color: #005f49;
+	color: #000000;
+	background-color: #dddddd;
 }
 .pagination > li.active > a,
 .pagination > li.active > a:hover {
-	background-color: #008f29;
+	background-color: #005f49;
 	color: #ffffff;
 }
 .pagination > .disabled > a,
 .pagination > .disabled > a:hover{
 	background-color: #eeeeee;
-	color: #555555;
+	color: #888888;
 }
