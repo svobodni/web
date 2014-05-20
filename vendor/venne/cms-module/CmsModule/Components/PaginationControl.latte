@@ -5,11 +5,11 @@
 
 	{foreach $steps as $step}
 	{if $step == $paginator->page}
-		<li class="disabled"><a href="#">{$step}</a></li>
+		<li class="active"><a href="#">{$step}</a></li>
 	{else}
 		<li><a href="{link this, 'page' => $step}">{$step}</a></li>
 	{/if}
-	{if $iterator->nextValue > $step + 1}<li class="disabled"><a href="#">{$step}</a></li>{/if}
+	{if $iterator->nextValue > $step + 1}<li class="disabled"><a href="#">…</a></li>{/if}
 	{/foreach}
 
 	<li{if $paginator->isLast()} class="disabled"{/if}><a href="{if $paginator->isLast()}#{else}{link this, 'page' => $paginator->page + 1}{/if}">{_Next} »</a></li>
