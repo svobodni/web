@@ -559,27 +559,7 @@ footer .pull-right {
 .puvodni-web img {
 	position: fixed;
 	top: 0;
-	left: 0;
-	border: 0;
-	z-index: 99999;
-}
-.volte-24 {
-	width: 205px;
-	height: 100px;
-	position: fixed;
-	top: 0;
 	right: 0;
 	border: 0;
 	z-index: 99999;
-	background: transparent url('../img/stuzka-volte24.png') 0 0 no-repeat;
-}
-
-@media (max-width: 991px) {
-	.volte-24 {
-		width: 154px;
-		height: 30px;
-		bottom: 0;
-		top: inherit;
-		background: transparent url('../img/stuzka-volte24-small.png') 0 0 no-repeat;
-	}
 }
