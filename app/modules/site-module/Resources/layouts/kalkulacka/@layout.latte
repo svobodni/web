@@ -28,6 +28,7 @@
 			var outgoings = $('#outgoings');
 			var interests = $('#interests');
 			var deficit = $('#deficit');
+			var state = {};
 
 			function execute() {
 				deficit.data('amount', parseInt(incomes.data('amount')) - parseInt(outgoings.data('amount')) - parseInt(interests.data('amount')));
@@ -59,10 +60,40 @@
 					obj.data('amount', parseInt(obj.data('amount')) + parseInt($(this).val()));
 				}
 				execute();
+
+				if (this.checked) {
+					state[$(this).attr('id')] = 1;
+				} else {
+					delete state[$(this).attr('id')];
+				}
+
+				var s = [];
+				$.each(state, function(key, val) {
+					s[s.length] = key + '=' + val;
+				});
+
+				if(window.history && history.pushState && window.history.replaceState) {
+					window.history.pushState({}, 'page', '#' + s.join('&'));
+				} else {
+					window.location.hash = s.join('&');
+				}
+
+				$('#share_fb').attr('href', 'http://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location));
+				$('#share_plus').attr('href', 'https://plus.google.com/share?url=' + encodeURIComponent(window.location));
+				$('#share_twitter').attr('href', 'https://twitter.com/share?url=' + encodeURIComponent(window.location));
+				$('#share_fb2').attr('href', 'http://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location));
+				$('#share_plus2').attr('href', 'https://plus.google.com/share?url=' + encodeURIComponent(window.location));
+				$('#share_twitter2').attr('href', 'https://twitter.com/share?url=' + encodeURIComponent(window.location));
 			});
 
 			$('.kalkulacka tr').find('td:eq(1)').on('click', function(){
 				$(this).parent().find('input').click();
+			});
+
+			var s = window.location.hash.substr(1).split('&');
+			$.each(s, function(key, val) {
+				var r = val.split('=');
+				$('#' + r[0]).click();
 			});
 		});
 	</script>
@@ -85,6 +116,10 @@
 				<dt>Bilance:</dt>
 				<dd class="big" data-amount="-100000000000" id="deficit2">-100 000 000 000 Kč</dd>
 			</dl>
+
+			<a id="share_fb2" class="btn btn-primary btn-block" target="_blank" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" href="http://www.facebook.com/sharer/sharer.php?u="><i class="fa-facebook fa"></i>&nbsp;&nbsp;Sdílet výsledek na Facebook</a>
+			<a id="share_plus2" class="btn btn-primary btn-block" target="_blank" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" href="http://www.facebook.com/sharer/sharer.php?u="><i class="fa-google-plus fa"></i>&nbsp;&nbsp;Sdílet výsledek na Google+</a>
+			<a id="share_twitter2" class="btn btn-primary btn-block" target="_blank" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=350,width=480');return false;" href="https://plus.google.com/share?url="><i class="fa-facebook fa"></i>&nbsp;&nbsp;Sdílet výsledek na Twitter</a>
 	</div>
 
 	<div class="col-md-4 visible-md visible-lg">
@@ -104,6 +139,10 @@
 				<dt>Bilance:</dt>
 				<dd class="big" data-amount="-100000000000" id="deficit">-100 000 000 000 Kč</dd>
 			</dl>
+
+			<a id="share_fb" class="btn btn-primary btn-block" target="_blank" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" href="http://www.facebook.com/sharer/sharer.php?u="><i class="fa-facebook fa"></i>&nbsp;&nbsp;Sdílet výsledek na Facebook</a>
+			<a id="share_plus" class="btn btn-primary btn-block" target="_blank" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" href="http://www.facebook.com/sharer/sharer.php?u="><i class="fa-google-plus fa"></i>&nbsp;&nbsp;Sdílet výsledek na Google+</a>
+			<a id="share_twitter" class="btn btn-primary btn-block" target="_blank" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=350,width=480');return false;" href="https://plus.google.com/share?url="><i class="fa-facebook fa"></i>&nbsp;&nbsp;Sdílet výsledek na Twitter</a>
 		</div>
 	</div>
 
@@ -111,42 +150,42 @@
 	<h2>Rušení daní</h2>
 	<table class="table table-bordered">
 		<tbody><tr>
-			<td><input name="incomes" type="checkbox" value="-116000000"></td>
+			<td><input id="cb_1" name="incomes" type="checkbox" value="-116000000"></td>
 			<td title="-116 000 000 Kč">Daň darovací</td>
 			<td class="right bold" nowrap="">-116 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="incomes" type="checkbox" value="-18000000"></td>
+			<td><input id="cb_2" name="incomes" type="checkbox" value="-18000000"></td>
 			<td title="-18 000 000 Kč">Daň dědická</td>
 			<td class="right bold" nowrap="">-18 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="incomes" type="checkbox" value="-4640000000"></td>
+			<td><input id="cb_3" name="incomes" type="checkbox" value="-4640000000"></td>
 			<td title="-4 640 000 000 Kč">Daň silniční</td>
 			<td class="right bold" nowrap="">-4 640 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="incomes" type="checkbox" value="-6570000000"></td>
+			<td><input id="cb_4" name="incomes" type="checkbox" value="-6570000000"></td>
 			<td title="-6 570 000 000 Kč">Daň z nemovitostí</td>
 			<td class="right bold" nowrap="">-6 570 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="incomes" type="checkbox" value="-7140000000"></td>
+			<td><input id="cb_5" name="incomes" type="checkbox" value="-7140000000"></td>
 			<td title="-7 140 000 000 Kč">Daň z převodu nemovitostí</td>
 			<td class="right bold" nowrap="">-7 140 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="incomes" type="checkbox" value="-119000000000"></td>
+			<td><input id="cb_6" name="incomes" type="checkbox" value="-119000000000"></td>
 			<td title="-119 000 000 000 Kč">Daň z příjmu fyzických osob</td>
 			<td class="right bold" nowrap="">-119 000 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="incomes" type="checkbox" value="-2500000000"></td>
+			<td><input id="cb_7" name="incomes" type="checkbox" value="-2500000000"></td>
 			<td title="-2 500 000 000 Kč">Daně z elektřiny, uhlí a plynu</td>
 			<td class="right bold" nowrap="">-2 500 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="incomes" type="checkbox" value="-40310000000"></td>
+			<td><input id="cb_8" name="incomes" type="checkbox" value="-40310000000"></td>
 			<td title="-40 310 000 000 Kč">Sjednocení DPH na 15 %*</td>
 			<td class="right bold" nowrap="">-40 310 000 000 Kč</td>
 		</tr>
@@ -156,17 +195,17 @@
 	<h2>Nové příjmy</h2>
 	<table class="table table-bordered">
 		<tbody><tr>
-			<td><input name="incomes" type="checkbox" value="5000000000"></td>
+			<td><input id="cb_9" name="incomes" type="checkbox" value="5000000000"></td>
 			<td title="5 000 000 000 Kč">Zrušení přimíchávání biopaliv (dodatečný výnos na spotřební dani)</td>
 			<td class="right bold" nowrap="">5 000 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="incomes" type="checkbox" value="27000000"></td>
+			<td><input id="cb_10" name="incomes" type="checkbox" value="27000000"></td>
 			<td title="27 000 000 Kč">Úprava daně z vína (aby byl nově příjemcem výnosu stát)</td>
 			<td class="right bold" nowrap="">27 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="incomes" type="checkbox" value="12000000000"></td>
+			<td><input id="cb_11" name="incomes" type="checkbox" value="12000000000"></td>
 			<td title="12 000 000 000 Kč">Výnos ze zrušení 9. tříd základní školy</td>
 			<td class="right bold" nowrap="">12 000 000 000 Kč</td>
 		</tr>
@@ -176,112 +215,112 @@
 	<h2>Úspory na výdajové straně</h2>
 	<table class="table table-bordered">
 		<tbody><tr>
-			<td><input name="outgoings" type="checkbox" value="500000000"></td>
+			<td><input id="cb_12" name="outgoings" type="checkbox" value="500000000"></td>
 			<td title="500 000 000 Kč">Zrušení dotací politickým stranám</td>
 			<td class="right bold" nowrap="">500 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="500000000"></td>
+			<td><input id="cb_13" name="outgoings" type="checkbox" value="500000000"></td>
 			<td title="500 000 000 Kč">Zrušení dotací filmařům</td>
 			<td class="right bold" nowrap="">500 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="5800000000"></td>
+			<td><input id="cb_14" name="outgoings" type="checkbox" value="5800000000"></td>
 			<td title="5 800 000 000 Kč">Úplné zrušení podpory stavebního spoření</td>
 			<td class="right bold" nowrap="">5 800 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="574800000"></td>
+			<td><input id="cb_15" name="outgoings" type="checkbox" value="574800000"></td>
 			<td title="574 800 000 Kč">Zrušení dotací na penzijní připojištění</td>
 			<td class="right bold" nowrap="">574 800 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="7500000000"></td>
+			<td><input id="cb_16" name="outgoings" type="checkbox" value="7500000000"></td>
 			<td title="7 500 000 000 Kč">Zrušení investičních pobídek a podpory exportu</td>
 			<td class="right bold" nowrap="">7 500 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="7500000000"></td>
+			<td><input id="cb_17" name="outgoings" type="checkbox" value="7500000000"></td>
 			<td title="7 500 000 000 Kč">Zrušení rekvalifikačních školení pro nezaměstnané</td>
 			<td class="right bold" nowrap="">7 500 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="13200000000"></td>
+			<td><input id="cb_18" name="outgoings" type="checkbox" value="13200000000"></td>
 			<td title="13 200 000 000 Kč">Zrušení dotací MPSV soukromoprávním a veřejnoprávním subjektům</td>
 			<td class="right bold" nowrap="">13 200 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="2500000000"></td>
+			<td><input id="cb_19" name="outgoings" type="checkbox" value="2500000000"></td>
 			<td title="2 500 000 000 Kč">Zrušení dotace sportu</td>
 			<td class="right bold" nowrap="">2 500 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="15000000000"></td>
+			<td><input id="cb_20" name="outgoings" type="checkbox" value="15000000000"></td>
 			<td title="15 000 000 000 Kč">Roční pauza ve valorizaci důchodů</td>
 			<td class="right bold" nowrap="">15 000 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="20000000000"></td>
+			<td><input id="cb_21" name="outgoings" type="checkbox" value="20000000000"></td>
 			<td title="20 000 000 000 Kč">Částečný návrat sociálních dávek před populistické kroky v roce 2005 (snížení rodičovského příspěvku na 50 %)</td>
 			<td class="right bold" nowrap="">20 000 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="21800000000"></td>
+			<td><input id="cb_22" name="outgoings" type="checkbox" value="21800000000"></td>
 			<td title="21 800 000 000 Kč">Zrušení plateb VŠ ze státního rozpočtu (zavedení školného)</td>
 			<td class="right bold" nowrap="">21 800 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="21750000000"></td>
+			<td><input id="cb_23" name="outgoings" type="checkbox" value="21750000000"></td>
 			<td title="21 750 000 000 Kč">Zrušení plateb VŠ „na vědu a výzkum“</td>
 			<td class="right bold" nowrap="">21 750 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="7400000000"></td>
+			<td><input id="cb_24" name="outgoings" type="checkbox" value="7400000000"></td>
 			<td title="7 400 000 000 Kč">Převedení agendy Úřadů práce na internet a telefonický kontakt</td>
 			<td class="right bold" nowrap="">7 400 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="6600000000"></td>
+			<td><input id="cb_25" name="outgoings" type="checkbox" value="6600000000"></td>
 			<td title="6 600 000 000 Kč">Zrušení dotací podnikům přes Ministerstvo průmyslu a obchodu</td>
 			<td class="right bold" nowrap="">6 600 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="19000000000"></td>
+			<td><input id="cb_26" name="outgoings" type="checkbox" value="19000000000"></td>
 			<td title="19 000 000 000 Kč">Uvolnění konkurence v MHD a zrušení dotací dopravním podnikům</td>
 			<td class="right bold" nowrap="">19 000 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="34000000000"></td>
+			<td><input id="cb_27" name="outgoings" type="checkbox" value="34000000000"></td>
 			<td title="34 000 000 000 Kč">Uvolnění konkurence na železnici a zrušení dotací ČD</td>
 			<td class="right bold" nowrap="">34 000 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="42100000000"></td>
+			<td><input id="cb_28" name="outgoings" type="checkbox" value="42100000000"></td>
 			<td title="42 100 000 000 Kč">Vystoupení z EU</td>
 			<td class="right bold" nowrap="">42 100 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="9700000000"></td>
+			<td><input id="cb_29" name="outgoings" type="checkbox" value="9700000000"></td>
 			<td title="9 700 000 000 Kč">Zrušení dotací na OZE</td>
 			<td class="right bold" nowrap="">9 700 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="2100000000"></td>
+			<td><input id="cb_30" name="outgoings" type="checkbox" value="2100000000"></td>
 			<td title="2 100 000 000 Kč">Zrušení výdajů na ochranu klimatu</td>
 			<td class="right bold" nowrap="">2 100 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="2800000000"></td>
+			<td><input id="cb_31" name="outgoings" type="checkbox" value="2800000000"></td>
 			<td title="2 800 000 000 Kč">Zrušení dotací na podporu regionálního rozvoje a cestovního ruchu</td>
 			<td class="right bold" nowrap="">2 800 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="2200000000"></td>
+			<td><input id="cb_32" name="outgoings" type="checkbox" value="2200000000"></td>
 			<td title="2 200 000 000 Kč">Zrušení dotací na podporu venkova</td>
 			<td class="right bold" nowrap="">2 200 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="460000000"></td>
+			<td><input id="cb_33" name="outgoings" type="checkbox" value="460000000"></td>
 			<td title="460 000 000 Kč">Zrušení dotací na podporu bydlení</td>
 			<td class="right bold" nowrap="">460 000 000 Kč</td>
 		</tr>
@@ -291,12 +330,12 @@
 	<h2>Úspory na úrocích</h2>
 	<table class="table table-bordered">
 		<tbody><tr>
-			<td><input name="interests" type="checkbox" value="12500000000"></td>
+			<td><input id="cb_34" name="interests" type="checkbox" value="12500000000"></td>
 			<td title="12 500 000 000 Kč">Splacení části dluhu z devizových rezerv</td>
 			<td class="right bold" nowrap="">12 500 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="interests" type="checkbox" value="2000000000"></td>
+			<td><input id="cb_35" name="interests" type="checkbox" value="2000000000"></td>
 			<td title="2 000 000 000 Kč">Splacení části dluhu z prodeje státních podniků (Eurooil, hotel Thermal, Budvar, Vyškovské pivo, Krško, ČSA)</td>
 			<td class="right bold" nowrap="">2 000 000 000 Kč</td>
 		</tr>
@@ -306,137 +345,137 @@
 	<h2>Další úspory rušením úřadů</h2>
 	<table class="table table-bordered">
 		<tbody><tr>
-			<td><input name="outgoings" type="checkbox" value="4450000000"></td>
+			<td><input id="cb_36" name="outgoings" type="checkbox" value="4450000000"></td>
 			<td title="4 450 000 000 Kč">Akademie věd ČR</td>
 			<td class="right bold" nowrap="">4 450 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="4800000000"></td>
+			<td><input id="cb_37" name="outgoings" type="checkbox" value="4800000000"></td>
 			<td title="4 800 000 000 Kč">Celní správa</td>
 			<td class="right bold" nowrap="">4 800 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="250000000"></td>
+			<td><input id="cb_38" name="outgoings" type="checkbox" value="250000000"></td>
 			<td title="250 000 000 Kč">CERMAT (Centrum pro reformu maturit)</td>
 			<td class="right bold" nowrap="">250 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="190143000"></td>
+			<td><input id="cb_39" name="outgoings" type="checkbox" value="190143000"></td>
 			<td title="190 143 000 Kč">CzechInvest</td>
 			<td class="right bold" nowrap="">190 143 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="428000000"></td>
+			<td><input id="cb_40" name="outgoings" type="checkbox" value="428000000"></td>
 			<td title="428 000 000 Kč">CzechTourism</td>
 			<td class="right bold" nowrap="">428 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="636000000"></td>
+			<td><input id="cb_41" name="outgoings" type="checkbox" value="636000000"></td>
 			<td title="636 000 000 Kč">Česká exportní banka</td>
 			<td class="right bold" nowrap="">636 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="243995000"></td>
+			<td><input id="cb_42" name="outgoings" type="checkbox" value="243995000"></td>
 			<td title="243 995 000 Kč">Česká obchodní inspekce</td>
 			<td class="right bold" nowrap="">243 995 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="150000000"></td>
+			<td><input id="cb_43" name="outgoings" type="checkbox" value="150000000"></td>
 			<td title="150 000 000 Kč">Český normalizační institut</td>
 			<td class="right bold" nowrap="">150 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="1000000000"></td>
+			<td><input id="cb_44" name="outgoings" type="checkbox" value="1000000000"></td>
 			<td title="1 000 000 000 Kč">Významná redukce Českého statistického úřadu</td>
 			<td class="right bold" nowrap="">1 000 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="615000000"></td>
+			<td><input id="cb_45" name="outgoings" type="checkbox" value="615000000"></td>
 			<td title="615 000 000 Kč">Český telekomunikační úřad</td>
 			<td class="right bold" nowrap="">615 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="199000000"></td>
+			<td><input id="cb_46" name="outgoings" type="checkbox" value="199000000"></td>
 			<td title="199 000 000 Kč">Energetický regulační úřad</td>
 			<td class="right bold" nowrap="">199 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="3300000000"></td>
+			<td><input id="cb_47" name="outgoings" type="checkbox" value="3300000000"></td>
 			<td title="3 300 000 000 Kč">Grantová agentura</td>
 			<td class="right bold" nowrap="">3 300 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="8900000000"></td>
+			<td><input id="cb_48" name="outgoings" type="checkbox" value="8900000000"></td>
 			<td title="8 900 000 000 Kč">Ministerstvo kultury</td>
 			<td class="right bold" nowrap="">8 900 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="591000000"></td>
+			<td><input id="cb_49" name="outgoings" type="checkbox" value="591000000"></td>
 			<td title="591 000 000 Kč">Národní ústav pro vzdělávání, školské poradenské zařízení a zařízení pro další vzdělávání pedagogických pracovníků</td>
 			<td class="right bold" nowrap="">591 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="2340000000"></td>
+			<td><input id="cb_50" name="outgoings" type="checkbox" value="2340000000"></td>
 			<td title="2 340 000 000 Kč">Správa státních hmotných rezerv</td>
 			<td class="right bold" nowrap="">2 340 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="1650000000"></td>
+			<td><input id="cb_51" name="outgoings" type="checkbox" value="1650000000"></td>
 			<td title="1 650 000 000 Kč">Státní fond rozvoje bydlení</td>
 			<td class="right bold" nowrap="">1 650 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="271000000"></td>
+			<td><input id="cb_52" name="outgoings" type="checkbox" value="271000000"></td>
 			<td title="271 000 000 Kč">Státní rostlinolékařská správa</td>
 			<td class="right bold" nowrap="">271 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="697000000"></td>
+			<td><input id="cb_53" name="outgoings" type="checkbox" value="697000000"></td>
 			<td title="697 000 000 Kč">Státní úřad inspekce práce</td>
 			<td class="right bold" nowrap="">697 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="12237000000"></td>
+			<td><input id="cb_54" name="outgoings" type="checkbox" value="12237000000"></td>
 			<td title="12 237 000 000 Kč">Státní zemědělský intervenční fond</td>
 			<td class="right bold" nowrap="">12 237 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="2600000000"></td>
+			<td><input id="cb_55" name="outgoings" type="checkbox" value="2600000000"></td>
 			<td title="2 600 000 000 Kč">Technologická agentura</td>
 			<td class="right bold" nowrap="">2 600 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="190000000"></td>
+			<td><input id="cb_56" name="outgoings" type="checkbox" value="190000000"></td>
 			<td title="190 000 000 Kč">Úřad pro hospodářskou úpravu lesů</td>
 			<td class="right bold" nowrap="">190 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="265000000"></td>
+			<td><input id="cb_57" name="outgoings" type="checkbox" value="265000000"></td>
 			<td title="265 000 000 Kč">Úřad pro ochranu hospodářské soutěže</td>
 			<td class="right bold" nowrap="">265 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="167000000"></td>
+			<td><input id="cb_58" name="outgoings" type="checkbox" value="167000000"></td>
 			<td title="167 000 000 Kč">Úřad pro ochranu osobních údajů</td>
 			<td class="right bold" nowrap="">167 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="2000000000"></td>
+			<td><input id="cb_59" name="outgoings" type="checkbox" value="2000000000"></td>
 			<td title="2 000 000 000 Kč">Úřad pro zastupování státu ve věcech majetkových</td>
 			<td class="right bold" nowrap="">2 000 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="152000000"></td>
+			<td><input id="cb_60" name="outgoings" type="checkbox" value="152000000"></td>
 			<td title="152 000 000 Kč">Ústav pro studium totalitních režimů</td>
 			<td class="right bold" nowrap="">152 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="200000000"></td>
+			<td><input id="cb_61" name="outgoings" type="checkbox" value="200000000"></td>
 			<td title="200 000 000 Kč">Výzkumný ústav živočišné výroby</td>
 			<td class="right bold" nowrap="">200 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="1500000000"></td>
+			<td><input id="cb_62" name="outgoings" type="checkbox" value="1500000000"></td>
 			<td title="1 500 000 000 Kč">Zdravotní ústavy</td>
 			<td class="right bold" nowrap="">1 500 000 000 Kč</td>
 		</tr>
@@ -446,112 +485,112 @@
 	<h2>Další úspory rušením malých úřadů</h2>
 	<table class="table table-bordered">
 		<tbody><tr>
-			<td><input name="outgoings" type="checkbox" value="79000000"></td>
+			<td><input id="cb_63" name="outgoings" type="checkbox" value="79000000"></td>
 			<td title="79 000 000 Kč">CENIA</td>
 			<td class="right bold" nowrap="">79 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="53000000"></td>
+			<td><input id="cb_64" name="outgoings" type="checkbox" value="53000000"></td>
 			<td title="53 000 000 Kč">Centrum dopravního výzkumu</td>
 			<td class="right bold" nowrap="">53 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="35000000"></td>
+			<td><input id="cb_65" name="outgoings" type="checkbox" value="35000000"></td>
 			<td title="35 000 000 Kč">Česká plemenářská inspekce</td>
 			<td class="right bold" nowrap="">35 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="132449000"></td>
+			<td><input id="cb_66" name="outgoings" type="checkbox" value="132449000"></td>
 			<td title="132 449 000 Kč">CzechTrade</td>
 			<td class="right bold" nowrap="">132 449 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="46000000"></td>
+			<td><input id="cb_67" name="outgoings" type="checkbox" value="46000000"></td>
 			<td title="46 000 000 Kč">Divadelní ústav</td>
 			<td class="right bold" nowrap="">46 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="7000000"></td>
+			<td><input id="cb_68" name="outgoings" type="checkbox" value="7000000"></td>
 			<td title="7 000 000 Kč">Evropské spotřebitelské centrum</td>
 			<td class="right bold" nowrap="">7 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="30000000"></td>
+			<td><input id="cb_69" name="outgoings" type="checkbox" value="30000000"></td>
 			<td title="30 000 000 Kč">Garanční fond obchodníků s cennými papíry</td>
 			<td class="right bold" nowrap="">30 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="18000000"></td>
+			<td><input id="cb_70" name="outgoings" type="checkbox" value="18000000"></td>
 			<td title="18 000 000 Kč">Jednotná kontaktní místa</td>
 			<td class="right bold" nowrap="">18 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="32000000"></td>
+			<td><input id="cb_71" name="outgoings" type="checkbox" value="32000000"></td>
 			<td title="32 000 000 Kč">Národní informační a poradenské středisko pro kulturu</td>
 			<td class="right bold" nowrap="">32 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="37000000"></td>
+			<td><input id="cb_72" name="outgoings" type="checkbox" value="37000000"></td>
 			<td title="37 000 000 Kč">Národní ústav lidové kultury</td>
 			<td class="right bold" nowrap="">37 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="104000000"></td>
+			<td><input id="cb_73" name="outgoings" type="checkbox" value="104000000"></td>
 			<td title="104 000 000 Kč">Národní vzdělávací fond</td>
 			<td class="right bold" nowrap="">104 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="54000000"></td>
+			<td><input id="cb_74" name="outgoings" type="checkbox" value="54000000"></td>
 			<td title="54 000 000 Kč">Rada pro rozhlasové a televizní vysílání</td>
 			<td class="right bold" nowrap="">54 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="89000000"></td>
+			<td><input id="cb_75" name="outgoings" type="checkbox" value="89000000"></td>
 			<td title="89 000 000 Kč">Rada vlády pro lidská práva a menšiny</td>
 			<td class="right bold" nowrap="">89 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="72280000"></td>
+			<td><input id="cb_76" name="outgoings" type="checkbox" value="72280000"></td>
 			<td title="72 280 000 Kč">Státní energetická inspekce</td>
 			<td class="right bold" nowrap="">72 280 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="33000000"></td>
+			<td><input id="cb_77" name="outgoings" type="checkbox" value="33000000"></td>
 			<td title="33 000 000 Kč">Státní fond kultury</td>
 			<td class="right bold" nowrap="">33 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="94000000"></td>
+			<td><input id="cb_78" name="outgoings" type="checkbox" value="94000000"></td>
 			<td title="94 000 000 Kč">Úřad Ombudsmana</td>
 			<td class="right bold" nowrap="">94 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="31000000"></td>
+			<td><input id="cb_79" name="outgoings" type="checkbox" value="31000000"></td>
 			<td title="31 000 000 Kč">Ústav územního rozvoje</td>
 			<td class="right bold" nowrap="">31 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="90000000"></td>
+			<td><input id="cb_80" name="outgoings" type="checkbox" value="90000000"></td>
 			<td title="90 000 000 Kč">Ústav zemědělských a potravinářských informací Praha</td>
 			<td class="right bold" nowrap="">90 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="73000000"></td>
+			<td><input id="cb_81" name="outgoings" type="checkbox" value="73000000"></td>
 			<td title="73 000 000 Kč">Vinařský fond</td>
 			<td class="right bold" nowrap="">73 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="45000000"></td>
+			<td><input id="cb_82" name="outgoings" type="checkbox" value="45000000"></td>
 			<td title="45 000 000 Kč">Výzkumný ústav lesního hospodářství a myslivosti</td>
 			<td class="right bold" nowrap="">45 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="30000000"></td>
+			<td><input id="cb_83" name="outgoings" type="checkbox" value="30000000"></td>
 			<td title="30 000 000 Kč">Výzkumný ústav práce a sociálních věcí</td>
 			<td class="right bold" nowrap="">30 000 000 Kč</td>
 		</tr>
 		<tr>
-			<td><input name="outgoings" type="checkbox" value="37250000"></td>
+			<td><input id="cb_84" name="outgoings" type="checkbox" value="37250000"></td>
 			<td title="37 250 000 Kč">Výzkumný ústav zemědělské techniky</td>
 			<td class="right bold" nowrap="">37 250 000 Kč</td>
 		</tr>
