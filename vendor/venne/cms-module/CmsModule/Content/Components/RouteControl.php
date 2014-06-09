@@ -56,9 +56,14 @@ class RouteControl extends SectionControl
 		$table->setTranslator($this->presenter->context->translator->translator);
 		$table->addColumnText('title', 'Title')
 			->setSortable()
-			->getCellPrototype()->width = '70%';
+			->getCellPrototype()->width = '40%';
 		$table->getColumn('title')
 			->setFilterText()->setSuggestion();
+
+		$table->addColumnText('domain', 'Domain')
+			->setCustomRender(function($entity) {
+				return $entity->domain ? $entity->domain->domain : '';
+			});
 
 		$table->addColumnText('url', 'Url')
 			->setSortable()
