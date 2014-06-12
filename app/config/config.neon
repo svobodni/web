@@ -85,7 +85,6 @@ extensions:
 	ace: AceModule\DI\AceExtension
 	googleanalytics: GoogleanalyticsModule\DI\GoogleanalyticsExtension
 	importer: ImporterModule\DI\ImporterExtension
-	opauth: OpauthModule\DI\OpauthExtension
 	blog: BlogModule\DI\BlogExtension
 	events: EventsModule\DI\EventsExtension
 	site: SiteModule\DI\SiteExtension
