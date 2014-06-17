@@ -16,21 +16,6 @@ return array(
 				'cms' => '2.1.x',
 			),
 		),
-		'opauth' => array(
-			'status' => 'installed',
-			'action' => '',
-			'class' => 'OpauthModule\\Module',
-			'version' => '2.1.0',
-			'path' => '%libsDir%/venne/opauth-module',
-			'autoload' => array(
-				'psr-0' => array(
-					'OpauthModule' => '',
-				),
-			),
-			'require' => array(
-				'cms' => '2.1.x',
-			),
-		),
 		'forms' => array(
 			'status' => 'installed',
 			'action' => '',
@@ -419,21 +404,6 @@ return array(
 			'require' => array(
 				'cms' => '2.1.x',
 				'blog' => '2.1.x',
-			),
-		),
-		'hybridauth' => array(
-			'status' => 'installed',
-			'action' => '',
-			'class' => 'HybridauthModule\\Module',
-			'version' => '2.1.0',
-			'path' => '%libsDir%/venne/hybridauth-module',
-			'autoload' => array(
-				'psr-0' => array(
-					'HybridauthModule' => '',
-				),
-			),
-			'require' => array(
-				'cms' => '2.1.x',
 			),
 		),
 		'directory' => array(

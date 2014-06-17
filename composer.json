@@ -14,9 +14,7 @@
 		"venne/googleanalytics-module": "2.1.*@dev",
 		"venne/importer-module": "2.1.*@dev",
 		"venne/ace-module": "1.1.*@dev",
-		"venne/opauth-module": "2.1.*@dev",
 		"venne/events-module": "2.1.x@dev",
-		"venne/hybridauth-module": "2.1.*@dev",
 		"gregwar/captcha": "~1.0.11"
 	},
 	"require-dev": {

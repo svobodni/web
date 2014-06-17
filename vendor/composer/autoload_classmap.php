@@ -66,8 +66,6 @@ return array(
     'CssWhitesmithsFormatter' => $vendorDir . '/natxet/CssMin/src/CssMin.php',
     'JSMin' => $vendorDir . '/linkorb/jsmin-php/src/jsmin-1.1.1.php',
     'JSMinException' => $vendorDir . '/linkorb/jsmin-php/src/jsmin-1.1.1.php',
-    'Opauth' => $vendorDir . '/opauth/opauth/lib/Opauth/Opauth.php',
-    'OpauthStrategy' => $vendorDir . '/opauth/opauth/lib/Opauth/OpauthStrategy.php',
     'Tests\\CurlTest' => $vendorDir . '/h4kuna/object-wrapper/tests/CurlTest.php',
     'Tests\\FileTest' => $vendorDir . '/h4kuna/object-wrapper/tests/FileTest.php',
     'UploadHandler' => $vendorDir . '/venne/jqueryfileupload-module/src/UploadHandler.php',
