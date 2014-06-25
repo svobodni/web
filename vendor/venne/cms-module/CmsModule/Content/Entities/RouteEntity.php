@@ -365,7 +365,7 @@ class RouteEntity extends \DoctrineModule\Entities\IdentifiedEntity
 			$l = $this->getParent()->getLocale();
 			$this->getParent()->setLocale($this->locale);
 
-			if ($this->domain && !$this->parent->domain) {
+			if ($this->domain && $this->domain !== $this->parent->domain) {
 				$this->setTranslatedValue('url', '');
 			} else {
 				$this->setTranslatedValue('url', trim($this->getParent()->getUrl() . '/' . $this->getTranslatedValue('localUrl'), '/'));
@@ -427,10 +427,6 @@ class RouteEntity extends \DoctrineModule\Entities\IdentifiedEntity
 	 */
 	public function setDomain(DomainEntity $domain = NULL, $inRecursion = FALSE)
 	{
-		if (!$inRecursion && (!$this->parent || ($this->parent && $this->parent->domain))) {
-			throw new InvalidStateException("This route cannot be configured for domain.");
-		}
-
 		foreach ($this->children as $children) {
 			$children->setDomain($domain, TRUE);
 		}
@@ -591,14 +587,12 @@ class RouteEntity extends \DoctrineModule\Entities\IdentifiedEntity
 			return;
 		}
 
-		if ($this->parent && $this->parent->domain === $this->domain) {
-			$this->domain = $parent->domain;
-		}
-
 		$this->parent = $parent;
 		if ($parent) {
 			$parent->children[] = $this;
 		}
+
+		$this->domain = $parent->domain;
 
 		$this->generateUrl();
 		$this->generateLayouts();

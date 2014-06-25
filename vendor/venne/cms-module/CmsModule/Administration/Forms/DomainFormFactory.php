@@ -49,8 +49,6 @@ class DomainFormFactory extends FormFactory
 		$page = $form->addOneToOne('page', 'Page');
 		$page->setQuery(
 			$this->pageRepository->createQueryBuilder('a')
-		->leftJoin('a.mainRoute', 'r')
-		->andWhere('r.domain IS NULL')
 		->orderBy('a.positionString', 'ASC')
 		);
 
