@@ -91,7 +91,7 @@ class PageRepository extends BaseRepository
 		$routeRepository = $this->getRouteRepository();
 
 		foreach ($page->getRoutes() as $pageRoute) {
-			foreach ($routeRepository->findBy(array('url' => $pageRoute->getUrl())) as $route) {
+			foreach ($routeRepository->findBy(array('url' => $pageRoute->getUrl(), 'domain' => $pageRoute->getDomain())) as $route) {
 				if ($pageRoute->id !== $route->id) {
 					if (!$route->page->language || $route->page->language->id === $pageRoute->page->language->id) {
 						return FALSE;

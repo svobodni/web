@@ -25,9 +25,9 @@ class Test extends TestCase
 
 		if (getenv('TRAVIS')) {
 			if (getenv('TRAVIS_PULL_REQUEST') && getenv('TRAVIS_PULL_REQUEST') != 'false') {
-				$this->basePath = '/pull/' . getenv('TRAVIS_PULL_REQUEST') . '/www';
+				$this->basePath = '/pull/' . getenv('TRAVIS_PULL_REQUEST') . '/www/web.svobodni.cz';
 			} else {
-				$this->basePath = '/branch/' . getenv('TRAVIS_BRANCH') . '/www';
+				$this->basePath = '/branch/' . getenv('TRAVIS_BRANCH') . '/www/web.svobodni.cz';
 			}
 			$startPage = 'http://s-webt.zvara.cz' . $this->basePath;
 		}

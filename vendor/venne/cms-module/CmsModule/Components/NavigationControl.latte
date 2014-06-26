@@ -43,7 +43,7 @@
 <?php
 	$d = preg_match_all('/;;;([^;]*);;;([^;]*);;;/', $navigation, $matches, PREG_SET_ORDER);
 	foreach ($matches as $m) {
-		if ($control->isUrlActive($m[1]) && $control->isDomainActive($m[2])) {
+		if ($control->isDomainActive($m[2]) && $control->isUrlActive($m[1])) {
 			$navigation = str_replace(';;;' . $m[1] . ';;;' . $m[2] . ';;;', 'active', $navigation);
 		} else {
 			$navigation = str_replace($m[0], '', $navigation);
