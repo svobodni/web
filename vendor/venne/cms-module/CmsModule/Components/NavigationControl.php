@@ -122,7 +122,7 @@ class NavigationControl extends Control
 	public function isUrlActive($url)
 	{
 		$currentUrl = $this->presenter->slug;
-		return (!$url && $this->presenter->_domain) || (!$url && !$currentUrl) || ($url && strpos($currentUrl . '/', $url . '/') !== FALSE);
+		return (!$url && !$currentUrl) || ($url && strpos($currentUrl . '/', $url . '/') !== FALSE);
 	}
 
 
