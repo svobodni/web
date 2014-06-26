@@ -44,7 +44,7 @@ class RoutePresenter extends PagePresenter
 			? $this->extendedPage->rootPage
 			: $this->pageRepository->createQueryBuilder('a')
 			->leftJoin('a.mainRoute', 'r')
-			->where('r.url = :url')->setParameter('url', '')
+			->where('r.parent IS NULL')
 			->getQuery()->getSingleResult();
 	}
 
