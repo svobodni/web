@@ -583,16 +583,15 @@ class RouteEntity extends \DoctrineModule\Entities\IdentifiedEntity
 	 */
 	public function setParent(RouteEntity $parent = NULL)
 	{
-		if ($this->getParent() == $parent) {
+		if ($this->getParent() === $parent) {
 			return;
 		}
 
 		$this->parent = $parent;
 		if ($parent) {
 			$parent->children[] = $this;
+			$this->domain = $parent->domain;
 		}
-
-		$this->domain = $parent->domain;
 
 		$this->generateUrl();
 		$this->generateLayouts();

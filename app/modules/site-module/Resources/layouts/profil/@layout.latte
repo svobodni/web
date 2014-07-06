@@ -1,6 +1,11 @@
 {extends ../@layout.latte}
 
+{block #header}
+	<div class="header-subdomain">{$presenter->domain->name}</div>
+{/block}
+
 {block #navigation}
+{control domain}
 {element navigation profilNavigation mode => 1}
 {/block}
 

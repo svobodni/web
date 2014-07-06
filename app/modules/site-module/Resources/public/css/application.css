@@ -17,7 +17,12 @@ body {
 	position: relative;
 	z-index: 6000;
 }
-
+.header-container .header-subdomain {
+	float: left;
+	margin: 40px 0px 0px;
+	font-size: 18px;
+	font-weight: bold;
+}
 .header-container ul {
 	list-style: none;
 	float: left;
@@ -137,6 +142,15 @@ body {
 .navigation-container .navbar-collapse {
 	/*background-color: #005f49;*/
 	background-color: #ffffff;
+}
+.navigation-container .navbar-domain {
+	float: right;
+}
+.navigation-container .navbar-nav.navbar-domain > li > a {
+	float: right;
+	background-color: #00654f;
+	color: #ffffff;
+	font-size: 16px;
 }
 
 @media (max-width: 991px) {
