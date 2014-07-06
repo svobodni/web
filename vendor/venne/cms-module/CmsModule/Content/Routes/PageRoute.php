@@ -197,7 +197,7 @@ class PageRoute extends Route
 			return NULL;
 		}
 
-		$this->cache->save($key, array($route->id, $route->page->id, $route->type, $domain ? $domain->name : NULL, $route->params), array(
+		$this->cache->save($key, array($route->id, $route->page->id, $route->type, $domain ? $domain->domain : NULL, $route->params), array(
 			Cache::TAGS => array(RouteEntity::CACHE),
 		));
 		return $this->modifyMatchRequest($request, $route, $route->page, $route->type, $domain, $route->params, $parameters);

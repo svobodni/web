@@ -14,6 +14,7 @@ namespace CmsModule\Content\Presenters;
 use CmsModule\Administration\Presenters\ContentPresenter;
 use CmsModule\Content\ElementManager;
 use CmsModule\Content\Elements\BaseElement;
+use CmsModule\Content\Entities\DomainEntity;
 use CmsModule\Content\Entities\ExtendedPageEntity;
 use CmsModule\Content\Entities\ExtendedRouteEntity;
 use CmsModule\Content\Entities\LanguageEntity;
@@ -22,6 +23,7 @@ use CmsModule\Content\Entities\RouteEntity;
 use CmsModule\Content\Repositories\LanguageRepository;
 use CmsModule\Content\Repositories\PageRepository;
 use CmsModule\Content\Repositories\RouteRepository;
+use CmsModule\Content\Repositories\DomainRepository;
 use Nette\Application\BadRequestException;
 use Nette\Application\ForbiddenRequestException;
 use Nette\Application;
@@ -60,7 +62,7 @@ class PagePresenter extends \CmsModule\Presenters\FrontPresenter
 
 	/**
 	 * @persistent
-	 * @var int
+	 * @var string
 	 */
 	public $slug;
 
@@ -100,6 +102,9 @@ class PagePresenter extends \CmsModule\Presenters\FrontPresenter
 	/** @var LanguageRepository */
 	private $languageRepository;
 
+	/** @var DomainRepository */
+	private $domainRepository;
+
 	/** @var ElementManager */
 	private $elementManager;
 
@@ -115,6 +120,7 @@ class PagePresenter extends \CmsModule\Presenters\FrontPresenter
 	 * @param PageRepository $pageRepository
 	 * @param LanguageRepository $languageRepository
 	 * @param RouteRepository $routeRepository
+	 * @param DomainRepository $domainRepository
 	 * @param ElementManager $elementManager
 	 * @param IStorage $cacheStorage
 	 */
@@ -123,6 +129,7 @@ class PagePresenter extends \CmsModule\Presenters\FrontPresenter
 		PageRepository $pageRepository,
 		LanguageRepository $languageRepository,
 		RouteRepository $routeRepository,
+		DomainRepository $domainRepository,
 		ElementManager $elementManager,
 		IStorage $cacheStorage
 	)
@@ -131,6 +138,7 @@ class PagePresenter extends \CmsModule\Presenters\FrontPresenter
 		$this->pageRepository = $pageRepository;
 		$this->languageRepository = $languageRepository;
 		$this->routeRepository = $routeRepository;
+		$this->domainRepository = $domainRepository;
 		$this->elementManager = $elementManager;
 		$this->cacheStorage = $cacheStorage;
 	}
@@ -280,6 +288,15 @@ class PagePresenter extends \CmsModule\Presenters\FrontPresenter
 			$this->language = $this->languageRepository->findOneBy(array('alias' => $this->lang ? $this->lang : $this->websiteManager->defaultLanguage));
 		}
 		return $this->language;
+	}
+
+
+	/**
+	 * @return DomainEntity
+	 */
+	public function getDomain()
+	{
+		return $this->domainRepository->findOneBy(array('domain' => $this->_domain));
 	}
 
 

@@ -4,6 +4,12 @@ services:
 		setup:
 			- '$service->addDictionary(new TranslatorModule\Dictionary(?))'(%modules.site.path%/Resources/translations)
 
+factories:
+
+	site.domainControl:
+		class: SiteModule\Components\DomainControl
+		tags: [widget: domain]
+
 includes:
 	- users.svobodni.neon
 	- pages.dobrovolnik.neon
