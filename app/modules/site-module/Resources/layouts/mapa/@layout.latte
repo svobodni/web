@@ -1,0 +1,94 @@
+{extends ../@layout.latte}
+
+{block #layout}
+<div class="col-md-12">
+
+	{control flashMessage TRUE}
+	{block #contentTop}{/block}
+	{block #content}{include #page-content}{/block}
+	{block #contentBottom}{/block}
+
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> 
+<script type="text/javascript" src = "http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+$(function() {
+
+var mapOptions = {
+center: new google.maps.LatLng(49.9, 15.5),
+zoom: 8,
+mapTypeId: google.maps.MapTypeId.ROADMAP
+};
+
+var pinIcon = new google.maps.MarkerImage('http://data.kubicek.cz/beran_ico.png',
+    null,null,null,new google.maps.Size(30, 30)
+);  
+var infowindow = new google.maps.InfoWindow();
+var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+  $.getJSON("https://cors-anywhere.herokuapp.com/spreadsheets.google.com/feeds/list/1R6Kj3sV0f1CIspSxBNukilR9sq7nSF3xVnggARAJHyM/od6/public/values?alt=json", function(data) {
+             $.each( data.feed.entry, function(i, value) {
+            var myLatlng = new google.maps.LatLng(value['gsx$lt']['$t'], value['gsx$ln']['$t']);
+            var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: value['gsx$obec']['$t']
+            });
+
+
+            if (value['gsx$kandidatka']['$t']=="Svobodní") {
+                var pinIcon = new google.maps.MarkerImage('/resources/siteModule/img/mapa/beran_ico.png',
+                    null,null,null,new google.maps.Size(30, 30)
+                );
+            } else {
+                if (value['gsx$kandidatka']['$t']=="koalice") {
+                    var pinIcon = new google.maps.MarkerImage('/resources/siteModule/img/mapa/zlata.png',
+                        null,null,null,new google.maps.Size(30, 30)
+                    );
+                } else {
+                    var pinIcon = new google.maps.MarkerImage('/resources/siteModule/img/mapa/fialova.png',
+                        null,null,null,new google.maps.Size(30, 30)
+                    );
+                }
+            }
+
+            marker.setIcon(pinIcon);
+            var boxcontent='<div class="markerLabel">'
+            if(value['gsx$url']['$t']){
+                boxcontent+='<h2><a href="'+value['gsx$url']['$t']+'" target="_blank" class="marker " rel="nofollow">'+value['gsx$obec']['$t']+'</a></h2>'
+            } else {
+                 boxcontent+='<h2>'+value['gsx$obec']['$t']+'</h2>'
+            }
+            boxcontent+=''
+            if(value['gsx$kandidatka']['$t']){
+                boxcontent+='<div><span class="l">Kandidátka:</span>&nbsp;'+value['gsx$kandidatka']['$t']+'</div>'
+            }
+            boxcontent+='<div><span class="l">Kraj:</span>&nbsp;'+value['gsx$kraj']['$t']+'</div></div>'
+
+            bindInfoWindow(marker, map, infowindow, boxcontent);
+        });
+
+  });
+  
+  function bindInfoWindow(marker, map, infowindow, strDescription) {
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(strDescription);
+        infowindow.open(map, marker);
+    });
+}
+});
+
+</script>
+
+<div id="map_canvas" style="width: 1140px; height: 700px"></div>
+	
+	<hr />
+
+	<small class="muted">
+		{cache $presenter->routeId, tags => [
+			'route-' . $presenter->routeId,
+		]}
+		{control itemInfo $presenter->route}
+		{/cache}
+	</small>
+</div>
