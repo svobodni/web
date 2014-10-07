@@ -558,7 +558,17 @@ footer .pull-right {
 .puvodni-web img {
 	position: fixed;
 	top: 0;
+	left: 0;
+	border: 0;
+	z-index: 99999;
+}
+.komunalky {
+	width: 285px;
+	height: 139px;
+	position: fixed;
+	top: 0;
 	right: 0;
 	border: 0;
 	z-index: 99999;
+	background: transparent url('../img/stuha_komunalky.png') 0 0 no-repeat;
 }
