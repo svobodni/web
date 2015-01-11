@@ -194,7 +194,27 @@ class PageRoute extends Route
 		try {
 			$route = $qb->getQuery()->getSingleResult();
 		} catch (NoResultException $e) {
-			return NULL;
+			$qb = $this->getRouteRepository()->createQueryBuilder('a')
+				->join('a.aliases', 's')
+				->andWhere('s.aliasUrl = :url')->setParameter('url', $parameters['slug']);
+
+			if ($domain) {
+				$qb->andWhere('s.aliasDomain = :domain')->setParameter('domain', $domain->domain);
+			} else {
+				$qb->andWhere('s.aliasDomain IS NULL');
+			}
+
+			if (count($this->languages) > 1) {
+				$qb->andWhere('s.aliasLang = :lang')->setParameter('lang', $parameters['lang']);
+			} else {
+				$qb->andWhere('s.aliasLang IS NULL');
+			}
+
+			try {
+				$route = $qb->getQuery()->getSingleResult();
+			} catch (NoResultException $e) {
+				return null;
+			}
 		}
 
 		$this->cache->save($key, array($route->id, $route->page->id, $route->type, $domain ? $domain->domain : NULL, $route->params), array(

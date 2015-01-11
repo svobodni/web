@@ -85,6 +85,17 @@ class RouteFormFactory extends FormFactory
 		$form->addGroup('Tags');
 		$form->addContentTags('tags');
 
+		$aliases = $form->addMany('aliases', function (\Venne\Forms\Container $container) use ($form) {
+			$container->setCurrentGroup($form->addGroup('URL alias'));
+			$container->addText('aliasUrl', 'Url')->setRequired();
+			$container->addText('aliasLang', 'Language alias');
+			$container->addText('aliasDomain', 'Domain url');
+
+			$container->addSubmit('remove', 'Remove alias')->addRemoveOnClick();
+		});
+		$aliases->addSubmit('add', 'Add alias')
+			->addCreateOnClick();
+
 		$form->setCurrentGroup();
 		$form->addSaveButton('Save');
 	}
