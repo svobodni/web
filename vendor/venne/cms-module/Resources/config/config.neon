@@ -41,6 +41,11 @@ services:
 		factory: @entityManager::getRepository('CmsModule\Content\Entities\RouteEntity')
 		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
 
+	cms.routeAliasRepository:
+		class: CmsModule\Content\Repositories\RouteAliasRepository
+		factory: @entityManager::getRepository('CmsModule\Content\Entities\RouteAliasEntity')
+		tags: [proxy: DoctrineModule\Repositories\BaseRepository]
+
 	cms.domainRepository:
 		class: CmsModule\Content\Repositories\DomainRepository
 		factory: @entityManager::getRepository('CmsModule\Content\Entities\DomainEntity')

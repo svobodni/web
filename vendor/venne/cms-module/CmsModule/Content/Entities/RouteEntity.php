@@ -270,6 +270,12 @@ class RouteEntity extends \DoctrineModule\Entities\IdentifiedEntity
 	protected $dir;
 
 	/**
+	 * @var RouteAliasEntity[]
+	 * @ORM\OneToMany(targetEntity="\CmsModule\Content\Entities\RouteAliasEntity", mappedBy="route", cascade={"all"}, orphanRemoval=true, fetch="EXTRA_LAZY")
+	 */
+	protected $aliases;
+
+	/**
 	 * @var ExtendedRouteEntity
 	 */
 	protected $extendedRoute;
@@ -302,6 +308,7 @@ class RouteEntity extends \DoctrineModule\Entities\IdentifiedEntity
 		$this->children = new ArrayCollection;
 		$this->tags = new ArrayCollection;
 		$this->translations = new ArrayCollection;
+		$this->aliases = new ArrayCollection;
 		$this->cacheMode = self::DEFAULT_CACHE_MODE;
 		$this->created = new \DateTime;
 		$this->released = new \DateTime;
@@ -1014,6 +1021,21 @@ class RouteEntity extends \DoctrineModule\Entities\IdentifiedEntity
 		return $this->locale;
 	}
 
+	/**
+	 * @return RouteAliasEntity[]
+	 */
+	public function getAliases()
+	{
+		return $this->aliases;
+	}
+
+	/**
+	 * @param RouteAliasEntity[] $aliases
+	 */
+	public function setAliases($aliases)
+	{
+		$this->aliases = $aliases;
+	}
 
 	/**
 	 * @return DirEntity
