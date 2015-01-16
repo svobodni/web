@@ -199,7 +199,7 @@ class PageRoute extends Route
 				->andWhere('s.aliasUrl = :url')->setParameter('url', $parameters['slug']);
 
 			if ($domain) {
-				$qb->andWhere('s.aliasDomain = :domain')->setParameter('domain', $domain->domain);
+				$qb->andWhere('s.aliasDomain = :domain OR s.aliasDomain IS NULL')->setParameter('domain', $domain->domain);
 			} else {
 				$qb->andWhere('s.aliasDomain IS NULL');
 			}
