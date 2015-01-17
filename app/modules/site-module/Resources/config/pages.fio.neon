@@ -1,0 +1,33 @@
+services:
+
+	site.fioContent:
+		class: CmsModule\Content\ContentType('SiteModule\Pages\Fio\PageEntity')
+		setup:
+			- addSection('Content', @cms.pages.text.textFormFactory)
+			- addSection('Nastavení API', @site.fioFormFactory)
+		tags: [contentType: [name: 'Svobodní - fio účet']]
+
+	site.fioFormFactory:
+		class: SiteModule\Pages\Fio\FormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+	- SiteModule\Pages\Fio\PageService
+
+factories:
+
+	site.pages.fio.routePresenter:
+		class: SiteModule\Pages\Fio\RoutePresenter
+		tags: [presenter]
+
+	site.pages.fio.fioElement:
+		class: SiteModule\Pages\Fio\FioElement\FioElement
+		setup:
+			- injectPrimary
+			- injectSetupForm(@site.pages.fio.fioElement.fioFormFactory)
+		tags: [element: fio]
+
+	site.pages.fio.fioElement.fioFormFactory:
+		class: SiteModule\Pages\Fio\FioElement\FioFormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)

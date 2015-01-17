@@ -1,0 +1,29 @@
+{if isset($error)}
+	<div class="alert alert-danger" role="alert">Nepodařilo se načíst data z transparentního účtu</div>
+{/if}
+
+{if isset($warning)}
+	<div class="alert alert-warning" role="alert">Transparentní účet není nastaven</div>
+{/if}
+
+{if isset($transfers)}
+
+<dl class="dl-horizontal">
+	<dt>Stav účtu</dt>
+	<dd>{$state|number:2:',':' '}&nbsp;Kč</dd>
+</dl>
+
+<table class="table table-condensed">
+
+	<tbody>
+	{foreach $transfers as $transfer}
+		<tr n:class="substr($transfer[1], 0, 1) === '-' ? danger">
+			<td><small title="{$transfer[0]->format('j.n.Y')}">{$transfer[0]->format('j.n.')}</small></td>
+			<td class="text-right"><strong>{$transfer[1]|number:2:',':' '}&nbsp;Kč</strong></td>
+			<td>{$transfer[2]}</td>
+		</tr>
+	{/foreach}
+	</tbody>
+
+</table>
+{/if}

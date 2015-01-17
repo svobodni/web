@@ -19,3 +19,4 @@ includes:
 	- pages.pobocka.neon
 	- pages.kandidat.neon
 	- pages.organ.neon
+	- pages.fio.neon

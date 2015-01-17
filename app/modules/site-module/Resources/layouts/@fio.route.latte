@@ -1,0 +1,56 @@
+{block #page-content}
+
+{cache [$presenter->routeId, $presenter->lang], tags => [
+'page-' . $presenter->pageId,
+'route-' . $presenter->routeId,
+'language-' . $presenter->lang,
+]}
+{control item $presenter->route, config => [ variant => '@text.route' ]}
+{/cache}
+
+{if isset($transfers)}
+<table class="table table-bordered">
+
+	<thead>
+	<tr>
+		<th>Koncový stav účtu</th>
+	</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td class="text-right">
+				<strong>{$state|number:2:',':' '}</strong>
+			</td>
+		</tr>
+	</tbody>
+
+</table>
+
+
+<h2>Pohyby na účtu</h2>
+
+<table class="table">
+	
+	<thead>
+		<tr>
+			<th style="width: 15%;">Datum</th>
+			<th class="text-right" style="width: 15%;">Objem</th>
+			<th style="width: 30%;">Identifikace</th>
+			<th style="width: 40%;">Zpráva pro příjemce</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+	{foreach $transfers as $transfer}
+		<tr n:class="substr($transfer[1], 0, 1) === '-' ? danger">
+			<td>{$transfer[0]->format('d.m.Y')}</td>
+			<td class="text-right"><strong>{$transfer[1]|number:2:',':''}</strong></td>
+			<td>{$transfer[2]}</td>
+			<td>{$transfer[3]}</td>
+		</tr>
+	{/foreach}
+	</tbody>
+	
+</table>
+{/if}

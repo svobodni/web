@@ -11,6 +11,7 @@
 
 namespace SiteModule\Api;
 
+use Nette\InvalidStateException;
 use Nette\Utils\Json;
 use Nette\Utils\Strings;
 
@@ -54,7 +55,26 @@ class ApiClient extends \Nette\Object
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_URL, $this->apiUrl . $url);
 		curl_setopt($ch, CURLOPT_USERAGENT, 'PHP');
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT ,0);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 3);
 		$result = curl_exec($ch);
+
+		$info = curl_getinfo($ch);
+		if ($info['http_code'] !== 200) {
+			curl_close($ch);
+			throw new InvalidStateException('cUrl #' . $info['http_code']);
+		}
+
+		if ($result === false) {
+			curl_close($ch);
+			throw new InvalidStateException('cUrl failed');
+		}
+
+		if (curl_errno($ch)) {
+			curl_close($ch);
+			throw new InvalidStateException('cUrl failed');
+		}
+
 		curl_close($ch);
 
 		return $result;
