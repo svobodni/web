@@ -1,0 +1,19 @@
+services:
+
+	site.organContent:
+		class: CmsModule\Content\ContentType('SiteModule\Pages\Organ\PageEntity')
+		setup:
+			- addSection('Content', @cms.pages.text.textFormFactory)
+			- addSection('Nastavení orgánu', @site.organFormFactory)
+		tags: [contentType: [name: 'Svobodní - orgán']]
+
+	site.organFormFactory:
+		class: SiteModule\Pages\Organ\FormFactory
+		setup:
+			- injectFactory(@cms.admin.basicFormFactory)
+
+factories:
+
+	site.pages.organ.routePresenter:
+		class: SiteModule\Pages\Organ\RoutePresenter
+		tags: [presenter]

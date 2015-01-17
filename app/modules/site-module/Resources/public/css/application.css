@@ -562,3 +562,10 @@ footer .pull-right {
 	border: 0;
 	z-index: 99999;
 }
+
+.dl-card dt {
+	width: 30px;
+}
+.dl-card dd {
+	margin-left: 45px;
+}

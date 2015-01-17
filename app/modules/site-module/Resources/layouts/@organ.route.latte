@@ -1,0 +1,96 @@
+{block #page-content}
+
+{cache [$presenter->routeId, $presenter->lang], tags => [
+'page-' . $presenter->pageId,
+'route-' . $presenter->routeId,
+'language-' . $presenter->lang,
+]}
+{control item $presenter->route, config => [ variant => '@text.route' ]}
+{/cache}
+
+{define #card}
+	<div class="media">
+		<h3>{$item['name']}</h3>
+
+		<a class="pull-left" href="#">
+			<img alt="{$item['name']}" class="media-object thumbnail" src="{$item['photo_url']}">
+		</a>
+		<div class="media-body">
+
+			<dl class="dl-horizontal dl-card">
+				{if $item['email']}
+				<dt><i title="E-mail" class="glyphicon glyphicon-envelope"></i></dt>
+				<dd><a href="mailto:{$item['email']}">{$item['email']}</a></dd>
+				{/if}
+
+				{if $item['phone']}
+				<dt><i title="Telefon" class="glyphicon glyphicon-earphone"></i></dt>
+				<dd>
+					{$item['phone']|substr:0,3}&nbsp;{$item['phone']|substr:3,3}&nbsp;{$item['phone']|substr:6}
+				</dd>
+				{/if}
+
+				{if $item['homepage_url']}
+				<dt><i title="Web" class="glyphicon glyphicon-globe"></i></dt>
+				<dd><a href="{$item['homepage_url']}" target="_blank">{$item['homepage_url']}</a></dd>
+				{/if}
+
+				{if $item['fb_profile_url'] || $item['fb_page_url']}
+				<dt><i title="Facebook" class="fa fa-facebook"></i></dt>
+				<dd>
+					{if $item['fb_profile_url']}
+					<a href="{$item['fb_profile_url']}">profil</a>
+					{/if}
+
+					{if $item['fb_profile_url'] && $item['fb_page_url']}
+						&nbsp; · &nbsp;
+					{/if}
+
+					{if $item['fb_page_url']}
+						<a href="{$item['fb_page_url']}">stránka</a>
+					{/if}
+				</dd>
+				{/if}
+			</dl>
+
+		</div>
+	</div>
+{/define}
+
+{if $data !== null}
+
+	{if count($data['president']) > 0}
+		<h2>Předseda</h2>
+		{include #card item => $data['president']}
+
+		<hr />
+	{/if}
+
+	{if count($data['vicepresidents']) > 0}
+		<h2>Místopředsedové</h2>
+
+		<div class="row">
+			{foreach $data['vicepresidents'] as $item}
+				<div class="col-md-6">
+					{include #card item => $item}
+				</div>
+
+				{if $iterator->isEven() && !$iterator->isLast()}
+					</div>
+					<div class="row">
+				{/if}
+			{/foreach}
+		</div>
+	{/if}
+
+	{if count($data['members']) > 0}
+		<h2>Členové</h2>
+
+		{foreach $data['members'] as $item}
+			{include #card item => $item}
+		{/foreach}
+	{/if}
+
+	{dump $data}
+
+{/if}

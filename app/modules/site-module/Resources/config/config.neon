@@ -4,6 +4,8 @@ services:
 		setup:
 			- '$service->addDictionary(new TranslatorModule\Dictionary(?))'(%modules.site.path%/Resources/translations)
 
+	- SiteModule\Api\ApiClientFactory
+
 factories:
 
 	site.domainControl:
@@ -16,3 +18,4 @@ includes:
 	- pages.prispet.neon
 	- pages.pobocka.neon
 	- pages.kandidat.neon
+	- pages.organ.neon
