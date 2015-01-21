@@ -52,6 +52,7 @@ class EventFormFactory extends FormFactory
 		$form->addGroup('Event settings');
 		$form->addDateTime('date', 'Date')
 			->addRule($form::FILLED);
+		$form->addText('facebookLink', 'Odkaz na Facebook');
 
 		$route->setCurrentGroup($form->addGroup('Content'));
 		$route->addContentEditor('text', NULL, NULL, 20);

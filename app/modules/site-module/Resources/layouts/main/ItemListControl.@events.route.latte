@@ -18,9 +18,14 @@
 			<div class="media-body">
 				<h4 class="media-heading"><a href="{plink Route route=>$route}">{$route->name ?: $route}</a></h4>
 
+				<p n:if="$routex->getFacebookLink() !== null">
+					<a href="{$routex->getFacebookLink()}" target="_blank" title="{$route->name ?: $route}"><span class="fa fa-facebook-square"> Událost na FB</a>
+				</p>
+
 				<p n:if="isset($route->notation)">
 					{!strip_tags($route->text)|truncate:200}
 				</p>
+
 			</div>
 
 		</div>

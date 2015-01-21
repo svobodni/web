@@ -21,4 +21,27 @@ use Doctrine\ORM\Mapping as ORM;
 class ArticleEntity extends AbstractArticleEntity
 {
 
+	/**
+	 * @var string|null
+	 *
+	 * @ORM\Column(type="string", nullable=true)
+	 */
+	private $facebookLink;
+
+	/**
+	 * @return null|string
+	 */
+	public function getFacebookLink()
+	{
+		return $this->facebookLink;
+	}
+
+	/**
+	 * @param null|string $facebookLink
+	 */
+	public function setFacebookLink($facebookLink)
+	{
+		$this->facebookLink = $facebookLink ? $facebookLink : null;
+	}
+
 }
