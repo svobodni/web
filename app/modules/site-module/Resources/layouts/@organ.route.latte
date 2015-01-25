@@ -57,6 +57,21 @@
 	</div>
 {/define}
 
+{define #items}
+	<div class="row">
+	{foreach $items as $item}
+		<div class="col-md-6">
+			{include #card item => $item}
+		</div>
+
+		{if $iterator->isEven() && !$iterator->isLast()}
+			</div>
+			<div class="row">
+		{/if}
+	{/foreach}
+	</div>
+{/define}
+
 {if $data !== null}
 
 	{if count($data['president']) > 0}
@@ -69,28 +84,13 @@
 	{if count($data['vicepresidents']) > 0}
 		<h2>Místopředsedové</h2>
 
-		<div class="row">
-			{foreach $data['vicepresidents'] as $item}
-				<div class="col-md-6">
-					{include #card item => $item}
-				</div>
-
-				{if $iterator->isEven() && !$iterator->isLast()}
-					</div>
-					<div class="row">
-				{/if}
-			{/foreach}
-		</div>
+		{include #items items => $data['vicepresidents']}
 	{/if}
 
 	{if count($data['members']) > 0}
 		<h2>Členové</h2>
 
-		{foreach $data['members'] as $item}
-			{include #card item => $item}
-		{/foreach}
+		{include #items items => $data['members']}
 	{/if}
-
-	{dump $data}
 
 {/if}
