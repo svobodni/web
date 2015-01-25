@@ -132,19 +132,19 @@ class CmsExtension extends CompilerExtension
 		// Sitemap
 		$container->addDefinition($this->prefix('robotsRoute'))
 			->setClass('Nette\Application\Routers\Route', array('robots.txt',
-				array('presenter' => 'Cms:Sitemap', 'action' => 'robots', 'lang' => NULL)
+				array('presenter' => 'Cms:Sitemap', 'action' => 'robots', 'lang' => NULL), Route::SECURED
 			))
 			->addTag('route', array('priority' => 999999999));
 		$container->addDefinition($this->prefix('sitemapRoute'))
 			->setClass('Nette\Application\Routers\Route', array('[lang-<lang>/][page-<page>/]sitemap.xml',
-				array('presenter' => 'Cms:Sitemap', 'action' => 'sitemap',)
+				array('presenter' => 'Cms:Sitemap', 'action' => 'sitemap',), Route::SECURED
 			))
 			->addTag('route', array('priority' => 999999998));
 
 		// Administration
 		$container->addDefinition($this->prefix('adminRoute'))
 			->setClass('CmsModule\Administration\Routes\Route', array($adminPrefix . '[' . ($adminPrefix ? '/' : '') . '<lang>/]<presenter>[/<action>[/<id>]]',
-				array('module' => 'Cms:Admin', 'presenter' => $config['administration']['defaultPresenter'], 'action' => 'default',)
+				array('module' => 'Cms:Admin', 'presenter' => $config['administration']['defaultPresenter'], 'action' => 'default',), Route::SECURED
 			))
 			->addSetup('injectLanguageRepository', array('@cms.languageRepository'))
 			->addSetup('injectPageListener', array('@cms.pageListener'))

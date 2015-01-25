@@ -31,6 +31,6 @@ class FileRoute extends Route
 				self::FILTER_IN => NULL,
 				self::FILTER_OUT => NULL,
 			)
-		));
+		), Route::SECURED);
 	}
 }

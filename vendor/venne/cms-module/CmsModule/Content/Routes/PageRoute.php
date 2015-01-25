@@ -91,7 +91,7 @@ class PageRoute extends Route
 					self::FILTER_IN => NULL,
 					self::FILTER_OUT => NULL,
 				),
-			), $oneWay ? Route::ONE_WAY : NULL);
+			), $oneWay ? Route::ONE_WAY | Route::SECURED : Route::SECURED);
 	}
 
 

@@ -12,7 +12,11 @@
 
 	<hr />
 
-	<iframe src="//www.facebook.com/plugins/like.php?href={=urlencode($presenter->link('//Route', array('route' => $presenter->route)))}&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80&amp;appId=332223310281975" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowTransparency="true"></iframe>
+	{var $url = $presenter->link('//Route', array('route' => $presenter->route))}
+	{if $route->created <= DateTime::createFromFormat('Y-m-d', '2015-01-25')}
+		{var $url = str_replace('https://', 'http://', $url)}
+	{/if}
+	<iframe src="//www.facebook.com/plugins/like.php?href={=urlencode($url)}&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80&amp;appId=332223310281975" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowTransparency="true"></iframe>
 
 	<div class="row row-clen">
 		<div class="col-lg-4">
