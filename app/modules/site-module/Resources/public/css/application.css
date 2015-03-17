@@ -165,7 +165,7 @@ body {
 	.navigation-container.navbar-static-top {
 		top: 0;
 	}
-	.puvodni-web {
+	.prihlaseni {
 		display: none;
 	}
 }
@@ -555,7 +555,7 @@ footer .pull-right {
 	text-align: right;
 }
 
-.puvodni-web img {
+.prihlaseni img {
 	position: fixed;
 	top: 0;
 	right: 0;
