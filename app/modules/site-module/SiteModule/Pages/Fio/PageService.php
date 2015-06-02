@@ -89,7 +89,7 @@ class PageService extends \Nette\Object
 		$dom->loadHTML($stateData);
 
 		$finder = new \DomXPath($dom);
-		$nodes = $finder->query('//table[@class="summary"]//tbody//tr//td[@class="last"]');
+		$nodes = $finder->query('//table[@class="summary"]//tbody//tr//td[2]');
 
 		$value = trim($nodes->item(0)->nodeValue);
 		$value = str_replace(',', '.', $value);
