@@ -16,8 +16,8 @@
 
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="{$route->photo->getFileUrl()}" rel="lightbox"{if $route->description} title="{$route->description}"{/if}><img alt="{$route->name}" n:src="$route->photo->getFileUrl(TRUE) size=>$size, format=>$flags"></a>
-				<div class="caption" n:if="$route->name || $route->description">
+				<a href="{$route->photo->getFileUrl()}" rel="lightbox"{if $route->notation} title="{$route->notation}"{/if}><img alt="{$route->name}" n:src="$route->photo->getFileUrl(TRUE) size=>$size, format=>$flags"></a>
+				<div class="caption" n:if="$route->name || $route->notation">
 					<h3 n:if="$route->name">{$route->name}</h3>
 					<p n:if="$route->notation">{$route->notation}</p>
 				</div>
