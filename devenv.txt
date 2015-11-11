@@ -1,0 +1,64 @@
+apt-get update
+apt-get install php5 php5-curl php5-mysql mysql-server
+
+a2enmod ssl
+a2enmod rewrite
+
+cd /etc/ssl/certs/
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout apache.key -out apache.crt
+
+Edit /etc/apache2/sites-enabled/000-default.conf:
+
+<VirtualHost *:80>
+    DocumentRoot /home/shadow/src/svobodni-web/www
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+<VirtualHost *:443>
+    DocumentRoot /home/shadow/src/svobodni-web/www
+
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/certs/apache.crt
+    SSLCertificateKeyFile /etc/ssl/certs/apache.key
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+Edit /etc/apache2/apache2.conf:
+
+ServerName localhost
+ServerAdmin webmaster@localhost
+
+<Directory /home/shadow/src>
+    Options FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+
+/etc/init.d/apache2 restart
+
+Setup app/config/config.local.neon
+
+cp app/config/config.local.neon app/config/config_localhost.neon
+
+curl http://web.svobodni.cz/scripts/export-db.php > init.sql
+
+mysql -u root
+
+CREATE TABLE svobodni;
+USE svobodni;
+SET FOREIGN_KEY_CHECKS=0;
+\. init.sql
+SET FOREIGN_KEY_CHECKS=1;
+
+chmod 777 www/cache
+chmod 777 app/log
+
+mkdir app/temp/proxies
+chmod 777 app/temp/proxies
+
+Visit https://localhost/
