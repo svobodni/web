@@ -58,7 +58,7 @@ class PageService extends \Nette\Object
 		$length = $nodes->length;
 		foreach ($nodes as $node) {
 			$value = str_replace(',', '.', trim($node->childNodes->item(2)->nodeValue));
-			$value = (float)str_replace(' ', '', $value);
+			$value = (float)preg_replace('~\x{00a0}~siu', '', $value);
 
 			$transfers[] = array(
 				\DateTime::createFromFormat('d.m.Y', $node->childNodes->item(0)->nodeValue),
