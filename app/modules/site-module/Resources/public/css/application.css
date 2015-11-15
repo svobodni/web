@@ -569,3 +569,8 @@ footer .pull-right {
 .dl-card dd {
 	margin-left: 45px;
 }
+
+.col-md-8 ul {
+	position: relative;
+	left: 10px;
+}
