@@ -97,4 +97,11 @@
 		{include #items items => $data['members']}
 	{/if}
 
+    {if array_key_exists('organization', $data) && array_key_exists('bank_account_number', $data['organization'])}
+        <div>
+            Číslo účtu: <a href="https://www.fio.cz/ib2/transparent?a={$data['organization']['bank_account_number']}">
+                {$data['organization']['bank_account_number']}/2010
+            </a>
+        </div>
+    {/if}
 {/if}
