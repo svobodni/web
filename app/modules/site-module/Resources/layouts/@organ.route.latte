@@ -77,6 +77,21 @@
 {/define}
 
 {if $data !== null}
+	{if isset($data['organization']['bank_account_number'])}
+		<div>
+			Transparentní účet: <a href="https://www.fio.cz/ib2/transparent?a={$data['organization']['bank_account_number']}">
+				{$data['organization']['bank_account_number']}/2010
+			</a>
+		</div>
+	{/if}
+
+	{if isset($data['organization']['homepage_url'])}
+		<div>
+			Webové stránky: <a href="{$data['organization']['homepage_url']}">
+				{$data['organization']['homepage_url']}
+			</a>
+		</div>
+	{/if}
 
 	{if count($data['president']) > 0}
 		<h2>Předseda</h2>
@@ -96,12 +111,4 @@
 
 		{include #items items => $data['members']}
 	{/if}
-
-    {if array_key_exists('organization', $data) && array_key_exists('bank_account_number', $data['organization'])}
-        <div>
-            Číslo účtu: <a href="https://www.fio.cz/ib2/transparent?a={$data['organization']['bank_account_number']}">
-                {$data['organization']['bank_account_number']}/2010
-            </a>
-        </div>
-    {/if}
 {/if}
