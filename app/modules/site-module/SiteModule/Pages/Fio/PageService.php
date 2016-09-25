@@ -50,7 +50,7 @@ class PageService extends \Nette\Object
 		$dom->loadHTML($data);
 
 		$finder = new \DomXPath($dom);
-		$nodes = $finder->query('//table[@id="id8"]//tbody//tr');
+		$nodes = $finder->query('//table[substring(@id, 1, 2) = "id"]/tbody/tr');
 
 		$transfers = array();
 		/** @var \DOMElement $node */
