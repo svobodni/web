@@ -20,7 +20,7 @@ use SiteModule\Api\ApiClientFactory;
 class PageService extends \Nette\Object
 {
 
-	const FIO_API_URL = 'https://www.fio.cz/scgi-bin/hermes/dz-transparent.cgi';
+	const FIO_API_URL = 'https://www.fio.cz/ib2/transparent';
 
 	/** @var \SiteModule\Api\ApiClientFactory */
 	private $apiClientFactory;
@@ -46,14 +46,11 @@ class PageService extends \Nette\Object
 	{
 		$data = $this->getRawData($accountNumber, $dateFrom, $dateTo);
 
-		$transferData = substr($data, strpos($data, '<table class=\'main\'>'));
-		$transferData = substr($transferData, 0, strpos($transferData, '</table>') + 8);
-
 		$dom = new \DOMDocument();
-		$dom->loadHTML($transferData);
+		$dom->loadHTML($data);
 
 		$finder = new \DomXPath($dom);
-		$nodes = $finder->query('//table[@class="main"]//tbody//tr');
+		$nodes = $finder->query('//table[substring(@id, 1, 2) = "id"]/tbody/tr');
 
 		$transfers = array();
 		/** @var \DOMElement $node */
@@ -61,13 +58,13 @@ class PageService extends \Nette\Object
 		$length = $nodes->length;
 		foreach ($nodes as $node) {
 			$value = str_replace(',', '.', trim($node->childNodes->item(2)->nodeValue));
-			$value = (float)str_replace(' ', '', $value);
+			$value = (float)preg_replace('~\x{00a0}~siu', '', $value);
 
 			$transfers[] = array(
 				\DateTime::createFromFormat('d.m.Y', $node->childNodes->item(0)->nodeValue),
 				$value,
-				$node->childNodes->item(12)->nodeValue,
-				$node->childNodes->item(14)->nodeValue,
+				$node->childNodes->item(6)->nodeValue,
+				$node->childNodes->item(8)->nodeValue,
 			);
 
 			if ($maxItems !== null && $i >= $maxItems) {
@@ -81,21 +78,15 @@ class PageService extends \Nette\Object
 			}
 		}
 
-
-		$stateData = substr($data, strpos($data, '<table class=\'summary\'>'));
-		$stateData = substr($stateData, 0, strpos($stateData, '</table>') + 8);
-
-		$dom = new \DOMDocument();
-		$dom->loadHTML($stateData);
-
-		$finder = new \DomXPath($dom);
-		$nodes = $finder->query('//table[@class="summary"]//tbody//tr//td[2]');
+		$nodes = $finder->query('//div[contains(concat(" ", normalize-space(@class), " "), " pohybySum ")]//table//tbody//tr//td[2]');
 
 		$value = trim($nodes->item(0)->nodeValue);
+
+		$value = substr(trim($value), 0, -3);
 		$value = str_replace(',', '.', $value);
 
 		return array(
-			'state' => (float)str_replace(' ', '', $value),
+			'state' => (float)preg_replace('~\x{00a0}~siu', '', $value),
 			'transfers' => $transfers,
 		);
 	}
@@ -116,9 +107,7 @@ class PageService extends \Nette\Object
 			$dateTo = new DateTime();
 		}
 
-		$data = $this->getApiClient()->callRawApi('?ID_ucet=' . $accountNumber);
-		$data = iconv('windows-1250', 'UTF-8', $data);
-		$data = mb_convert_encoding($data, 'HTML-ENTITIES', 'UTF-8');
+		$data = $this->getApiClient()->callRawApi('?a=' . $accountNumber);
 
 		return $data;
 	}
